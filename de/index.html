@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENDA Bikes – Schweizer Road & Gravel Bikes</title>
+    <meta name="description" content="SENDA – Schweizer Road- und Gravel-Bikes. Entwickelt für höchste Performance. Gestaltet für zeitlose Ästhetik.">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
+    <link rel="alternate" hreflang="de" href="https://sendabikes.com/de/" />
+    <link rel="alternate" hreflang="en" href="https://sendabikes.com/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://sendabikes.com/en/" />
+    <link rel="alternate" hreflang="de-CH" href="https://sendabikes.ch/de/" />
+    <link rel="alternate" hreflang="en-CH" href="https://sendabikes.ch/en/" />
+
+    <!-- Basic SEO -->
+    <meta name="description" content="SENDA – Swiss-engineered road and gravel bikes. Built to outperform. Designed to stand out.">
+    <meta name="keywords" content="SENDA, Swiss bikes, road bikes, gravel bikes, cycling Switzerland, performance bikes">
+    <meta name="author" content="SENDA Bikes">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://sendabikes.com/en/">
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" href="../assets/logo/favicon-placeholder.png" type="image/png">
+    <link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon.png">
+
+    <!-- OpenGraph (Facebook, LinkedIn, etc.) -->
+    <meta property="og:title" content="SENDA Bikes – Swiss Road & Gravel">
+    <meta property="og:description" content="Swiss-engineered road and gravel bikes. Built to outperform. Designed to stand out.">
+    <meta property="og:image" content="https://sendabikes.com/assets/img/og-placeholder.jpg">
+    <meta property="og:url" content="https://sendabikes.com/en/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SENDA Bikes – Swiss Road & Gravel">
+    <meta name="twitter:description" content="Swiss-engineered road and gravel bikes. Built to outperform. Designed to stand out.">
+    <meta name="twitter:image" content="https://sendabikes.com/assets/img/og-placeholder.jpg">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+   <header class="header">
+    <div class="logo">
+        <a href="/en/">
+            <img src="../assets/logo/senda-logo-placeholder.svg" alt="SENDA Logo">
+        </a>
+    </div>
+
+    <nav class="nav">
+        <a href="/en/">Home</a>
+        <a href="/en/about.html">About</a>
+        <a href="/en/bikes.html">Bikes</a>
+        <a href="/en/contact.html">Contact</a>
+    </nav>
+
+    <div class="language-switcher">
+        <a href="/de/">DE</a> · <a href="/en/">EN</a>
+    </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-title">Radsportleidenschaft aus den Schweizer Alpen</h1>
+        <h2 class="hero-subtitle">Road & Gravel Bikes. Entwickelt für Performance. Gestaltet für Klarheit.</h2>
+        <img src="../assets/img/hero-placeholder.jpg" alt="SENDA Hero Image" class="hero-image">
+    </section>
+
+    <!-- Brand Introduction -->
+    <section class="reveal intro">
+        <p>
+            SENDA ist eine neue Schweizer Fahrradmarke, geprägt von jahrzehntelanger Erfahrung im Radsport,
+            in der Technik und im Design. Wir entwickeln Bikes, die
+            <strong>kompromisslose Performance</strong> mit einer
+            <strong>ruhigen, modernen Ästhetik</strong> verbinden – Maschinen, die man beim Fahren
+            und beim Betrachten liebt.
+        </p>
+        <p>Geboren in den Alpen, gebaut für Fahrerinnen und Fahrer weltweit.</p>
+    </section>
+
+    <!-- Origin & Philosophy -->
+    <section class="reveal origin">
+        <h3>Unser Ursprung</h3>
+        <p>
+            SENDA bedeutet <em>Weg</em> auf Rätoromanisch – eine Erinnerung an unsere Herkunft und an das,
+            was uns antreibt. Unsere Wurzeln liegen in der Schweizer Landschaft, wo Präzision, Klarheit
+            und funktionales Design selbstverständlich sind.
+        </p>
+        <p>
+            Mit Hintergründen in der <strong>Materialwissenschaft</strong>, der
+            <strong>Architektur</strong> und dem <strong>High‑Performance‑Cycling</strong> vereinen wir
+            das Beste aus beiden Welten: Ingenieurskunst für Geschwindigkeit, Kontrolle und Effizienz,
+            kombiniert mit einer klaren, zeitlosen Formensprache.
+        </p>
+    </section>
+
+    <!-- Community -->
+    <section class="reveal community">
+        <h3>Von Fahrern für Fahrer</h3>
+        <p>
+            SENDA entsteht mit einer Community‑Haltung – für Menschen, die Handwerk, Innovation und die
+            Freude am Entdecken neuer Wege schätzen. Wer Teil des ersten Kapitels sein möchte, ist jetzt
+            genau richtig.
+        </p>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="newsletter">
+        <h3>Bleib informiert</h3>
+        <p>Neugierig? Erfahre als Erste*r, wann und wie du unsere Bikes fahren kannst.</p>
+
+        <form class="newsletter-form">
+            <input type="email" placeholder="Deine E‑Mail‑Adresse" required>
+            <button type="submit">Benachrichtigen</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+   <footer class="footer">
+    <p>© SENDA Bikes – Schweiz</p>
+    <p>
+        <a href="/legal/impressum.html">Impressum</a> ·
+        <a href="/legal/privacy.html">Privacy Policy</a>
+    </p>
+    </footer>
+
+      <script>
+    document.addEventListener("scroll", () => {
+        document.querySelectorAll(".reveal").forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.85) {
+                el.classList.add("visible");
+            }
+        });
+    });
+    </script>
+    
+</body>
+</html>
