@@ -110,7 +110,7 @@ section:not(.hero) {
     height: 80vh;
     min-height: 600px;
     overflow: hidden;
-    margin-top: 0px;
+    padding-top: 128px;
 }
 
 .hero-bg {
