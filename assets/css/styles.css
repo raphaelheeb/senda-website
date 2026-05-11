@@ -111,36 +111,36 @@ section:not(.hero) {
     min-height: 600px;
     overflow: hidden;
 
-    /* IMPORTANT: header offset must be margin, not padding */
+    /* FIX: header offset must be margin, not padding */
     margin-top: 128px;
+    padding-top: 0;
 }
 
-.hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    object-position: center -120px; /* adjust to taste */
-
-    z-index: 1;
-}
-
+.hero-bg,
 .hero-gradient {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+
+    /* CRITICAL FIX: force them to match .hero exactly */
     height: 100%;
 
+    z-index: 1;
+}
+
+.hero-bg {
+    object-fit: cover;
+    object-position: center -120px; /* adjust to taste */
+    z-index: 1;
+}
+
+.hero-gradient {
     background: linear-gradient(
         to bottom,
         rgba(0,0,0,0.05),
         rgba(0,0,0,0.45)
     );
-
     z-index: 2;
 }
 
