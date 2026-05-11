@@ -107,37 +107,57 @@ section:not(.hero) {
 .hero {
     position: relative;
     width: 100%;
-    height: 80vh;
+    height: 80vh;          /* your chosen height */
     min-height: 600px;
     overflow: hidden;
-    padding-top: 128px;
+
+    /* CRITICAL FIX — removes grey band */
+    margin-top: 0;
+    padding-top: 128px;    /* space for fixed header */
 }
 
 .hero-bg {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+
     object-fit: cover;
-    object-position: center -80px; /* adjust to taste */
+
+    /* IMPORTANT:
+       You had "center -80px" which pushes the image DOWN.
+       That hides the bikes.
+       To reveal bikes, you must move the image UP.
+    */
+    object-position: center -140px;
+
     z-index: 1;
 }
 
 .hero-gradient {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
     background: linear-gradient(
         to bottom,
         rgba(0,0,0,0.05),
         rgba(0,0,0,0.45)
     );
+
     z-index: 2;
 }
 
 .hero-text {
     position: absolute;
     left: 5%;
-    bottom: 56%; /* moves text into sky */
+
+    /* Move text into sky */
+    bottom: 50%;
+
     z-index: 4;
     max-width: 520px;
 }
