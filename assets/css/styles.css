@@ -1,57 +1,4 @@
 /* ----------------------------------------------------------
-   Base Styles
----------------------------------------------------------- */
-
-:root {
-    --font-main: "Inter Tight", system-ui, sans-serif;
-
-    --color-text: #111;
-    --color-muted: #666;
-    --color-bg: #fff;
-    --color-border: #e5e5e5;
-
-    --fs-h1: clamp(2.4rem, 4vw + 1rem, 3.6rem);
-    --fs-h2: clamp(1.2rem, 1.5vw + 0.8rem, 1.8rem);
-    --fs-body: clamp(1rem, 0.4vw + 0.8rem, 1.15rem);
-
-    --max-width: 1200px;
-}
-
-body {
-    margin: 0;
-    font-family: var(--font-main);
-    color: var(--color-text);
-    background: var(--color-bg);
-    line-height: 1.6;
-    font-size: var(--fs-body);
-    opacity: 0;
-    animation: fadeIn 1s ease-out forwards;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-section {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 6rem 2rem;
-}
-
-.reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* ----------------------------------------------------------
    Header
 ---------------------------------------------------------- */
 
@@ -60,81 +7,81 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    z-index: 10;
 }
 
 .logo img {
-    height: 42px;$
+    height: 42px;
     background: transparent;
-}
-
-.nav a {
-    text-decoration: none;
-    color: var(--color-text);
-    margin: 0 1rem;
-    font-weight: 500;
-}
-
-.language-switcher a {
-    text-decoration: none;
-    color: var(--color-text);
-    margin-left: 0.5rem;
 }
 
 
 /* ----------------------------------------------------------
-   Hero Section
+   HERO SECTION — PREMIUM SPORTS BRAND LAYOUT
 ---------------------------------------------------------- */
 
 .hero {
     position: relative;
-    padding: 10rem 2rem 8rem;
-    text-align: center;
+    height: 90vh;
+    min-height: 600px;
     overflow: hidden;
 }
 
+/* Background image */
 .hero-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.9;
     z-index: 1;
 }
 
+/* Subtle gradient overlay */
+.hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.05),
+        rgba(0,0,0,0.22)
+    );
+    z-index: 2;
+}
+
+/* Logo in sky */
 .hero-wordmark-img {
-    position: relative;
-    z-index: 3;
-    width: clamp(280px, 50vw, 900px); /* NEW: scales beautifully on all screens */
-    margin: 0 auto 2.5rem;
-    display: block;
+    position: absolute;
+    top: 4%;
+    left: 4%;
+    width: clamp(180px, 22vw, 360px);
+    z-index: 4;
     opacity: 0;
     transform: translateY(10px);
     animation: heroFade 1.2s ease-out forwards;
 }
 
-
-.hero-overlay {
-    position: relative;
-    z-index: 3;
-    color: #e0e0e0;
-    max-width: 900px;
-    margin: 0 auto;
-    text-shadow: none;
+/* Text block */
+.hero-text {
+    position: absolute;
+    bottom: 18%;
+    left: 4%;
+    z-index: 4;
+    max-width: 480px;
+    color: #e6e6e6;
 }
 
-.hero h1 {
+.hero-text h1 {
     font-size: var(--fs-h1);
     font-weight: 500;
-    margin-bottom: 0.8rem;
-    color: #e0e0e0;
+    margin-bottom: 0.6rem;
+    color: #e6e6e6;
 }
 
-.hero h2 {
+.hero-text h2 {
     font-size: var(--fs-h2);
     font-weight: 300;
-    max-width: 700px;
-    margin: 0 auto;
     color: #cccccc;
 }
 
@@ -143,136 +90,4 @@ section {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-
-/* ----------------------------------------------------------
-   Pillars
----------------------------------------------------------- */
-
-.pillars {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 3rem;
-    text-align: center;
-}
-
-.pillar h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.6rem;
-}
-
-.pillar-icon {
-    width: 48px;
-    height: 48px;
-    margin: 0 auto 1rem;
-    border-radius: 999px;
-    border: 1.5px solid #ccc;
-    position: relative;
-}
-
-.pillar-icon-precision::before,
-.pillar-icon-aesthetics::before,
-.pillar-icon-performance::before {
-    content: "";
-    position: absolute;
-    inset: 12px;
-    border-radius: 999px;
-    border: 1.5px solid #999;
-}
-
-
-/* ----------------------------------------------------------
-   Technical Drawing
----------------------------------------------------------- */
-
-.technical {
-    text-align: center;
-}
-
-.technical-img {
-    max-width: 700px;
-    width: 100%;
-    opacity: 0.9;
-    margin-bottom: 2rem;
-}
-
-
-/* ----------------------------------------------------------
-   Alpine Experience
----------------------------------------------------------- */
-
-.alpine {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-}
-
-.alpine-img {
-    width: 100%;
-    border-radius: 6px;
-}
-
-@media (max-width: 800px) {
-    .alpine {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-/* ----------------------------------------------------------
-   Newsletter
----------------------------------------------------------- */
-
-.newsletter {
-    text-align: center;
-}
-
-.newsletter-form {
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 1rem;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.newsletter-form input {
-    flex: 1;
-    padding: 0.9rem;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-}
-
-.newsletter-form button {
-    padding: 0.9rem 1.4rem;
-    background: #000;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-}
-
-@media (max-width: 600px) {
-    .newsletter-form {
-        flex-direction: column;
-    }
-}
-
-
-/* ----------------------------------------------------------
-   Footer
----------------------------------------------------------- */
-
-.footer {
-    text-align: center;
-    padding: 3rem 2rem;
-    color: var(--color-muted);
-    font-size: 0.9rem;
-    border-top: 1px solid var(--color-border);
-}
-
-.footer a {
-    color: var(--color-muted);
-    text-decoration: none;
 }
