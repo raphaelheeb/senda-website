@@ -111,7 +111,6 @@ section:not(.hero) {
     min-height: 600px;
     overflow: hidden;
     margin-top: 0px;
-    padding-top: 128px; /* creates space for the header without pushing the hero down */
 }
 
 .hero-bg {
