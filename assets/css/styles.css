@@ -62,20 +62,21 @@ section:not(.hero) {
    FIXED WHITE HEADER
 ---------------------------------------------------------- */
 
+/* ----------------------------------------------------------
+   FIX HEADER BREAKAGE CAUSED BY GLOBAL SECTION RULES
+---------------------------------------------------------- */
+
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #ffffff;
-    z-index: 9999;
-    border-bottom: 1px solid #e5e5e5;
+    width: 100% !important;
 }
 
 .header-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 1.4rem 3rem;
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding-left: 3rem;
+    padding-right: 3rem;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
