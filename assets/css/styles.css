@@ -104,13 +104,14 @@ section {
 .hero-wordmark-img {
     position: relative;
     z-index: 3;
-    width: min(60%, 480px); /* iconic scale */
-    margin: 0 auto 2rem;
+    width: clamp(280px, 50vw, 900px); /* NEW: scales beautifully on all screens */
+    margin: 0 auto 2.5rem;
     display: block;
     opacity: 0;
     transform: translateY(10px);
     animation: heroFade 1.2s ease-out forwards;
 }
+
 
 .hero-overlay {
     position: relative;
