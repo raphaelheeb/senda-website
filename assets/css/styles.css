@@ -86,28 +86,30 @@ section:not(.hero) {
 }
 
 /* ----------------------------------------------------------
-   HERO — FULL-WIDTH, FIXED HEADER SAFE, NO GLOBAL OVERRIDES
+   HERO — FULL-WIDTH, FULL-HEIGHT, NOT A NORMAL SECTION
 ---------------------------------------------------------- */
 
-/* Reset global section rules ONLY for hero */
+/* Reset ALL global section rules for hero */
 .hero {
     max-width: none !important;
+    width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
     position: relative;
     z-index: 0;
 
-    /* Full viewport width + correct height */
-    width: 100%;
-    height: 80vh;
-    min-height: 600px;
-    overflow: hidden;
+    /* Full viewport height */
+    height: 100vh; /* use full height, not 80vh */
+    min-height: 700px; /* optional safety */
 
-    /* Header offset (your header is ~180px tall) */
-    padding-top: 180px;
+    /* Header offset */
+    padding-top: 180px; /* your header height */
+    box-sizing: border-box;
+
+    overflow: hidden;
 }
 
-/* Background image + gradient overlay */
+/* Background image + gradient */
 .hero-bg,
 .hero-gradient {
     position: absolute;
@@ -138,7 +140,7 @@ section:not(.hero) {
 .hero-text {
     position: absolute;
     left: 5%;
-    bottom: 50%;
+    bottom: 20%; /* better than 50% */
     z-index: 4;
     max-width: 520px;
 }
@@ -148,7 +150,6 @@ section:not(.hero) {
     font-weight: 600;
     margin: 0 0 0.8rem 0;
     color: #ffffff;
-    white-space: nowrap;
 }
 
 .hero-text h2 {
@@ -156,8 +157,8 @@ section:not(.hero) {
     font-weight: 300;
     margin: 0;
     color: #d0d0d0;
-    white-space: nowrap;
 }
+
 
 /* ----------------------------------------------------------
    Pillars (restored)
