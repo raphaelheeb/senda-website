@@ -113,51 +113,57 @@ section:not(.hero) {
     height: 92vh;
     min-height: 640px;
     overflow: hidden;
-    margin-top: 100px; /* offset for fixed header */
+    margin-top: 128px; /* offset for fixed 128px header */
 }
 
+/* Background image with sky preserved */
 .hero-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center top; /* reveal sky, lower riders */
     z-index: 1;
 }
 
+/* Premium gradient for readability */
 .hero-gradient {
     position: absolute;
     inset: 0;
     background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.10),
-        rgba(0,0,0,0.45)
+        rgba(0,0,0,0.08),
+        rgba(0,0,0,0.50)
     );
     z-index: 2;
 }
 
+/* Text block — premium editorial placement */
 .hero-text {
     position: absolute;
-    bottom: 14%;
-    left: 6%;
+    left: 5%;
+    bottom: 20%; /* moved up for calm spacing */
     z-index: 4;
     max-width: 520px;
     color: #f4f4f4;
 }
 
+/* H1 — single line, strong, calm */
 .hero-text h1 {
-    font-size: var(--fs-h1);
+    font-size: 3.6rem; /* tuned for 128px header wordmark */
     font-weight: 600;
-    margin-bottom: 0.7rem;
+    margin: 0 0 0.8rem 0;
+    white-space: nowrap; /* force single line */
     color: #f4f4f4;
 }
 
+/* H2 — single line, soft, premium */
 .hero-text h2 {
-    font-size: var(--fs-h2);
+    font-size: 1.5rem;
     font-weight: 300;
     color: #dcdcdc;
-    white-space: nowrap; /* forces one line */
+    white-space: nowrap; /* force single line */
 }
 
 
