@@ -110,59 +110,43 @@ section:not(.hero) {
     max-width: none;
     margin: 0;
     padding: 0;
-    height: 100vh;
-    min-height: 760px;
+    height: calc(100vh + 128px); /* ensures full 16:9 image is visible */
+    min-height: 900px;
     overflow: hidden;
-    margin-top: 128px;             /* offset for fixed header */
+    margin-top: 128px; /* fixed header */
 }
 
-/* Background image — shifted further up */
 .hero-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center +20px; /* moves image up to reveal bikes */
+    object-position: center top; /* best for your image */
     z-index: 1;
 }
 
-/* Premium gradient */
-.hero-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.05),
-        rgba(0,0,0,0.45)
-    );
-    z-index: 2;
-}
-
-/* Text block — moved significantly up */
 .hero-text {
     position: absolute;
     left: 5%;
-    bottom:70%;                   /* was 20% → now much higher */
+    bottom: 48%; /* moves text clearly into sky */
     z-index: 4;
     max-width: 520px;
-    color: #f4f4f4;
+    color: #ffffff;
 }
 
-/* H1 — single line, strong */
 .hero-text h1 {
-    font-size: 3.6rem;
+    font-size: 3.4rem;
     font-weight: 600;
     margin: 0 0 0.8rem 0;
     white-space: nowrap;
-    color: #f4f4f4;
+    color: #ffffff;
 }
 
-/* H2 — single line, calm */
 .hero-text h2 {
     font-size: 1.4rem;
     font-weight: 300;
-    color: #dcdcdc;
+    color: #e0e0e0; /* improved contrast */
     white-space: nowrap;
 }
 
