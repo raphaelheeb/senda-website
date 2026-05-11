@@ -117,16 +117,17 @@ section {
 .hero-overlay {
     position: relative;
     z-index: 3;
-    color: #ffffff;
+    color: #e0e0e0;
     max-width: 900px;
     margin: 0 auto;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    text-shadow: none;
 }
 
 .hero h1 {
     font-size: var(--fs-h1);
     font-weight: 500;
     margin-bottom: 0.8rem;
+    color: #e0e0e0;
 }
 
 .hero h2 {
@@ -134,7 +135,7 @@ section {
     font-weight: 300;
     max-width: 700px;
     margin: 0 auto;
-    color: rgba(255,255,255,0.9);
+    color: #cccccc;
 }
 
 @keyframes heroFade {
