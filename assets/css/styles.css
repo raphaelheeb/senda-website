@@ -59,7 +59,7 @@ section:not(.hero) {
 }
 
 /* ----------------------------------------------------------
-   FIXED WHITE HEADER (Premium)
+   FIXED WHITE HEADER
 ---------------------------------------------------------- */
 
 .header {
@@ -85,22 +85,9 @@ section:not(.hero) {
     height: 128px;
 }
 
-.nav a {
-    text-decoration: none;
-    color: #111;
-    margin: 0 1.2rem;
-    font-weight: 500;
-}
-
-.language-switcher a {
-    text-decoration: none;
-    color: #111;
-    margin-left: 0.5rem;
-}
-
 
 /* ----------------------------------------------------------
-   HERO SECTION (Full-bleed, premium editorial)
+   HERO SECTION — CORRECTED
 ---------------------------------------------------------- */
 
 .hero {
@@ -108,12 +95,10 @@ section:not(.hero) {
     width: 100%;
 
     /* REAL FIX: hero must include header height INSIDE itself */
-    padding-top: 128px;
+    padding-top: 180px; /* your actual header height */
 
-    /* Hero visual height */
-    height: calc(80vh + 128px);
-    min-height: calc(600px + 128px);
-
+    /* REAL hero height */
+    height: 80vh;        /* no min-height, no margin-top */
     overflow: hidden;
 }
 
@@ -123,7 +108,7 @@ section:not(.hero) {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; /* now matches hero EXACTLY */
+    height: 100%; /* now matches hero exactly */
 }
 
 .hero-bg {
@@ -147,21 +132,6 @@ section:not(.hero) {
     bottom: 50%;
     z-index: 4;
     max-width: 520px;
-}
-
-.hero-text h1 {
-    font-size: 3.4rem;
-    font-weight: 600;
-    white-space: nowrap;
-    margin: 0 0 0.8rem 0;
-    color: #ffffff;
-}
-
-.hero-text h2 {
-    font-size: 1.4rem;
-    font-weight: 300;
-    white-space: nowrap;
-    color: #d0d0d0;
 }
 
 /* ----------------------------------------------------------
