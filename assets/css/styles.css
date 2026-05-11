@@ -85,38 +85,46 @@ section:not(.hero) {
     height: 128px;
 }
 
-
 /* ----------------------------------------------------------
-   HERO SECTION — CORRECTED
+   HERO — FULL-WIDTH, FIXED HEADER SAFE, NO GLOBAL OVERRIDES
 ---------------------------------------------------------- */
 
+/* Reset global section rules ONLY for hero */
 .hero {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
     position: relative;
+    z-index: 0;
+
+    /* Full viewport width + correct height */
     width: 100%;
-
-    /* REAL FIX: hero must include header height INSIDE itself */
-    padding-top: 180px; /* your actual header height */
-
-    /* REAL hero height */
-    height: 80vh;        /* no min-height, no margin-top */
+    height: 80vh;
+    min-height: 600px;
     overflow: hidden;
+
+    /* Header offset (your header is ~180px tall) */
+    padding-top: 180px;
 }
 
+/* Background image + gradient overlay */
 .hero-bg,
 .hero-gradient {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; /* now matches hero exactly */
+    height: 100%;
 }
 
+/* Background image */
 .hero-bg {
     object-fit: cover;
     object-position: center -120px;
     z-index: 1;
 }
 
+/* Gradient overlay */
 .hero-gradient {
     background: linear-gradient(
         to bottom,
@@ -126,12 +134,29 @@ section:not(.hero) {
     z-index: 2;
 }
 
+/* Text block */
 .hero-text {
     position: absolute;
     left: 5%;
     bottom: 50%;
     z-index: 4;
     max-width: 520px;
+}
+
+.hero-text h1 {
+    font-size: var(--fs-h1);
+    font-weight: 600;
+    margin: 0 0 0.8rem 0;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.hero-text h2 {
+    font-size: var(--fs-h2);
+    font-weight: 300;
+    margin: 0;
+    color: #d0d0d0;
+    white-space: nowrap;
 }
 
 /* ----------------------------------------------------------
