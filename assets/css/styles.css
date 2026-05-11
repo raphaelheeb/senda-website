@@ -137,7 +137,7 @@ section:not(.hero) {
 .hero-text {
     position: absolute;
     left: 5%;
-    bottom: 46%; /* moves text into sky */
+    bottom: 66%; /* moves text into sky */
     z-index: 4;
     max-width: 520px;
 }
