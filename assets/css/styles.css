@@ -110,24 +110,24 @@ section:not(.hero) {
     max-width: none;
     margin: 0;
     padding: 0;
-    height: 100vh;              /* taller hero to avoid cropping */
-    min-height: 760px;          /* ensures frames are visible */
+    height: calc(100vh + 160px);   /* extra height to avoid cropping bikes */
+    min-height: 900px;             /* ensures full bike visibility */
     overflow: hidden;
-    margin-top: 128px;          /* offset for fixed 128px header */
+    margin-top: 128px;             /* offset for fixed header */
 }
 
-/* Background image with sky + frames preserved */
+/* Background image — shifted further up */
 .hero-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top; /* keep sky + frames visible */
+    object-position: center -120px; /* moves image up to reveal bikes */
     z-index: 1;
 }
 
-/* Premium gradient for readability */
+/* Premium gradient */
 .hero-gradient {
     position: absolute;
     inset: 0;
@@ -143,13 +143,13 @@ section:not(.hero) {
 .hero-text {
     position: absolute;
     left: 5%;
-    bottom: 32%;                /* moved up from 20% */
+    bottom: 42%;                   /* was 20% → now much higher */
     z-index: 4;
     max-width: 520px;
     color: #f4f4f4;
 }
 
-/* H1 — single line, strong, premium */
+/* H1 — single line, strong */
 .hero-text h1 {
     font-size: 3.6rem;
     font-weight: 600;
@@ -158,7 +158,7 @@ section:not(.hero) {
     color: #f4f4f4;
 }
 
-/* H2 — single line, soft, calm */
+/* H2 — single line, calm */
 .hero-text h2 {
     font-size: 1.5rem;
     font-weight: 300;
