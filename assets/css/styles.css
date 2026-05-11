@@ -10,8 +10,8 @@
     --color-bg: #fff;
     --color-border: #e5e5e5;
 
-    --fs-h1: clamp(2.9rem, 4.8vw + 1rem, 4.2rem);
-    --fs-h2: clamp(1.35rem, 1.8vw + 0.8rem, 2rem);
+    --fs-h1: clamp(3.2rem, 5vw + 1rem, 4.6rem);
+    --fs-h2: clamp(1.4rem, 2vw + 0.8rem, 2.1rem);
     --fs-body: clamp(1rem, 0.4vw + 0.8rem, 1.15rem);
 
     --max-width: 1200px;
@@ -39,34 +39,36 @@ section {
     padding: 6rem 2rem;
 }
 
-.reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 
 /* ----------------------------------------------------------
-   Header
+   Premium Transparent Header
 ---------------------------------------------------------- */
 
 .header {
-    padding: 1.8rem 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
-    z-index: 10;
+    z-index: 20;
+}
+
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav a {
+    margin: 0 1.2rem;
 }
 
 .logo img {
-    height: 42px;
-    background: transparent;
+    height: 46px;
+    filter: brightness(3.2);
 }
 
 
@@ -100,8 +102,8 @@ section {
     inset: 0;
     background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.10),
-        rgba(0,0,0,0.42)
+        rgba(0,0,0,0.12),
+        rgba(0,0,0,0.48)
     );
     z-index: 2;
 }
@@ -109,9 +111,9 @@ section {
 /* Large soft-white wordmark */
 .hero-wordmark-img {
     position: absolute;
-    top: 6%;
+    top: 8%;
     left: 6%;
-    width: clamp(300px, 32vw, 520px);
+    width: clamp(360px, 34vw, 560px);
     filter: brightness(3.2);
     z-index: 4;
     opacity: 0;
@@ -122,11 +124,11 @@ section {
 /* Text block */
 .hero-text {
     position: absolute;
-    bottom: 14%;
+    bottom: 12%;
     left: 6%;
     z-index: 4;
     max-width: 600px;
-    color: #f3f3f3;
+    color: #f4f4f4;
 }
 
 .hero-text h1 {
@@ -134,13 +136,13 @@ section {
     font-weight: 600;
     margin-bottom: 0.7rem;
     color: #f4f4f4;
+    max-width: 520px;
 }
 
 .hero-text h2 {
     font-size: var(--fs-h2);
     font-weight: 300;
-    color: #d8d8d8;
-    max-width: 760px;
+    color: #dcdcdc;
     white-space: nowrap;
 }
 
@@ -149,126 +151,4 @@ section {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-
-/* ----------------------------------------------------------
-   Pillars
----------------------------------------------------------- */
-
-.pillars {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 3rem;
-    text-align: center;
-}
-
-.pillar h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.6rem;
-}
-
-.pillar-icon {
-    width: 48px;
-    height: 48px;
-    margin: 0 auto 1rem;
-    border-radius: 999px;
-    border: 1.5px solid #ccc;
-    position: relative;
-}
-
-
-/* ----------------------------------------------------------
-   Technical Drawing
----------------------------------------------------------- */
-
-.technical {
-    text-align: center;
-}
-
-.technical-img {
-    max-width: 700px;
-    width: 100%;
-    opacity: 0.9;
-    margin-bottom: 2rem;
-}
-
-
-/* ----------------------------------------------------------
-   Alpine Experience
----------------------------------------------------------- */
-
-.alpine {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-}
-
-.alpine-img {
-    width: 100%;
-    border-radius: 6px;
-}
-
-@media (max-width: 800px) {
-    .alpine {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-/* ----------------------------------------------------------
-   Newsletter
----------------------------------------------------------- */
-
-.newsletter {
-    text-align: center;
-}
-
-.newsletter-form {
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 1rem;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.newsletter-form input {
-    flex: 1;
-    padding: 0.9rem;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-}
-
-.newsletter-form button {
-    padding: 0.9rem 1.4rem;
-    background: #000;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-}
-
-@media (max-width: 600px) {
-    .newsletter-form {
-        flex-direction: column;
-    }
-}
-
-
-/* ----------------------------------------------------------
-   Footer
----------------------------------------------------------- */
-
-.footer {
-    text-align: center;
-    padding: 3rem 2rem;
-    color: var(--color-muted);
-    font-size: 0.9rem;
-    border-top: 1px solid var(--color-border);
-}
-
-.footer a {
-    color: var(--color-muted);
-    text-decoration: none;
 }
