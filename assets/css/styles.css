@@ -107,13 +107,12 @@ section:not(.hero) {
 .hero {
     position: relative;
     width: 100%;
-    height: 80vh;          /* your chosen height */
+    height: 80vh;          /* your chosen hero height */
     min-height: 600px;
     overflow: hidden;
 
-    /* CRITICAL FIX — removes grey band */
-    margin-top: 0;
-    padding-top: 128px;    /* space for fixed header */
+    /* IMPORTANT: header offset must be margin, not padding */
+    margin-top: 128px;
 }
 
 .hero-bg {
@@ -124,13 +123,7 @@ section:not(.hero) {
     height: 100%;
 
     object-fit: cover;
-
-    /* IMPORTANT:
-       You had "center -80px" which pushes the image DOWN.
-       That hides the bikes.
-       To reveal bikes, you must move the image UP.
-    */
-    object-position: center -140px;
+    object-position: center -120px; /* adjust to taste */
 
     z-index: 1;
 }
@@ -154,10 +147,7 @@ section:not(.hero) {
 .hero-text {
     position: absolute;
     left: 5%;
-
-    /* Move text into sky */
-    bottom: 50%;
-
+    bottom: 50%; /* moves text into sky */
     z-index: 4;
     max-width: 520px;
 }
@@ -176,6 +166,7 @@ section:not(.hero) {
     white-space: nowrap;
     color: #d0d0d0;
 }
+
 
 /* ----------------------------------------------------------
    Pillars (restored)
