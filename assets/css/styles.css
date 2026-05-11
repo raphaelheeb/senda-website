@@ -107,8 +107,8 @@ section:not(.hero) {
 .hero {
     position: relative;
     width: 100%;
-    height: calc(100vh + 128px);
-    min-height: 900px;
+    height: 80vh;
+    min-height: 600px;
     overflow: hidden;
     margin-top: 128px;
 }
