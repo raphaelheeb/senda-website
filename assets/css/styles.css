@@ -123,10 +123,8 @@ section:not(.hero) {
     left: 0;
     width: 100%;
 
-    /* CRITICAL FIX: force them to match .hero exactly */
+    /* CRITICAL: match hero height exactly */
     height: 100%;
-
-    z-index: 1;
 }
 
 .hero-bg {
