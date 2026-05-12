@@ -177,6 +177,7 @@ section:not(.hero) {
     font-weight: 300;
     margin: 0;
     color: #d0d0d0;
+    white-space: nowrap;
 }
 
 /* ----------------------------------------------------------
