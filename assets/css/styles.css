@@ -277,19 +277,19 @@ section:not(.hero) {
 }
 
 /* ----------------------------------------------------------
-   NEWSLETTER — SCREENSHOT-ACCURATE PREMIUM FIX
+   NEWSLETTER — FINAL PREMIUM BALANCE
 ---------------------------------------------------------- */
 
 .newsletter {
-  background: #efefef; /* slightly darker for depth */
-  border-top: 1px solid #e0e0e0;
+  background: #ececec; /* slightly darker, more tactile */
+  border-top: 1px solid #ddd;
   max-width: none;
 }
 
 .newsletter-inner {
-  max-width: 460px; /* matches form width */
+  max-width: 480px; /* matches form width */
   margin: 0 auto;
-  padding: 1.2rem 2.5rem; /* reduced vertical padding */
+  padding: 1rem 2.5rem; /* compact vertical rhythm */
   text-align: center;
 }
 
@@ -297,14 +297,14 @@ section:not(.hero) {
   font-weight: 500;
   font-size: 1rem;
   letter-spacing: 0.02em;
-  margin: 0 0 0.25rem 0; /* tighter link to paragraph */
+  margin: 0 0 0.4rem 0; /* more breathing space */
   color: #111;
 }
 
 .newsletter-text {
-  margin: 0 auto 0.9rem auto;
+  margin: 0 auto 1.2rem auto; /* more space before form */
   font-size: 0.9rem;
-  line-height: 1.4;
+  line-height: 1.45;
   color: #333;
   max-width: 100%; /* same width as form */
 }
@@ -312,21 +312,22 @@ section:not(.hero) {
 .newsletter-form {
   display: flex;
   justify-content: center;
-  gap: 0.7rem;
+  gap: 0.8rem;
 }
 
 .newsletter-form input {
   flex: 1;
-  padding: 0.7rem 1rem; /* reduced height */
+  padding: 0.7rem 1rem;
   border: 1px solid #d8d8d8;
   border-radius: 999px;
   font-family: var(--font-main);
   font-size: 0.9rem;
   background: #fff;
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0.03);
 }
 
 .newsletter-form button {
-  padding: 0.7rem 1.2rem; /* reduced height and width */
+  padding: 0.7rem 1.2rem;
   background: #111;
   color: #fff;
   border: none;
