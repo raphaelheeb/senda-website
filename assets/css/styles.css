@@ -277,19 +277,19 @@ section:not(.hero) {
 }
 
 /* ----------------------------------------------------------
-   NEWSLETTER — PREMIUM REFINEMENT
+   NEWSLETTER — PREMIUM COLUMN ALIGNMENT
 ---------------------------------------------------------- */
 
 .newsletter {
-  background: #f3f3f3; /* slightly darker neutral for depth */
-  border-top: 1px solid #e0e0e0; /* subtle anchor line */
+  background: #f3f3f3;
+  border-top: 1px solid #e0e0e0;
   max-width: none;
 }
 
 .newsletter-inner {
-  max-width: 560px;
+  max-width: 480px; /* MATCHES FORM WIDTH */
   margin: 0 auto;
-  padding: 2.2rem 2.5rem; /* controlled compression */
+  padding: 2.2rem 2.5rem; /* tighter vertical spacing */
   text-align: center;
 }
 
@@ -302,21 +302,17 @@ section:not(.hero) {
 }
 
 .newsletter-text {
-  max-width: 38ch;
   margin: 0.6rem auto 0 auto;
   font-size: 0.9rem;
   line-height: 1.45;
   color: #333;
+  max-width: 100%; /* EXACTLY MATCHES FORM WIDTH */
 }
 
 .newsletter-form {
-  margin-top: 1.6rem;
+  margin-top: 1.4rem;
   display: flex;
-  justify-content: center;
   gap: 0.8rem;
-  max-width: 440px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .newsletter-form input {
@@ -327,7 +323,6 @@ section:not(.hero) {
   font-family: var(--font-main);
   font-size: 0.9rem;
   background: #fff;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.02);
 }
 
 .newsletter-form button {
@@ -341,12 +336,13 @@ section:not(.hero) {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: background 0.2s ease, opacity 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .newsletter-form button:hover {
   opacity: 0.85;
 }
+
 
 /* ----------------------------------------------------------
    FOOTER
