@@ -33,7 +33,7 @@ body {
     to   { opacity: 1; }
 }
 
-/* Global section layout (restored) */
+/* Global section layout */
 section {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -59,57 +59,77 @@ section:not(.hero) {
 }
 
 /* ----------------------------------------------------------
-   FIX GLOBAL SECTION LAYOUT LEAKING INTO HEADER + HERO
+   FIXED WHITE HEADER
 ---------------------------------------------------------- */
 
-/* HEADER MUST BE FULL-WIDTH AND NOT CONSTRAINED */
 .header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100% !important;
+    width: 100%;
     background: #ffffff;
     z-index: 9999;
     border-bottom: 1px solid #e5e5e5;
 }
 
 .header-inner {
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-
+    max-width: 1400px;
+    margin: 0 auto;
     padding: 1.4rem 3rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
 }
 
 .logo img {
-    height: 128px;
+    height: 110px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+}
+
+.language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 1.8rem;
+}
+
+.language-switcher a {
+    text-decoration: none;
+    color: #111;
 }
 
 /* ----------------------------------------------------------
-   HERO — FULL-WIDTH, FULL-HEIGHT, NO GLOBAL SECTION RULES
+   HERO – FULL-WIDTH, BELOW FIXED HEADER
 ---------------------------------------------------------- */
 
+/* Remove global section constraints from hero */
 .hero {
-    /* REMOVE ALL GLOBAL SECTION RULES */
-    max-width: none !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    max-width: none;
+    margin: 0;
+    padding: 0;
 
     position: relative;
+    width: 100%;
     z-index: 0;
 
-    /* FULL HEIGHT HERO */
-    height: 100vh;
-    min-height: 700px;
-    overflow: hidden;
+    /* hero occupies viewport below header */
+    margin-top: 160px;                 /* header visual height */
+    height: calc(100vh - 160px);
+    min-height: 520px;
 
-    /* HEADER OFFSET */
-    padding-top: 180px;
-    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .hero-bg,
@@ -123,7 +143,7 @@ section:not(.hero) {
 
 .hero-bg {
     object-fit: cover;
-    object-position: center -120px;
+    object-position: center -80px;     /* adjust to taste */
     z-index: 1;
 }
 
@@ -139,7 +159,7 @@ section:not(.hero) {
 .hero-text {
     position: absolute;
     left: 5%;
-    bottom: 20%;
+    bottom: 22%;
     z-index: 4;
     max-width: 520px;
 }
@@ -149,7 +169,6 @@ section:not(.hero) {
     font-weight: 600;
     margin: 0 0 0.8rem 0;
     color: #ffffff;
-    white-space: nowrap;
 }
 
 .hero-text h2 {
@@ -157,11 +176,10 @@ section:not(.hero) {
     font-weight: 300;
     margin: 0;
     color: #d0d0d0;
-    white-space: nowrap;
 }
 
 /* ----------------------------------------------------------
-   Pillars (restored)
+   Pillars
 ---------------------------------------------------------- */
 
 .pillars {
