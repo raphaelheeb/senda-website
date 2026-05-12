@@ -5,16 +5,24 @@
 :root {
     --font-main: "Inter Tight", system-ui, sans-serif;
 
-    --color-text: #111;
-    --color-muted: #666;
-    --color-bg: #fff;
+    --color-text: #111111;
+    --color-muted: #666666;
+    --color-bg: #ffffff;
+    --color-bg-alt: #f7f7f7;
     --color-border: #e5e5e5;
+    --color-accent: #111111;
 
-    --fs-h1: clamp(3rem, 4.8vw + 1rem, 4.2rem);
-    --fs-h2: clamp(1.3rem, 1.8vw + 0.8rem, 1.9rem);
-    --fs-body: clamp(1rem, 0.4vw + 0.8rem, 1.15rem);
+    --fs-h1: clamp(3rem, 4.2vw + 1rem, 4.1rem);
+    --fs-h2: clamp(1.25rem, 1.6vw + 0.8rem, 1.8rem);
+    --fs-body: clamp(1rem, 0.4vw + 0.8rem, 1.1rem);
 
     --max-width: 1200px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 body {
@@ -22,10 +30,11 @@ body {
     font-family: var(--font-main);
     color: var(--color-text);
     background: var(--color-bg);
-    line-height: 1.6;
+    line-height: 1.7;
     font-size: var(--fs-body);
     opacity: 0;
-    animation: fadeIn 1s ease-out forwards;
+    animation: fadeIn 0.8s ease-out forwards;
+    -webkit-font-smoothing: antialiased;
 }
 
 @keyframes fadeIn {
@@ -37,25 +46,34 @@ body {
 section {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 6rem 2rem;
+    padding: 5.5rem 2.5rem;
     position: relative;
     z-index: 1;
 }
 
 /* Add spacing so sections don't hide under fixed header */
 section:not(.hero) {
-    padding-top: 8rem;
+    padding-top: 6.5rem;
 }
 
 .reveal {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(18px);
     transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
 
 .reveal.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+h1, h2, h3 {
+    margin: 0 0 0.75rem 0;
+}
+
+p {
+    margin: 0 0 0.9rem 0;
+    color: var(--color-muted);
 }
 
 /* ----------------------------------------------------------
@@ -75,39 +93,54 @@ section:not(.hero) {
 .header-inner {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 1.4rem 3rem;
+    padding: 0.9rem 3rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .logo img {
-    height: 110px;
+    height: 84px;
+    display: block;
 }
 
 .nav {
     display: flex;
     align-items: center;
-    gap: 1.4rem;
+    gap: 2rem;
 }
 
 .nav a {
     text-decoration: none;
-    color: #111;
-    font-weight: 500;
+    color: #111111;
+    font-weight: 400;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.nav a:hover {
+    opacity: 0.7;
 }
 
 .language-switcher {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-left: 1.8rem;
+    gap: 0.4rem;
+    margin-left: 1.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .language-switcher a {
     text-decoration: none;
-    color: #111;
+    color: #111111;
+}
+
+.language-switcher a:hover {
+    opacity: 0.7;
 }
 
 /* ----------------------------------------------------------
@@ -123,10 +156,9 @@ section:not(.hero) {
     width: 100%;
     z-index: 0;
 
-    /* Fixed hero height below header: same crop on all desktops */
-    margin-top: 160px;      /* header height */
-    height: 720px;          /* tune this if needed */
-    min-height: 720px;
+    margin-top: 130px;      /* header height */
+    height: 680px;
+    min-height: 680px;
 
     overflow: hidden;
 }
@@ -142,7 +174,6 @@ section:not(.hero) {
 
 .hero-bg {
     object-fit: cover;
-    /* Move crop window down so bikes stay in frame */
     object-position: 50% 55%;
     z-index: 1;
 }
@@ -150,130 +181,194 @@ section:not(.hero) {
 .hero-gradient {
     background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.05),
-        rgba(0,0,0,0.45)
+        rgba(0,0,0,0.10),
+        rgba(0,0,0,0.55)
     );
     z-index: 2;
 }
 
 .hero-text {
     position: absolute;
-    left: 5%;
-    bottom: 52%;
+    left: 6%;
+    bottom: 40%;
     z-index: 4;
-    max-width: 520px;
+    max-width: 540px;
 }
 
 .hero-text h1 {
     font-size: var(--fs-h1);
     font-weight: 600;
-    margin: 0 0 0.8rem 0;
+    margin: 0 0 0.9rem 0;
     color: #ffffff;
-    white-space: nowrap;
+    line-height: 1.05;
+    white-space: normal;
 }
 
 .hero-text h2 {
     font-size: var(--fs-h2);
     font-weight: 300;
     margin: 0;
-    color: #d0d0d0;
-    white-space: nowrap;
+    color: #e2e2e2;
+    max-width: 32rem;
+    line-height: 1.3;
+    white-space: normal;
 }
 
 /* ----------------------------------------------------------
    Pillars
 ---------------------------------------------------------- */
 
-.pillars {
+.pillars-inner {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 3rem;
-    text-align: center;
+}
+
+.pillars {
+    text-align: left;
 }
 
 .pillar h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.6rem;
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
 }
 
 .pillar-icon {
-    width: 48px;
-    height: 48px;
-    margin: 0 auto 1rem;
+    width: 44px;
+    height: 44px;
+    margin: 0 0 0.9rem 0;
     border-radius: 999px;
-    border: 1.5px solid #ccc;
+    border: 1.5px solid #d0d0d0;
 }
-
 
 /* ----------------------------------------------------------
    Technical Drawing
 ---------------------------------------------------------- */
 
 .technical {
-    text-align: center;
+    background: var(--color-bg-alt);
+    max-width: none;
+}
+
+.technical-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 4.5rem 2.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: center;
 }
 
 .technical-img {
     max-width: 700px;
     width: 100%;
-    opacity: 0.9;
-    margin-bottom: 2rem;
+    opacity: 0.95;
+    display: block;
+    margin: 0 auto;
 }
 
+.technical-text h3 {
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.technical-text p {
+    max-width: 30rem;
+}
 
 /* ----------------------------------------------------------
    Alpine Experience
 ---------------------------------------------------------- */
 
 .alpine {
+    max-width: none;
+}
+
+.alpine-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 4.5rem 2.5rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+    gap: 3.5rem;
     align-items: center;
+}
+
+.alpine-text h3 {
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .alpine-img {
     width: 100%;
-    border-radius: 6px;
+    border-radius: 10px;
+    display: block;
 }
-
-@media (max-width: 800px) {
-    .alpine {
-        grid-template-columns: 1fr;
-    }
-}
-
 
 /* ----------------------------------------------------------
    Newsletter
 ---------------------------------------------------------- */
 
 .newsletter {
+    background: var(--color-bg-alt);
+    max-width: none;
+}
+
+.newsletter-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 4.5rem 2.5rem;
     text-align: center;
 }
 
+.newsletter h3 {
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.newsletter p {
+    margin-bottom: 1.4rem;
+}
+
 .newsletter-form {
-    margin-top: 1.5rem;
+    margin-top: 1.2rem;
     display: flex;
-    gap: 1rem;
-    max-width: 500px;
+    gap: 0.9rem;
+    max-width: 480px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .newsletter-form input {
     flex: 1;
-    padding: 0.9rem;
+    padding: 0.9rem 1rem;
     border: 1px solid var(--color-border);
-    border-radius: 4px;
+    border-radius: 999px;
+    font-family: var(--font-main);
+    font-size: 0.95rem;
 }
 
 .newsletter-form button {
-    padding: 0.9rem 1.4rem;
-    background: #000;
-    color: #fff;
+    padding: 0.9rem 1.6rem;
+    background: var(--color-accent);
+    color: #ffffff;
     border: none;
-    border-radius: 4px;
+    border-radius: 999px;
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.newsletter-form button:hover {
+    background: #333333;
 }
 
 @media (max-width: 600px) {
@@ -281,7 +376,6 @@ section:not(.hero) {
         flex-direction: column;
     }
 }
-
 
 /* ----------------------------------------------------------
    Footer
@@ -298,4 +392,104 @@ section:not(.hero) {
 .footer a {
     color: var(--color-muted);
     text-decoration: none;
+}
+
+.footer a:hover {
+    opacity: 0.7;
+}
+
+/* ----------------------------------------------------------
+   Responsive
+---------------------------------------------------------- */
+
+@media (max-width: 960px) {
+    .header-inner {
+        padding: 0.8rem 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .logo img {
+        height: 72px;
+    }
+
+    .nav {
+        gap: 1.4rem;
+    }
+
+    .hero {
+        margin-top: 110px;
+        height: 520px;
+        min-height: 520px;
+    }
+
+    .hero-text {
+        left: 7%;
+        bottom: 32%;
+        max-width: 420px;
+    }
+}
+
+@media (max-width: 800px) {
+    .technical-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .technical-text p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .alpine-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-text {
+        bottom: 30%;
+        max-width: 380px;
+    }
+
+    .hero-bg {
+        object-position: 50% 45%;
+    }
+}
+
+@media (max-width: 600px) {
+    section {
+        padding: 4.5rem 1.6rem;
+    }
+
+    .technical-inner,
+    .alpine-inner,
+    .newsletter-inner {
+        padding: 3.8rem 1.6rem;
+    }
+
+    .hero {
+        height: 480px;
+        min-height: 480px;
+        margin-top: 100px;
+    }
+
+    .hero-text {
+        left: 7%;
+        bottom: 28%;
+        max-width: 340px;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(2.4rem, 8vw, 2.8rem);
+    }
+
+    .hero-text h2 {
+        font-size: clamp(1.05rem, 3.4vw, 1.2rem);
+    }
+
+    .nav {
+        display: none; /* keep header clean on small screens for now */
+    }
+
+    .language-switcher {
+        margin-left: auto;
+    }
 }
