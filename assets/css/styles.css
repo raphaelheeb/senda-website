@@ -111,10 +111,9 @@ section:not(.hero) {
 }
 
 /* ----------------------------------------------------------
-   HERO – FULL-WIDTH, BELOW FIXED HEADER
+   HERO – STABLE DESKTOP FRAMING
 ---------------------------------------------------------- */
 
-/* Remove global section constraints from hero */
 .hero {
     max-width: none;
     margin: 0;
@@ -124,10 +123,10 @@ section:not(.hero) {
     width: 100%;
     z-index: 0;
 
-    /* hero occupies viewport below header */
-    margin-top: 160px;                 /* header visual height */
-    height: calc(100vh - 160px);
-    min-height: 520px;
+    /* Fixed hero height below header: same crop on all desktops */
+    margin-top: 160px;      /* header height */
+    height: 720px;          /* tune this if needed */
+    min-height: 720px;
 
     overflow: hidden;
 }
@@ -143,7 +142,8 @@ section:not(.hero) {
 
 .hero-bg {
     object-fit: cover;
-    object-position: center 20px;     /* adjust to taste */
+    /* Move crop window down so bikes stay in frame */
+    object-position: 50% 55%;
     z-index: 1;
 }
 
