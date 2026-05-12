@@ -277,7 +277,7 @@ section:not(.hero) {
 }
 
 /* ----------------------------------------------------------
-   NEWSLETTER — PREMIUM COLUMN ALIGNMENT
+   NEWSLETTER — OPTICAL BALANCE FIX
 ---------------------------------------------------------- */
 
 .newsletter {
@@ -287,37 +287,37 @@ section:not(.hero) {
 }
 
 .newsletter-inner {
-  max-width: 480px; /* MATCHES FORM WIDTH */
+  max-width: 480px; /* matches form width */
   margin: 0 auto;
-  padding: 2.2rem 2.5rem; /* tighter vertical spacing */
+  padding: 1.6rem 2.5rem; /* SIGNIFICANTLY REDUCED */
   text-align: center;
 }
 
 .newsletter-inner h3 {
   font-weight: 500;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   letter-spacing: 0.02em;
   margin: 0;
   color: #111;
 }
 
 .newsletter-text {
-  margin: 0.6rem auto 0 auto;
+  margin: 0.4rem auto 0 auto; /* tighter */
   font-size: 0.9rem;
-  line-height: 1.45;
+  line-height: 1.4;
   color: #333;
-  max-width: 100%; /* EXACTLY MATCHES FORM WIDTH */
+  max-width: 100%;
 }
 
 .newsletter-form {
-  margin-top: 1.4rem;
+  margin-top: 1.1rem; /* tighter */
   display: flex;
   gap: 0.8rem;
 }
 
 .newsletter-form input {
   flex: 1;
-  padding: 0.85rem 1rem;
+  padding: 0.78rem 1rem; /* slightly reduced height */
   border: 1px solid #d8d8d8;
   border-radius: 999px;
   font-family: var(--font-main);
@@ -326,7 +326,7 @@ section:not(.hero) {
 }
 
 .newsletter-form button {
-  padding: 0.85rem 1.4rem;
+  padding: 0.78rem 1.3rem; /* slightly reduced height */
   background: #111;
   color: #fff;
   border: none;
@@ -342,7 +342,6 @@ section:not(.hero) {
 .newsletter-form button:hover {
   opacity: 0.85;
 }
-
 
 /* ----------------------------------------------------------
    FOOTER
