@@ -169,6 +169,7 @@ section:not(.hero) {
     font-weight: 600;
     margin: 0 0 0.8rem 0;
     color: #ffffff;
+    white-space: nowrap;
 }
 
 .hero-text h2 {
