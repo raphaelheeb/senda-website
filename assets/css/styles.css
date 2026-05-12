@@ -277,7 +277,7 @@ section:not(.hero) {
 }
 
 /* ----------------------------------------------------------
-   NEWSLETTER — REFINED
+   NEWSLETTER
 ---------------------------------------------------------- */
 
 .newsletter {
@@ -288,31 +288,50 @@ section:not(.hero) {
 .newsletter-inner {
     max-width: 640px;
     margin: 0 auto;
-    padding: 2.4rem 2.5rem; /* reduced further */
+    padding: 2.6rem 2.5rem; /* tighter vertical spacing */
     text-align: center;
 }
 
-.newsletter-text {
-    max-width: 40ch;              /* elegant, premium width */
-    margin: 0.4rem auto 0 auto;   /* tighter spacing */
-    line-height: 1.35;
-    font-size: 0.95rem;           /* slightly smaller for single-line behavior */
-    white-space: normal;          /* FIX: allow wrapping */
+.newsletter-inner h3 {
+    margin: 0;
 }
 
-@media (min-width: 1024px) {
-    .newsletter-text {
-        white-space: nowrap;      /* single line ONLY on desktop */
-    }
+.newsletter-text {
+    max-width: 40ch;
+    margin: 0.6rem auto 0 auto;
+    line-height: 1.4;
+    font-size: 0.95rem;
+    /* IMPORTANT: no white-space here */
 }
 
 .newsletter-form {
-    margin-top: 1.2rem;           /* tighter */
+    margin-top: 1.2rem; /* slightly tighter */
     display: flex;
     gap: 0.9rem;
     max-width: 480px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-family: var(--font-main);
+}
+
+.newsletter-form button {
+    padding: 0.9rem 1.6rem;
+    background: var(--color-accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
 }
 
 /* ----------------------------------------------------------
