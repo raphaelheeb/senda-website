@@ -289,7 +289,7 @@ section:not(.hero) {
 .newsletter-inner {
   max-width: 480px; /* matches form width */
   margin: 0 auto;
-  padding: 1.6rem 2.5rem; /* SIGNIFICANTLY REDUCED */
+  padding: 1.4rem 2.5rem; /* SIGNIFICANTLY REDUCED */
   text-align: center;
 }
 
@@ -299,6 +299,7 @@ section:not(.hero) {
   letter-spacing: 0.02em;
   margin: 0;
   color: #111;
+  margin-bottom: 0.3rem;
 }
 
 .newsletter-text {
@@ -307,10 +308,12 @@ section:not(.hero) {
   line-height: 1.4;
   color: #333;
   max-width: 100%;
+  margin-top: 0.3rem;
+  marbing-bottom: 0.9rem;
 }
 
 .newsletter-form {
-  margin-top: 1.1rem; /* tighter */
+  margin-top: 0.9rem; /* tighter */
   display: flex;
   gap: 0.8rem;
 }
