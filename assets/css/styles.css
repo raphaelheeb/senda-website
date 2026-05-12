@@ -277,50 +277,47 @@ section:not(.hero) {
 }
 
 /* ----------------------------------------------------------
-   NEWSLETTER — OPTICAL BALANCE FIX
+   NEWSLETTER — SCREENSHOT-ACCURATE PREMIUM FIX
 ---------------------------------------------------------- */
 
 .newsletter {
-  background: #f3f3f3;
+  background: #efefef; /* slightly darker for depth */
   border-top: 1px solid #e0e0e0;
   max-width: none;
 }
 
 .newsletter-inner {
-  max-width: 480px; /* matches form width */
+  max-width: 460px; /* matches form width */
   margin: 0 auto;
-  padding: 1.4rem 2.5rem; /* SIGNIFICANTLY REDUCED */
+  padding: 1.2rem 2.5rem; /* reduced vertical padding */
   text-align: center;
 }
 
 .newsletter-inner h3 {
   font-weight: 500;
-  font-size: 1.02rem;
+  font-size: 1rem;
   letter-spacing: 0.02em;
-  margin: 0;
+  margin: 0 0 0.25rem 0; /* tighter link to paragraph */
   color: #111;
-  margin-bottom: 0.3rem;
 }
 
 .newsletter-text {
-  margin: 0.4rem auto 0 auto; /* tighter */
+  margin: 0 auto 0.9rem auto;
   font-size: 0.9rem;
   line-height: 1.4;
   color: #333;
-  max-width: 100%;
-  margin-top: 0.3rem;
-  marbing-bottom: 0.9rem;
+  max-width: 100%; /* same width as form */
 }
 
 .newsletter-form {
-  margin-top: 0.9rem; /* tighter */
   display: flex;
-  gap: 0.8rem;
+  justify-content: center;
+  gap: 0.7rem;
 }
 
 .newsletter-form input {
   flex: 1;
-  padding: 0.78rem 1rem; /* slightly reduced height */
+  padding: 0.7rem 1rem; /* reduced height */
   border: 1px solid #d8d8d8;
   border-radius: 999px;
   font-family: var(--font-main);
@@ -329,7 +326,7 @@ section:not(.hero) {
 }
 
 .newsletter-form button {
-  padding: 0.78rem 1.3rem; /* slightly reduced height */
+  padding: 0.7rem 1.2rem; /* reduced height and width */
   background: #111;
   color: #fff;
   border: none;
