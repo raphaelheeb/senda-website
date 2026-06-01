@@ -480,82 +480,84 @@ footer{
 .reveal.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.14s}.d2{transition-delay:.28s}.d3{transition-delay:.44s}
 
-/* ── TABLET + MOBILE (≤900px) ───────────────────────────────────────────── */
-@media(max-width:900px){
+/* ══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE — three tiers
+   > 1200px   full desktop side-by-side hero
+   ≤ 1200px   stacked hero (photo full-screen, form below) — tablet & narrow desktop
+   ≤  900px   body sections compress + phone nav
+   ≤  480px   small phone fine-tuning
+   ══════════════════════════════════════════════════════════════════════════ */
 
-  /* ── Hero restructure: photo fills viewport, form appears BELOW photo ── */
-  .hero{
-    height:auto;         /* grows to fit stacked content */
-    min-height:100svh;
-    overflow:visible;    /* lets form-wrap escape the photo area */
-  }
-  /* Cap the photo and gradient at exactly viewport height */
+/* ── ≤1200px: hero restructure only ────────────────────────────────────── */
+@media(max-width:1200px){
+
+  /* Hero: photo stays viewport-height, form moves below */
+  .hero{height:auto;min-height:100svh;overflow:visible}
   .hero-bg{
-    height:100svh;
-    bottom:auto;         /* override inset:0 — don't stretch under form */
-    transform:none;      /* disable subtle zoom on mobile, avoids overflow artefacts */
-    transition:none;
+    height:100svh;bottom:auto;
+    transform:none;transition:none; /* no zoom — avoids side-overflow without clip */
   }
   .hero-bg.loaded{transform:none}
   .hero-grad{
-    height:100svh;
-    bottom:auto;
-    /* stronger top band so logo reads clearly against bright sky */
-    background:linear-gradient(
+    height:100svh;bottom:auto;
+    background:linear-gradient(   /* stronger top so logo reads on bright sky */
       180deg,
-      rgba(26,25,22,.72) 0%,
+      rgba(26,25,22,.70) 0%,
       rgba(26,25,22,.22) 24%,
       rgba(26,25,22,.08) 46%,
-      rgba(26,25,22,.60) 72%,
+      rgba(26,25,22,.58) 72%,
       rgba(26,25,22,.95) 100%
     );
   }
   .hero-scroll{display:none}
 
+  .hero-body{
+    flex-direction:column;align-items:stretch;
+    padding:0;gap:0;flex:unset;
+    width:100%;max-width:100%;margin:0;
+  }
+  /* hero-left fills the photo area; text anchored to bottom */
+  .hero-left{
+    min-height:calc(100svh - 100px); /* 100px ≈ nav at this size */
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:0 3.5rem 3.5rem;
+  }
+  .hero-h1{font-size:clamp(2.8rem,5vw,4.8rem)}
+  .hero-sub{max-width:580px}
+
+  /* form-wrap: clean section below photo */
+  .hero-form-wrap{
+    width:100%;background:var(--bg);
+    border-top:.5px solid var(--rule);
+    padding:3.5rem 3.5rem 4.5rem;
+    position:relative;z-index:5;
+  }
+  .form-card{         /* on light bg — strip frosted glass, constrain width */
+    background:transparent;
+    backdrop-filter:none;-webkit-backdrop-filter:none;
+    border:none;padding:0;
+    max-width:500px;
+  }
+}
+
+/* ── ≤900px: nav + all body sections ───────────────────────────────────── */
+@media(max-width:900px){
+
   nav{padding:1.5rem 1.5rem}
   .nav-logo img{height:42px}
   .nav-tag{display:none}
 
-  /* hero-body: column, no fixed height — hero-left carries the photo height */
-  .hero-body{
-    flex-direction:column;
-    align-items:stretch;
-    padding:0;
-    gap:0;
-    flex:unset;        /* don't flex-grow inside hero on mobile */
-    width:100%;
-    max-width:100%;
-    margin:0;
-  }
-  /* hero-left fills the photo area, text sits at the bottom */
+  /* hero overrides on top of 1200px rules */
   .hero-left{
-    min-height:calc(100svh - 88px); /* 88px ≈ nav height on mobile */
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
+    min-height:calc(100svh - 88px);
     padding:0 1.5rem 2.75rem;
   }
   .hero-h1{font-size:clamp(2.4rem,8vw,3.4rem)}
   .hero-sub{max-width:100%}
+  .hero-form-wrap{padding:2.5rem 1.5rem 3rem}
+  .form-card{max-width:100%}
 
-  /* form-wrap: detached from photo — sits below on clean background */
-  .hero-form-wrap{
-    width:100%;
-    background:var(--bg);
-    border-top:.5px solid var(--rule);
-    padding:2.5rem 1.5rem 3rem;
-    position:relative;
-    z-index:5;
-  }
-  /* simplify card on light background — no frosted glass needed */
-  .form-card{
-    background:transparent;
-    backdrop-filter:none;
-    -webkit-backdrop-filter:none;
-    border:none;
-    padding:0;
-  }
-
+  /* body sections */
   .manifesto{padding:6rem 1.5rem}
   .manifesto-facts{gap:1.5rem;flex-wrap:wrap}
 
@@ -579,7 +581,7 @@ footer{
   .footer-links{justify-content:center}
 }
 
-/* ── SMALL PHONES (≤480px) ──────────────────────────────────────────────── */
+/* ── ≤480px: small phone fine-tuning ───────────────────────────────────── */
 @media(max-width:480px){
   .nav-logo img{height:36px}
 
