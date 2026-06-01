@@ -480,33 +480,76 @@ footer{
 .reveal.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.14s}.d2{transition-delay:.28s}.d3{transition-delay:.44s}
 
-/* ── MOBILE ─────────────────────────────────────────────────────────────── */
+/* ── TABLET + MOBILE (≤900px) ───────────────────────────────────────────── */
 @media(max-width:900px){
+  /* Hero — allow section to grow taller than viewport when content stacks */
+  .hero{height:auto;min-height:100svh}
+  .hero-scroll{display:none} /* hides scroll indicator — overlaps stacked form */
+
   nav{padding:1.5rem 1.5rem}
+  .nav-logo img{height:40px} /* reduce from 58px — more proportional in mobile nav */
   .nav-tag{display:none}
+
   .hero-body{
     flex-direction:column;align-items:flex-start;
-    padding:0 1.5rem 3rem;gap:2.5rem;
+    padding:0 1.5rem 3.5rem;gap:2rem;
   }
-  .hero-h1{font-size:clamp(2.5rem,9vw,3.5rem)}
+  .hero-h1{font-size:clamp(2.4rem,8vw,3.4rem)}
   .hero-sub{max-width:100%}
   .hero-form-wrap{width:100%}
+  .form-card{padding:2rem 1.5rem} /* desktop is 2.75rem 2.5rem — too generous on mobile */
+
   .manifesto{padding:6rem 1.5rem}
-  .manifesto-facts{gap:2rem;flex-wrap:wrap}
+  .manifesto-facts{gap:1.5rem;flex-wrap:wrap}
+
   .drawing-section .drawing-inner{padding:4rem 1.5rem 3rem}
   .drawing-head{grid-template-columns:1fr;gap:2rem}
+
   .pillars-section{padding:5rem 1.5rem}
   .pillars-intro{grid-template-columns:1fr;gap:2rem}
   .pillars-desc{margin-left:0;max-width:100%}
   .pillars-grid{grid-template-columns:1fr}
   .pillar{border-right:none;border-bottom:.5px solid var(--rule);padding:2.5rem 0!important}
   .pillar:last-child{border-bottom:none}
+
   .finishes{padding:4rem 1.5rem}
   .swatches{grid-template-columns:1fr 1fr;gap:.6rem}
+
   .cta-section{padding:6rem 1.5rem}
   .cta-form{flex-direction:column}
+
   footer{flex-direction:column;text-align:center;padding:2rem 1.5rem;gap:1rem}
   .footer-links{justify-content:center}
+}
+
+/* ── SMALL PHONES (≤480px) ──────────────────────────────────────────────── */
+@media(max-width:480px){
+  .nav-logo img{height:34px}
+
+  .hero-body{padding:0 1.25rem 3rem}
+  .hero-h1{font-size:2.2rem;letter-spacing:-.015em}
+  .hero-sub{font-size:1rem}
+  .form-card{padding:1.75rem 1.25rem}
+  .form-card-h{font-size:1.5rem}
+
+  .manifesto{padding:5rem 1.25rem}
+  .manifesto-h{font-size:2rem}
+  .manifesto-sub{font-size:.9375rem}
+  .manifesto-facts{gap:1.25rem}
+  .fact-n{font-size:2.2rem}
+
+  .drawing-section .drawing-inner{padding:3rem 1.25rem 2.5rem}
+
+  .pillars-section{padding:4rem 1.25rem}
+  .pillar-title{font-size:1.15rem}
+
+  .finishes{padding:3rem 1.25rem}
+
+  .cta-section{padding:5rem 1.25rem}
+  .cta-h{font-size:1.9rem}
+  .cta-sub{font-size:.9375rem}
+
+  footer{padding:1.75rem 1.25rem}
 }
 </style>
 </head>
