@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xxd)",
+      "Bash(git -C /Users/raphaelheeb/Documents/GitHub/senda-website remote -v)",
+      "Bash(git -C /Users/raphaelheeb/Documents/GitHub/senda-website branch -a)"
+    ]
+  }
+}

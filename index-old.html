@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENDA Bikes – Swiss Road & Gravel</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <meta name="description" content="Swiss‑engineered road and gravel bikes. Built for clarity, speed and control.">
+    <link rel="canonical" href="https://sendabikes.com/en/">
+</head>
+
+<body>
+
+<!-- FIXED WHITE HEADER -->
+<header class="header">
+    <div class="header-inner">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/logo/senda-logo.svg" alt="SENDA Logo">
+            </a>
+        </div>
+
+        <nav class="nav">
+            <a href="about.html">Our Story</a>
+            <a href="bikes.html">Our Bikes</a>
+            <a href="contact.html">Get in Touch</a>
+        </nav>
+
+        <div class="language-switcher">
+            <a href="#">DE</a> · <a href="#">EN</a>
+        </div>
+    </div>
+</header>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <img src="assets/img/hero-alpine-placeholder.jpg" 
+         alt="Alpine Ride" 
+         class="hero-bg">
+
+    <div class="hero-gradient"></div>
+
+    <div class="hero-text">
+        <h1>Born in the Swiss Alps</h1>
+        <h2>Engineered for clarity, speed and control.</h2>
+    </div>
+
+</section>
+
+
+<!-- Brand Pillars -->
+<section class="pillars reveal">
+    <div class="pillars-inner">
+        <div class="pillar">
+            <img src="assets/icons/precision.svg" alt="Engineering Precision icon" class="pillar-icon">
+            <h3>Engineering Precision</h3>
+            <p>Every frame is shaped with intention - from carbon lay‑up to structural flow. The result is control you feel immediately, and trust that grows with every ride.</p>
+        </div>
+
+        <div class="pillar">
+            <img src="assets/icons/aesthetics.svg" alt="Timeless Aesthetics icon" class="pillar-icon">
+            <h3>Timeless Aesthetics</h3>
+            <p>Clear lines. Balanced proportions. A calm visual language shaped by Swiss design culture. Nothing added without purpose.</p>
+        </div>
+
+        <div class="pillar">
+            <img src="assets/icons/performance.svg" alt="Rider‑Centric Performance icon" class="pillar-icon">
+            <h3>Rider‑Centric Performance</h3>
+            <p>Responsiveness, comfort and stability refined through real riding. Geometry that supports long days, fast efforts and everything in between.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- Technical Drawing -->
+<section class="technical reveal">
+    <div class="technical-inner">
+        <img src="assets/img/technical-drawing-placeholder2.png" alt="Technical Drawing" class="technical-img">
+
+        <div class="technical-text">
+            <h3>Designed in Switzerland</h3>
+            <p>The frame is defined by clean geometry and purposeful junctions. Each angle, radius and transition is considered for stiffness, compliance and flow.</p>
+            <p>Carbon lay‑up is tuned for real‑world conditions - efficient on the climb, composed on the descent.</p>
+            <p>Testing and refinement happen on the roads and gravel that shaped the design.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- Alpine Experience -->
+<section class="alpine reveal">
+    <div class="alpine-inner">
+        <div class="alpine-text">
+            <h3>Born in the Alps</h3>
+            <p>
+               Riding in Switzerland teaches clarity. The terrain demands focus, precision and equipment that responds without hesitation.
+            </p>
+            <p>
+                SENDA reflects this environment - disciplined in design, calm in appearance, and built for the varied surfaces that define alpine riding.
+            </p>
+        </div>
+
+        <img src="assets/img/alpine-ride-placeholder.jpg" alt="Alpine Ride" class="alpine-img">
+    </div>
+</section>
+
+
+<!-- Newsletter CTA -->
+<!-- Newsletter CTA -->
+<section class="newsletter reveal">
+  <div class="newsletter-inner">
+    <h3>Ride Ahead</h3>
+    <p class="newsletter-text">
+      Occasional updates on development and availability.<br>Only when there’s something worth sharing.
+    </p>
+
+    <form class="newsletter-form">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit">Notify Me</button>
+    </form>
+  </div>
+</section>
+
+
+
+<footer class="footer">
+    <p>© SENDA Bikes – Switzerland</p>
+    <p>
+        <a href="legal/impressum.html">Impressum</a> ·
+        <a href="legal/privacy.html">Privacy Policy</a>
+    </p>
+</footer>
+
+<script>
+document.addEventListener("scroll", () => {
+    document.querySelectorAll(".reveal").forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.85) {
+            el.classList.add("visible");
+        }
+    });
+});
+</script>
+
+</body>
+</html>

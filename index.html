@@ -1,151 +1,825 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENDA Bikes – Swiss Road & Gravel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SENDA — Born in the Swiss Alps</title>
+<meta name="description" content="Swiss road and gravel bikes. Precise without being cold. Beautiful without being loud. Coming 2027.">
+<meta property="og:title" content="SENDA — Born in the Swiss Alps">
+<meta property="og:description" content="Road bikes. Gravel bikes. Our only obsession. Launching 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:         #1a1916;
+  --ink-mid:     #5a574f;
+  --ink-light:   #9b9890;
+  --rule:        #e2dfd8;
+  --rule-light:  #eeebe5;
+  --bg:          #faf9f6;
+  --bg-warm:     #f4f1eb;
+  --charcoal:    #272420;   /* deck dark slide background */
+  --gold:        #c4a96b;   /* deck accent gold */
+  --gold-muted:  #b5a280;
+  --rose:        #dcc5be;   /* deck dusky rose accent */
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Hanken Grotesk',sans-serif;
+  font-weight:300;
+  background:#fff;
+  color:var(--ink);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css">
+/* ── HERO ───────────────────────────────────────────────────────────────── */
+.hero{
+  position:relative;
+  height:100svh;min-height:620px;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('assets/img/alpine-cyclists.jpg');
+  background-size:cover;background-position:center 55%;
+  transform:scale(1.04);
+  transition:transform 7s ease-out;
+}
+.hero-bg.loaded{transform:scale(1)}
+.hero-grad{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    180deg,
+    rgba(26,25,22,.56) 0%,
+    rgba(26,25,22,.18) 22%,
+    rgba(26,25,22,.08) 44%,
+    rgba(26,25,22,.52) 70%,
+    rgba(26,25,22,.92) 100%
+  );
+}
 
-    <meta name="description" content="Swiss‑engineered road and gravel bikes. Built for clarity, speed and control.">
-    <link rel="canonical" href="https://sendabikes.com/en/">
+/* ── NAV ────────────────────────────────────────────────────────────────── */
+nav{
+  position:relative;z-index:10;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:2rem 3.5rem;
+}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo img{height:58px;width:auto;
+  filter:brightness(0) invert(1) drop-shadow(0 1px 16px rgba(0,0,0,.5));}
+.nav-right{
+  display:flex;align-items:center;gap:2rem;
+}
+.nav-tag{
+  font-size:.75rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(250,249,246,.5);
+}
+.nav-cta-link{
+  font-size:.75rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(250,249,246,.75);text-decoration:none;
+  border:.5px solid rgba(250,249,246,.25);padding:.45rem 1.1rem;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.nav-cta-link:hover{background:rgba(250,249,246,.1);border-color:rgba(250,249,246,.5)}
+
+/* ── HERO BODY ──────────────────────────────────────────────────────────── */
+.hero-body{
+  position:relative;z-index:2;flex:1;
+  display:flex;align-items:flex-end;
+  max-width:1360px;width:100%;margin:0 auto;
+  padding:0 3.5rem 5.5rem;
+  gap:5rem;
+}
+.hero-left{flex:1}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:.9rem;
+  font-size:.78rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.6rem;
+}
+.hero-eyebrow::before{
+  content:'';display:block;width:22px;height:.5px;background:var(--gold);flex-shrink:0;
+}
+.hero-h1{
+  font-size:clamp(3rem,5.8vw,5.6rem);
+  font-weight:300;line-height:1.04;letter-spacing:-.02em;
+  color:#faf9f6;margin-bottom:1.75rem;
+}
+.hero-h1 em{font-style:italic;font-weight:200}
+.hero-sub{
+  font-size:1.0625rem;font-weight:300;line-height:1.85;
+  color:rgba(250,249,246,.6);max-width:400px;
+}
+
+/* ── HERO FORM CARD ─────────────────────────────────────────────────────── */
+.hero-form-wrap{width:390px;flex-shrink:0}
+.form-card{
+  background:rgba(250,249,246,.97);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:.5px solid rgba(255,255,255,.2);
+  padding:2.75rem 2.5rem;
+}
+.form-card-tag{
+  font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.8rem;
+}
+.form-card-h{
+  font-size:1.75rem;font-weight:300;letter-spacing:-.01em;
+  line-height:1.15;color:var(--ink);margin-bottom:.6rem;
+}
+.form-card-h em{font-style:italic}
+.form-card-desc{
+  font-size:.9375rem;font-weight:300;line-height:1.75;
+  color:var(--ink-mid);margin-bottom:1.6rem;
+}
+/* divider rule above fields */
+.form-divider{
+  height:.5px;background:var(--rule);margin-bottom:1.6rem;
+}
+/* fields */
+.fg{margin-bottom:1rem}
+.fg label{
+  display:block;
+  font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-light);margin-bottom:.4rem;
+}
+.fg input{
+  width:100%;background:#fff;
+  border:.5px solid var(--rule);color:var(--ink);
+  font-family:'Hanken Grotesk',sans-serif;
+  font-size:1rem;font-weight:300;
+  padding:.85rem 1rem;outline:none;
+  transition:border-color .2s;
+  border-radius:0;-webkit-appearance:none;
+}
+.fg input::placeholder{color:var(--ink-light)}
+.fg input:focus{border-color:var(--gold)}
+.form-btn{
+  width:100%;margin-top:1.25rem;
+  background:var(--ink);color:var(--bg);border:none;
+  font-family:'Hanken Grotesk',sans-serif;
+  font-size:.8rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+  padding:1.05rem 2rem;cursor:pointer;transition:background .25s;
+}
+.form-btn:hover{background:#2e2c28}
+.form-btn:disabled{opacity:.6;cursor:not-allowed}
+.form-privacy{
+  font-size:.7rem;color:var(--ink-light);
+  text-align:center;margin-top:.9rem;line-height:1.65;
+}
+/* GDPR consent */
+.form-consent{display:flex;align-items:flex-start;gap:.65rem;margin-top:1rem}
+.form-consent input[type=checkbox]{
+  flex-shrink:0;margin-top:.15rem;
+  width:14px;height:14px;accent-color:var(--ink);cursor:pointer;
+}
+.form-consent label{
+  font-size:.7rem;font-weight:300;line-height:1.65;
+  color:var(--ink-light);cursor:pointer;
+}
+.form-error{
+  font-size:.72rem;color:#b05050;margin-top:.5rem;display:none;
+}
+.form-success{display:none;text-align:center;padding:1.75rem 0}
+.success-mark{
+  width:40px;height:40px;border:.5px solid var(--gold-muted);
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:.95rem;color:var(--gold);margin-bottom:1.25rem;
+}
+.success-h{
+  font-size:1.6rem;font-weight:300;letter-spacing:-.01em;
+  color:var(--ink);margin-bottom:.6rem;
+}
+.success-p{
+  font-size:.9375rem;font-weight:300;line-height:1.85;color:var(--ink-mid);
+}
+
+/* scroll indicator */
+.hero-scroll{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  opacity:.3;animation:pulse 3s ease 2.5s infinite;
+}
+.hero-scroll span{
+  font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);
+}
+.scroll-needle{width:.5px;height:28px;background:var(--bg);animation:needle 2.2s ease 2.5s infinite}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:.55}}
+@keyframes needle{
+  0%{transform:scaleY(0);transform-origin:top}
+  50%{transform:scaleY(1);transform-origin:top}
+  51%{transform:scaleY(1);transform-origin:bottom}
+  100%{transform:scaleY(0);transform-origin:bottom}
+}
+
+/* ── MANIFESTO ──────────────────────────────────────────────────────────── */
+.manifesto{
+  background:#fff;
+  padding:10rem 3.5rem;
+  text-align:center;
+  position:relative;overflow:hidden;
+  border-top:.5px solid var(--rule);
+  border-bottom:.5px solid var(--rule);
+}
+.manifesto-rule{
+  width:36px;height:.5px;background:var(--gold);margin:0 auto 2.75rem;
+}
+.manifesto-overline{
+  font-size:.72rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold-muted);margin-bottom:2.2rem;
+}
+.manifesto-h{
+  font-size:clamp(2.4rem,4.8vw,4.2rem);
+  font-weight:300;line-height:1.1;letter-spacing:-.02em;
+  color:var(--ink);max-width:860px;margin:0 auto 2.25rem;
+}
+.manifesto-h em{font-style:italic;font-weight:200;color:var(--gold)}
+.manifesto-sub{
+  font-size:1rem;font-weight:300;line-height:2;
+  color:var(--ink-mid);max-width:500px;margin:0 auto 3.5rem;
+}
+/* three quick brand facts in a row */
+.manifesto-facts{
+  display:flex;justify-content:center;gap:4rem;
+  border-top:.5px solid var(--rule);
+  padding-top:3rem;max-width:720px;margin:0 auto;
+}
+.fact{text-align:center}
+.fact-n{
+  font-size:2.8rem;font-weight:300;letter-spacing:-.02em;
+  color:var(--ink);line-height:1;
+}
+.fact-l{
+  font-size:.65rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-light);margin-top:.55rem;
+}
+
+/* ── DRAWING SECTION ────────────────────────────────────────────────────── */
+.drawing-section{
+  background:#fff;
+  border-bottom:.5px solid var(--rule);
+}
+.drawing-inner{
+  max-width:1360px;margin:0 auto;
+  padding:5rem 3.5rem 4rem;
+}
+.drawing-head{
+  display:grid;grid-template-columns:1fr 2fr;
+  gap:4rem;align-items:end;margin-bottom:3rem;
+}
+.drawing-aside .label-text{
+  font-size:.73rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-light);
+}
+.drawing-aside .aside-rule{
+  width:20px;height:.5px;background:var(--gold-muted);margin-bottom:1.25rem;
+}
+.drawing-copy-h{
+  font-size:clamp(1.6rem,2.8vw,2.4rem);
+  font-weight:300;letter-spacing:-.01em;line-height:1.32;color:var(--ink);
+}
+.drawing-copy-h em{font-style:italic;color:var(--gold)}
+.drawing-copy-sub{
+  margin-top:1.25rem;
+  padding-left:1.75rem;border-left:.5px solid var(--rule);
+  font-size:1rem;font-weight:300;line-height:2;
+  color:var(--ink-mid);max-width:540px;
+}
+.drawing-img-wrap{
+  border:.5px solid var(--rule);overflow:hidden;
+  background:#fff;position:relative;
+  max-width:1060px;margin:0 auto;
+}
+.drawing-img-wrap img{
+  width:100%;display:block;
+  transition:transform .7s ease;
+}
+.drawing-img-wrap:hover img{transform:scale(1.012)}
+.drawing-cap{
+  padding:.85rem 1.5rem;
+  border-top:.5px solid var(--rule-light);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.drawing-cap-text{
+  font-size:.7rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-light);
+}
+.drawing-cap-badge{
+  font-size:.65rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);border:.5px solid rgba(196,169,107,.35);
+  padding:.25rem .65rem;
+}
+
+/* ── PILLARS ────────────────────────────────────────────────────────────── */
+.pillars-wrap{background:#fff;border-bottom:.5px solid var(--rule)}
+.pillars-section{max-width:1360px;margin:0 auto;padding:8rem 3.5rem}
+.pillars-intro{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:end;
+  padding-bottom:2.75rem;
+  border-bottom:.5px solid var(--rule);
+  margin-bottom:0;
+}
+.pillars-h{
+  font-size:clamp(2rem,3.5vw,3rem);
+  font-weight:300;line-height:1.12;letter-spacing:-.015em;color:var(--ink);
+}
+.pillars-h em{font-style:italic}
+.pillars-desc{
+  font-size:1rem;font-weight:300;line-height:2;
+  color:var(--ink-mid);max-width:400px;margin-left:auto;
+}
+.pillars-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:.5px solid var(--rule);
+}
+.pillar{
+  padding:3rem 3rem 3rem 0;
+  border-right:.5px solid var(--rule);
+  position:relative;overflow:hidden;
+}
+.pillar:first-child{padding-left:0}
+.pillar:not(:first-child){padding-left:3rem}
+.pillar:last-child{border-right:none;padding-right:0}
+.pillar-n{
+  font-size:.72rem;font-weight:400;letter-spacing:.1em;
+  color:var(--gold);margin-bottom:2rem;display:block;
+}
+.pillar-title{
+  font-size:1.3rem;font-weight:400;letter-spacing:-.01em;
+  color:var(--ink);margin-bottom:.9rem;line-height:1.2;
+}
+.pillar-text{
+  font-size:1rem;font-weight:300;line-height:2;color:var(--ink-mid);
+}
+.pillar-line{
+  position:absolute;bottom:0;left:0;
+  height:.5px;width:0;background:var(--gold);
+  transition:width .7s ease;
+}
+.pillar:hover .pillar-line{width:100%}
+
+/* ── FINISHES STRIP ─────────────────────────────────────────────────────── */
+/* subtle color palette swatch — signals finish direction without a final frame */
+.finishes{
+  background:var(--bg-warm);
+  border-top:.5px solid var(--rule);
+  border-bottom:.5px solid var(--rule);
+  padding:5rem 3.5rem;
+}
+.finishes-inner{max-width:1360px;margin:0 auto}
+.finishes-label{
+  font-size:.72rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-light);margin-bottom:2.5rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.finishes-label::after{
+  content:'';flex:1;height:.5px;background:var(--rule);
+}
+.swatches{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;
+}
+.swatch{overflow:hidden}
+.swatch-color{height:80px}
+.swatch-name{
+  font-size:.78rem;font-weight:400;letter-spacing:.06em;
+  color:var(--ink);margin-top:.75rem;
+}
+.swatch-note{
+  font-size:.68rem;font-weight:300;letter-spacing:.04em;
+  color:var(--ink-light);margin-top:.2rem;
+}
+
+/* ── CTA SECTION ────────────────────────────────────────────────────────── */
+.cta-section{
+  background:var(--charcoal);
+  padding:9rem 3.5rem;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;
+  inset:0;
+  background-image:url('assets/img/cta-bg.jpg');
+  background-size:cover;background-position:center 40%;
+  opacity:.32;
+}
+.cta-inner{position:relative;z-index:2}
+.cta-rule{width:36px;height:.5px;background:var(--gold);margin:0 auto 2.5rem}
+.cta-label{
+  font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(196,169,107,.6);margin-bottom:1.5rem;
+}
+.cta-h{
+  font-size:clamp(2rem,3.8vw,3.4rem);
+  font-weight:300;line-height:1.1;letter-spacing:-.015em;
+  color:#faf9f6;margin-bottom:1.25rem;
+}
+.cta-h em{font-style:italic;font-weight:200;color:var(--gold)}
+.cta-sub{
+  font-size:1rem;font-weight:300;line-height:1.95;
+  color:rgba(250,249,246,.45);max-width:460px;margin:0 auto 2.75rem;
+}
+.cta-form{
+  display:flex;gap:.75rem;max-width:440px;margin:0 auto;
+}
+.cta-input{
+  flex:1;background:rgba(250,249,246,.08);
+  border:.5px solid rgba(250,249,246,.15);
+  color:#faf9f6;
+  font-family:'Hanken Grotesk',sans-serif;
+  font-size:1rem;font-weight:300;
+  padding:.9rem 1.1rem;outline:none;
+  transition:border-color .2s,background .2s;
+  border-radius:0;-webkit-appearance:none;
+}
+.cta-input::placeholder{color:rgba(250,249,246,.3)}
+.cta-input:focus{
+  border-color:rgba(196,169,107,.6);
+  background:rgba(250,249,246,.12);
+}
+.cta-btn{
+  background:var(--gold);color:var(--charcoal);border:none;
+  font-family:'Hanken Grotesk',sans-serif;
+  font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  padding:.9rem 1.75rem;cursor:pointer;white-space:nowrap;
+  transition:background .2s;flex-shrink:0;
+}
+.cta-btn:hover{background:#d4b97b}
+.cta-btn:disabled{opacity:.6;cursor:not-allowed}
+.cta-note{
+  font-size:.7rem;color:rgba(250,249,246,.28);
+  margin-top:1rem;letter-spacing:.04em;
+}
+
+/* ── FOOTER ─────────────────────────────────────────────────────────────── */
+footer{
+  padding:2.25rem 3.5rem;
+  border-top:.5px solid var(--rule);
+  display:flex;justify-content:space-between;align-items:center;
+  gap:1.5rem;background:#fff;
+}
+.footer-logo{display:flex;align-items:center;text-decoration:none}
+.footer-logo img{height:36px;width:auto;opacity:.45}
+.footer-mid{
+  font-size:.72rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-light);text-align:center;
+}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{
+  font-size:.72rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-light);text-decoration:none;transition:color .2s;
+}
+.footer-links a:hover{color:var(--ink)}
+
+/* ── REVEAL ─────────────────────────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.14s}.d2{transition-delay:.28s}.d3{transition-delay:.44s}
+
+/* ── MOBILE ─────────────────────────────────────────────────────────────── */
+@media(max-width:900px){
+  nav{padding:1.5rem 1.5rem}
+  .nav-tag{display:none}
+  .hero-body{
+    flex-direction:column;align-items:flex-start;
+    padding:0 1.5rem 3rem;gap:2.5rem;
+  }
+  .hero-h1{font-size:clamp(2.5rem,9vw,3.5rem)}
+  .hero-sub{max-width:100%}
+  .hero-form-wrap{width:100%}
+  .manifesto{padding:6rem 1.5rem}
+  .manifesto-facts{gap:2rem;flex-wrap:wrap}
+  .drawing-section .drawing-inner{padding:4rem 1.5rem 3rem}
+  .drawing-head{grid-template-columns:1fr;gap:2rem}
+  .pillars-section{padding:5rem 1.5rem}
+  .pillars-intro{grid-template-columns:1fr;gap:2rem}
+  .pillars-desc{margin-left:0;max-width:100%}
+  .pillars-grid{grid-template-columns:1fr}
+  .pillar{border-right:none;border-bottom:.5px solid var(--rule);padding:2.5rem 0!important}
+  .pillar:last-child{border-bottom:none}
+  .finishes{padding:4rem 1.5rem}
+  .swatches{grid-template-columns:1fr 1fr;gap:.6rem}
+  .cta-section{padding:6rem 1.5rem}
+  .cta-form{flex-direction:column}
+  footer{flex-direction:column;text-align:center;padding:2rem 1.5rem;gap:1rem}
+  .footer-links{justify-content:center}
+}
+</style>
 </head>
-
 <body>
 
-<!-- FIXED WHITE HEADER -->
-<header class="header">
-    <div class="header-inner">
-        <div class="logo">
-            <a href="index.html">
-                <img src="assets/logo/senda-logo.svg" alt="SENDA Logo">
-            </a>
-        </div>
-
-        <nav class="nav">
-            <a href="about.html">Our Story</a>
-            <a href="bikes.html">Our Bikes</a>
-            <a href="contact.html">Get in Touch</a>
-        </nav>
-
-        <div class="language-switcher">
-            <a href="#">DE</a> · <a href="#">EN</a>
-        </div>
-    </div>
-</header>
-
-
-<!-- HERO -->
+<!-- ── HERO ──────────────────────────────────────────────────────────────── -->
 <section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-grad"></div>
 
-    <img src="assets/img/hero-alpine-placeholder.jpg" 
-         alt="Alpine Ride" 
-         class="hero-bg">
+  <nav>
+    <a href="#" class="nav-logo" aria-label="SENDA">
+      <img src="assets/logo/senda-logo.svg" alt="SENDA">
+    </a>
+    <div class="nav-right">
+      <span class="nav-tag">Switzerland · Est. 2026</span>
+      <a href="#waitlist" class="nav-cta-link">Join the list</a>
+    </div>
+  </nav>
 
-    <div class="hero-gradient"></div>
-
-    <div class="hero-text">
-        <h1>Born in the Swiss Alps</h1>
-        <h2>Engineered for clarity, speed and control.</h2>
+  <div class="hero-body">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Coming 2027</p>
+      <h1 class="hero-h1">Born in<br>the Swiss Alps.<br><em>Made to ride.</em></h1>
+      <p class="hero-sub">Road and gravel bikes shaped by Swiss design culture — precise, calm, and built to last beyond seasons.</p>
     </div>
 
-</section>
+    <div class="hero-form-wrap" id="waitlist">
+      <div class="form-card">
+        <p class="form-card-tag">Follow the build</p>
+        <h2 class="form-card-h">Be first to know<br><em>when we're ready.</em></h2>
+        <p class="form-card-desc">Development updates, geometry previews, and launch access — direct to your inbox. We write only when there's something worth sharing.</p>
 
+        <div class="form-divider"></div>
 
-<!-- Brand Pillars -->
-<section class="pillars reveal">
-    <div class="pillars-inner">
-        <div class="pillar">
-            <img src="assets/icons/precision.svg" alt="Engineering Precision icon" class="pillar-icon">
-            <h3>Engineering Precision</h3>
-            <p>Every frame is shaped with intention - from carbon lay‑up to structural flow. The result is control you feel immediately, and trust that grows with every ride.</p>
+        <div id="heroFormBody">
+          <div class="fg">
+            <label for="fn">Your name</label>
+            <input type="text" id="fn" name="name" placeholder="Your name" autocomplete="name">
+          </div>
+          <div class="fg">
+            <label for="em">Email address</label>
+            <input type="email" id="em" name="email" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+          <div class="form-consent">
+            <input type="checkbox" id="heroConsent" name="consent">
+            <label for="heroConsent">I'd like to receive occasional updates from SENDA. I can unsubscribe at any time.</label>
+          </div>
+          <p class="form-error" id="heroError">Please agree to receive updates to continue.</p>
+          <button class="form-btn" id="heroSubmitBtn" onclick="handleHeroSubmit()">Join the ride →</button>
         </div>
 
-        <div class="pillar">
-            <img src="assets/icons/aesthetics.svg" alt="Timeless Aesthetics icon" class="pillar-icon">
-            <h3>Timeless Aesthetics</h3>
-            <p>Clear lines. Balanced proportions. A calm visual language shaped by Swiss design culture. Nothing added without purpose.</p>
+        <div class="form-success" id="heroSuccess">
+          <div class="success-mark" aria-hidden="true">✓</div>
+          <p class="success-h">You're on the list.</p>
+          <p class="success-p">Development updates and launch details — straight to you. We write only when there's something worth sharing.</p>
         </div>
-
-        <div class="pillar">
-            <img src="assets/icons/performance.svg" alt="Rider‑Centric Performance icon" class="pillar-icon">
-            <h3>Rider‑Centric Performance</h3>
-            <p>Responsiveness, comfort and stability refined through real riding. Geometry that supports long days, fast efforts and everything in between.</p>
-        </div>
+      </div>
     </div>
-</section>
+  </div>
 
-
-<!-- Technical Drawing -->
-<section class="technical reveal">
-    <div class="technical-inner">
-        <img src="assets/img/technical-drawing-placeholder2.png" alt="Technical Drawing" class="technical-img">
-
-        <div class="technical-text">
-            <h3>Designed in Switzerland</h3>
-            <p>The frame is defined by clean geometry and purposeful junctions. Each angle, radius and transition is considered for stiffness, compliance and flow.</p>
-            <p>Carbon lay‑up is tuned for real‑world conditions - efficient on the climb, composed on the descent.</p>
-            <p>Testing and refinement happen on the roads and gravel that shaped the design.</p>
-        </div>
-    </div>
-</section>
-
-
-<!-- Alpine Experience -->
-<section class="alpine reveal">
-    <div class="alpine-inner">
-        <div class="alpine-text">
-            <h3>Born in the Alps</h3>
-            <p>
-               Riding in Switzerland teaches clarity. The terrain demands focus, precision and equipment that responds without hesitation.
-            </p>
-            <p>
-                SENDA reflects this environment - disciplined in design, calm in appearance, and built for the varied surfaces that define alpine riding.
-            </p>
-        </div>
-
-        <img src="assets/img/alpine-ride-placeholder.jpg" alt="Alpine Ride" class="alpine-img">
-    </div>
-</section>
-
-
-<!-- Newsletter CTA -->
-<!-- Newsletter CTA -->
-<section class="newsletter reveal">
-  <div class="newsletter-inner">
-    <h3>Ride Ahead</h3>
-    <p class="newsletter-text">
-      Occasional updates on development and availability.<br>Only when there’s something worth sharing.
-    </p>
-
-    <form class="newsletter-form">
-      <input type="email" placeholder="Your email address" required>
-      <button type="submit">Notify Me</button>
-    </form>
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-needle"></div>
   </div>
 </section>
 
+<!-- ── MANIFESTO ──────────────────────────────────────────────────────────── -->
+<section class="manifesto">
+  <div class="manifesto-rule"></div>
+  <p class="manifesto-overline reveal">Road bikes · Gravel bikes · Our only obsession</p>
+  <h2 class="manifesto-h reveal d1">
+    Precise without being cold.<br><em>Beautiful without being loud.</em>
+  </h2>
+  <p class="manifesto-sub reveal d2">
+    Performance of the top tier. Aesthetic soul of a boutique. Community-first. Built with the riders who will ride it — from the very first sketch.
+  </p>
+  <div class="manifesto-facts reveal d2">
+    <div class="fact">
+      <div class="fact-n">&lt;&nbsp;7&nbsp;kg</div>
+      <div class="fact-l">Top spec complete build</div>
+    </div>
+    <div class="fact">
+      <div class="fact-n">2027</div>
+      <div class="fact-l">First delivery</div>
+    </div>
+    <div class="fact">
+      <div class="fact-n">Swiss</div>
+      <div class="fact-l">Design &amp; engineering</div>
+    </div>
+  </div>
+</section>
 
+<!-- ── TECHNICAL DRAWING ──────────────────────────────────────────────────── -->
+<div class="drawing-section">
+  <div class="drawing-inner">
+    <div class="drawing-head">
+      <div class="drawing-aside reveal">
+        <div class="aside-rule"></div>
+        <p class="label-text">Frame design</p>
+      </div>
+      <div>
+        <h2 class="drawing-copy-h reveal d1">
+          Designed in Switzerland.<br><em>Still being shaped.</em>
+        </h2>
+        <p class="drawing-copy-sub reveal d2">
+          The frame geometry is defined by purposeful transitions — each angle and radius considered for stiffness, compliance, and flow. No final design has been chosen yet. That's intentional. Founding riders will have a say.
+        </p>
+      </div>
+    </div>
+    <div class="drawing-img-wrap reveal">
+      <img src="assets/img/technical-drawing-placeholder2.png"
+           alt="SENDA frame geometry study — work in progress"
+           loading="lazy">
+      <div class="drawing-cap">
+        <span class="drawing-cap-text">Frame geometry study &nbsp;·&nbsp; Switzerland, 2026</span>
+        <span class="drawing-cap-badge">Work in progress</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-<footer class="footer">
-    <p>© SENDA Bikes – Switzerland</p>
-    <p>
-        <a href="legal/impressum.html">Impressum</a> ·
-        <a href="legal/privacy.html">Privacy Policy</a>
+<!-- ── PILLARS ────────────────────────────────────────────────────────────── -->
+<section class="pillars-wrap">
+  <div class="pillars-section">
+    <div class="pillars-intro reveal">
+      <h2 class="pillars-h">Three things<br>we won't<br><em>compromise on.</em></h2>
+      <p class="pillars-desc">
+        The cycling industry makes trade-offs that riders didn't ask for. We're building bikes around what actually matters — and nothing else.
+      </p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar reveal">
+        <span class="pillar-n">01 ——</span>
+        <h3 class="pillar-title">Engineering clarity</h3>
+        <p class="pillar-text">T800/T1000 carbon construction. Every junction designed with structural intent — efficient on climbs, composed on descents. Top spec complete build targeting sub-7 kg. Nothing added without reason.</p>
+        <div class="pillar-line"></div>
+      </div>
+      <div class="pillar reveal d1">
+        <span class="pillar-n">02 ——</span>
+        <h3 class="pillar-title">Swiss design language</h3>
+        <p class="pillar-text">Calm lines, balanced proportions, satin and pearl finishes. A visual language shaped by Swiss design culture — restrained, timeless, considered. Less, but better.</p>
+        <div class="pillar-line"></div>
+      </div>
+      <div class="pillar reveal d2">
+        <span class="pillar-n">03 ——</span>
+        <h3 class="pillar-title">You pay for the bikes</h3>
+        <p class="pillar-text">No WorldTour sponsorship. No dealer margin. Direct to rider. Founding riders help shape the geometry and spec — and receive priority access before public launch.</p>
+        <div class="pillar-line"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINISHES ───────────────────────────────────────────────────────────── -->
+<section class="finishes">
+  <div class="finishes-inner">
+    <p class="finishes-label reveal">Planned finishes</p>
+    <div class="swatches">
+      <div class="swatch reveal">
+        <div class="swatch-color" style="background:#7e9aab"></div>
+        <p class="swatch-name">Slate Blue</p>
+        <p class="swatch-note">Satin finish</p>
+      </div>
+      <div class="swatch reveal d1">
+        <div class="swatch-color" style="background:#c2bfb5"></div>
+        <p class="swatch-name">Champagne Silver</p>
+        <p class="swatch-note">Pearl finish</p>
+      </div>
+      <div class="swatch reveal d2">
+        <div class="swatch-color" style="background:#c4a099"></div>
+        <p class="swatch-name">Dusky Rose</p>
+        <p class="swatch-note">Satin finish</p>
+      </div>
+      <div class="swatch reveal d3">
+        <div class="swatch-color" style="background:#494641"></div>
+        <p class="swatch-name">Graphite</p>
+        <p class="swatch-note">Matte finish</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECOND CTA ─────────────────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-rule"></div>
+    <p class="cta-label reveal">Follow the build</p>
+    <h2 class="cta-h reveal d1">
+      Swiss design.<br><em>Still taking shape.</em>
+    </h2>
+    <p class="cta-sub reveal d2">
+      Get development updates, geometry notes, and launch access before anyone else. No noise — only what matters.
     </p>
+    <div class="cta-form reveal d2">
+      <input type="email" class="cta-input" id="ctaEmail"
+             placeholder="your@email.com" autocomplete="email">
+      <button class="cta-btn" id="ctaBtn" onclick="handleCtaSubmit()">Join the list</button>
+    </div>
+    <p class="cta-note reveal d3">Occasional updates only · No noise · Unsubscribe anytime</p>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
+<footer>
+  <a href="#" class="footer-logo" aria-label="SENDA">
+    <img src="assets/logo/senda-logo.svg" alt="SENDA">
+  </a>
+  <p class="footer-mid">Swiss road &amp; gravel · sendabikes.com</p>
+  <div class="footer-links">
+    <a href="mailto:info@sendabikes.com">Contact</a>
+    <a href="/legal">Privacy</a>
+    <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+  </div>
 </footer>
 
 <script>
-document.addEventListener("scroll", () => {
-    document.querySelectorAll(".reveal").forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.85) {
-            el.classList.add("visible");
-        }
-    });
-});
-</script>
+/* ── Hero background ── */
+(function(){
+  var bg = document.getElementById('heroBg');
+  var img = new Image();
+  img.onload = function(){ bg.classList.add('loaded'); };
+  img.src = 'assets/img/alpine-cyclists.jpg';
+  bg.style.backgroundImage = "url('assets/img/alpine-cyclists.jpg')";
+})();
 
+/* ── Scroll reveal ── */
+var revEls = document.querySelectorAll('.reveal');
+var revObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.12 });
+revEls.forEach(function(el){ revObs.observe(el); });
+
+/* ── MailerLite config ── */
+var ML_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiZmRjZDk3NDA4ZDc5MzZlNWMzODc3MzBmOTIxMmE1YTA1NWNiYzRlMzMzZGRhNWE2N2FmYTlhNWQwN2Y1NjQzMWVkYWYzNjA2MmE5OGE3MGYiLCJpYXQiOjE3ODAzNDY1OTIuODk1MDk2LCJuYmYiOjE3ODAzNDY1OTIuODk1MSwiZXhwIjo0OTM2MDIwMTkyLjg4OTI4OCwic3ViIjoiMjQxNjUwMCIsInNjb3BlcyI6W119.I4RIS2qghMdKVPczja24P7-046bLhLLSxOUhUxtylWHPP5hCtZ8kR-lVKUieiK4CIXoG5Oie-2yOSN0jAyjMlZc046Kc93iJ0w6sUmOWXNsCeAK5c7FH7ar0uU1s-7OKnpJluHhBrTkrb9yIrCXOqAwkj2iau10bMkm-3TdJ4mZVUk2bwM_T_wv4jEbmJDpvTMQQOhAdN9LYgMmFEiRMP84wXAcxJi4ZZltuoomhvSZN1HSQqS0GRR8-HdzVuXhmHBNbGyBTfl18FOizx54-6RXh42-FpHo8kYEpm85feeoXul8mpvWvbwIpyjBZY8XF-BLBWcA8WO50pIV69i2BvI5_B0vi4jvyhKBAaKQL7BOjJbJ6OVfRDv4pC9mK0omIZ2PZfO9a2XmjlSr9XCklemDl2cPF66SwP7HiULmWbojGB20Ce5pt1mX_mFXb-4vsa4S-J-AhSDIBxwWeqpdCX-sOSS972UNCY8EFWsmZLWaivVzOYjMXoLFU1jKWZQnEdDJBqqKEmNQsKYG2A5Tq_2K2XCbNMgS074FwxzgnetHMYZzXmERQvmJOoTgzRxkHk5ZXN4QOlGD8aDHJDbC5p3ivkfAt76C_Ux8yucypxUYJAb4q-Z05AaxaeLx2oEuSo7klxnVP6ee1pyGAPOl8D9CkRWF_3fKg0xLuQqF_loo';
+var ML_GROUP  = '189107312349152629';
+
+function subscribeToMailerLite(email, name, onSuccess, onError){
+  fetch('https://connect.mailerlite.com/api/subscribers', {
+    method: 'POST',
+    headers: {
+      'Content-Type':  'application/json',
+      'Accept':        'application/json',
+      'Authorization': 'Bearer ' + ML_TOKEN
+    },
+    body: JSON.stringify({
+      email:  email,
+      fields: { name: name || '' },
+      groups: [ML_GROUP]
+    })
+  })
+  .then(function(res){
+    if(res.ok || res.status === 200 || res.status === 201) return onSuccess();
+    return res.json().then(function(d){ onError(d.message || 'Something went wrong.'); });
+  })
+  .catch(function(){ onError('Network error — please try again.'); });
+}
+
+/* ── Hero form submit ── */
+function handleHeroSubmit(){
+  var emailEl   = document.getElementById('em');
+  var nameEl    = document.getElementById('fn');
+  var consentEl = document.getElementById('heroConsent');
+  var errorEl   = document.getElementById('heroError');
+  var btn       = document.getElementById('heroSubmitBtn');
+
+  errorEl.style.display = 'none';
+  if(!emailEl.value || !emailEl.value.includes('@')){ emailEl.focus(); return; }
+  if(!consentEl.checked){ errorEl.style.display = 'block'; return; }
+
+  btn.textContent = 'Joining…';
+  btn.disabled = true;
+
+  subscribeToMailerLite(
+    emailEl.value.trim(),
+    nameEl.value.trim(),
+    function(){
+      document.getElementById('heroFormBody').style.display = 'none';
+      document.getElementById('heroSuccess').style.display  = 'block';
+    },
+    function(msg){
+      btn.textContent = 'Join the ride →';
+      btn.disabled = false;
+      errorEl.textContent = msg;
+      errorEl.style.display = 'block';
+    }
+  );
+}
+
+/* ── CTA form submit ── */
+function handleCtaSubmit(){
+  var emailEl = document.getElementById('ctaEmail');
+  var btn     = document.getElementById('ctaBtn');
+
+  if(!emailEl.value || !emailEl.value.includes('@')){ emailEl.focus(); return; }
+
+  btn.textContent = 'Joining…';
+  btn.disabled    = true;
+  emailEl.disabled = true;
+
+  subscribeToMailerLite(
+    emailEl.value.trim(),
+    '',
+    function(){
+      btn.textContent  = '✓ You\'re in';
+    },
+    function(){
+      btn.textContent  = 'Join the list';
+      btn.disabled     = false;
+      emailEl.disabled = false;
+    }
+  );
+}
+</script>
 </body>
 </html>
