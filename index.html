@@ -38,7 +38,7 @@ body{
 /* ── HERO ───────────────────────────────────────────────────────────────── */
 .hero{
   position:relative;
-  height:100svh;min-height:620px;
+  height:100svh;min-height:820px;
   overflow:hidden;
   display:flex;flex-direction:column;
 }
@@ -91,7 +91,7 @@ nav{
   position:relative;z-index:2;flex:1;
   display:flex;align-items:flex-end;
   max-width:1360px;width:100%;margin:0 auto;
-  padding:0 3.5rem 5.5rem;
+  padding:0 3.5rem 7rem;
   gap:5rem;
 }
 .hero-left{flex:1}
@@ -479,6 +479,14 @@ footer{
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease}
 .reveal.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.14s}.d2{transition-delay:.28s}.d3{transition-delay:.44s}
+
+/* ── WIDE DESKTOP (>1600px): more generous bottom breathing room ─────────── */
+@media(min-width:1600px){
+  .hero-body{padding-bottom:9rem}
+}
+@media(min-width:2200px){
+  .hero-body{padding-bottom:11rem}
+}
 
 /* ══════════════════════════════════════════════════════════════════════════
    RESPONSIVE — three tiers
