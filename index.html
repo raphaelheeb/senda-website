@@ -5,8 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SENDA — Born in the Swiss Alps. Made to ride globally.</title>
 <meta name="description" content="Swiss road and gravel bikes. Precise without being cold. Beautiful without being loud. Coming 2027.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sendabikes.com">
 <meta property="og:title" content="SENDA — Born in the Swiss Alps. Made to ride globally.">
 <meta property="og:description" content="Swiss road and gravel bikes. Precise without being cold. Beautiful without being loud. Coming 2027.">
+<meta property="og:image" content="https://sendabikes.com/assets/img/alpine-cyclists.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SENDA — Born in the Swiss Alps. Made to ride globally.">
+<meta name="twitter:description" content="Swiss road and gravel bikes. Precise without being cold. Beautiful without being loud. Coming 2027.">
+<meta name="twitter:image" content="https://sendabikes.com/assets/img/alpine-cyclists.jpg">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -621,6 +628,62 @@ footer{
 
   footer{padding:1.75rem 1.25rem}
 }
+
+/* ── HERO SPOTTED LINE ──────────────────────────────────────────────────── */
+.hero-spotted{
+  font-size:.8rem;font-weight:300;font-style:italic;
+  color:rgba(250,249,246,.45);margin-top:.85rem;letter-spacing:.03em;
+}
+
+/* ── SHARE NUDGE (inside success state) ────────────────────────────────── */
+.share-nudge{
+  margin-top:1.5rem;padding-top:1.25rem;
+  border-top:.5px solid var(--rule);
+}
+.share-nudge-label{
+  font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-light);margin-bottom:.75rem;
+}
+.share-buttons{display:flex;gap:.5rem;justify-content:center}
+.share-btn{
+  font-size:.68rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+  padding:.5rem .9rem;border:.5px solid var(--rule);
+  background:transparent;color:var(--ink-mid);cursor:pointer;
+  text-decoration:none;display:inline-block;
+  transition:border-color .2s,color .2s;
+}
+.share-btn:hover{border-color:var(--gold);color:var(--ink)}
+.share-btn.copied{color:var(--gold);border-color:rgba(196,169,107,.4)}
+
+/* ── STICKY MOBILE CTA ──────────────────────────────────────────────────── */
+.sticky-cta{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:var(--ink);
+  padding:.85rem 1.5rem;
+  align-items:center;justify-content:space-between;gap:1rem;
+  border-top:.5px solid rgba(255,255,255,.07);
+  transition:transform .3s ease,opacity .3s ease;
+}
+.sticky-cta.hidden{transform:translateY(100%);opacity:0;pointer-events:none}
+.sticky-cta-text{
+  font-size:.82rem;font-weight:300;
+  color:rgba(250,249,246,.6);line-height:1.4;
+}
+.sticky-cta-btn{
+  font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--gold);color:var(--charcoal);
+  border:none;padding:.65rem 1.2rem;cursor:pointer;
+  white-space:nowrap;flex-shrink:0;text-decoration:none;display:inline-block;
+}
+@media(max-width:900px){
+  .sticky-cta{display:flex}
+  /* push footer up so sticky bar doesn't overlap it */
+  footer{padding-bottom:calc(1.75rem + 60px)}
+}
+@media(max-width:480px){
+  footer{padding-bottom:calc(1.75rem + 56px)}
+}
 </style>
 </head>
 <body>
@@ -642,9 +705,10 @@ footer{
 
   <div class="hero-body">
     <div class="hero-left">
-      <p class="hero-eyebrow">Coming 2027</p>
+      <p class="hero-eyebrow">Test builds on the road · 2026</p>
       <h1 class="hero-h1">Born in<br>the Swiss Alps.<br><em>Made to ride everywhere.</em></h1>
       <p class="hero-sub">Road and Gravel bikes shaped by precision and aesthetics - built to perform on any road, anywhere.</p>
+      <p class="hero-spotted">Spotted one of our frames? You found us early.</p>
     </div>
 
     <div class="hero-form-wrap" id="waitlist">
@@ -676,6 +740,13 @@ footer{
           <div class="success-mark" aria-hidden="true">✓</div>
           <p class="success-h">You're on the list.</p>
           <p class="success-p">Development updates and launch details — straight to you. We write only when there's something worth sharing.</p>
+          <div class="share-nudge">
+            <p class="share-nudge-label">Know a rider who'd care?</p>
+            <div class="share-buttons">
+              <a class="share-btn" id="shareWa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+              <button class="share-btn" id="shareCopy" onclick="copyShareLink()">Copy link</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -832,9 +903,14 @@ footer{
   <div class="footer-links">
     <a href="mailto:info@sendabikes.com">Contact</a>
     <a href="/legal/privacy.html">Privacy</a>
-    <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
   </div>
 </footer>
+
+<!-- ── STICKY MOBILE CTA ───────────────────────────────────────────────────── -->
+<div class="sticky-cta" id="stickyCta" aria-hidden="true">
+  <span class="sticky-cta-text">Swiss road &amp; gravel · Coming 2027</span>
+  <a href="#waitlist" class="sticky-cta-btn" onclick="hideStickyBar()">Join the list</a>
+</div>
 
 <script>
 /* ── Hero background ── */
@@ -878,6 +954,44 @@ function subscribeToMailerLite(email, name, onSuccess, onError){
   .catch(function(){ onError('Network error — please try again.'); });
 }
 
+/* ── Sticky mobile CTA ── */
+var stickyCta = document.getElementById('stickyCta');
+var waitlistSection = document.getElementById('waitlist');
+
+function updateStickyBar(){
+  if(!stickyCta || !waitlistSection) return;
+  var r = waitlistSection.getBoundingClientRect();
+  var inView = r.top < window.innerHeight && r.bottom > 0;
+  if(inView){ stickyCta.classList.add('hidden'); }
+  else { stickyCta.classList.remove('hidden'); }
+}
+window.addEventListener('scroll', updateStickyBar, {passive:true});
+updateStickyBar();
+
+function hideStickyBar(){
+  if(stickyCta){ stickyCta.classList.add('hidden'); stickyCta.style.display='none'; }
+}
+
+/* ── Share helpers ── */
+var SHARE_URL  = 'https://sendabikes.com';
+var SHARE_TEXT = 'Found SENDA — a new Swiss road and gravel bike brand launching in 2027. Worth following from the start: ';
+
+function initShareButtons(){
+  var wa = document.getElementById('shareWa');
+  if(wa) wa.href = 'https://wa.me/?text=' + encodeURIComponent(SHARE_TEXT + SHARE_URL);
+}
+
+function copyShareLink(){
+  var btn = document.getElementById('shareCopy');
+  navigator.clipboard.writeText(SHARE_URL).then(function(){
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function(){ btn.textContent='Copy link'; btn.classList.remove('copied'); }, 2000);
+  }).catch(function(){
+    btn.textContent = SHARE_URL;
+  });
+}
+
 /* ── Hero form submit ── */
 function handleHeroSubmit(){
   var emailEl   = document.getElementById('em');
@@ -899,6 +1013,8 @@ function handleHeroSubmit(){
     function(){
       document.getElementById('heroFormBody').style.display = 'none';
       document.getElementById('heroSuccess').style.display  = 'block';
+      initShareButtons();
+      hideStickyBar();
     },
     function(msg){
       btn.textContent = 'Join the ride →';
