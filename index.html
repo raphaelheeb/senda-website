@@ -655,6 +655,25 @@ footer{
 .share-btn:hover{border-color:var(--gold);color:var(--ink)}
 .share-btn.copied{color:var(--gold);border-color:rgba(196,169,107,.4)}
 
+/* ── CTA SECTION CONSENT (dark background variant) ─────────────────────── */
+.cta-consent{
+  display:flex;align-items:flex-start;gap:.65rem;
+  max-width:440px;margin:1rem auto 0;text-align:left;
+}
+.cta-consent input[type=checkbox]{
+  flex-shrink:0;margin-top:.2rem;
+  width:14px;height:14px;accent-color:var(--gold);cursor:pointer;
+}
+.cta-consent label{
+  font-size:.7rem;font-weight:300;line-height:1.65;
+  color:rgba(250,249,246,.45);cursor:pointer;
+}
+.cta-consent-error{
+  font-size:.72rem;color:rgba(220,150,150,.9);
+  margin:.4rem auto 0;max-width:440px;
+  display:none;
+}
+
 /* ── STICKY MOBILE CTA ──────────────────────────────────────────────────── */
 .sticky-cta{
   display:none;
@@ -890,6 +909,11 @@ footer{
              placeholder="your@email.com" autocomplete="email">
       <button class="cta-btn" id="ctaBtn" onclick="handleCtaSubmit()">Join the list</button>
     </div>
+    <div class="cta-consent reveal d3">
+      <input type="checkbox" id="ctaConsent" name="consent">
+      <label for="ctaConsent">I'd like to receive occasional updates from SENDA. I can unsubscribe at any time.</label>
+    </div>
+    <p class="cta-consent-error" id="ctaError">Please tick the box to continue.</p>
     <p class="cta-note reveal d3">Occasional updates only · Unsubscribe anytime</p>
   </div>
 </section>
@@ -929,27 +953,18 @@ var revObs = new IntersectionObserver(function(entries){
 }, { threshold: 0.12 });
 revEls.forEach(function(el){ revObs.observe(el); });
 
-/* ── MailerLite config ── */
-var ML_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiZmRjZDk3NDA4ZDc5MzZlNWMzODc3MzBmOTIxMmE1YTA1NWNiYzRlMzMzZGRhNWE2N2FmYTlhNWQwN2Y1NjQzMWVkYWYzNjA2MmE5OGE3MGYiLCJpYXQiOjE3ODAzNDY1OTIuODk1MDk2LCJuYmYiOjE3ODAzNDY1OTIuODk1MSwiZXhwIjo0OTM2MDIwMTkyLjg4OTI4OCwic3ViIjoiMjQxNjUwMCIsInNjb3BlcyI6W119.I4RIS2qghMdKVPczja24P7-046bLhLLSxOUhUxtylWHPP5hCtZ8kR-lVKUieiK4CIXoG5Oie-2yOSN0jAyjMlZc046Kc93iJ0w6sUmOWXNsCeAK5c7FH7ar0uU1s-7OKnpJluHhBrTkrb9yIrCXOqAwkj2iau10bMkm-3TdJ4mZVUk2bwM_T_wv4jEbmJDpvTMQQOhAdN9LYgMmFEiRMP84wXAcxJi4ZZltuoomhvSZN1HSQqS0GRR8-HdzVuXhmHBNbGyBTfl18FOizx54-6RXh42-FpHo8kYEpm85feeoXul8mpvWvbwIpyjBZY8XF-BLBWcA8WO50pIV69i2BvI5_B0vi4jvyhKBAaKQL7BOjJbJ6OVfRDv4pC9mK0omIZ2PZfO9a2XmjlSr9XCklemDl2cPF66SwP7HiULmWbojGB20Ce5pt1mX_mFXb-4vsa4S-J-AhSDIBxwWeqpdCX-sOSS972UNCY8EFWsmZLWaivVzOYjMXoLFU1jKWZQnEdDJBqqKEmNQsKYG2A5Tq_2K2XCbNMgS074FwxzgnetHMYZzXmERQvmJOoTgzRxkHk5ZXN4QOlGD8aDHJDbC5p3ivkfAt76C_Ux8yucypxUYJAb4q-Z05AaxaeLx2oEuSo7klxnVP6ee1pyGAPOl8D9CkRWF_3fKg0xLuQqF_loo';
-var ML_GROUP  = '189107312349152629';
+/* ── Subscription proxy (token lives server-side on Vercel) ── */
+var SUBSCRIBE_URL = 'https://senda-website-chi.vercel.app/api/subscribe';
 
 function subscribeToMailerLite(email, name, onSuccess, onError){
-  fetch('https://connect.mailerlite.com/api/subscribers', {
+  fetch(SUBSCRIBE_URL, {
     method: 'POST',
-    headers: {
-      'Content-Type':  'application/json',
-      'Accept':        'application/json',
-      'Authorization': 'Bearer ' + ML_TOKEN
-    },
-    body: JSON.stringify({
-      email:  email,
-      fields: { name: name || '' },
-      groups: [ML_GROUP]
-    })
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, name: name || '' })
   })
   .then(function(res){
-    if(res.ok || res.status === 200 || res.status === 201) return onSuccess();
-    return res.json().then(function(d){ onError(d.message || 'Something went wrong.'); });
+    if(res.ok) return onSuccess();
+    return res.json().then(function(d){ onError(d.error || 'Something went wrong.'); });
   })
   .catch(function(){ onError('Network error — please try again.'); });
 }
@@ -1027,20 +1042,24 @@ function handleHeroSubmit(){
 
 /* ── CTA form submit ── */
 function handleCtaSubmit(){
-  var emailEl = document.getElementById('ctaEmail');
-  var btn     = document.getElementById('ctaBtn');
+  var emailEl   = document.getElementById('ctaEmail');
+  var btn       = document.getElementById('ctaBtn');
+  var consentEl = document.getElementById('ctaConsent');
+  var errorEl   = document.getElementById('ctaError');
 
+  errorEl.style.display = 'none';
   if(!emailEl.value || !emailEl.value.includes('@')){ emailEl.focus(); return; }
+  if(!consentEl.checked){ errorEl.style.display = 'block'; return; }
 
-  btn.textContent = 'Joining…';
-  btn.disabled    = true;
+  btn.textContent  = 'Joining…';
+  btn.disabled     = true;
   emailEl.disabled = true;
 
   subscribeToMailerLite(
     emailEl.value.trim(),
     '',
     function(){
-      btn.textContent  = '✓ You\'re in';
+      btn.textContent = '✓ You\'re in';
     },
     function(){
       btn.textContent  = 'Join the list';
