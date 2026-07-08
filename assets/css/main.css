@@ -35,7 +35,7 @@ body{
 }
 .page-nav .nav-logo{display:flex;align-items:center;text-decoration:none}
 .page-nav .nav-logo img{height:40px;width:auto}
-.page-nav .nav-right{display:flex;align-items:center;gap:2rem}
+.page-nav .nav-right{display:flex;align-items:center;gap:.9rem}
 .page-nav .nav-tag{
   font-size:.75rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;
   color:var(--ink-light);
@@ -49,9 +49,14 @@ body{
 .page-nav .nav-cta-link:hover{background:var(--bg-warm);border-color:var(--ink-light)}
 .nav-lang-link{
   font-size:.75rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink);text-decoration:none;opacity:.78;transition:opacity .2s,color .2s;
+  color:var(--ink);text-decoration:none;
+  padding:.5rem .85rem;
+  border:1px solid var(--rule);
+  border-radius:999px;
+  background:var(--bg);
+  transition:background .2s,border-color .2s,color .2s;
 }
-.nav-lang-link:hover{opacity:1;color:var(--gold)}
+.nav-lang-link:hover{background:var(--bg-warm);border-color:var(--ink-light);color:var(--ink)}
 
 /* ── Footer ──────────────────────────────────────────────────────────────── */
 footer{
