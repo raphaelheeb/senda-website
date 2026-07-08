@@ -53,7 +53,7 @@ body{
   padding:.5rem .85rem;
   border:1px solid var(--rule);
   border-radius:999px;
-  background:var(--bg);
+  background:#fff;
   transition:background .2s,border-color .2s,color .2s;
 }
 .nav-lang-link:hover{background:var(--bg-warm);border-color:var(--ink-light);color:var(--ink)}
