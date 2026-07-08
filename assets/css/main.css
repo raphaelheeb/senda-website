@@ -47,6 +47,11 @@ body{
   transition:background .2s,border-color .2s;
 }
 .page-nav .nav-cta-link:hover{background:var(--bg-warm);border-color:var(--ink-light)}
+.nav-lang-link{
+  font-size:.75rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;opacity:.78;transition:opacity .2s,color .2s;
+}
+.nav-lang-link:hover{opacity:1;color:var(--gold)}
 
 /* ── Footer ──────────────────────────────────────────────────────────────── */
 footer{

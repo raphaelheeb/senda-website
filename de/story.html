@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Der Weg hier — SENDA</title>
+  <meta name="description" content="Zwei Freunde aus den Alpen, drei Jahrzehnte im Sattel und warum SENDA entstanden ist.">
+  <meta property="og:title" content="Der Weg hier — SENDA">
+  <meta property="og:description" content="Zwei Freunde aus den Alpen, drei Jahrzehnte im Sattel und warum SENDA entstanden ist.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sendabikes.com/de/story.html">
+  <meta property="og:image" content="https://sendabikes.com/assets/img/alpine-cyclists.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Der Weg hier — SENDA">
+  <meta name="twitter:description" content="Zwei Freunde aus den Alpen, drei Jahrzehnte im Sattel und warum SENDA entstanden ist.">
+  <meta name="twitter:image" content="https://sendabikes.com/assets/img/alpine-cyclists.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    body{background:var(--bg)}
+    .story-hero{padding:clamp(4rem,9vw,7rem) 3.5rem clamp(2.5rem,5vw,4rem);max-width:1200px;margin:0 auto;border-bottom:.5px solid var(--rule)}
+    .story-eyebrow{font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-muted);display:block;margin-bottom:1.6rem}
+    .story-h1{font-size:clamp(2.4rem,5.5vw,4.4rem);font-weight:300;line-height:1.06;letter-spacing:-.02em;color:var(--ink);margin-bottom:1.6rem}
+    .story-h1 em{font-style:italic;font-weight:200;color:var(--ink-mid)}
+    .story-lede{font-size:1.0625rem;font-weight:300;line-height:1.85;color:var(--ink-mid);max-width:560px}
+    .story-body{max-width:1200px;margin:0 auto;padding:0 3.5rem clamp(4rem,8vw,6rem)}
+    .path{position:relative;padding-left:clamp(2.4rem,5vw,4rem)}
+    .path::before{content:'';position:absolute;left:8px;top:.8rem;bottom:.8rem;width:.5px;background:linear-gradient(to bottom,var(--rule-light) 0%,var(--gold-muted) 50%,var(--rule-light) 100%)}
+    .waypoint{position:relative;padding:clamp(2rem,4vw,3rem) 0;border-bottom:.5px solid var(--rule-light)}
+    .waypoint:last-child{border-bottom:none}
+    .waypoint::before{content:'';position:absolute;left:calc(-1 * clamp(2.4rem,5vw,4rem) + 4px);top:calc(clamp(2rem,4vw,3rem) + .55em);width:9px;height:9px;border-radius:50%;background:var(--bg);border:1.5px solid var(--gold-muted)}
+    .waypoint-era{font-size:.68rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1rem}
+    .waypoint h2{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:300;line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin-bottom:1.1rem}
+    .waypoint h2 em{font-style:italic;font-weight:200;color:var(--ink-mid)}
+    .waypoint p{font-size:1rem;font-weight:300;line-height:2;color:var(--ink-mid);max-width:640px;margin-bottom:1rem}
+    .waypoint p:last-child{margin-bottom:0}
+    .pullquote{margin:clamp(1.4rem,3vw,2rem) 0;padding-left:1.5rem;border-left:.5px solid var(--gold-muted);font-size:clamp(1.15rem,2.2vw,1.55rem);font-weight:300;font-style:italic;line-height:1.45;color:var(--ink-mid);max-width:34ch}
+    .story-close{border-top:.5px solid var(--rule);padding:clamp(4rem,8vw,6rem) 3.5rem;text-align:center;background:#fff}
+    .story-close-rule{width:36px;height:.5px;background:var(--gold);margin:0 auto 2rem}
+    .story-close h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.1;letter-spacing:-.015em;color:var(--ink);margin-bottom:1rem}
+    .story-close h2 em{font-style:italic;font-weight:200;color:var(--gold)}
+    .story-close p{font-size:1rem;font-weight:300;line-height:2;color:var(--ink-mid);max-width:420px;margin:0 auto 2.25rem}
+    .story-cta-btn{display:inline-block;text-decoration:none;background:var(--ink);color:var(--bg);font-family:'Hanken Grotesk',sans-serif;font-size:.8rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;padding:1rem 2.25rem;transition:background .25s}
+    .story-cta-btn:hover{background:var(--charcoal)}
+    @media(max-width:900px){.story-hero{padding:3.5rem 1.5rem 2.5rem}.story-body{padding:0 1.5rem 4rem}.path{padding-left:2rem}.waypoint::before{left:calc(-2rem + 4px)}.story-close{padding:4rem 1.5rem}}
+    @media(max-width:480px){.story-hero{padding:2.5rem 1.25rem 2rem}.story-body{padding:0 1.25rem 3rem}.path{padding-left:1.75rem}.waypoint::before{left:calc(-1.75rem + 4px)}.story-close{padding:3rem 1.25rem}}
+  </style>
+</head>
+<body>
+  <nav class="page-nav">
+    <a href="/de/" class="nav-logo" aria-label="SENDA">
+      <img src="../assets/logo/senda-logo.svg" alt="SENDA">
+    </a>
+    <div class="nav-right">
+      <span class="nav-tag">Schweiz · Seit 2026</span>
+      <a href="/story.html" class="nav-lang-link" aria-label="Switch to English">EN</a>
+      <a href="/de/#waitlist" class="nav-cta-link">Zur Liste</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="story-hero">
+      <span class="story-eyebrow">Unsere Geschichte</span>
+      <h1 class="story-h1">Der Weg hier.<br><em>Drei Jahrzehnte im Werden.</em></h1>
+      <p class="story-lede">Senda ist Rätoromanisch – die vierte Landessprache der Schweiz – und bedeutet „Weg“. Das ist unser Weg.</p>
+    </section>
+
+    <div class="story-body">
+      <div class="path">
+        <section class="waypoint">
+          <span class="waypoint-era">Späte 1990er · Die Voralpen</span>
+          <h2>Zwei Freunde, <em>die nie aufgehört haben zu fahren.</em></h2>
+          <p>Wir sind zwei Jugendfreunde, die in den Alpen aufgewachsen sind und heute in Zürich und London leben. Wir sind in den späten 1990ern in den Radsport verliebt geworden – damals noch als Sport, der von älteren Leuten bevorzugt wurde. Wir haben uns nicht darum geschert. Einer von uns hatte einen Cousin, der zu dieser Zeit professionell fuhr, und als wir ihn bei Bergen und im Fernsehen sahen, wirkte das Ganze nicht mehr wie ein Hobby, sondern wie ein Ruf.</p>
+          <p>Wir haben an lokalen Rennen und Radveranstaltungen teilgenommen. Wir sind durch die Alpen gefahren und überall sonst hin, wo Arbeit oder Neugier uns hingeführt haben.</p>
+        </section>
+
+        <section class="waypoint">
+          <span class="waypoint-era">Die Baujahre</span>
+          <h2>Stahl, dann Aluminium, <em>dann Carbon.</em></h2>
+          <p>Weil wir nicht anders konnten, haben wir unsere eigenen Bikes gebaut. Zuerst aus Stahl, dann aus Aluminium, dann aus Carbon – immer auf der Suche nach etwas Leichterem, Steiferem und Besserem. Einer von uns hat Materialwissenschaft studiert, der andere Architektur. Rückblickend haben wir das Fahrrad zwischen uns aufgeteilt: Einer war besessen von dem, was es ausmacht, der andere von der Art und Weise, wie es aussieht und sich anfühlt.</p>
+        </section>
+
+        <section class="waypoint">
+          <span class="waypoint-era">2024 · Der Wendepunkt</span>
+          <h2>Die Hersteller <em>hinter den Bikes, die du schon kennst.</em></h2>
+          <p>Die Idee für SENDA nahm 2024 Gestalt an. Wir haben Monate damit verbracht, Beziehungen zu langjährigen OEMs in der Fahrradindustrie aufzubauen – den Ingenieuren und Fabriken hinter einigen der angesehensten Rahmen auf dem Markt. Wir haben ihre Werkstätten besucht, ihre Produkte getestet, ihre Prozesse bewertet und die ausgewählt, denen wir unsere eigenen Builds anvertrauen würden.</p>
+          <blockquote class="pullquote">„Wenn wir uns so dafür begeistern, warum sollten wir es für uns behalten?“</blockquote>
+        </section>
+
+        <section class="waypoint">
+          <span class="waypoint-era">Jetzt · Was wir glauben</span>
+          <h2>Bezahlen für das Bike. <em>Nicht für den Lärm.</em></h2>
+          <p>Ein Bike sollte sowohl performen als auch außergewöhnlich aussehen – nicht eines auf Kosten des anderen. Moderne Materialien und ehrliche Ingenieursarbeit zählen mehr als Marketingbudgets. Und wenn du ein SENDA kaufst, solltest du für das Bike bezahlen – nicht für Zwischenhändler, Sponsoringverträge oder ein Flagship-Store an einer teuren Straße.</p>
+          <p>Wir finalisieren gerade unsere ersten Modelle. Dabei fragen wir dich nach deiner Meinung zu Designs und Spezifikationen, fahren mit dir und helfen, die Radsportgemeinschaften zu wachsen, denen wir angehören. Denn ein Weg ist besser, wenn er geteilt wird.</p>
+        </section>
+      </div>
+    </div>
+
+    <section class="story-close">
+      <div class="story-close-rule"></div>
+      <h2>Der Weg geht weiter.<br><em>Fahr mit uns.</em></h2>
+      <p>Entwicklungsupdates, Geometrie-Previews und Prioritätszugang zu den ersten Launches – wir schreiben nur, wenn es wirklich etwas zu teilen gibt.</p>
+      <a class="story-cta-btn" href="/de/#waitlist">Zur Liste</a>
+    </section>
+  </main>
+
+  <footer>
+    <a href="/de/" class="footer-logo" aria-label="SENDA">
+      <img src="../assets/logo/senda-logo.svg" alt="SENDA">
+    </a>
+    <p class="footer-mid">Schweizer Road &amp; Gravel Bikes · sendabikes.com</p>
+    <div class="footer-links">
+      <a href="mailto:info@sendabikes.com">Kontakt</a>
+      <a href="/legal/privacy.html">Datenschutz</a>
+    </div>
+  </footer>
+</body>
+</html>
