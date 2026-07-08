@@ -1,158 +1,540 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SENDA — Geboren in den Schweizer Alpen. Für jede Route gemacht.</title>
-  <meta name="description" content="Schweizer Road- und Gravel-Bikes. Präzise ohne kalt zu wirken. Schön ohne laut zu sein. Erhältlich ab 2027.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sendabikes.com/de/">
-  <meta property="og:title" content="SENDA — Geboren in den Schweizer Alpen. Für jede Route gemacht.">
-  <meta property="og:description" content="Schweizer Road- und Gravel-Bikes. Präzise ohne kalt zu wirken. Schön ohne laut zu sein. Erhältlich ab 2027.">
-  <meta property="og:image" content="https://sendabikes.com/assets/img/alpine-cyclists.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SENDA — Geboren in den Schweizer Alpen. Für jede Route gemacht.">
-  <meta name="twitter:description" content="Schweizer Road- und Gravel-Bikes. Präzise ohne kalt zu wirken. Schön ohne laut zu sein. Erhältlich ab 2027.">
-  <meta name="twitter:image" content="https://sendabikes.com/assets/img/alpine-cyclists.jpg">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Hanken Grotesk',sans-serif;background:#fff;color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-    .hero{position:relative;min-height:100svh;overflow:hidden;display:flex;flex-direction:column;background:#111}
-    .hero-bg{position:absolute;inset:0;background-image:url('../assets/img/alpine-cyclists.jpg');background-size:cover;background-position:center 55%;transform:scale(1.04)}
-    .hero-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,25,22,.56) 0%,rgba(26,25,22,.18) 22%,rgba(26,25,22,.08) 44%,rgba(26,25,22,.55) 70%,rgba(26,25,22,.92) 100%)}
-    .hero-nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:2rem 3.5rem}
-    .hero-nav .nav-logo{display:flex;align-items:center;text-decoration:none}
-    .hero-nav .nav-logo img{height:58px;width:auto;filter:brightness(0) invert(1) drop-shadow(0 1px 16px rgba(0,0,0,.5))}
-    .hero-nav .nav-right{display:flex;align-items:center;gap:1.25rem}
-    .hero-nav .nav-tag{font-size:.75rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,249,246,.5)}
-    .hero-nav .nav-lang-link{font-size:.75rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,249,246,.75);text-decoration:none;transition:color .2s}
-    .hero-nav .nav-lang-link:hover{color:#fff}
-    .hero-nav .nav-cta-link{font-size:.75rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,249,246,.75);text-decoration:none;border:.5px solid rgba(250,249,246,.25);padding:.45rem 1.1rem;transition:background .2s,color .2s,border-color .2s}
-    .hero-nav .nav-cta-link:hover{background:rgba(250,249,246,.1);border-color:rgba(250,249,246,.5)}
-    .hero-body{position:relative;z-index:2;flex:1;display:flex;align-items:flex-end;max-width:1360px;width:100%;margin:0 auto;padding:0 3.5rem 7rem;gap:5rem}
-    .hero-left{flex:1}
-    .hero-eyebrow{display:flex;align-items:center;gap:.9rem;font-size:.78rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,249,246,.75);margin-bottom:1.6rem}
-    .hero-eyebrow::before{content:'';display:block;width:22px;height:.5px;background:var(--gold);flex-shrink:0}
-    .hero-h1{font-size:clamp(3rem,5.8vw,5.6rem);font-weight:300;line-height:1.04;letter-spacing:-.02em;color:#faf9f6;margin-bottom:1.75rem}
-    .hero-h1 em{font-style:italic;font-weight:200}
-    .hero-sub{font-size:1.0625rem;font-weight:300;line-height:1.85;color:rgba(250,249,246,.88);max-width:440px}
-    .hero-form-wrap{width:390px;flex-shrink:0}
-    .form-card{background:rgba(250,249,246,.97);backdrop-filter:blur(24px);border:.5px solid rgba(255,255,255,.2);padding:2.75rem 2.5rem}
-    .form-card-tag{font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
-    .form-card-h{font-size:1.75rem;font-weight:300;letter-spacing:-.01em;line-height:1.15;color:var(--ink);margin-bottom:.6rem}
-    .form-card-h em{font-style:italic}
-    .form-card-desc{font-size:.9375rem;font-weight:300;line-height:1.75;color:var(--ink-mid);margin-bottom:1.6rem}
-    .form-divider{height:.5px;background:var(--rule);margin-bottom:1.6rem}
-    .fg{margin-bottom:1rem}
-    .fg label{display:block;font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.4rem}
-    .fg input{width:100%;background:#fff;border:.5px solid var(--rule);color:var(--ink);font-family:'Hanken Grotesk',sans-serif;font-size:1rem;font-weight:300;padding:.85rem 1rem;outline:none;border-radius:0}
-    .fg input::placeholder{color:var(--ink-light)}
-    .fg input:focus{border-color:var(--gold)}
-    .form-consent{display:flex;align-items:flex-start;gap:.65rem;margin-top:1rem}
-    .form-consent input[type=checkbox]{flex-shrink:0;margin-top:.15rem;width:14px;height:14px;accent-color:var(--ink)}
-    .form-consent label{font-size:.7rem;font-weight:300;line-height:1.65;color:var(--ink-light)}
-    .form-btn{width:100%;margin-top:1.2rem;background:var(--ink);color:var(--bg);border:none;font-family:'Hanken Grotesk',sans-serif;font-size:.8rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;padding:1.05rem 2rem;cursor:pointer;transition:background .25s}
-    .form-btn:hover{background:#2e2c28}
-    .manifesto{background:#fff;padding:9rem 3.5rem;text-align:center;border-top:.5px solid var(--rule);border-bottom:.5px solid var(--rule)}
-    .manifesto-rule{width:36px;height:.5px;background:var(--gold);margin:0 auto 2.25rem}
-    .manifesto-overline{font-size:.72rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-muted);margin-bottom:1.8rem}
-    .manifesto-h{font-size:clamp(2.2rem,4.4vw,3.8rem);font-weight:300;line-height:1.1;letter-spacing:-.02em;color:var(--ink);max-width:820px;margin:0 auto 2rem}
-    .manifesto-h em{font-style:italic;font-weight:200;color:var(--gold)}
-    .manifesto-sub{font-size:1rem;font-weight:300;line-height:2;color:var(--ink-mid);max-width:560px;margin:0 auto 3rem}
-    .manifesto-facts{display:flex;justify-content:center;gap:3rem;border-top:.5px solid var(--rule);padding-top:2.5rem;max-width:760px;margin:0 auto}
-    .manifesto-facts div{max-width:180px}
-    .manifesto-facts strong{display:block;font-size:1rem;font-weight:400;letter-spacing:.04em;color:var(--ink);margin-bottom:.4rem}
-    .manifesto-facts p{font-size:.95rem;font-weight:300;line-height:1.7;color:var(--ink-mid)}
-    .story-link{display:inline-block;margin-top:2rem;font-size:.78rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:.25rem}
-    .story-link:hover{color:var(--gold)}
-    @media(max-width:900px){.hero-nav{padding:1.25rem 1.5rem}.hero-body{flex-direction:column;align-items:flex-start;gap:2.5rem;padding:0 1.5rem 4rem}.hero-form-wrap{width:min(100%,390px)}.manifesto{padding:6rem 1.5rem}.manifesto-facts{flex-direction:column;gap:1.5rem;align-items:center;text-align:center}}
-    @media(max-width:480px){.hero-nav{padding:1rem 1.25rem}.hero-body{padding:0 1.25rem 3rem}.hero-nav .nav-tag{display:none}.manifesto{padding:5rem 1.25rem}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SENDA — Geboren in den Schweizer Alpen. Für jede Route gemacht.</title>
+<meta name="description" content="Schweizer Road- und Gravel-Bikes. Präzise ohne kalt zu wirken. Schön ohne laut zu sein. Kommt 2027.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sendabikes.com/de/">
+<meta property="og:title" content="SENDA — Geboren in den Schweizer Alpen. Für jede Route gemacht.">
+<meta property="og:description" content="Schweizer Road- und Gravel-Bikes. Präzise ohne kalt zu wirken. Schön ohne laut zu sein. Kommt 2027.">
+<meta property="og:image" content="https://sendabikes.com/assets/img/alpine-cyclists.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SENDA — Geboren in den Schweizer Alpen. Für jede Route gemacht.">
+<meta name="twitter:description" content="Schweizer Road- und Gravel-Bikes. Präzise ohne kalt zu wirken. Schön ohne laut zu sein. Kommt 2027.">
+<meta name="twitter:image" content="https://sendabikes.com/assets/img/alpine-cyclists.jpg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#1a1916;
+  --ink-mid:#5a574f;
+  --ink-light:#9b9890;
+  --rule:#e2dfd8;
+  --rule-light:#eeebe5;
+  --bg:#faf9f6;
+  --bg-warm:#f4f1eb;
+  --charcoal:#272420;
+  --gold:#c4a96b;
+  --gold-muted:#b5a280;
+  --rose:#dcc5be;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Hanken Grotesk',sans-serif;
+  font-weight:300;
+  background:#fff;
+  color:var(--ink);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+.hero{
+  position:relative;
+  height:100svh;min-height:820px;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('../assets/img/alpine-cyclists.jpg');
+  background-size:cover;background-position:center 55%;
+  transform:scale(1.04);
+  transition:transform 7s ease-out;
+}
+.hero-bg.loaded{transform:scale(1)}
+.hero-grad{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    180deg,
+    rgba(26,25,22,.56) 0%,
+    rgba(26,25,22,.18) 22%,
+    rgba(26,25,22,.08) 44%,
+    rgba(26,25,22,.52) 70%,
+    rgba(26,25,22,.92) 100%
+  );
+}
+nav{
+  position:relative;z-index:10;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:2rem 3.5rem;
+}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo img{height:58px;width:auto;filter:brightness(0) invert(1) drop-shadow(0 1px 16px rgba(0,0,0,.5));}
+.nav-right{display:flex;align-items:center;gap:1.25rem;}
+.nav-tag{font-size:.75rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,249,246,.5);}
+.nav-lang-link{font-size:.75rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,249,246,.75);text-decoration:none;transition:color .2s,opacity .2s;}
+.nav-lang-link:hover{color:#fff;opacity:1}
+.nav-cta-link{font-size:.75rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,249,246,.75);text-decoration:none;border:.5px solid rgba(250,249,246,.25);padding:.45rem 1.1rem;transition:background .2s,color .2s,border-color .2s;}
+.nav-cta-link:hover{background:rgba(250,249,246,.1);border-color:rgba(250,249,246,.5)}
+.hero-body{position:relative;z-index:2;flex:1;display:flex;align-items:flex-end;max-width:1360px;width:100%;margin:0 auto;padding:0 3.5rem 7rem;gap:5rem;}
+.hero-left{flex:1}
+.hero-eyebrow{display:flex;align-items:center;gap:.9rem;font-size:.78rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,249,246,.75);margin-bottom:1.6rem;}
+.hero-eyebrow::before{content:'';display:block;width:22px;height:.5px;background:var(--gold);flex-shrink:0;}
+.hero-h1{font-size:clamp(3rem,5.8vw,5.6rem);font-weight:300;line-height:1.04;letter-spacing:-.02em;color:#faf9f6;margin-bottom:1.75rem;}
+.hero-h1 em{font-style:italic;font-weight:200}
+.hero-sub{font-size:1.0625rem;font-weight:300;line-height:1.85;color:rgba(250,249,246,.88);max-width:400px;}
+.hero-form-wrap{width:390px;flex-shrink:0}
+.form-card{background:rgba(250,249,246,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:.5px solid rgba(255,255,255,.2);padding:2.75rem 2.5rem;}
+.form-card-tag{font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.form-card-h{font-size:1.75rem;font-weight:300;letter-spacing:-.01em;line-height:1.15;color:var(--ink);margin-bottom:.6rem;}
+.form-card-h em{font-style:italic}
+.form-card-desc{font-size:.9375rem;font-weight:300;line-height:1.75;color:var(--ink-mid);margin-bottom:1.6rem;}
+.form-divider{height:.5px;background:var(--rule);margin-bottom:1.6rem;}
+.fg{margin-bottom:1rem}
+.fg label{display:block;font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.4rem;}
+.fg input{width:100%;background:#fff;border:.5px solid var(--rule);color:var(--ink);font-family:'Hanken Grotesk',sans-serif;font-size:1rem;font-weight:300;padding:.85rem 1rem;outline:none;transition:border-color .2s;border-radius:0;-webkit-appearance:none;}
+.fg input::placeholder{color:var(--ink-light)}
+.fg input:focus{border-color:var(--gold)}
+.form-btn{width:100%;margin-top:1.25rem;background:var(--ink);color:var(--bg);border:none;font-family:'Hanken Grotesk',sans-serif;font-size:.8rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;padding:1.05rem 2rem;cursor:pointer;transition:background .25s;}
+.form-btn:hover{background:#2e2c28}
+.form-btn:disabled{opacity:.6;cursor:not-allowed}
+.form-privacy{font-size:.7rem;color:var(--ink-light);text-align:center;margin-top:.9rem;line-height:1.65;}
+.form-consent{display:flex;align-items:flex-start;gap:.65rem;margin-top:1rem}
+.form-consent input[type=checkbox]{flex-shrink:0;margin-top:.15rem;width:14px;height:14px;accent-color:var(--ink);cursor:pointer;}
+.form-consent label{font-size:.7rem;font-weight:300;line-height:1.65;color:var(--ink-light);cursor:pointer;}
+.form-error{font-size:.72rem;color:#b05050;margin-top:.5rem;display:none;}
+.form-success{display:none;text-align:center;padding:1.75rem 0}
+.success-mark{width:40px;height:40px;border:.5px solid var(--gold-muted);display:inline-flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--gold);margin-bottom:1.25rem;}
+.success-h{font-size:1.6rem;font-weight:300;letter-spacing:-.01em;color:var(--ink);margin-bottom:.6rem;}
+.success-p{font-size:.9375rem;font-weight:300;line-height:1.85;color:var(--ink-mid);}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.3;animation:pulse 3s ease 2.5s infinite;}
+.hero-scroll span{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);}
+.scroll-needle{width:.5px;height:28px;background:var(--bg);animation:needle 2.2s ease 2.5s infinite}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:.55}}
+@keyframes needle{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.manifesto{background:#fff;padding:10rem 3.5rem;text-align:center;position:relative;overflow:hidden;border-top:.5px solid var(--rule);border-bottom:.5px solid var(--rule);}
+.manifesto-rule{width:36px;height:.5px;background:var(--gold);margin:0 auto 2.75rem;}
+.manifesto-overline{font-size:.72rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-muted);margin-bottom:2.2rem;}
+.manifesto-h{font-size:clamp(2.4rem,4.8vw,4.2rem);font-weight:300;line-height:1.1;letter-spacing:-.02em;color:var(--ink);max-width:860px;margin:0 auto 2.25rem;}
+.manifesto-h em{font-style:italic;font-weight:200;color:var(--gold)}
+.manifesto-sub{font-size:1rem;font-weight:300;line-height:2;color:var(--ink-mid);max-width:500px;margin:0 auto 3.5rem;}
+.manifesto-facts{display:flex;justify-content:center;gap:4rem;border-top:.5px solid var(--rule);padding-top:3rem;max-width:720px;margin:0 auto;}
+.fact{text-align:center}
+.fact-n{font-size:2.8rem;font-weight:300;letter-spacing:-.02em;color:var(--ink);line-height:1;}
+.fact-l{font-size:.65rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-light);margin-top:.55rem;}
+.drawing-section{background:#fff;border-bottom:.5px solid var(--rule);}
+.drawing-inner{max-width:1360px;margin:0 auto;padding:5rem 3.5rem 4rem;}
+.drawing-head{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:end;margin-bottom:3rem;}
+.drawing-aside .label-text{font-size:.73rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-light);}
+.drawing-aside .aside-rule{width:20px;height:.5px;background:var(--gold-muted);margin-bottom:1.25rem;}
+.drawing-copy-h{font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:300;letter-spacing:-.01em;line-height:1.32;color:var(--ink);}
+.drawing-copy-h em{font-style:italic;color:var(--gold)}
+.drawing-copy-sub{margin-top:1.25rem;padding-left:1.75rem;border-left:.5px solid var(--rule);font-size:1rem;font-weight:300;line-height:2;color:var(--ink-mid);max-width:540px;}
+.drawing-img-wrap{border:.5px solid var(--rule);overflow:hidden;background:#fff;position:relative;max-width:1060px;margin:0 auto;}
+.drawing-img-wrap img{width:100%;display:block;transition:transform .7s ease;}
+.drawing-img-wrap:hover img{transform:scale(1.012)}
+.drawing-cap{padding:.85rem 1.5rem;border-top:.5px solid var(--rule-light);display:flex;justify-content:space-between;align-items:center;}
+.drawing-cap-text{font-size:.7rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);}
+.drawing-cap-badge{font-size:.65rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:.5px solid rgba(196,169,107,.35);padding:.25rem .65rem;}
+.pillars-wrap{background:#fff;border-bottom:.5px solid var(--rule)}
+.pillars-section{max-width:1360px;margin:0 auto;padding:8rem 3.5rem}
+.pillars-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;padding-bottom:2.75rem;border-bottom:.5px solid var(--rule);margin-bottom:0;}
+.pillars-h{font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.12;letter-spacing:-.015em;color:var(--ink);}
+.pillars-h em{font-style:italic}
+.pillars-desc{font-size:1rem;font-weight:300;line-height:2;color:var(--ink-mid);max-width:400px;margin-left:auto;}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:.5px solid var(--rule);}
+.pillar{padding:3rem 3rem 3rem 0;border-right:.5px solid var(--rule);position:relative;overflow:hidden;}
+.pillar:first-child{padding-left:0}
+.pillar:not(:first-child){padding-left:3rem}
+.pillar:last-child{border-right:none;padding-right:0}
+.pillar-n{font-size:.72rem;font-weight:400;letter-spacing:.1em;color:var(--gold);margin-bottom:2rem;display:block;}
+.pillar-title{font-size:1.3rem;font-weight:400;letter-spacing:-.01em;color:var(--ink);margin-bottom:.9rem;line-height:1.2;}
+.pillar-text{font-size:1rem;font-weight:300;line-height:2;color:var(--ink-mid);}
+.pillar-line{position:absolute;bottom:0;left:0;height:.5px;width:0;background:var(--gold);transition:width .7s ease;}
+.pillar:hover .pillar-line{width:100%}
+.finishes{background:var(--bg-warm);border-top:.5px solid var(--rule);border-bottom:.5px solid var(--rule);padding:5rem 3.5rem;}
+.finishes-inner{max-width:1360px;margin:0 auto}
+.finishes-label{font-size:.72rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-light);margin-bottom:2.5rem;display:flex;align-items:center;gap:1rem;}
+.finishes-label::after{content:'';flex:1;height:.5px;background:var(--rule);}
+.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;}
+.swatch{overflow:hidden}
+.swatch-color{height:80px}
+.swatch-name{font-size:.78rem;font-weight:400;letter-spacing:.06em;color:var(--ink);margin-top:.75rem;}
+.swatch-note{font-size:.68rem;font-weight:300;letter-spacing:.04em;color:var(--ink-light);margin-top:.2rem;}
+.cta-section{background:var(--charcoal);padding:9rem 3.5rem;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background-image:url('../assets/img/cta-bg.jpg');background-size:cover;background-position:center 40%;opacity:.32;}
+.cta-inner{position:relative;z-index:2}
+.cta-rule{width:36px;height:.5px;background:var(--gold);margin:0 auto 2.5rem}
+.cta-label{font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(196,169,107,.6);margin-bottom:1.5rem;}
+.cta-h{font-size:clamp(2rem,3.8vw,3.4rem);font-weight:300;line-height:1.1;letter-spacing:-.015em;color:#faf9f6;margin-bottom:1.25rem;}
+.cta-h em{font-style:italic;font-weight:200;color:var(--gold)}
+.cta-sub{font-size:1rem;font-weight:300;line-height:1.95;color:rgba(250,249,246,.45);max-width:460px;margin:0 auto 2.75rem;}
+.cta-form{display:flex;gap:.75rem;max-width:440px;margin:0 auto;}
+.cta-input{flex:1;background:rgba(250,249,246,.08);border:.5px solid rgba(250,249,246,.15);color:#faf9f6;font-family:'Hanken Grotesk',sans-serif;font-size:1rem;font-weight:300;padding:.9rem 1.1rem;outline:none;transition:border-color .2s,background .2s;border-radius:0;-webkit-appearance:none;}
+.cta-input::placeholder{color:rgba(250,249,246,.3)}
+.cta-input:focus{border-color:rgba(196,169,107,.6);background:rgba(250,249,246,.12);}
+.cta-btn{background:var(--gold);color:var(--charcoal);border:none;font-family:'Hanken Grotesk',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:.9rem 1.75rem;cursor:pointer;white-space:nowrap;transition:background .2s;flex-shrink:0;}
+.cta-btn:hover{background:#d4b97b}
+.cta-btn:disabled{opacity:.6;cursor:not-allowed}
+.cta-note{font-size:.7rem;color:rgba(250,249,246,.28);margin-top:1rem;letter-spacing:.04em;}
+footer{padding:2.25rem 3.5rem;border-top:.5px solid var(--rule);display:flex;justify-content:space-between;align-items:center;gap:1.5rem;background:#fff;}
+.footer-logo{display:flex;align-items:center;text-decoration:none}
+.footer-logo img{height:36px;width:auto;opacity:.45}
+.footer-mid{font-size:.72rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-light);text-align:center;}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:.72rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--ink)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.14s}.d2{transition-delay:.28s}.d3{transition-delay:.44s}
+.about-section{background:var(--bg-warm);border-top:.5px solid var(--rule);border-bottom:.5px solid var(--rule);padding:8rem 3.5rem;}
+.about-inner{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;}
+.about-label{font-size:.72rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-muted);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;}
+.about-label::after{content:'';flex:1;height:.5px;background:var(--rule)}
+.about-h{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;line-height:1.1;letter-spacing:-.015em;color:var(--ink);}
+.about-h em{font-style:italic;color:var(--gold)}
+.about-body{font-size:1rem;font-weight:300;line-height:2;color:var(--ink-mid);margin-bottom:2rem;}
+.about-link{font-size:.78rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:.5px solid var(--rule);padding-bottom:.2rem;transition:color .2s,border-color .2s;}
+.about-link:hover{color:var(--gold);border-color:var(--gold)}
+.hero-spotted{font-size:.8rem;font-weight:300;font-style:italic;color:rgba(250,249,246,.45);margin-top:.85rem;letter-spacing:.03em;}
+.share-nudge{margin-top:1.5rem;padding-top:1.25rem;border-top:.5px solid var(--rule);}
+.share-nudge-label{font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.75rem;}
+.share-buttons{display:flex;gap:.5rem;justify-content:center}
+.share-btn{font-size:.68rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;padding:.5rem .9rem;border:.5px solid var(--rule);background:transparent;color:var(--ink-mid);cursor:pointer;text-decoration:none;display:inline-block;transition:border-color .2s,color .2s;}
+.share-btn:hover{border-color:var(--gold);color:var(--ink)}
+.share-btn.copied{color:var(--gold);border-color:rgba(196,169,107,.4)}
+.cta-consent{display:flex;align-items:flex-start;gap:.65rem;max-width:440px;margin:1rem auto 0;text-align:left;}
+.cta-consent input[type=checkbox]{flex-shrink:0;margin-top:.2rem;width:14px;height:14px;accent-color:var(--gold);cursor:pointer;}
+.cta-consent label{font-size:.7rem;font-weight:300;line-height:1.65;color:rgba(250,249,246,.45);cursor:pointer;}
+.cta-consent-error{font-size:.72rem;color:rgba(220,150,150,.9);margin:.4rem auto 0;max-width:440px;display:none;}
+.sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--ink);padding:.85rem 1.5rem;align-items:center;justify-content:space-between;gap:1rem;border-top:.5px solid rgba(255,255,255,.07);transition:transform .3s ease,opacity .3s ease;}
+.sticky-cta.hidden{transform:translateY(100%);opacity:0;pointer-events:none}
+.sticky-cta-text{font-size:.82rem;font-weight:300;color:rgba(250,249,246,.6);line-height:1.4;}
+.sticky-cta-btn{font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;background:var(--gold);color:var(--charcoal);border:none;padding:.65rem 1.2rem;cursor:pointer;white-space:nowrap;flex-shrink:0;text-decoration:none;display:inline-block;}
+@media(max-width:1600px){.hero-body{padding-bottom:9rem}}
+@media(max-width:1200px){.hero{height:auto;min-height:100svh;overflow:visible}.hero-bg{height:100svh;bottom:auto;transform:none;transition:none}.hero-bg.loaded{transform:none}.hero-grad{height:100svh;bottom:auto;background:linear-gradient(180deg,rgba(26,25,22,.70) 0%,rgba(26,25,22,.22) 24%,rgba(26,25,22,.08) 46%,rgba(26,25,22,.58) 72%,rgba(26,25,22,.95) 100%)}.hero-scroll{display:none}.hero-body{flex-direction:column;align-items:stretch;padding:0;gap:0;flex:unset;width:100%;max-width:100%;margin:0}.hero-left{min-height:calc(100svh - 100px);display:flex;flex-direction:column;justify-content:flex-end;padding:0 3.5rem 3.5rem}.hero-h1{font-size:clamp(2.8rem,5vw,4.8rem)}.hero-sub{max-width:580px}.hero-form-wrap{width:100%;background:var(--bg);border-top:.5px solid var(--rule);padding:3.5rem 3.5rem 4.5rem;position:relative;z-index:5}.form-card{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border:none;padding:0;max-width:500px}}
+@media(max-width:900px){nav{padding:1.5rem 1.5rem}.nav-logo img{height:42px}.nav-tag{display:none}.hero-left{min-height:calc(100svh - 88px);padding:0 1.5rem 2.75rem}.hero-h1{font-size:clamp(2.4rem,8vw,3.4rem)}.hero-sub{max-width:100%}.hero-form-wrap{padding:2.5rem 1.5rem 3rem}.form-card{max-width:100%}.manifesto{padding:6rem 1.5rem}.manifesto-facts{gap:1.5rem;flex-wrap:wrap}.drawing-section .drawing-inner{padding:4rem 1.5rem 3rem}.drawing-head{grid-template-columns:1fr;gap:2rem}.pillars-section{padding:5rem 1.5rem}.pillars-intro{grid-template-columns:1fr;gap:2rem}.pillars-desc{margin-left:0;max-width:100%}.pillars-grid{grid-template-columns:1fr}.pillar{border-right:none;border-bottom:.5px solid var(--rule);padding:2.5rem 0!important}.pillar:last-child{border-bottom:none}.finishes{padding:4rem 1.5rem}.swatches{grid-template-columns:1fr 1fr;gap:.6rem}.cta-section{padding:6rem 1.5rem}.cta-form{flex-direction:column}footer{flex-direction:column;text-align:center;padding:2rem 1.5rem;gap:1rem}.footer-links{justify-content:center}.about-section{padding:5rem 1.5rem}.about-inner{grid-template-columns:1fr;gap:2.5rem}.sticky-cta{display:flex}footer{padding-bottom:calc(1.75rem + 60px)}}
+@media(max-width:480px){.nav-logo img{height:36px}.hero-left{padding:0 1.25rem 2.5rem}.hero-h1{font-size:2.2rem;letter-spacing:-.015em}.hero-sub{font-size:1rem}.hero-form-wrap{padding:2rem 1.25rem 2.5rem}.form-card-h{font-size:1.5rem}.manifesto{padding:5rem 1.25rem}.manifesto-h{font-size:2rem}.manifesto-sub{font-size:.9375rem}.manifesto-facts{gap:1.25rem}.fact-n{font-size:2.2rem}.drawing-section .drawing-inner{padding:3rem 1.25rem 2.5rem}.pillars-section{padding:4rem 1.25rem}.pillar-title{font-size:1.15rem}.finishes{padding:3rem 1.25rem}.cta-section{padding:5rem 1.25rem}.cta-h{font-size:1.9rem}.cta-sub{font-size:.9375rem}.about-section{padding:4rem 1.25rem}footer{padding:1.75rem 1.25rem;padding-bottom:calc(1.75rem + 56px)}}
+</style>
 </head>
 <body>
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grad"></div>
-    <nav class="hero-nav">
-      <a href="/" class="nav-logo" aria-label="SENDA">
-        <img src="../assets/logo/senda-logo.svg" alt="SENDA">
-      </a>
-      <div class="nav-right">
-        <span class="nav-tag">Schweiz · Seit 2026</span>
-        <a href="/" class="nav-lang-link" aria-label="Wechsel zu Englisch">EN</a>
-        <a href="#waitlist" class="nav-cta-link">Zur Liste</a>
-      </div>
-    </nav>
-
-    <div class="hero-body">
-      <div class="hero-left">
-        <p class="hero-eyebrow">Testfahrzeuge auf der Straße · 2026</p>
-        <h1 class="hero-h1">Geboren in<br>den Schweizer Alpen.<br><em>Für jede Route gemacht.</em></h1>
-        <p class="hero-sub">Road- und Gravel-Bikes, geformt durch Präzision und Ästhetik – entwickelt für jede Straße, überall.</p>
-      </div>
-
-      <div class="hero-form-wrap" id="waitlist">
-        <div class="form-card">
-          <p class="form-card-tag">Dem Aufbau folgen</p>
-          <h2 class="form-card-h">Sei unter den Ersten,<br><em>wenn wir starten.</em></h2>
-          <p class="form-card-desc">Entwicklungs-Updates, Geometrie-Previews und Prioritätszugang zu den ersten Launches – direkt in dein Postfach.</p>
-          <div class="form-divider"></div>
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-grad"></div>
+  <nav>
+    <a href="/de/" class="nav-logo" aria-label="SENDA">
+      <img src="../assets/logo/senda-logo.svg" alt="SENDA">
+    </a>
+    <div class="nav-right">
+      <span class="nav-tag">Schweiz · Seit 2026</span>
+      <a href="/" class="nav-lang-link" aria-label="Zu Englisch wechseln">EN</a>
+      <a href="#waitlist" class="nav-cta-link">Zur Liste</a>
+    </div>
+  </nav>
+  <div class="hero-body">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Testfahrzeuge auf der Straße · 2026</p>
+      <h1 class="hero-h1">Geboren in<br>den Schweizer Alpen.<br><em>Für jede Route gemacht.</em></h1>
+      <p class="hero-sub">Road- und Gravel-Bikes, geformt durch Präzision und Ästhetik – entwickelt für jede Straße, überall.</p>
+      <p class="hero-spotted">Einen unserer Rahmen gesehen? Dann hast du uns früh gefunden.</p>
+    </div>
+    <div class="hero-form-wrap" id="waitlist">
+      <div class="form-card">
+        <p class="form-card-tag">Dem Aufbau folgen</p>
+        <h2 class="form-card-h">Sei unter den Ersten<br><em>wenn wir bereit sind.</em></h2>
+        <p class="form-card-desc">Entwicklungs-Updates, Geometrie-Previews und Prioritätszugang zu den ersten Launches – direkt in dein Postfach.</p>
+        <div class="form-divider"></div>
+        <div id="heroFormBody">
           <div class="fg">
-            <label for="deName">Dein Name</label>
-            <input type="text" id="deName" name="name" placeholder="Dein Name" autocomplete="name">
+            <label for="fn">Dein Name</label>
+            <input type="text" id="fn" name="name" placeholder="Dein Name" autocomplete="name">
           </div>
           <div class="fg">
-            <label for="deEmail">E-Mail-Adresse</label>
-            <input type="email" id="deEmail" name="email" placeholder="du@example.com" autocomplete="email" required>
+            <label for="em">E-Mail-Adresse</label>
+            <input type="email" id="em" name="email" placeholder="du@example.com" autocomplete="email" required>
           </div>
           <div class="form-consent">
-            <input type="checkbox" id="deConsent" name="consent">
-            <label for="deConsent">Ich möchte gelegentlich Updates von SENDA erhalten. Ich kann mich jederzeit abmelden.</label>
+            <input type="checkbox" id="heroConsent" name="consent">
+            <label for="heroConsent">Ich möchte gelegentlich Updates von SENDA erhalten. Ich kann mich jederzeit abmelden.</label>
           </div>
-          <button class="form-btn" type="button">Zur Fahrt anmelden →</button>
+          <p class="form-error" id="heroError">Bitte akzeptiere die Updates, um fortzufahren.</p>
+          <button class="form-btn" id="heroSubmitBtn" onclick="handleHeroSubmit()">Zur Fahrt →</button>
+        </div>
+        <div class="form-success" id="heroSuccess">
+          <div class="success-mark" aria-hidden="true">✓</div>
+          <p class="success-h">Du bist auf der Liste.</p>
+          <p class="success-p">Entwicklungs-Updates und Launch-Details direkt bei dir. Wir schreiben nur, wenn es etwas Wichtiges zu teilen gibt.</p>
+          <div class="share-nudge">
+            <p class="share-nudge-label">Kennst du einen Rider, der sich dafür interessiert?</p>
+            <div class="share-buttons">
+              <a class="share-btn" id="shareWa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+              <button class="share-btn" id="shareCopy" onclick="copyShareLink()">Link kopieren</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <section class="manifesto">
-    <div class="manifesto-rule"></div>
-    <p class="manifesto-overline">Schweizer Ursprung · klare Details</p>
-    <h2 class="manifesto-h">Wir bauen Fahrräder, die <em>funktionieren und begeistern.</em></h2>
-    <p class="manifesto-sub">SENDA ist ein neues Schweizer Fahrradgefühl – geboren aus jahrelanger Leidenschaft für das Fahren, das Bauen und die Schönheit eines guten Fahrrads.</p>
-    <div class="manifesto-facts">
-      <div>
-        <strong>Präzision</strong>
-        <p>Honest engineered, ohne unnötigen Ballast.</p>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Scrollen</span>
+    <div class="scroll-needle"></div>
+  </div>
+</section>
+<section class="manifesto">
+  <div class="manifesto-rule"></div>
+  <p class="manifesto-overline reveal">Road Bikes · Gravel Bikes · Für überall gebaut</p>
+  <h2 class="manifesto-h reveal d1">Präzise, ohne kalt zu wirken.<br><em>Schön, ohne laut zu sein.</em></h2>
+  <p class="manifesto-sub reveal d2">Top-Performance. Boutiquen-Charakter. Zusammen mit den Fahrenden entwickelt, die sie später fahren werden – schon bei der ersten Skizze.</p>
+  <div class="manifesto-facts reveal d2">
+    <div class="fact">
+      <div class="fact-n">&lt;&nbsp;7&nbsp;kg</div>
+      <div class="fact-l">Ziel für Top-Spezifikation</div>
+    </div>
+    <div class="fact">
+      <div class="fact-n">2027</div>
+      <div class="fact-l">Erste Auslieferungen</div>
+    </div>
+    <div class="fact">
+      <div class="fact-n">Schweiz</div>
+      <div class="fact-l">Design &amp; Entwicklung</div>
+    </div>
+  </div>
+</section>
+<div class="drawing-section">
+  <div class="drawing-inner">
+    <div class="drawing-head">
+      <div class="drawing-aside reveal">
+        <div class="aside-rule"></div>
+        <p class="label-text">Rahmendesign</p>
       </div>
       <div>
-        <strong>Ästhetik</strong>
-        <p>Schlicht, zeitlos und deutlich im Detail.</p>
-      </div>
-      <div>
-        <strong>Gemeinschaft</strong>
-        <p>Mit Fahrenden gebaut – nicht nur für sie.</p>
+        <h2 class="drawing-copy-h reveal d1">Entwickelt in der Schweiz.<br><em>Noch immer in Form.</em></h2>
+        <p class="drawing-copy-sub reveal d2">Jeder Winkel und Radius wird bewusst gewählt – für Steifigkeit dort, wo sie gebraucht wird, für Komfort dort, wo er zählt, und für einen fließenden Gesamteindruck. Die Geometrie ist noch nicht final. Die Rider, die dem Aufbau folgen, helfen mit, sie zu formen.</p>
       </div>
     </div>
-    <a class="story-link" href="/de/story.html">Unsere Geschichte entdecken</a>
-  </section>
-
-  <footer>
-    <a href="/" class="footer-logo" aria-label="SENDA">
-      <img src="../assets/logo/senda-logo.svg" alt="SENDA">
-    </a>
-    <p class="footer-mid">Schweizer Road &amp; Gravel Bikes · sendabikes.com</p>
-    <div class="footer-links">
-      <a href="mailto:info@sendabikes.com">Kontakt</a>
-      <a href="/legal/privacy.html">Datenschutz</a>
+    <div class="drawing-img-wrap reveal">
+      <img src="../assets/img/technical-drawing-placeholder2.png" alt="SENDA-Rahmen-Geometriestudie – in Arbeit" loading="lazy">
+      <div class="drawing-cap">
+        <span class="drawing-cap-text">Rahmen-Geometriestudie · 2026</span>
+        <span class="drawing-cap-badge">In Arbeit</span>
+      </div>
     </div>
-  </footer>
+  </div>
+</div>
+<section class="pillars-wrap">
+  <div class="pillars-section">
+    <div class="pillars-intro reveal">
+      <h2 class="pillars-h">Drei Dinge,<br>bei denen wir<br><em>nicht kompromittieren.</em></h2>
+      <p class="pillars-desc">Jede Kategorie verlangt Kompromisse, die Rider nie wollten. Wir nicht. Wir bauen rund um das, was wirklich zählt – und lassen alles andere weg.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar reveal">
+        <span class="pillar-n">01 ——</span>
+        <h3 class="pillar-title">Ingenieurbare Klarheit</h3>
+        <p class="pillar-text">T800/T1000-Carbon-Layup. Jeder Übergang mit strukturellem Zweck – effizient bei Steigungen, ruhig bei langen Abfahrten. Ziel für Top-Spezifikation: unter 7 kg. Nichts wird hinzugefügt, ohne einen Grund.</p>
+        <div class="pillar-line"></div>
+      </div>
+      <div class="pillar reveal d1">
+        <span class="pillar-n">02 ——</span>
+        <h3 class="pillar-title">Designsprache</h3>
+        <p class="pillar-text">Ruhige Linien, durchdachte Proportionen, satinierte und perlmutartige Oberflächen. Eine visuelle Sprache, die nicht laut sein muss – zurückhaltend im Design, zeitlos in der Absicht. Sie soll genauso gut wirken, wenn sie an der Wand lehnt, wie im Bergauf- und Bergabfahren.</p>
+        <div class="pillar-line"></div>
+      </div>
+      <div class="pillar reveal d2">
+        <span class="pillar-n">03 ——</span>
+        <h3 class="pillar-title">Direkt zum Rider</h3>
+        <p class="pillar-text">Kein aufgeblasetes Marketingbudget. Keine Vertriebsmargen. Was du investierst, fließt in die Bikes – in Material, Handwerk und Komponenten. Rider auf der Liste erhalten Priorität und Mitspracherecht bei der Spezifikation.</p>
+        <div class="pillar-line"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="about-section">
+  <div class="about-inner">
+    <div class="reveal">
+      <p class="about-label">Unsere Geschichte</p>
+      <h2 class="about-h">Zwei Freunde aus den Schweizer Alpen.<br><em>Fast drei Jahrzehnte auf dem Bike.</em></h2>
+    </div>
+    <div class="reveal d1">
+      <p class="about-body">Zwischen uns bringen wir Materialwissenschaft und Architektur mit – präzise Technik und durchdachtes Design, die von der ersten Skizze an zusammenarbeiten. Jahre lang haben wir unsere eigenen Bikes gebaut, immer auf der Suche nach besseren Layups, geringeren Gewichten und Geometrien, die wirklich Sinn machen. SENDA ist das Ergebnis, wenn du aufhörst, nur für dich selbst zu bauen.</p>
+      <a href="/de/story.html" class="about-link">Die ganze Geschichte lesen →</a>
+    </div>
+  </div>
+</section>
+<section class="finishes">
+  <div class="finishes-inner">
+    <p class="finishes-label reveal">Geplante Oberflächen</p>
+    <div class="swatches">
+      <div class="swatch reveal">
+        <div class="swatch-color" style="background:#7e9aab"></div>
+        <p class="swatch-name">Slate Blue</p>
+        <p class="swatch-note">Satin-Finish</p>
+      </div>
+      <div class="swatch reveal d1">
+        <div class="swatch-color" style="background:#c2bfb5"></div>
+        <p class="swatch-name">Champagne Silver</p>
+        <p class="swatch-note">Perl-Finish</p>
+      </div>
+      <div class="swatch reveal d2">
+        <div class="swatch-color" style="background:#c4a099"></div>
+        <p class="swatch-name">Dusky Rose</p>
+        <p class="swatch-note">Satin-Finish</p>
+      </div>
+      <div class="swatch reveal d3">
+        <div class="swatch-color" style="background:#494641"></div>
+        <p class="swatch-name">Graphit</p>
+        <p class="swatch-note">Matt-Finish</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-rule"></div>
+    <p class="cta-label reveal">Dem Aufbau folgen</p>
+    <h2 class="cta-h reveal d1">Entwickelt für Leistung.<br><em>Noch immer in Form.</em></h2>
+    <p class="cta-sub reveal d2">Updates, während die Bikes Gestalt annehmen. Einblicke aus dem Studio. Launch-Zugang, bevor es öffentlich wird. Wir schreiben nur, wenn es etwas Wichtiges zu sagen gibt.</p>
+    <div class="cta-form reveal d2">
+      <input type="email" class="cta-input" id="ctaEmail" placeholder="deine@email.com" autocomplete="email">
+      <button class="cta-btn" id="ctaBtn" onclick="handleCtaSubmit()">Zur Liste</button>
+    </div>
+    <div class="cta-consent reveal d3">
+      <input type="checkbox" id="ctaConsent" name="consent">
+      <label for="ctaConsent">Ich möchte gelegentlich Updates von SENDA erhalten. Ich kann mich jederzeit abmelden.</label>
+    </div>
+    <p class="cta-consent-error" id="ctaError">Bitte aktiviere das Kästchen, um fortzufahren.</p>
+    <p class="cta-note reveal d3">Gelegentliche Updates nur · Jederzeit abbestellbar</p>
+  </div>
+</section>
+<footer>
+  <a href="/de/" class="footer-logo" aria-label="SENDA">
+    <img src="../assets/logo/senda-logo.svg" alt="SENDA">
+  </a>
+  <p class="footer-mid">Schweizer Road &amp; Gravel · sendabikes.com</p>
+  <div class="footer-links">
+    <a href="mailto:info@sendabikes.com">Kontakt</a>
+    <a href="/legal/privacy.html">Datenschutz</a>
+  </div>
+</footer>
+<div class="sticky-cta" id="stickyCta" aria-hidden="true">
+  <span class="sticky-cta-text">Schweizer Road &amp; Gravel · Kommt 2027</span>
+  <a href="#waitlist" class="sticky-cta-btn" onclick="hideStickyBar()">Zur Liste</a>
+</div>
+<script>
+(function(){
+  var bg = document.getElementById('heroBg');
+  var img = new Image();
+  img.onload = function(){ bg.classList.add('loaded'); };
+  img.src = '../assets/img/alpine-cyclists.jpg';
+  bg.style.backgroundImage = "url('../assets/img/alpine-cyclists.jpg')";
+})();
+var revEls = document.querySelectorAll('.reveal');
+var revObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.12 });
+revEls.forEach(function(el){ revObs.observe(el); });
+var SUBSCRIBE_URL = 'https://senda-website-chi.vercel.app/api/subscribe';
+function subscribeToMailerLite(email, name, onSuccess, onError){
+  fetch(SUBSCRIBE_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, name: name || '' })
+  })
+  .then(function(res){
+    if(res.ok) return onSuccess();
+    return res.json().then(function(d){ onError(d.error || 'Etwas ist schiefgelaufen.'); });
+  })
+  .catch(function(){ onError('Netzwerkfehler – bitte versuche es erneut.'); });
+}
+var stickyCta = document.getElementById('stickyCta');
+var waitlistSection = document.getElementById('waitlist');
+function updateStickyBar(){
+  if(!stickyCta || !waitlistSection) return;
+  var r = waitlistSection.getBoundingClientRect();
+  var inView = r.top < window.innerHeight && r.bottom > 0;
+  if(inView){ stickyCta.classList.add('hidden'); }
+  else { stickyCta.classList.remove('hidden'); }
+}
+window.addEventListener('scroll', updateStickyBar, {passive:true});
+updateStickyBar();
+function hideStickyBar(){
+  if(stickyCta){ stickyCta.classList.add('hidden'); stickyCta.style.display='none'; }
+}
+var SHARE_URL  = 'https://sendabikes.com';
+var SHARE_TEXT = 'SENDA gefunden – eine neue Schweizer Road- und Gravel-Marke, die 2027 startet. Es lohnt sich, früh dabei zu sein: ';
+function initShareButtons(){
+  var wa = document.getElementById('shareWa');
+  if(wa) wa.href = 'https://wa.me/?text=' + encodeURIComponent(SHARE_TEXT + SHARE_URL);
+}
+function copyShareLink(){
+  var btn = document.getElementById('shareCopy');
+  navigator.clipboard.writeText(SHARE_URL).then(function(){
+    btn.textContent = 'Kopiert!';
+    btn.classList.add('copied');
+    setTimeout(function(){ btn.textContent='Link kopieren'; btn.classList.remove('copied'); }, 2000);
+  }).catch(function(){
+    btn.textContent = SHARE_URL;
+  });
+}
+function handleHeroSubmit(){
+  var emailEl   = document.getElementById('em');
+  var nameEl    = document.getElementById('fn');
+  var consentEl = document.getElementById('heroConsent');
+  var errorEl   = document.getElementById('heroError');
+  var btn       = document.getElementById('heroSubmitBtn');
+  errorEl.style.display = 'none';
+  if(!emailEl.value || !emailEl.value.includes('@')){ emailEl.focus(); return; }
+  if(!consentEl.checked){ errorEl.style.display = 'block'; return; }
+  btn.textContent = 'Wird hinzugefügt…';
+  btn.disabled = true;
+  subscribeToMailerLite(
+    emailEl.value.trim(),
+    nameEl.value.trim(),
+    function(){
+      document.getElementById('heroFormBody').style.display = 'none';
+      document.getElementById('heroSuccess').style.display  = 'block';
+      initShareButtons();
+      hideStickyBar();
+    },
+    function(msg){
+      btn.textContent = 'Zur Fahrt →';
+      btn.disabled = false;
+      errorEl.textContent = msg;
+      errorEl.style.display = 'block';
+    }
+  );
+}
+function handleCtaSubmit(){
+  var emailEl   = document.getElementById('ctaEmail');
+  var btn       = document.getElementById('ctaBtn');
+  var consentEl = document.getElementById('ctaConsent');
+  var errorEl   = document.getElementById('ctaError');
+  errorEl.style.display = 'none';
+  if(!emailEl.value || !emailEl.value.includes('@')){ emailEl.focus(); return; }
+  if(!consentEl.checked){ errorEl.style.display = 'block'; return; }
+  btn.textContent  = 'Wird hinzugefügt…';
+  btn.disabled     = true;
+  emailEl.disabled = true;
+  subscribeToMailerLite(
+    emailEl.value.trim(),
+    '',
+    function(){
+      btn.textContent = '✓ Du bist drin';
+    },
+    function(){
+      btn.textContent  = 'Zur Liste';
+      btn.disabled     = false;
+      emailEl.disabled = false;
+    }
+  );
+}
+</script>
 </body>
 </html>
