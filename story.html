@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Path Here — SENDA</title>
+  <meta name="description" content="Two friends from the Alpine foothills, three decades of riding and building bikes, and why SENDA exists. Senda is Romansh for path — this is ours.">
+  <meta property="og:title" content="The Path Here — SENDA">
+  <meta property="og:description" content="Two friends from the Alpine foothills, three decades of riding and building bikes, and why SENDA exists.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sendabikes.com/story.html">
+  <meta property="og:image" content="https://sendabikes.com/assets/img/alpine-cyclists.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Path Here — SENDA">
+  <meta name="twitter:description" content="Two friends from the Alpine foothills, three decades of riding and building bikes, and why SENDA exists.">
+  <meta name="twitter:image" content="https://sendabikes.com/assets/img/alpine-cyclists.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+  body{background:var(--bg)}
+
+  /* ── Story hero ── */
+  .story-hero{
+    padding:clamp(4rem,9vw,7rem) 3.5rem clamp(2.5rem,5vw,4rem);
+    max-width:1200px;margin:0 auto;
+    border-bottom:.5px solid var(--rule);
+  }
+  .story-eyebrow{
+    font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gold-muted);display:block;margin-bottom:1.6rem;
+  }
+  .story-h1{
+    font-size:clamp(2.4rem,5.5vw,4.4rem);
+    font-weight:300;line-height:1.06;letter-spacing:-.02em;
+    color:var(--ink);margin-bottom:1.6rem;
+  }
+  .story-h1 em{font-style:italic;font-weight:200;color:var(--ink-mid)}
+  .story-lede{
+    font-size:1.0625rem;font-weight:300;line-height:1.85;
+    color:var(--ink-mid);max-width:560px;
+  }
+
+  /* ── Path ── */
+  .story-body{
+    max-width:1200px;margin:0 auto;
+    padding:0 3.5rem clamp(4rem,8vw,6rem);
+  }
+  .path{
+    position:relative;
+    padding-left:clamp(2.4rem,5vw,4rem);
+  }
+  .path::before{
+    content:'';position:absolute;
+    left:8px;top:.8rem;bottom:.8rem;width:.5px;
+    background:linear-gradient(
+      to bottom,
+      var(--rule-light) 0%,
+      var(--gold-muted) 50%,
+      var(--rule-light) 100%
+    );
+  }
+  .waypoint{
+    position:relative;
+    padding:clamp(2rem,4vw,3rem) 0;
+    border-bottom:.5px solid var(--rule-light);
+  }
+  .waypoint:last-child{border-bottom:none}
+  .waypoint::before{
+    content:'';position:absolute;
+    left:calc(-1 * clamp(2.4rem,5vw,4rem) + 4px);
+    top:calc(clamp(2rem,4vw,3rem) + .55em);
+    width:9px;height:9px;border-radius:50%;
+    background:var(--bg);border:1.5px solid var(--gold-muted);
+  }
+  .waypoint-era{
+    font-size:.68rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold);display:block;margin-bottom:1rem;
+  }
+  .waypoint h2{
+    font-size:clamp(1.5rem,2.8vw,2.1rem);
+    font-weight:300;line-height:1.15;letter-spacing:-.015em;
+    color:var(--ink);margin-bottom:1.1rem;
+  }
+  .waypoint h2 em{font-style:italic;font-weight:200;color:var(--ink-mid)}
+  .waypoint p{
+    font-size:1rem;font-weight:300;line-height:2;
+    color:var(--ink-mid);max-width:640px;margin-bottom:1rem;
+  }
+  .waypoint p:last-child{margin-bottom:0}
+  .waypoint p em{font-style:italic;color:var(--ink)}
+
+  .pullquote{
+    margin:clamp(1.4rem,3vw,2rem) 0;
+    padding-left:1.5rem;
+    border-left:.5px solid var(--gold-muted);
+    font-size:clamp(1.15rem,2.2vw,1.55rem);
+    font-weight:300;font-style:italic;line-height:1.45;
+    color:var(--ink-mid);max-width:34ch;
+  }
+
+  /* ── Closing CTA ── */
+  .story-close{
+    border-top:.5px solid var(--rule);
+    padding:clamp(4rem,8vw,6rem) 3.5rem;
+    text-align:center;background:#fff;
+  }
+  .story-close-rule{width:36px;height:.5px;background:var(--gold);margin:0 auto 2rem}
+  .story-close h2{
+    font-size:clamp(1.8rem,3.5vw,2.8rem);
+    font-weight:300;line-height:1.1;letter-spacing:-.015em;
+    color:var(--ink);margin-bottom:1rem;
+  }
+  .story-close h2 em{font-style:italic;font-weight:200;color:var(--gold)}
+  .story-close p{
+    font-size:1rem;font-weight:300;line-height:2;
+    color:var(--ink-mid);max-width:420px;margin:0 auto 2.25rem;
+  }
+  .story-cta-btn{
+    display:inline-block;text-decoration:none;
+    background:var(--ink);color:var(--bg);
+    font-family:'Hanken Grotesk',sans-serif;
+    font-size:.8rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+    padding:1rem 2.25rem;transition:background .25s;
+  }
+  .story-cta-btn:hover{background:var(--charcoal)}
+
+  /* ── Responsive ── */
+  @media(max-width:900px){
+    .story-hero{padding:3.5rem 1.5rem 2.5rem}
+    .story-body{padding:0 1.5rem 4rem}
+    .path{padding-left:2rem}
+    .waypoint::before{left:calc(-2rem + 4px)}
+    .story-close{padding:4rem 1.5rem}
+  }
+  @media(max-width:480px){
+    .story-hero{padding:2.5rem 1.25rem 2rem}
+    .story-body{padding:0 1.25rem 3rem}
+    .path{padding-left:1.75rem}
+    .waypoint::before{left:calc(-1.75rem + 4px)}
+    .story-close{padding:3rem 1.25rem}
+  }
+  </style>
+</head>
+<body>
+
+  <nav class="page-nav">
+    <a href="/" class="nav-logo" aria-label="SENDA">
+      <img src="assets/logo/senda-logo.svg" alt="SENDA">
+    </a>
+    <div class="nav-right">
+      <span class="nav-tag">Switzerland · Est. 2026</span>
+      <a href="/#waitlist" class="nav-cta-link">Join the list</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="story-hero">
+      <span class="story-eyebrow">Our story</span>
+      <h1 class="story-h1">The path here.<br><em>Three decades in the making.</em></h1>
+      <p class="story-lede">Senda is Romansh — Switzerland's fourth language, spoken in the high valleys — and it means "path." This is ours.</p>
+    </section>
+
+    <div class="story-body">
+      <div class="path">
+
+        <section class="waypoint">
+          <span class="waypoint-era">Late 1990s · The foothills</span>
+          <h2>Two kids <em>who never stopped riding.</em></h2>
+          <p>We're two friends who grew up in the Alpine foothills and fell for road cycling in the late 1990s — back when it was widely considered a sport for old men. We didn't care. One of us had a cousin racing professionally at the time, and watching him suffer up mountains on television made the whole thing seem less like a hobby and more like a calling.</p>
+          <p>We never raced ourselves — not even at club level. We just rode. Through the Alps, mostly, and wherever else work or curiosity took us.</p>
+        </section>
+
+        <section class="waypoint">
+          <span class="waypoint-era">The building years</span>
+          <h2>Steel, then aluminum, <em>then carbon.</em></h2>
+          <p>Because we couldn't leave well enough alone, we built our own bikes. First steel, then aluminum, then carbon — always chasing lighter, stiffer, better. One of us went on to study materials science, the other architecture. In hindsight, we were splitting the bicycle between us: one obsessed with what it's made of, the other with how it looks and feels.</p>
+        </section>
+
+        <section class="waypoint">
+          <span class="waypoint-era">2024 · The turn</span>
+          <h2>The manufacturers <em>behind the bikes you already know.</em></h2>
+          <p>The idea for SENDA took shape in 2024. We spent months building relationships with long-standing OEMs in the bicycle industry — the engineers and factories behind some of the most respected frames on the market. We visited their facilities, tested their products, assessed their processes, and selected the ones we'd trust with our own builds.</p>
+          <blockquote class="pullquote">"If we're this enthusiastic about it, why keep it to ourselves?"</blockquote>
+        </section>
+
+        <section class="waypoint">
+          <span class="waypoint-era">Now · What we believe</span>
+          <h2>Pay for the bike. <em>Not the noise.</em></h2>
+          <p>A bike should perform <em>and</em> look exceptional — not one at the price of the other. Cutting-edge materials and honest engineering matter more than marketing budgets. And when you buy a SENDA, you should be paying for the bike — not for middlemen, sponsorship deals, or a flagship store on an expensive street.</p>
+          <p>We're now finalising our first models. Along the way, we'll ask for your opinion on designs and specs, ride with you, and help grow the cycling communities we're part of. Because a path is better when it's shared.</p>
+        </section>
+
+      </div>
+    </div>
+
+    <section class="story-close">
+      <div class="story-close-rule"></div>
+      <h2>The path continues.<br><em>Ride it with us.</em></h2>
+      <p>Development updates, geometry previews, and priority launch access — we write only when there's something worth sharing.</p>
+      <a class="story-cta-btn" href="/#waitlist">Join the list</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <a href="/" class="footer-logo" aria-label="SENDA">
+      <img src="assets/logo/senda-logo.svg" alt="SENDA">
+    </a>
+    <p class="footer-mid">Swiss road &amp; gravel · sendabikes.com</p>
+    <div class="footer-links">
+      <a href="mailto:info@sendabikes.com">Contact</a>
+      <a href="/legal/privacy.html">Privacy</a>
+    </div>
+  </footer>
+
+  <script>
+  var revEls = document.querySelectorAll('.reveal');
+  var revObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('on'); });
+  },{threshold:0.12});
+  revEls.forEach(function(el){ revObs.observe(el); });
+  </script>
+
+</body>
+</html>

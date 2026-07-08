@@ -20,6 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -629,6 +630,49 @@ footer{
   footer{padding:1.75rem 1.25rem}
 }
 
+/* ── ABOUT / STORY TEASER ───────────────────────────────────────────────── */
+.about-section{
+  background:var(--bg-warm);
+  border-top:.5px solid var(--rule);
+  border-bottom:.5px solid var(--rule);
+  padding:8rem 3.5rem;
+}
+.about-inner{
+  max-width:1360px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:6rem;align-items:start;
+}
+.about-label{
+  font-size:.72rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-muted);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.about-label::after{content:'';flex:1;height:.5px;background:var(--rule)}
+.about-h{
+  font-size:clamp(1.8rem,3vw,2.6rem);
+  font-weight:300;line-height:1.1;letter-spacing:-.015em;color:var(--ink);
+}
+.about-h em{font-style:italic;color:var(--gold)}
+.about-body{
+  font-size:1rem;font-weight:300;line-height:2;
+  color:var(--ink-mid);margin-bottom:2rem;
+}
+.about-link{
+  font-size:.78rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;
+  border-bottom:.5px solid var(--rule);padding-bottom:.2rem;
+  transition:color .2s,border-color .2s;
+}
+.about-link:hover{color:var(--gold);border-color:var(--gold)}
+
+@media(max-width:900px){
+  .about-section{padding:5rem 1.5rem}
+  .about-inner{grid-template-columns:1fr;gap:2.5rem}
+}
+@media(max-width:480px){
+  .about-section{padding:4rem 1.25rem}
+}
+
 /* ── HERO SPOTTED LINE ──────────────────────────────────────────────────── */
 .hero-spotted{
   font-size:.8rem;font-weight:300;font-style:italic;
@@ -860,6 +904,20 @@ footer{
         <p class="pillar-text">No inflated marketing budget. No distributor markups. What you invest goes into the bikes - the material, the craftsmanship, the components. Riders on the list get priority access and a say in how the spec comes together.</p>
         <div class="pillar-line"></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT / STORY TEASER ───────────────────────────────────────────────── -->
+<section class="about-section">
+  <div class="about-inner">
+    <div class="reveal">
+      <p class="about-label">Our story</p>
+      <h2 class="about-h">Two friends from the Swiss Alps.<br><em>Nearly thirty years on bikes.</em></h2>
+    </div>
+    <div class="reveal d1">
+      <p class="about-body">Between us, we bring materials science and architecture — precision engineering and considered design, working together from the first sketch. For years we built our own bikes, chasing better layups, lower weights, geometry that actually made sense. SENDA is what happens when you stop building just for yourself.</p>
+      <a href="story.html" class="about-link">Read the full story →</a>
     </div>
   </div>
 </section>
