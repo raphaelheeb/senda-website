@@ -223,6 +223,32 @@ footer{padding:2.25rem 3.5rem;border-top:.5px solid var(--rule);display:flex;jus
 @media(max-width:900px){nav{padding:1.5rem 1.5rem}.nav-logo img{height:42px}.nav-tag{display:none}.hero-left{min-height:calc(100svh - 88px);padding:0 1.5rem 2.75rem}.hero-h1{font-size:clamp(2.4rem,8vw,3.4rem)}.hero-sub{max-width:100%}.hero-form-wrap{padding:2.5rem 1.5rem 3rem}.form-card{max-width:100%}.manifesto{padding:6rem 1.5rem}.manifesto-facts{gap:1.5rem;flex-wrap:wrap}.drawing-section .drawing-inner{padding:4rem 1.5rem 3rem}.drawing-head{grid-template-columns:1fr;gap:2rem}.pillars-section{padding:5rem 1.5rem}.pillars-intro{grid-template-columns:1fr;gap:2rem}.pillars-desc{margin-left:0;max-width:100%}.pillars-grid{grid-template-columns:1fr}.pillar{border-right:none;border-bottom:.5px solid var(--rule);padding:2.5rem 0!important}.pillar:last-child{border-bottom:none}.finishes{padding:4rem 1.5rem}.swatches{grid-template-columns:1fr 1fr;gap:.6rem}.cta-section{padding:6rem 1.5rem}.cta-form{flex-direction:column}footer{flex-direction:column;text-align:center;padding:2rem 1.5rem;gap:1rem}.footer-links{justify-content:center}.about-section{padding:5rem 1.5rem}.about-inner{grid-template-columns:1fr;gap:2.5rem}.sticky-cta{display:flex}footer{padding-bottom:calc(1.75rem + 60px)}}
 @media(max-width:480px){.nav-logo img{height:36px}.hero-left{padding:0 1.25rem 2.5rem}.hero-h1{font-size:2.2rem;letter-spacing:-.015em}.hero-sub{font-size:1rem}.hero-form-wrap{padding:2rem 1.25rem 2.5rem}.form-card-h{font-size:1.5rem}.manifesto{padding:5rem 1.25rem}.manifesto-h{font-size:2rem}.manifesto-sub{font-size:.9375rem}.manifesto-facts{gap:1.25rem}.fact-n{font-size:2.2rem}.drawing-section .drawing-inner{padding:3rem 1.25rem 2.5rem}.pillars-section{padding:4rem 1.25rem}.pillar-title{font-size:1.15rem}.finishes{padding:3rem 1.25rem}.cta-section{padding:5rem 1.25rem}.cta-h{font-size:1.9rem}.cta-sub{font-size:.9375rem}.about-section{padding:4rem 1.25rem}footer{padding:1.75rem 1.25rem;padding-bottom:calc(1.75rem + 56px)}}
 </style>
+  <script>
+    (function () {
+      const currentPath = window.location.pathname;
+      const isStory = currentPath.includes('/story');
+      const browserLanguage = (navigator.language || navigator.languages?.[0] || 'en').toLowerCase();
+      const wantsGerman = browserLanguage.startsWith('de');
+      const targetPath = wantsGerman ? (isStory ? '/de/story.html' : '/de/') : (isStory ? '/story.html' : '/');
+
+      if ((currentPath === '/' || currentPath === '/de/' || currentPath === '/story.html' || currentPath === '/de/story.html') && currentPath !== targetPath) {
+        window.location.replace(targetPath + window.location.hash + window.location.search);
+      }
+    })();
+  </script>
+  <script>
+    (function () {
+      const currentPath = window.location.pathname;
+      const isStory = currentPath.includes('/story');
+      const browserLanguage = (navigator.language || navigator.languages?.[0] || 'en').toLowerCase();
+      const wantsGerman = browserLanguage.startsWith('de');
+      const targetPath = wantsGerman ? (isStory ? '/de/story.html' : '/de/') : (isStory ? '/story.html' : '/');
+
+      if ((currentPath === '/' || currentPath === '/de/' || currentPath === '/story.html' || currentPath === '/de/story.html') && currentPath !== targetPath) {
+        window.location.replace(targetPath + window.location.hash + window.location.search);
+      }
+    })();
+  </script>
 </head>
 <body>
 <section class="hero">

@@ -21,6 +21,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css">
+  <script>
+  (function () {
+    const currentPath = window.location.pathname;
+    const isStory = currentPath.includes('/story');
+    const browserLanguage = (navigator.language || navigator.languages?.[0] || 'en').toLowerCase();
+    const wantsGerman = browserLanguage.startsWith('de');
+    const targetPath = wantsGerman ? (isStory ? '/de/story.html' : '/de/') : (isStory ? '/story.html' : '/');
+
+    if ((currentPath === '/' || currentPath === '/de/' || currentPath === '/story.html' || currentPath === '/de/story.html') && currentPath !== targetPath) {
+      window.location.replace(targetPath + window.location.hash + window.location.search);
+    }
+  })();
+  </script>
   <style>
   body{background:var(--bg)}
 
@@ -163,38 +176,70 @@
 
     <section class="story-hero">
       <span class="story-eyebrow">Our story</span>
-      <h1 class="story-h1">The path here.<br><em>Three decades in the making.</em></h1>
-      <p class="story-lede">Senda is Romansh - Switzerland's fourth language, spoken in the high valleys and it means "path." This is ours.</p>
+      <h1 class="story-h1">Every great journey<br><em>starts with a path.</em></h1>
+      <p class="story-lede"><strong>SENDA</strong> means <em>path</em> in Romansh, Switzerland's fourth national language. To us, it represents far more than a trail or a road. Every ride is a journey. Every decision is another step forward. And every brand is shaped over time, not created overnight. SENDA is the result of a journey that began nearly thirty years ago.</p>
     </section>
 
     <div class="story-body">
       <div class="path">
 
         <section class="waypoint">
-          <span class="waypoint-era">Late 1990s · The foothills</span>
-          <h2>Two friends <em>who never stopped riding.</em></h2>
-          <p>We're two childhood friends who grew up in the Alpine foothills and now live in Zurich and London. We fell for road cycling in the late 1990s - back when it was widely considered a sport for old men. We didn't care. One of us had a cousin racing professionally at the time, and watching him suffer up mountains on the road and on television made the whole thing seem less like a hobby and more like a calling.</p>
-          <p>We started participating in local races and cycling events. We rode through the Alps, mostly, and wherever else work or curiosity took us.</p>
+          <span class="waypoint-era">Late 1990s · Where it all began</span>
+          <h2>Two friends. <em>One shared passion.</em></h2>
+          <p>We are two lifelong friends from the Swiss Alps, now based in Zurich and London.</p>
+          <p>In the late 1990s we discovered road cycling, long before it became the sport it is today. Since then, cycling has remained a constant throughout our lives.</p>
+          <p>Local races, alpine passes, multi-day tours and countless hours in the saddle have only reinforced one belief: a truly great bicycle creates a feeling that is difficult to explain—you simply have to ride it.</p>
         </section>
 
         <section class="waypoint">
-          <span class="waypoint-era">The building years</span>
-          <h2>Steel, then aluminum, <em>then carbon.</em></h2>
-          <p>Because we couldn't leave well enough alone, we built our own bikes. First steel, then aluminum, then carbon - always chasing lighter, stiffer, better. One of us went on to study materials science, the other architecture. In hindsight, we were splitting the bicycle between us: one obsessed with what it's made of, the other with how it looks and feels.</p>
+          <span class="waypoint-era">Learning by building</span>
+          <h2>Understanding instead of <em>simply buying.</em></h2>
+          <p>Over time, riding was no longer enough. We wanted to understand what makes one bicycle feel different from another.</p>
+          <p>We began building our own bikes, experimenting with steel, aluminium and eventually carbon, while diving deep into geometry, materials and engineering.</p>
+          <p>One of us studied Materials Science. The other Architecture.</p>
+          <p>Looking back, we naturally divided the bicycle between us: one focused on engineering and manufacturing, the other on proportion, design and the details that make a bicycle feel complete.</p>
+          <p>Those two perspectives continue to shape SENDA today.</p>
         </section>
 
         <section class="waypoint">
-          <span class="waypoint-era">2024 · The turn</span>
-          <h2>The manufacturers <em>behind the bikes you already know.</em></h2>
-          <p>The idea for SENDA took shape in 2024. We spent months building relationships with long-standing OEMs in the bicycle industry - the engineers and factories behind some of the most respected frames on the market. We visited their facilities, tested their products, assessed their processes, and selected the ones we'd trust with our own builds.</p>
-          <blockquote class="pullquote">"If we're this enthusiastic about it, why keep it to ourselves?"</blockquote>
+          <span class="waypoint-era">Why we founded SENDA</span>
+          <h2>Why do so many premium bicycles <em>still require compromises?</em></h2>
+          <p>Some brands excel in design. Others in engineering. Some offer outstanding value but compromise elsewhere. Finding the right balance is surprisingly rare.</p>
+          <p>Too often, a significant part of the purchase price pays for marketing, sponsorships and complex distribution networks rather than the bicycle itself.</p>
+          <p>We knew those compromises well—because we had made them ourselves.</p>
+          <p>So we decided to find out whether there was a better way.</p>
         </section>
 
         <section class="waypoint">
-          <span class="waypoint-era">Now · What we believe</span>
-          <h2>Pay for the bike. <em>Not the noise.</em></h2>
-          <p>A bike should perform <em>and</em> look exceptional - not one at the price of the other. Cutting-edge materials and honest engineering matter more than marketing budgets. And when you buy a SENDA, you should be paying for the bike - not for middlemen, sponsorship deals, or a flagship store on an expensive street.</p>
-          <p>We're now finalising our first models. Along the way, we'll ask for your opinion on designs and specs, ride with you, and help grow the cycling communities we're part of. Because a path is better when it's shared.</p>
+          <span class="waypoint-era">2024 · Building our own brand</span>
+          <h2>In 2024, we began creating <em>SENDA.</em></h2>
+          <p>Over many months we visited development centres and manufacturing facilities across Asia and Europe, meeting the engineers and production teams behind bicycles built for some of the world's most respected brands.</p>
+          <p>We evaluated materials, manufacturing processes and quality standards—not in search of the lowest cost, but of partners who share our commitment to craftsmanship, precision and long-term collaboration.</p>
+          <p>Because exceptional products are built by people who care about getting every detail right.</p>
+        </section>
+
+        <section class="waypoint">
+          <span class="waypoint-era">What we believe</span>
+          <h2>We believe cyclists should not have to <em>compromise.</em></h2>
+          <p>By combining our complementary backgrounds with long-standing relationships across the global cycling industry, we believe we can offer exactly that balance.</p>
+          <p>That is also why we sell directly.</p>
+          <p>Not because direct-to-consumer is fashionable, but because keeping our organisation lean allows us to invest where it matters most: engineering, materials, manufacturing quality and carefully selected components.</p>
+          <p>When you choose a SENDA, you should be paying for the bicycle—not for expensive marketing campaigns, flagship stores or unnecessary layers of distribution.</p>
+        </section>
+
+        <section class="waypoint">
+          <span class="waypoint-era">Experience over marketing</span>
+          <h2>We don't believe advertising makes a bicycle <em>better.</em></h2>
+          <p>That's why we develop our bikes together with experienced cyclists and a small group of carefully selected ambassadors who share our passion and provide honest feedback.</p>
+          <p>Over time, we hope to create places where SENDA can be experienced in person—clubhouses and test centres where people can meet, ride together and discover our bicycles.</p>
+          <p>Until then, our most important testing ground remains the road.</p>
+        </section>
+
+        <section class="waypoint">
+          <span class="waypoint-era">The journey continues</span>
+          <h2>Our first models are currently in their <em>final stage of development.</em></h2>
+          <p>As we prepare for launch, we welcome feedback on design, geometry and specifications.</p>
+          <p>Because the best journeys are rarely travelled alone.</p>
         </section>
 
       </div>
@@ -202,8 +247,8 @@
 
     <section class="story-close">
       <div class="story-close-rule"></div>
-      <h2>The path continues.<br><em>Ride it with us.</em></h2>
-      <p>Development updates, geometry previews, and priority launch access - we write only when there's something worth sharing.</p>
+      <h2>Ride with us.<br><em>We'll only get in touch when we have something worth sharing.</em></h2>
+      <p>Receive development updates, insights into our design process and early access to our first launches.</p>
       <a class="story-cta-btn" href="/#waitlist">Join the list</a>
     </section>
 

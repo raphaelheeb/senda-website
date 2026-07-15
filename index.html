@@ -21,6 +21,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/main.css">
+<script>
+(function () {
+  const currentPath = window.location.pathname;
+  const isStory = currentPath.includes('/story');
+  const browserLanguage = (navigator.language || navigator.languages?.[0] || 'en').toLowerCase();
+  const wantsGerman = browserLanguage.startsWith('de');
+  const targetPath = wantsGerman ? (isStory ? '/de/story.html' : '/de/') : (isStory ? '/story.html' : '/');
+
+  if ((currentPath === '/' || currentPath === '/de/' || currentPath === '/story.html' || currentPath === '/de/story.html') && currentPath !== targetPath) {
+    window.location.replace(targetPath + window.location.hash + window.location.search);
+  }
+})();
+</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
