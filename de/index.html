@@ -226,22 +226,11 @@ footer{padding:2.25rem 3.5rem;border-top:.5px solid var(--rule);display:flex;jus
   <script>
     (function () {
       const currentPath = window.location.pathname;
+      const query = new URLSearchParams(window.location.search);
+      const requestedLang = query.get('lang');
       const isStory = currentPath.includes('/story');
       const browserLanguage = (navigator.language || navigator.languages?.[0] || 'en').toLowerCase();
-      const wantsGerman = browserLanguage.startsWith('de');
-      const targetPath = wantsGerman ? (isStory ? '/de/story.html' : '/de/') : (isStory ? '/story.html' : '/');
-
-      if ((currentPath === '/' || currentPath === '/de/' || currentPath === '/story.html' || currentPath === '/de/story.html') && currentPath !== targetPath) {
-        window.location.replace(targetPath + window.location.hash + window.location.search);
-      }
-    })();
-  </script>
-  <script>
-    (function () {
-      const currentPath = window.location.pathname;
-      const isStory = currentPath.includes('/story');
-      const browserLanguage = (navigator.language || navigator.languages?.[0] || 'en').toLowerCase();
-      const wantsGerman = browserLanguage.startsWith('de');
+      const wantsGerman = requestedLang === 'de' ? true : requestedLang === 'en' ? false : browserLanguage.startsWith('de');
       const targetPath = wantsGerman ? (isStory ? '/de/story.html' : '/de/') : (isStory ? '/story.html' : '/');
 
       if ((currentPath === '/' || currentPath === '/de/' || currentPath === '/story.html' || currentPath === '/de/story.html') && currentPath !== targetPath) {
@@ -260,7 +249,7 @@ footer{padding:2.25rem 3.5rem;border-top:.5px solid var(--rule);display:flex;jus
     </a>
     <div class="nav-right">
       <span class="nav-tag">Schweiz · Seit 2026</span>
-      <a href="/" class="nav-lang-link" aria-label="Zu Englisch wechseln">EN</a>
+      <a href="/?lang=en" class="nav-lang-link" aria-label="Zu Englisch wechseln">EN</a>
       <a href="#waitlist" class="nav-cta-link">Zur Liste</a>
     </div>
   </nav>

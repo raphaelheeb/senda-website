@@ -24,9 +24,11 @@
 <script>
 (function () {
   const currentPath = window.location.pathname;
+  const query = new URLSearchParams(window.location.search);
+  const requestedLang = query.get('lang');
   const isStory = currentPath.includes('/story');
   const browserLanguage = (navigator.language || navigator.languages?.[0] || 'en').toLowerCase();
-  const wantsGerman = browserLanguage.startsWith('de');
+  const wantsGerman = requestedLang === 'de' ? true : requestedLang === 'en' ? false : browserLanguage.startsWith('de');
   const targetPath = wantsGerman ? (isStory ? '/de/story.html' : '/de/') : (isStory ? '/story.html' : '/');
 
   if ((currentPath === '/' || currentPath === '/de/' || currentPath === '/story.html' || currentPath === '/de/story.html') && currentPath !== targetPath) {
@@ -780,7 +782,7 @@ footer{
     </a>
     <div class="nav-right">
       <span class="nav-tag">Switzerland · Est. 2026</span>
-      <a href="/de/" class="nav-lang-link" aria-label="Switch to German">DE</a>
+      <a href="/de/?lang=de" class="nav-lang-link" aria-label="Switch to German">DE</a>
       <a href="#waitlist" class="nav-cta-link">Join the list</a>
     </div>
   </nav>
