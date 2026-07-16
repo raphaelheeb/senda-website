@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SENDA — Born in the Swiss Alps. Made to ride globally.</title>
-<meta name="description" content="Swiss road and gravel bikes. Precise without being cold. Beautiful without being loud. Coming 2027.">
+<title>SENDA — From the Swiss Alps. Designed for roads and trails.</title>
+<meta name="description" content="Swiss road and gravel bikes – precisely engineered, elegantly designed and uncompromisingly focused on performance. Coming 2027.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sendabikes.com">
-<meta property="og:title" content="SENDA — Born in the Swiss Alps. Made to ride globally.">
-<meta property="og:description" content="Swiss road and gravel bikes. Precise without being cold. Beautiful without being loud. Coming 2027.">
+<meta property="og:title" content="SENDA — From the Swiss Alps. Designed for roads and trails.">
+<meta property="og:description" content="Swiss road and gravel bikes – precisely engineered, elegantly designed and uncompromisingly focused on performance. Coming 2027.">
 <meta property="og:image" content="https://sendabikes.com/assets/img/alpine-cyclists.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SENDA — Born in the Swiss Alps. Made to ride globally.">
-<meta name="twitter:description" content="Swiss road and gravel bikes. Precise without being cold. Beautiful without being loud. Coming 2027.">
+<meta name="twitter:title" content="SENDA — From the Swiss Alps. Designed for roads and trails.">
+<meta name="twitter:description" content="Swiss road and gravel bikes – precisely engineered, elegantly designed and uncompromisingly focused on performance. Coming 2027.">
 <meta name="twitter:image" content="https://sendabikes.com/assets/img/alpine-cyclists.jpg">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -390,6 +390,7 @@ nav{
 .pillar-text{
   font-size:1rem;font-weight:300;line-height:2;color:var(--ink-mid);
 }
+.pillar-text+.pillar-text{margin-top:1rem}
 .pillar-line{
   position:absolute;bottom:0;left:0;
   height:.5px;width:0;background:var(--gold);
@@ -408,12 +409,13 @@ nav{
 .finishes-inner{max-width:1360px;margin:0 auto}
 .finishes-label{
   font-size:.72rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ink-light);margin-bottom:2.5rem;
+  color:var(--ink-light);margin-bottom:1.25rem;
   display:flex;align-items:center;gap:1rem;
 }
 .finishes-label::after{
   content:'';flex:1;height:.5px;background:var(--rule);
 }
+.finishes-sub{font-size:1rem;font-weight:300;line-height:1.8;color:var(--ink-mid);max-width:520px;margin-bottom:2.5rem;}
 .swatches{
   display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;
 }
@@ -793,8 +795,8 @@ footer{
 
   <div class="hero-body">
     <div class="hero-left">
-      <p class="hero-eyebrow">From the Swiss Alps.</p>
-      <h1 class="hero-h1">Designed for<br>roads and trails.</h1>
+      <p class="hero-eyebrow">Test bikes on the road since 2026</p>
+      <h1 class="hero-h1">From the<br>Swiss Alps.<br><em>Designed for roads and trails.</em></h1>
       <p class="hero-sub">Swiss road and gravel bikes – precisely engineered, elegantly designed and uncompromisingly focused on performance.</p>
       <p class="hero-spotted">Have you seen one of our frames? Then you discovered us early.</p>
     </div>
@@ -804,6 +806,7 @@ footer{
         <p class="form-card-tag">Follow our journey</p>
         <h2 class="form-card-h">Be among the first<br><em>when we launch.</em></h2>
         <p class="form-card-desc">Follow the development of our first road and gravel bikes – from geometry studies to the first rides.</p>
+        <p class="form-card-desc">Receive insights into our development process, information about design, geometry and components, and preferred access to our first launches.</p>
 
         <div class="form-divider"></div>
 
@@ -821,7 +824,7 @@ footer{
             <label for="heroConsent">I'd like to receive occasional updates from SENDA. I can unsubscribe at any time.</label>
           </div>
           <p class="form-error" id="heroError">Please agree to receive updates to continue.</p>
-          <button class="form-btn" id="heroSubmitBtn" onclick="handleHeroSubmit()">Join the ride →</button>
+          <button class="form-btn" id="heroSubmitBtn" onclick="handleHeroSubmit()">Join the list →</button>
         </div>
 
         <div class="form-success" id="heroSuccess">
@@ -849,12 +852,12 @@ footer{
 <!-- ── MANIFESTO ──────────────────────────────────────────────────────────── -->
 <section class="manifesto">
   <div class="manifesto-rule"></div>
-  <p class="manifesto-overline reveal">Road bikes · Gravel bikes · Built for every path</p>
+  <p class="manifesto-overline reveal">Precisely engineered.</p>
   <h2 class="manifesto-h reveal d1">
-    Precisely engineered.<br><em>Beautiful, without being loud.</em>
+    Beautiful, without being loud.<br><em>Performance you can feel.</em>
   </h2>
   <p class="manifesto-sub reveal d2">
-    SENDA creates road and gravel bikes where technology, design and riding experience come together.
+    SENDA creates road and gravel bikes where technology, design and riding experience come together.<br><br>Together with experienced riders, we develop our bikes from the first sketch to the final model – with the ambition to combine uncompromising performance with lasting enjoyment.
   </p>
   <div class="manifesto-facts reveal d2">
     <div class="fact">
@@ -885,7 +888,7 @@ footer{
           Developed in Switzerland.<br><em>Built for demanding riders.</em>
         </h2>
         <p class="drawing-copy-sub reveal d2">
-          Every angle, every radius and every carbon layer is carefully considered. Our goal is a balanced riding experience: efficient on climbs, precise through fast corners and comfortable over long distances. Our riders are part of the development process, helping us refine every detail along the way.
+          Every angle, every radius and every carbon layer is carefully considered.<br><br>Our goal is a balanced riding experience: efficient on climbs, precise through fast corners and comfortable over long distances.<br><br>Our riders are part of the development process, helping us refine every detail along the way.
         </p>
       </div>
     </div>
@@ -905,28 +908,32 @@ footer{
 <section class="pillars-wrap">
   <div class="pillars-section">
     <div class="pillars-intro reveal">
-      <h2 class="pillars-h">Three things<br>we won't<br><em>compromise on.</em></h2>
+      <h2 class="pillars-h">Three things<br>we never<br><em>compromise on.</em></h2>
       <p class="pillars-desc">
         We build road and gravel bikes with focus on what truly matters – and leave everything else behind.
       </p>
     </div>
     <div class="pillars-grid">
       <div class="pillar reveal">
-        <span class="pillar-n">01 ——</span>
-        <h3 class="pillar-title">Clear Engineering</h3>
-        <p class="pillar-text">We combine advanced carbon materials with precise construction to create performance where it matters. Efficient power transfer when accelerating. Precise handling through technical sections. Balanced performance over long distances. Our target weight for the top specification: below 7 kg.</p>
+        <span class="pillar-n">01 —— Clear Engineering</span>
+        <h3 class="pillar-title">Every fibre has<br>a purpose.</h3>
+        <p class="pillar-text">We combine advanced carbon materials with precise construction to create performance where it matters.</p>
+        <p class="pillar-text">Efficient power transfer when accelerating. Precise handling through technical sections. Balanced performance over long distances.</p>
+        <p class="pillar-text">Our target weight for the top specification: below 7 kg.</p>
         <div class="pillar-line"></div>
       </div>
       <div class="pillar reveal d1">
-        <span class="pillar-n">02 ——</span>
-        <h3 class="pillar-title">Refined Design</h3>
-        <p class="pillar-text">Performance does not need to be loud. Quiet lines, balanced proportions and carefully considered surfaces create a design language that is intentionally understated. Beautiful without distraction. Timeless beyond trends.</p>
+        <span class="pillar-n">02 —— Refined Design</span>
+        <h3 class="pillar-title">Performance does not<br>need to be loud.</h3>
+        <p class="pillar-text">Quiet lines, balanced proportions and carefully considered surfaces create a design language that is intentionally understated.</p>
+        <p class="pillar-text">Beautiful without distraction.<br>Timeless beyond trends.</p>
         <div class="pillar-line"></div>
       </div>
       <div class="pillar reveal d2">
-        <span class="pillar-n">03 ——</span>
-        <h3 class="pillar-title">Direct to Rider</h3>
-        <p class="pillar-text">More value in the bike. Less in the layers around it. We sell directly because we want to invest our resources where they make the greatest difference: In development, materials, components and quality. What you invest goes directly into your bike – not into unnecessary structures or multiple distribution layers.</p>
+        <span class="pillar-n">03 —— Direct to Rider</span>
+        <h3 class="pillar-title">More value in the bike.<br>Less in the layers around it.</h3>
+        <p class="pillar-text">We sell directly because we want to invest our resources where they make the greatest difference: in development, materials, components and quality.</p>
+        <p class="pillar-text">What you invest goes directly into your bike – not into unnecessary structures or multiple distribution layers.</p>
         <div class="pillar-line"></div>
       </div>
     </div>
@@ -938,10 +945,10 @@ footer{
   <div class="about-inner">
     <div class="reveal">
       <p class="about-label">Our Story</p>
-      <h2 class="about-h">Two friends. One shared passion.<br><em>More than three decades in the saddle.</em></h2>
+      <h2 class="about-h">Two friends.<br>One shared passion.<br><em>More than three decades in the saddle.</em></h2>
     </div>
     <div class="reveal d1">
-      <p class="about-body">Between us, materials science and architecture come together – precise engineering and thoughtful design. For years, we have built and refined our own bikes, always searching for better performance, perfect balance and the right riding feel. SENDA was created from the belief that road and gravel bikes should not require compromises between engineering excellence, aesthetics and experience.</p>
+      <p class="about-body">Between us, materials science and architecture come together – precise engineering and thoughtful design.<br><br>For years, we have built and refined our own bikes, always searching for better performance, perfect balance and the right riding feel.<br><br>SENDA was created from the belief that road and gravel bikes should not require compromises between engineering excellence, aesthetics and experience.</p>
       <a href="story.html" class="about-link">Read our full story →</a>
     </div>
   </div>
@@ -951,6 +958,7 @@ footer{
 <section class="finishes">
   <div class="finishes-inner">
     <p class="finishes-label reveal">Planned finishes</p>
+    <p class="finishes-sub reveal">Developed with the same philosophy as our bikes: reduced, timeless, crafted with attention to detail.</p>
     <div class="swatches">
       <div class="swatch reveal">
         <div class="swatch-color" style="background:#7e9aab"></div>
@@ -980,12 +988,12 @@ footer{
 <section class="cta-section">
   <div class="cta-inner">
     <div class="cta-rule"></div>
-    <p class="cta-label reveal">Developed for high performance.</p>
+    <p class="cta-label reveal">Follow our journey</p>
     <h2 class="cta-h reveal d1">
-      Still taking shape.
+      Developed for high performance.<br><em>Still taking shape.</em>
     </h2>
     <p class="cta-sub reveal d2">
-      Our first bikes are coming to life. Follow our journey from the first concept to the finished road and gravel bike. Receive development updates, insights from our studio and preferred access before launch. We will only reach out when we truly have something meaningful to share.
+      Our first bikes are coming to life. Follow our journey from the first concept to the finished road and gravel bike.<br><br>Receive development updates, insights from our studio and preferred access before launch. We will only reach out when we truly have something meaningful to share.
     </p>
     <div class="cta-form reveal d2">
       <input type="email" class="cta-input" id="ctaEmail"
@@ -1115,7 +1123,7 @@ function handleHeroSubmit(){
       hideStickyBar();
     },
     function(msg){
-      btn.textContent = 'Join the ride →';
+      btn.textContent = 'Join the list →';
       btn.disabled = false;
       errorEl.textContent = msg;
       errorEl.style.display = 'block';
