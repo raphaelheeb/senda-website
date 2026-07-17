@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORMA — Swiss-engineered wheels, by SENDA</title>
+<meta name="description" content="ORMA is SENDA's wheel division. Precision-engineered carbon wheelsets for road and gravel, developed by the same team, to the same standard.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sendabikes.com/orma/">
+<meta property="og:title" content="ORMA — Swiss-engineered wheels, by SENDA">
+<meta property="og:description" content="ORMA is SENDA's wheel division. Precision-engineered carbon wheelsets for road and gravel, developed by the same team, to the same standard.">
+<meta property="og:image" content="https://sendabikes.com/assets/img/alpine-cyclists.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ORMA — Swiss-engineered wheels, by SENDA">
+<meta name="twitter:description" content="ORMA is SENDA's wheel division. Precision-engineered carbon wheelsets for road and gravel, developed by the same team, to the same standard.">
+<meta name="twitter:image" content="https://sendabikes.com/assets/img/alpine-cyclists.jpg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>
+(function () {
+  const currentPath = window.location.pathname;
+  const query = new URLSearchParams(window.location.search);
+  const requestedLang = query.get('lang');
+  const browserLanguage = (navigator.language || navigator.languages?.[0] || 'en').toLowerCase();
+  const wantsGerman = requestedLang === 'de' ? true : requestedLang === 'en' ? false : browserLanguage.startsWith('de');
+  const targetPath = wantsGerman ? '/de/orma/' : '/orma/';
+
+  if ((currentPath === '/orma/' || currentPath === '/orma/index.html' || currentPath === '/de/orma/' || currentPath === '/de/orma/index.html') && currentPath !== targetPath) {
+    window.location.replace(targetPath + window.location.hash + window.location.search);
+  }
+})();
+</script>
+<style>
+body{background:var(--bg)}
+
+/* ── ORMA wordmark (text lockup — no image asset yet) ─────────────────── */
+.orma-logo{
+  font-size:1.3rem;font-weight:200;letter-spacing:.32em;color:var(--ink);
+  display:flex;align-items:center;gap:.75rem;text-decoration:none;
+}
+.orma-logo::before{content:'';display:block;width:20px;height:.5px;background:var(--gold)}
+.nav-tag-link{
+  font-size:.75rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-light);text-decoration:none;transition:color .2s;
+}
+.nav-tag-link:hover{color:var(--ink)}
+.footer-logo-text{
+  font-size:1rem;font-weight:200;letter-spacing:.32em;color:var(--ink-light);
+  display:flex;align-items:center;gap:.6rem;text-decoration:none;opacity:.7;
+}
+.footer-logo-text::before{content:'';display:block;width:16px;height:.5px;background:var(--ink-light)}
+
+/* ── Hero ───────────────────────────────────────────────────────────────── */
+.orma-hero{
+  padding:clamp(4rem,9vw,7rem) 3.5rem clamp(2.5rem,5vw,4rem);
+  max-width:1200px;margin:0 auto;
+  border-bottom:.5px solid var(--rule);
+}
+.orma-eyebrow{
+  font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-muted);display:block;margin-bottom:1.6rem;
+}
+.orma-h1{
+  font-size:clamp(2.4rem,5.5vw,4.4rem);
+  font-weight:300;line-height:1.06;letter-spacing:-.02em;
+  color:var(--ink);margin-bottom:1.6rem;
+}
+.orma-h1 em{font-style:italic;font-weight:200;color:var(--gold)}
+.orma-lede{
+  font-size:1.0625rem;font-weight:300;line-height:1.85;
+  color:var(--ink-mid);max-width:560px;
+}
+.orma-lede + .orma-lede{margin-top:1rem}
+
+/* ── Facts strip ────────────────────────────────────────────────────────── */
+.orma-facts{
+  display:flex;gap:4rem;flex-wrap:wrap;
+  max-width:1200px;margin:0 auto;
+  padding:2.75rem 3.5rem;
+  border-bottom:.5px solid var(--rule);
+}
+.fact{text-align:left}
+.fact-n{
+  font-size:2.2rem;font-weight:300;letter-spacing:-.02em;
+  color:var(--ink);line-height:1;
+}
+.fact-l{
+  font-size:.65rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-light);margin-top:.55rem;
+}
+
+/* ── Spec section ───────────────────────────────────────────────────────── */
+.spec-section{
+  max-width:1200px;margin:0 auto;
+  padding:clamp(4rem,8vw,6rem) 3.5rem;
+  border-bottom:.5px solid var(--rule);
+}
+.spec-head{
+  display:grid;grid-template-columns:1fr 1.4fr;
+  gap:4rem;align-items:end;margin-bottom:3rem;
+}
+.spec-label{
+  font-size:.73rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-light);
+}
+.spec-label-rule{width:20px;height:.5px;background:var(--gold-muted);margin-bottom:1.25rem}
+.spec-h{
+  font-size:clamp(1.6rem,2.8vw,2.4rem);
+  font-weight:300;letter-spacing:-.01em;line-height:1.32;color:var(--ink);
+}
+.spec-h em{font-style:italic;color:var(--gold)}
+.spec-intro{
+  margin-top:1.25rem;padding-left:1.75rem;border-left:.5px solid var(--rule);
+  font-size:1rem;font-weight:300;line-height:2;color:var(--ink-mid);max-width:540px;
+}
+.spec-table{border-top:.5px solid var(--rule)}
+.spec-row{
+  display:grid;grid-template-columns:1fr 1.4fr;gap:2rem;
+  padding:1.1rem 0;border-bottom:.5px solid var(--rule-light);
+}
+.spec-row-label{
+  font-size:.78rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-light);
+}
+.spec-row-value{font-size:1rem;font-weight:300;color:var(--ink)}
+
+/* ── Pillars ────────────────────────────────────────────────────────────── */
+.pillars-wrap{border-bottom:.5px solid var(--rule)}
+.pillars-section{max-width:1200px;margin:0 auto;padding:clamp(4rem,8vw,6rem) 3.5rem}
+.pillars-intro{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;
+  padding-bottom:2.75rem;border-bottom:.5px solid var(--rule);
+}
+.pillars-h{
+  font-size:clamp(2rem,3.5vw,3rem);
+  font-weight:300;line-height:1.12;letter-spacing:-.015em;color:var(--ink);
+}
+.pillars-h em{font-style:italic}
+.pillars-desc{
+  font-size:1rem;font-weight:300;line-height:2;
+  color:var(--ink-mid);max-width:400px;margin-left:auto;
+}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:.5px solid var(--rule)}
+.pillar{padding:3rem 3rem 3rem 0;border-right:.5px solid var(--rule);position:relative;overflow:hidden}
+.pillar:first-child{padding-left:0}
+.pillar:not(:first-child){padding-left:3rem}
+.pillar:last-child{border-right:none;padding-right:0}
+.pillar-n{
+  font-size:.72rem;font-weight:400;letter-spacing:.1em;
+  color:var(--gold);margin-bottom:2rem;display:block;
+}
+.pillar-title{
+  font-size:1.3rem;font-weight:400;letter-spacing:-.01em;
+  color:var(--ink);margin-bottom:.9rem;line-height:1.2;
+}
+.pillar-text{font-size:1rem;font-weight:300;line-height:2;color:var(--ink-mid)}
+.pillar-text+.pillar-text{margin-top:1rem}
+.pillar-line{position:absolute;bottom:0;left:0;height:.5px;width:0;background:var(--gold);transition:width .7s ease}
+.pillar:hover .pillar-line{width:100%}
+
+/* ── Relationship-to-SENDA section ──────────────────────────────────────── */
+.kinship-section{
+  background:var(--bg-warm);border-bottom:.5px solid var(--rule);
+  padding:clamp(4rem,8vw,6rem) 3.5rem;text-align:center;
+}
+.kinship-inner{max-width:640px;margin:0 auto}
+.kinship-rule{width:36px;height:.5px;background:var(--gold);margin:0 auto 2rem}
+.kinship-label{
+  font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-muted);margin-bottom:1.5rem;
+}
+.kinship-h{
+  font-size:clamp(1.8rem,3.2vw,2.6rem);
+  font-weight:300;line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin-bottom:1.25rem;
+}
+.kinship-h em{font-style:italic;color:var(--gold)}
+.kinship-body{
+  font-size:1rem;font-weight:300;line-height:2;color:var(--ink-mid);margin-bottom:1.75rem;
+}
+.kinship-link{
+  font-size:.78rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;border-bottom:.5px solid var(--rule);padding-bottom:.2rem;
+  transition:color .2s,border-color .2s;
+}
+.kinship-link:hover{color:var(--gold);border-color:var(--gold)}
+
+/* ── Final CTA ──────────────────────────────────────────────────────────── */
+.cta-section{
+  background:var(--charcoal);padding:clamp(5rem,9vw,9rem) 3.5rem;
+  text-align:center;position:relative;overflow:hidden;
+}
+.cta-inner{position:relative;z-index:2;max-width:520px;margin:0 auto}
+.cta-rule{width:36px;height:.5px;background:var(--gold);margin:0 auto 2.5rem}
+.cta-label{
+  font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(196,169,107,.6);margin-bottom:1.5rem;
+}
+.cta-h{
+  font-size:clamp(2rem,3.8vw,3.4rem);
+  font-weight:300;line-height:1.1;letter-spacing:-.015em;color:#faf9f6;margin-bottom:1.25rem;
+}
+.cta-h em{font-style:italic;font-weight:200;color:var(--gold)}
+.cta-sub{
+  font-size:1rem;font-weight:300;line-height:1.95;
+  color:rgba(250,249,246,.45);max-width:460px;margin:0 auto 2.75rem;
+}
+.cta-form{display:flex;gap:.75rem;max-width:440px;margin:0 auto}
+.cta-input{
+  flex:1;background:rgba(250,249,246,.08);border:.5px solid rgba(250,249,246,.15);
+  color:#faf9f6;font-family:'Hanken Grotesk',sans-serif;font-size:1rem;font-weight:300;
+  padding:.9rem 1.1rem;outline:none;transition:border-color .2s,background .2s;
+  border-radius:0;-webkit-appearance:none;
+}
+.cta-input::placeholder{color:rgba(250,249,246,.3)}
+.cta-input:focus{border-color:rgba(196,169,107,.6);background:rgba(250,249,246,.12)}
+.cta-btn{
+  background:var(--gold);color:var(--charcoal);border:none;
+  font-family:'Hanken Grotesk',sans-serif;font-size:.78rem;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;padding:.9rem 1.75rem;
+  cursor:pointer;white-space:nowrap;transition:background .2s;flex-shrink:0;
+}
+.cta-btn:hover{background:#d4b97b}
+.cta-btn:disabled{opacity:.6;cursor:not-allowed}
+.cta-consent{
+  display:flex;align-items:flex-start;gap:.65rem;max-width:440px;margin:1rem auto 0;text-align:left;
+}
+.cta-consent input[type=checkbox]{
+  flex-shrink:0;margin-top:.2rem;width:14px;height:14px;accent-color:var(--gold);cursor:pointer;
+}
+.cta-consent label{font-size:.7rem;font-weight:300;line-height:1.65;color:rgba(250,249,246,.45);cursor:pointer}
+.cta-consent-error{font-size:.72rem;color:rgba(220,150,150,.9);margin:.4rem auto 0;max-width:440px;display:none}
+.cta-note{font-size:.7rem;color:rgba(250,249,246,.28);margin-top:1rem;letter-spacing:.04em}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media(max-width:900px){
+  .nav-tag-link{display:none}
+  .orma-hero{padding:3.5rem 1.5rem 2.5rem}
+  .orma-facts{padding:2rem 1.5rem;gap:2rem}
+  .spec-section{padding:4rem 1.5rem}
+  .spec-head{grid-template-columns:1fr;gap:2rem}
+  .spec-row{grid-template-columns:1fr;gap:.35rem}
+  .pillars-section{padding:4rem 1.5rem}
+  .pillars-intro{grid-template-columns:1fr;gap:2rem}
+  .pillars-desc{margin-left:0;max-width:100%}
+  .pillars-grid{grid-template-columns:1fr}
+  .pillar{border-right:none;border-bottom:.5px solid var(--rule);padding:2.5rem 0!important}
+  .pillar:last-child{border-bottom:none}
+  .kinship-section{padding:4rem 1.5rem}
+  .cta-section{padding:5rem 1.5rem}
+  .cta-form{flex-direction:column}
+}
+@media(max-width:480px){
+  .orma-hero{padding:2.5rem 1.25rem 2rem}
+  .orma-facts{padding:1.75rem 1.25rem}
+  .spec-section{padding:3rem 1.25rem}
+  .pillars-section{padding:3rem 1.25rem}
+  .kinship-section{padding:3rem 1.25rem}
+  .cta-section{padding:4rem 1.25rem}
+  .cta-h{font-size:1.9rem}
+}
+</style>
+</head>
+<body>
+
+<nav class="page-nav">
+  <a href="/orma/" class="orma-logo" aria-label="ORMA">ORMA</a>
+  <div class="nav-right">
+    <a href="/" class="nav-tag-link">SENDA Wheels &amp; Components</a>
+    <a href="/de/orma/?lang=de" class="nav-lang-link" aria-label="Switch to German">DE</a>
+    <a href="#waitlist" class="nav-cta-link">Join the list</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="orma-hero">
+    <span class="orma-eyebrow">ORMA · SENDA Wheels &amp; Components</span>
+    <h1 class="orma-h1">Wheels, engineered<br><em>with the same obsession.</em></h1>
+    <p class="orma-lede">ORMA is SENDA's wheel and component line – the same engineering team, the same standard, the same obsession with getting the details right.</p>
+    <p class="orma-lede">Our first wheelset, Momentum, is on the test bench now: an allround carbon build for road and gravel, tuned for a balance of stiffness, comfort and everyday durability.</p>
+  </section>
+
+  <section class="orma-facts">
+    <div class="fact reveal">
+      <div class="fact-n">45&nbsp;mm</div>
+      <div class="fact-l">Allround rim depth</div>
+    </div>
+    <div class="fact reveal d1">
+      <div class="fact-n">120&nbsp;kg</div>
+      <div class="fact-l">Rated rider weight</div>
+    </div>
+    <div class="fact reveal d2">
+      <div class="fact-n">20H&nbsp;/&nbsp;20H</div>
+      <div class="fact-l">Straight-pull spoke count</div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <div class="spec-head">
+      <div class="reveal">
+        <div class="spec-label-rule"></div>
+        <p class="spec-label">Momentum · Test Wheelset</p>
+      </div>
+      <div>
+        <h2 class="spec-h reveal d1">Built to spec.<br><em>Tested before it's trusted.</em></h2>
+        <p class="spec-intro reveal d2">Before Momentum takes orders, every detail gets tested and refined on our current test wheelset – the same rider-first approach SENDA takes with its frames.</p>
+      </div>
+    </div>
+    <div class="spec-table reveal">
+      <div class="spec-row">
+        <div class="spec-row-label">Rim type</div>
+        <div class="spec-row-value">Non-wavy, hooked, tubeless-compatible</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-row-label">Internal / external width</div>
+        <div class="spec-row-value">24.8&nbsp;mm / 29.52&nbsp;mm</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-row-label">Rim depth</div>
+        <div class="spec-row-value">45&nbsp;mm</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-row-label">Hubs</div>
+        <div class="spec-row-value">H-WORKS HW288A, steel bearings</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-row-label">Spoke system</div>
+        <div class="spec-row-value">Straight-pull</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-row-label">Spoke holes</div>
+        <div class="spec-row-value">20H / 20H</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-row-label">Spokes</div>
+        <div class="spec-row-value">FARSPORTS carbon, 3.8&nbsp;mm, T-shaped</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-row-label">Finish</div>
+        <div class="spec-row-value">Coating-free, scratch-resistant</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-row-label">Rider weight limit</div>
+        <div class="spec-row-value">120&nbsp;kg</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pillars-wrap">
+    <div class="pillars-section">
+      <div class="pillars-intro reveal">
+        <h2 class="pillars-h">Three things<br>we carried over<br><em>from SENDA.</em></h2>
+        <p class="pillars-desc">A wheelset is judged the same way a frame is: on the details you don't see until they matter.</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar reveal">
+          <span class="pillar-n">01 —— Rim Engineering</span>
+          <h3 class="pillar-title">A precise line.</h3>
+          <p class="pillar-text">Non-wavy, hooked and tubeless-compatible at a 45mm allround depth – deep enough to matter aerodynamically, shaped for stability in crosswinds and comfort over long days.</p>
+          <p class="pillar-text">An internal width of 24.8mm is tuned for the wider tubeless tires modern road and gravel setups actually run.</p>
+          <div class="pillar-line"></div>
+        </div>
+        <div class="pillar reveal d1">
+          <span class="pillar-n">02 —— Straight-Pull Build</span>
+          <h3 class="pillar-title">Direct power, true wheels.</h3>
+          <p class="pillar-text">20H front, 20H rear, laced with FARSPORTS T-shaped bladed carbon spokes at 3.8mm. Straight-pull spokes keep power transfer direct and the wheel true, ride after ride.</p>
+          <div class="pillar-line"></div>
+        </div>
+        <div class="pillar reveal d2">
+          <span class="pillar-n">03 —— Hubs Built to Last</span>
+          <h3 class="pillar-title">Reliability over marginal grams.</h3>
+          <p class="pillar-text">H-WORKS HW288A hubs run on steel bearings – chosen for durability, not just a lighter spec sheet. Coating-free, scratch-resistant finish.</p>
+          <p class="pillar-text">Rated to 120kg rider weight, because a wheelset should perform for every rider who trusts it.</p>
+          <div class="pillar-line"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kinship-section">
+    <div class="kinship-inner">
+      <div class="kinship-rule"></div>
+      <p class="kinship-label reveal">SENDA Wheels &amp; Components</p>
+      <h2 class="kinship-h reveal d1">Same team.<br><em>Same standard.</em></h2>
+      <p class="kinship-body reveal d2">ORMA is SENDA's wheel and component line – not a separate company, but the same team, workshop and direct-to-rider model, applied to what rolls underneath the frame. If you already know SENDA, you know what to expect from ORMA: precision without noise.</p>
+      <a href="/" class="kinship-link reveal d2">More about SENDA →</a>
+    </div>
+  </section>
+
+  <section class="cta-section" id="waitlist">
+    <div class="cta-inner">
+      <div class="cta-rule"></div>
+      <p class="cta-label reveal">Follow ORMA</p>
+      <h2 class="cta-h reveal d1">Be among the first<br><em>to ride ORMA.</em></h2>
+      <p class="cta-sub reveal d2">Our test wheelset is on the road now. Join the list for wheel-specific updates, and preferred access when we open orders.</p>
+      <div class="cta-form reveal d2">
+        <input type="email" class="cta-input" id="ormaEmail" placeholder="your@email.com" autocomplete="email">
+        <button class="cta-btn" id="ormaBtn" onclick="handleOrmaSubmit()">Join the list</button>
+      </div>
+      <div class="cta-consent reveal d3">
+        <input type="checkbox" id="ormaConsent" name="consent">
+        <label for="ormaConsent">I'd like to receive occasional updates from ORMA. I can unsubscribe at any time.</label>
+      </div>
+      <p class="cta-consent-error" id="ormaError">Please tick the box to continue.</p>
+      <p class="cta-note reveal d3">Occasional updates only · Unsubscribe anytime</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <a href="/orma/" class="footer-logo-text" aria-label="ORMA">ORMA</a>
+  <p class="footer-mid">Swiss-engineered wheels · SENDA Wheels &amp; Components</p>
+  <div class="footer-links">
+    <a href="mailto:info@sendabikes.com">Contact</a>
+    <a href="/legal/privacy.html">Privacy</a>
+    <a href="/">SENDA</a>
+  </div>
+</footer>
+
+<script>
+var revEls = document.querySelectorAll('.reveal');
+var revObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.12 });
+revEls.forEach(function(el){ revObs.observe(el); });
+
+var SUBSCRIBE_URL = 'https://senda-website-chi.vercel.app/api/subscribe';
+function subscribeToMailerLite(email, name, list, onSuccess, onError){
+  fetch(SUBSCRIBE_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, name: name || '', list: list })
+  })
+  .then(function(res){
+    if(res.ok) return onSuccess();
+    return res.json().then(function(d){ onError(d.error || 'Something went wrong.'); });
+  })
+  .catch(function(){ onError('Network error — please try again.'); });
+}
+
+function handleOrmaSubmit(){
+  var emailEl   = document.getElementById('ormaEmail');
+  var btn       = document.getElementById('ormaBtn');
+  var consentEl = document.getElementById('ormaConsent');
+  var errorEl   = document.getElementById('ormaError');
+
+  errorEl.style.display = 'none';
+  if(!emailEl.value || !emailEl.value.includes('@')){ emailEl.focus(); return; }
+  if(!consentEl.checked){ errorEl.style.display = 'block'; return; }
+
+  btn.textContent  = 'Joining…';
+  btn.disabled     = true;
+  emailEl.disabled = true;
+
+  subscribeToMailerLite(
+    emailEl.value.trim(),
+    '',
+    'orma',
+    function(){
+      btn.textContent = '✓ You\'re in';
+    },
+    function(){
+      btn.textContent  = 'Join the list';
+      btn.disabled     = false;
+      emailEl.disabled = false;
+    }
+  );
+}
+</script>
+</body>
+</html>

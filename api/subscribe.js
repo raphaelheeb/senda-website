@@ -14,10 +14,14 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).end();
 
-  const { email, name } = req.body;
+  const { email, name, list } = req.body;
   if (!email || !email.includes('@')) {
     return res.status(400).json({ error: 'Invalid email.' });
   }
+
+  const groupId = list === 'orma'
+    ? (process.env.ML_GROUP_ORMA || process.env.ML_GROUP)
+    : process.env.ML_GROUP;
 
   try {
     const mlRes = await fetch('https://connect.mailerlite.com/api/subscribers', {
@@ -30,7 +34,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         email,
         fields: { name: name || '' },
-        groups: [process.env.ML_GROUP]
+        groups: [groupId]
       })
     });
 
