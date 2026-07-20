@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>ORMA Momentum 45 — Wheels by SENDA</title>
-  <meta name="description" content="ORMA Momentum 45 is a carbon wheelset for modern road and fast gravel. Developed by SENDA, tested and refined before production.">
+  <meta name="description" content="ORMA Momentum 45 is a carbon road wheelset developed by SENDA, tested and refined before production.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sendabikes.com/orma/">
   <meta property="og:title" content="ORMA Momentum 45 — Wheels by SENDA">
-  <meta property="og:description" content="A carbon wheelset for modern road and fast gravel. Developed by SENDA, tested and refined before production.">
+  <meta property="og:description" content="A carbon road wheelset developed by SENDA, tested and refined before production.">
   <meta property="og:image" content="https://sendabikes.com/assets/img/orma-momentum-wheelset.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ORMA Momentum 45 — Wheels by SENDA">
-  <meta name="twitter:description" content="A carbon wheelset for modern road and fast gravel. Developed by SENDA, tested and refined before production.">
+  <meta name="twitter:description" content="A carbon road wheelset developed by SENDA, tested and refined before production.">
   <meta name="twitter:image" content="https://sendabikes.com/assets/img/orma-momentum-wheelset.png">
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -74,10 +74,10 @@
     .orma-hero {
       max-width: 1200px;
       margin: 0 auto;
-      padding: clamp(3.5rem, 8vw, 6.5rem) 3.5rem;
+      padding: clamp(3.5rem, 7vw, 5.75rem) 3.5rem;
       display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: clamp(2.5rem, 6vw, 6rem);
+      grid-template-columns: .82fr 1.18fr;
+      gap: clamp(2.5rem, 5vw, 5rem);
       align-items: center;
       border-bottom: .5px solid var(--rule);
     }
@@ -93,9 +93,9 @@
     }
 
     .orma-h1 {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.35rem;
       color: var(--ink);
-      font-size: clamp(2.7rem, 5vw, 4.6rem);
+      font-size: clamp(2.65rem, 4.25vw, 4rem);
       font-weight: 300;
       line-height: 1.04;
       letter-spacing: -.03em;
@@ -108,24 +108,37 @@
     }
 
     .hero-copy {
-      max-width: 500px;
+      max-width: 465px;
       color: var(--ink-mid);
       font-size: 1.06rem;
       font-weight: 300;
       line-height: 1.85;
     }
 
-    .hero-copy + .hero-copy { margin-top: 1rem; }
+    .hero-weight {
+      display: flex;
+      align-items: baseline;
+      gap: .75rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: .5px solid var(--rule);
+    }
 
-    .hero-note {
-      display: inline-flex;
-      margin-top: 1.75rem;
-      padding: .42rem .8rem;
-      border: .5px solid rgba(196,169,107,.45);
-      color: var(--gold-muted);
-      font-size: .67rem;
-      font-weight: 500;
-      letter-spacing: .13em;
+    .hero-weight-number {
+      color: var(--ink);
+      font-size: clamp(2.5rem, 3.6vw, 3.35rem);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -.04em;
+    }
+
+    .hero-weight-label {
+      max-width: 150px;
+      color: var(--ink-light);
+      font-size: .68rem;
+      font-weight: 400;
+      line-height: 1.45;
+      letter-spacing: .12em;
       text-transform: uppercase;
     }
 
@@ -133,13 +146,14 @@
       overflow: hidden;
       border: .5px solid var(--rule);
       background: #fff;
+      box-shadow: 0 20px 50px rgba(26,25,22,.035);
     }
 
     .hero-image-wrap img {
       display: block;
       width: 100%;
-      min-height: 390px;
-      object-fit: cover;
+      min-height: 440px;
+      object-fit: contain;
       object-position: center;
     }
 
@@ -159,7 +173,7 @@
     .facts {
       display: flex;
       flex-wrap: wrap;
-      gap: 4rem;
+      gap: clamp(3rem, 7vw, 7rem);
       max-width: 1200px;
       margin: 0 auto;
       padding: 2.75rem 3.5rem;
@@ -168,7 +182,7 @@
 
     .fact-n {
       color: var(--ink);
-      font-size: 2.2rem;
+      font-size: 2.35rem;
       font-weight: 300;
       line-height: 1;
       letter-spacing: -.02em;
@@ -687,10 +701,12 @@
     <section class="orma-hero">
       <div>
         <span class="eyebrow">ORMA · SENDA Wheels &amp; Components</span>
-        <h1 class="orma-h1">Momentum 45.<br><em>Built for speed.</em><br>Tuned for the roads beyond it.</h1>
-        <p class="hero-copy">A carbon wheelset developed for modern road and fast gravel — where efficiency, control and everyday confidence matter in equal measure.</p>
-        <p class="hero-copy">Momentum 45 is in active development now. We test, refine and validate every detail before we put the ORMA name on a production wheelset.</p>
-        <span class="hero-note">Development specification</span>
+        <h1 class="orma-h1">Momentum 45.<br><em>1,207 g.</em><br>Built for the road beyond it.</h1>
+        <p class="hero-copy">A carbon road wheelset for modern riding — developed to bring low weight, assured handling and everyday confidence into one considered build.</p>
+        <div class="hero-weight" aria-label="Wheelset weight: 1207 grams including rim tape">
+          <span class="hero-weight-number">1,207 g</span>
+          <span class="hero-weight-label">Wheelset weight, including rim tape</span>
+        </div>
       </div>
 
       <div class="hero-image-wrap">
@@ -712,8 +728,8 @@
         <div class="fact-l">Internal rim width</div>
       </div>
       <div class="fact reveal d2">
-        <div class="fact-n">Road + gravel</div>
-        <div class="fact-l">One wheelset, broader use</div>
+        <div class="fact-n">120 kg</div>
+        <div class="fact-l">Rider weight limit</div>
       </div>
     </section>
 
@@ -736,6 +752,10 @@
         </aside>
 
         <div class="spec-table reveal">
+          <div class="spec-row">
+            <div class="spec-row-label">Wheelset weight</div>
+            <div class="spec-row-value">1,207 g, including rim tape</div>
+          </div>
           <div class="spec-row">
             <div class="spec-row-label">Rim type</div>
             <div class="spec-row-value">Non-wavy, hooked, tubeless-compatible</div>
@@ -787,8 +807,8 @@
           <article class="pillar reveal">
             <span class="pillar-n">01 — Rim profile</span>
             <h3 class="pillar-title">A useful 45 mm.</h3>
-            <p class="pillar-text">A non-wavy, hooked, tubeless-compatible rim profile selected for modern all-round riding rather than a single narrow use case.</p>
-            <p class="pillar-text">Its 24.8 mm internal width is designed around the wider tubeless tyres used on current road and fast-gravel bikes.</p>
+            <p class="pillar-text">A non-wavy, hooked, tubeless-compatible rim profile selected for modern road riding rather than a single narrowly prescribed use case.</p>
+            <p class="pillar-text">Its 24.8 mm internal width is designed around the wider tubeless tyres used on current road bikes.</p>
             <div class="pillar-line"></div>
           </article>
 
@@ -812,21 +832,21 @@
 
     <section class="development-section">
       <div class="development-inner">
-        <span class="eyebrow reveal">Follow the development</span>
-        <h2 class="section-h reveal d1">A product is only ready<br>when it earns <em>its name.</em></h2>
+        <span class="eyebrow reveal">The Momentum platform</span>
+        <h2 class="section-h reveal d1">One clear starting point.<br><em>More ways to ride.</em></h2>
 
         <div class="development-grid">
           <div class="development-item reveal">
-            <h3>Ride validation</h3>
-            <p>Real rides across road and fast-gravel terrain, with attention to handling, comfort and confidence over distance.</p>
+            <h3>Momentum 45</h3>
+            <p>Our first wheelset is built around modern road riding: a 45 mm all-round depth for fast days, long distances and varied road conditions.</p>
           </div>
           <div class="development-item reveal d1">
-            <h3>Development notes</h3>
-            <p>Updates from the workshop: component decisions, setup learnings and the details that shape the final wheelset.</p>
+            <h3>More road options</h3>
+            <p>Additional rim depths are planned to give riders a more specific choice for climbing, all-round riding and pure speed.</p>
           </div>
           <div class="development-item reveal d2">
-            <h3>Production readiness</h3>
-            <p>We will open orders only when the specification, testing and product experience meet the standard we set for SENDA.</p>
+            <h3>Wider for gravel</h3>
+            <p>Wider rim versions for gravel are part of the road ahead, developed around the tyre volumes and terrain that gravel riding demands.</p>
           </div>
         </div>
       </div>
@@ -847,7 +867,7 @@
         <div class="cta-rule"></div>
         <p class="cta-label reveal">Follow Momentum 45</p>
         <h2 class="cta-h reveal d1">Be among the first<br><em>to ride ORMA.</em></h2>
-        <p class="cta-sub reveal d2">Receive Momentum development notes, first ride updates and priority access when we open orders.</p>
+        <p class="cta-sub reveal d2">Receive Momentum 45 development notes, future road and gravel wheel updates, and priority access when we open orders.</p>
 
         <div class="cta-form reveal d2">
           <input type="email" class="cta-input" id="ormaEmail" placeholder="your@email.com" autocomplete="email" aria-label="Email address">
