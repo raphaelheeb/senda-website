@@ -9,11 +9,11 @@
 <meta property="og:url" content="https://sendabikes.com/orma/">
 <meta property="og:title" content="ORMA — Swiss-engineered wheels, by SENDA">
 <meta property="og:description" content="ORMA is SENDA's wheel division. Precision-engineered carbon wheelsets for road and gravel, developed by the same team, to the same standard.">
-<meta property="og:image" content="https://sendabikes.com/assets/img/alpine-cyclists.jpg">
+<meta property="og:image" content="https://sendabikes.com/assets/img/orma-momentum-wheelset.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ORMA — Swiss-engineered wheels, by SENDA">
 <meta name="twitter:description" content="ORMA is SENDA's wheel division. Precision-engineered carbon wheelsets for road and gravel, developed by the same team, to the same standard.">
-<meta name="twitter:image" content="https://sendabikes.com/assets/img/alpine-cyclists.jpg">
+<meta name="twitter:image" content="https://sendabikes.com/assets/img/orma-momentum-wheelset.png">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -117,6 +117,21 @@ body{background:var(--bg)}
 .spec-intro{
   margin-top:1.25rem;padding-left:1.75rem;border-left:.5px solid var(--rule);
   font-size:1rem;font-weight:300;line-height:2;color:var(--ink-mid);max-width:540px;
+}
+.spec-body{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.spec-img-wrap{border:.5px solid var(--rule);overflow:hidden;background:#fff;position:relative}
+.spec-img-wrap img{width:100%;display:block;transition:transform .7s ease}
+.spec-img-wrap:hover img{transform:scale(1.02)}
+.spec-img-cap{
+  padding:.85rem 1.25rem;border-top:.5px solid var(--rule-light);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.spec-img-cap-text{
+  font-size:.7rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);
+}
+.spec-img-cap-badge{
+  font-size:.65rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);
+  border:.5px solid rgba(196,169,107,.35);padding:.25rem .65rem;
 }
 .spec-table{border-top:.5px solid var(--rule)}
 .spec-row{
@@ -243,6 +258,7 @@ body{background:var(--bg)}
   .orma-facts{padding:2rem 1.5rem;gap:2rem}
   .spec-section{padding:4rem 1.5rem}
   .spec-head{grid-template-columns:1fr;gap:2rem}
+  .spec-body{grid-template-columns:1fr;gap:2.5rem}
   .spec-row{grid-template-columns:1fr;gap:.35rem}
   .pillars-section{padding:4rem 1.5rem}
   .pillars-intro{grid-template-columns:1fr;gap:2rem}
@@ -311,42 +327,51 @@ body{background:var(--bg)}
         <p class="spec-intro reveal d2">Before Momentum takes orders, every detail gets tested and refined on our current test wheelset – the same rider-first approach SENDA takes with its frames.</p>
       </div>
     </div>
-    <div class="spec-table reveal">
-      <div class="spec-row">
-        <div class="spec-row-label">Rim type</div>
-        <div class="spec-row-value">Non-wavy, hooked, tubeless-compatible</div>
+    <div class="spec-body">
+      <div class="spec-img-wrap reveal">
+        <img src="../assets/img/orma-momentum-wheelset.png" alt="ORMA Momentum carbon wheelset" loading="lazy">
+        <div class="spec-img-cap">
+          <span class="spec-img-cap-text">ORMA Momentum · 45mm</span>
+          <span class="spec-img-cap-badge">In Development</span>
+        </div>
       </div>
-      <div class="spec-row">
-        <div class="spec-row-label">Internal / external width</div>
-        <div class="spec-row-value">24.8&nbsp;mm / 29.52&nbsp;mm</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-row-label">Rim depth</div>
-        <div class="spec-row-value">45&nbsp;mm</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-row-label">Hubs</div>
-        <div class="spec-row-value">Sealed hubs, steel bearings</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-row-label">Spoke system</div>
-        <div class="spec-row-value">Straight-pull</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-row-label">Spoke holes</div>
-        <div class="spec-row-value">20H / 20H</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-row-label">Spokes</div>
-        <div class="spec-row-value">Carbon, 3.8&nbsp;mm, T-shaped</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-row-label">Finish</div>
-        <div class="spec-row-value">Coating-free, scratch-resistant</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-row-label">Rider weight limit</div>
-        <div class="spec-row-value">120&nbsp;kg</div>
+      <div class="spec-table reveal">
+        <div class="spec-row">
+          <div class="spec-row-label">Rim type</div>
+          <div class="spec-row-value">Non-wavy, hooked, tubeless-compatible</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-row-label">Internal / external width</div>
+          <div class="spec-row-value">24.8&nbsp;mm / 29.52&nbsp;mm</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-row-label">Rim depth</div>
+          <div class="spec-row-value">45&nbsp;mm</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-row-label">Hubs</div>
+          <div class="spec-row-value">Sealed hubs, steel bearings</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-row-label">Spoke system</div>
+          <div class="spec-row-value">Straight-pull</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-row-label">Spoke holes</div>
+          <div class="spec-row-value">20H / 20H</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-row-label">Spokes</div>
+          <div class="spec-row-value">Carbon, 3.8&nbsp;mm, T-shaped</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-row-label">Finish</div>
+          <div class="spec-row-value">Coating-free, scratch-resistant</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-row-label">Rider weight limit</div>
+          <div class="spec-row-value">120&nbsp;kg</div>
+        </div>
       </div>
     </div>
   </section>
