@@ -93,18 +93,23 @@
     }
 
     .orma-h1 {
-      margin-bottom: 1.35rem;
+      margin-bottom: .85rem;
       color: var(--ink);
-      font-size: clamp(2.65rem, 4.25vw, 4rem);
+      font-size: clamp(3rem, 4.8vw, 4.6rem);
       font-weight: 300;
       line-height: 1.04;
       letter-spacing: -.03em;
     }
 
-    .orma-h1 em {
+    .hero-claim {
+      max-width: 430px;
+      margin-bottom: 1.35rem;
       color: var(--gold);
-      font-style: italic;
+      font-size: clamp(1.45rem, 2.05vw, 2rem);
       font-weight: 200;
+      font-style: italic;
+      line-height: 1.22;
+      letter-spacing: -.02em;
     }
 
     .hero-copy {
@@ -113,33 +118,6 @@
       font-size: 1.06rem;
       font-weight: 300;
       line-height: 1.85;
-    }
-
-    .hero-weight {
-      display: flex;
-      align-items: baseline;
-      gap: .75rem;
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: .5px solid var(--rule);
-    }
-
-    .hero-weight-number {
-      color: var(--ink);
-      font-size: clamp(2.5rem, 3.6vw, 3.35rem);
-      font-weight: 300;
-      line-height: 1;
-      letter-spacing: -.04em;
-    }
-
-    .hero-weight-label {
-      max-width: 150px;
-      color: var(--ink-light);
-      font-size: .68rem;
-      font-weight: 400;
-      line-height: 1.45;
-      letter-spacing: .12em;
-      text-transform: uppercase;
     }
 
     .hero-image-wrap {
@@ -170,30 +148,38 @@
       text-transform: uppercase;
     }
 
-    .facts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: clamp(3rem, 7vw, 7rem);
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2.75rem 3.5rem;
+    .hero-specs {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: .5rem;
+      border-top: .5px solid var(--rule);
       border-bottom: .5px solid var(--rule);
     }
 
-    .fact-n {
-      color: var(--ink);
-      font-size: 2.35rem;
-      font-weight: 300;
-      line-height: 1;
-      letter-spacing: -.02em;
+    .hero-spec {
+      padding: 1.5rem 1.5rem 1.45rem 0;
+      border-right: .5px solid var(--rule);
     }
 
-    .fact-l {
+    .hero-spec:not(:first-child) { padding-left: 1.5rem; }
+    .hero-spec:last-child { border-right: none; }
+
+    .hero-spec-value {
+      color: var(--ink);
+      font-size: clamp(1.7rem, 2.4vw, 2.25rem);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -.025em;
+    }
+
+    .hero-spec-label {
+      display: block;
       margin-top: .55rem;
       color: var(--ink-light);
       font-size: .65rem;
       font-weight: 400;
-      letter-spacing: .16em;
+      letter-spacing: .14em;
       text-transform: uppercase;
     }
 
@@ -632,11 +618,6 @@
         padding-left: 1.5rem;
       }
 
-      .facts {
-        gap: 2rem;
-        padding: 2rem 1.5rem;
-      }
-
       .section-head { gap: 2rem; }
       .spec-layout { gap: 2.5rem; }
 
@@ -669,6 +650,10 @@
       }
 
       .cta-form { flex-direction: column; }
+
+      .hero-specs { grid-template-columns: repeat(2, 1fr); }
+      .hero-spec:nth-child(2) { border-right: none; }
+      .hero-spec:nth-child(n+3) { border-top: .5px solid var(--rule); }
     }
 
     @media (max-width: 480px) {
@@ -682,8 +667,9 @@
         padding-left: 1.25rem;
       }
 
-      .facts { padding: 1.75rem 1.25rem; }
       .hero-image-wrap img { min-height: 260px; }
+      .hero-spec { padding: 1.25rem 1rem 1.2rem 0; }
+      .hero-spec:not(:first-child) { padding-left: 1rem; }
     }
   </style>
 </head>
@@ -701,12 +687,9 @@
     <section class="orma-hero">
       <div>
         <span class="eyebrow">ORMA · SENDA Wheelsets &amp; Components</span>
-        <h1 class="orma-h1">Momentum 45.<br><em>1207 g.</em><br>Built for the road beyond it.</h1>
-        <p class="hero-copy">A carbon road wheelset including carbon spokes for modern riding - developed to bring low weight, assured handling and everyday confidence into one considered build.</p>
-        <div class="hero-weight" aria-label="Wheelset weight: 1207 grams including rim tape">
-          <span class="hero-weight-number">1207 g</span>
-          <span class="hero-weight-label">Wheelset weight, including rim tape</span>
-        </div>
+        <h1 class="orma-h1">Momentum 45.</h1>
+        <p class="hero-claim">A lightweight all-round road wheelset.</p>
+        <p class="hero-copy">Developed for modern road riding, Momentum 45 balances low rotating weight with a 45 mm aero profile and the confidence to keep going when the road gets less predictable.</p>
       </div>
 
       <div class="hero-image-wrap">
@@ -716,20 +699,23 @@
           <span>In development</span>
         </div>
       </div>
-    </section>
-
-    <section class="facts">
-      <div class="fact reveal">
-        <div class="fact-n">45 mm</div>
-        <div class="fact-l">Rim depth</div>
-      </div>
-      <div class="fact reveal d1">
-        <div class="fact-n">24.8 mm</div>
-        <div class="fact-l">Internal rim width</div>
-      </div>
-      <div class="fact reveal d2">
-        <div class="fact-n">120 kg</div>
-        <div class="fact-l">Rider weight limit</div>
+      <div class="hero-specs" aria-label="Momentum 45 key specifications">
+        <div class="hero-spec reveal">
+          <div class="hero-spec-value">1,207 g</div>
+          <span class="hero-spec-label">Wheelset incl. rim tape</span>
+        </div>
+        <div class="hero-spec reveal d1">
+          <div class="hero-spec-value">45 mm</div>
+          <span class="hero-spec-label">Rim depth</span>
+        </div>
+        <div class="hero-spec reveal d2">
+          <div class="hero-spec-value">24.8 mm</div>
+          <span class="hero-spec-label">Internal rim width</span>
+        </div>
+        <div class="hero-spec reveal d3">
+          <div class="hero-spec-value">120 kg</div>
+          <span class="hero-spec-label">Rider weight limit</span>
+        </div>
       </div>
     </section>
 
@@ -754,7 +740,7 @@
         <div class="spec-table reveal">
           <div class="spec-row">
             <div class="spec-row-label">Wheelset weight</div>
-            <div class="spec-row-value">1207 g, including rim tape</div>
+            <div class="spec-row-value">1,207 g, including rim tape</div>
           </div>
           <div class="spec-row">
             <div class="spec-row-label">Rim type</div>
@@ -822,7 +808,7 @@
           <article class="pillar reveal d2">
             <span class="pillar-n">03 — Everyday confidence</span>
             <h3 class="pillar-title">Built for more than a perfect day in the saddle.</h3>
-            <p class="pillar-text">Sealed hubs with steel bearings and a mattte, scratch-resistant finish reflect the priority: dependable use, not specification-sheet theatre.</p>
+            <p class="pillar-text">Sealed hubs with steel bearings and a matte, scratch-resistant finish reflect the priority: dependable use, not specification-sheet theatre.</p>
             <p class="pillar-text">The current wheelset is rated to a 120 kg rider weight limit.</p>
             <div class="pillar-line"></div>
           </article>
@@ -838,11 +824,11 @@
         <div class="development-grid">
           <div class="development-item reveal">
             <h3>Momentum 45</h3>
-            <p>Our first wheelset is built around modern road riding: a 45 mm allround rim depth for fast days, long distances and varied road conditions.</p>
+            <p>Our first wheelset is built around modern road riding: a 45 mm all-round rim depth for fast days, long distances and varied road conditions.</p>
           </div>
           <div class="development-item reveal d1">
             <h3>More road options</h3>
-            <p>Additional rim depths are planned to give riders a more specific choice for climbing, allround riding and pure aerodynamic performance.</p>
+            <p>Additional rim depths are planned to give riders a more specific choice for climbing, all-round riding and pure aerodynamic performance.</p>
           </div>
           <div class="development-item reveal d2">
             <h3>Wider for gravel</h3>
