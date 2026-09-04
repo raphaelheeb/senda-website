@@ -94,9 +94,10 @@ nav{
   display:flex;align-items:center;justify-content:space-between;
   padding:2rem 3.5rem;
 }
-.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none}
 .nav-logo img{height:58px;width:auto;
   filter:brightness(0) invert(1) drop-shadow(0 1px 16px rgba(0,0,0,.5));}
+.nav-logo-icon{height:44px!important}
 .nav-right{
   display:flex;align-items:center;gap:1.25rem;
 }
@@ -590,6 +591,7 @@ footer{
 
   nav{padding:1.5rem 1.5rem}
   .nav-logo img{height:42px}
+  .nav-logo-icon{height:32px!important}
   .nav-tag{display:none}
 
   /* hero overrides on top of 1200px rules */
@@ -629,6 +631,7 @@ footer{
 /* ── ≤480px: small phone fine-tuning ───────────────────────────────────── */
 @media(max-width:480px){
   .nav-logo img{height:36px}
+  .nav-logo-icon{height:27px!important}
 
   .hero-left{padding:0 1.25rem 2.5rem}
   .hero-h1{font-size:2.2rem;letter-spacing:-.015em}
@@ -784,7 +787,8 @@ footer{
 
   <nav>
     <a href="/" class="nav-logo" aria-label="SENDA">
-      <img src="assets/logo/senda-logo2.png" alt="SENDA">
+      <img src="assets/logo/senda-logo2-transparent.png" alt="" class="nav-logo-icon">
+      <img src="assets/logo/senda-logo.svg" alt="SENDA">
     </a>
     <div class="nav-right">
       <span class="nav-tag">Switzerland · Est. 2026</span>
