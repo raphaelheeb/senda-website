@@ -30,12 +30,12 @@
 
   var isGerman = (document.documentElement.lang || '').toLowerCase().indexOf('de') === 0;
   var text = isGerman ? {
-    msg: 'Wir verwenden Microsoft Clarity, um anonymisiert zu verstehen, wie Besucher diese Website nutzen.',
+    msg: 'Diese Website verwendet Cookies, um die Nutzung zu analysieren und Ihre Erfahrung zu verbessern.',
     link: 'Mehr erfahren',
     accept: 'Akzeptieren',
     decline: 'Ablehnen'
   } : {
-    msg: 'We use Microsoft Clarity to understand, anonymously, how visitors use this site.',
+    msg: 'This site uses cookies to analyse usage and improve your experience.',
     link: 'Learn more',
     accept: 'Accept',
     decline: 'Decline'
