@@ -4,5 +4,5 @@
     <span class="card__name">{{ p.data.title }}</span>
     {% include "partials/badge.liquid", status: p.data.status %}
   </div>
-  <p class="card__sub">{% if p.data.status == "announced" %}{{ p.data.delivery | default: "Details to come" }}{% else %}{{ p.data.price }}{% endif %}</p>
+  <p class="card__sub">{% if p.data.status == "announced" %}Expected {{ p.data.delivery | default: "later" }}{% else %}{{ p.data.price }}{% endif %}</p>
 </a>

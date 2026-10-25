@@ -26,7 +26,7 @@ layout: layouts/base.liquid
 
         <div data-states="announced">
           {% if price %}<p class="buy__price">Expected price: {{ price }}{% if priceNote %}<span class="tiny">{{ priceNote }}</span>{% endif %}</p>{% endif %}
-          <p class="buy__note">{{ delivery | default: "Details to come" }}. Leave your email and we tell you first when it opens for pre-order.</p>
+          <p class="buy__note">Expected: {{ delivery | default: "details to come" }}. Leave your email and we tell you first when it opens for pre-order.</p>
         </div>
         <div data-states="preorder">
           <p class="buy__price">{{ price }}{% if priceNote %}<span class="tiny">{{ priceNote }}</span>{% endif %}</p>

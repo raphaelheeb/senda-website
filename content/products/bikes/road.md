@@ -7,7 +7,7 @@ status: announced
 price: From CHF 5,800
 priceNote: Indicative
 deposit: CHF 300
-delivery: First deliveries in 2027
+delivery: first deliveries in 2027
 summary: A light carbon road bike for long days in the mountains. Efficient on climbs, precise through fast corners, comfortable over distance.
 image: /assets/img/web/rider-road-2000.jpg
 alt: A rider on a carbon road bike on an alpine pass road

@@ -7,7 +7,7 @@ status: announced
 price: From CHF 5,800
 priceNote: Indicative
 deposit: CHF 300
-delivery: Following SENDA Road in 2027
+delivery: after SENDA Road, in 2027
 summary: The same frame philosophy, made for unpaved roads. Room for wide tyres, stable when the surface changes, still quick on tarmac.
 image: /assets/img/web/larch-road-2000.jpg
 alt: Two riders on a road through autumn larch forest
