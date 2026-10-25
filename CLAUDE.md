@@ -12,9 +12,18 @@ This repo is the brand site; it becomes a Shopify shop later (theme in a separat
 
 ## Build
 - Eleventy 3, output `_site/`. `npm run dev` (local server on :8080), `npm run build`.
-- Today the existing HTML pages are copied through unchanged (see `eleventy.config.js`).
-- New pages and the redesign use Liquid templates in `src/_includes/` and content in `content/` (Markdown, DE and EN).
+- Liquid templates in `src/_includes/` (layouts: base, product, category, post; partials: header, footer, card, frame, badge, signup).
   Liquid is chosen on purpose: the same templates move to the Shopify theme later.
+- Content in `content/`. One Markdown file per product in `content/products/<category>/`, with front matter
+  (title, status, price, delivery, specs, compat, options...). Folder data files (`*.11tydata.json`) set the category defaults.
+  Use `override:` in a folder data file when an array must replace, not extend, the parent value.
+- Design tokens in `src/styles/tokens.css`, components in `src/styles/site.css`, behaviour in `src/scripts/site.js`.
+- Images for the web go in `assets/img/web/` as `<name>-2000.jpg` and `<name>-1000.jpg`. Cards and menus use the 1000 version.
+- Not yet rebuilt in templates and copied through unchanged: `de/`, `story.html`, `legal/`. The old `index.html` and `orma/` stay in the repo
+  because the live site (GitHub Pages, serving `main` as-is) still uses them.
+- Merging the redesign into `main` only changes the live site once production serves the Eleventy build (Vercel or Cloudflare Pages).
+  Until that hosting move, review on Vercel previews only.
+- Proposal mode (`site.proposal` in `src/_data/site.json`): adds noindex and the product state switch. Set to false before going live.
 - `api/subscribe.js` is the newsletter endpoint (Vercel function, MailerLite). Keep it working.
 - Never commit secrets (`api_token.txt` is ignored).
 

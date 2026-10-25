@@ -13,15 +13,25 @@ import { mkdir, writeFile } from "node:fs/promises";
 const BASE = (process.argv[2] || "http://localhost:8080").replace(/\/$/, "");
 
 // Pages to review: [file name, path]
-// ?lang= stops the site's browser-language redirect from swapping DE and EN
 const PAGES = [
-  ["home-en", "/?lang=en"],
-  ["home-de", "/de/?lang=de"],
-  ["story-en", "/story.html?lang=en"],
-  ["story-de", "/de/story.html?lang=de"],
-  ["orma", "/orma/"],
-  ["impressum", "/legal/impressum.html"],
-  ["privacy", "/legal/privacy.html"],
+  ["01-home", "/"],
+  ["02-bikes", "/bikes/"],
+  ["03-bike-road-announced", "/bikes/road/?state=announced"],
+  ["04-bike-road-preorder", "/bikes/road/?state=preorder"],
+  ["05-bike-gravel", "/bikes/gravel/"],
+  ["06-configure", "/bikes/configure/"],
+  ["07-wheelsets", "/wheelsets/"],
+  ["08-orma-momentum-45", "/wheelsets/orma-momentum-45/"],
+  ["09-components", "/components/"],
+  ["10-orma-aero-bar", "/components/orma-aero-bar/"],
+  ["11-clothing", "/clothing/"],
+  ["12-jersey", "/clothing/jersey/"],
+  ["13-journal", "/journal/"],
+  ["14-journal-post", "/journal/geometry-first/"],
+  ["15-about", "/about/"],
+  ["16-orma", "/orma/"],
+  ["17-service", "/service/"],
+  ["18-styleguide", "/styleguide/"],
 ];
 
 const WIDTHS = [
@@ -61,8 +71,9 @@ for (const [label, width, height] of WIDTHS) {
       window.scrollTo(0, 0);
     });
     await page.addStyleTag({
-      content: ".reveal{opacity:1!important;transform:none!important}",
+      content: ".reveal{opacity:1!important;transform:none!important}.review-bar{display:none!important}",
     });
+    await page.evaluate(() => Promise.all([...document.images].map((i) => { i.loading = "eager"; return i.decode().catch(() => {}); })));
     await page.waitForTimeout(800);
 
     const shot = await page.screenshot({ fullPage: true, type: "jpeg", quality: 85 });

@@ -1,0 +1,22 @@
+{% unless hideSignup %}{% include "partials/signup.liquid" %}{% endunless %}
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/logo/senda-wordmark.png" alt="SENDA" width="645" height="112">
+        <p>Road and gravel bikes designed in Switzerland. Wheels and components by ORMA.</p>
+      </div>
+      {% for col in site.footer %}
+      <div>
+        <h2>{{ col.title }}</h2>
+        <ul>{% for l in col.links %}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{% endfor %}</ul>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SENDA, Zürich</span>
+      <nav aria-label="Social">{% for l in site.social %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</nav>
+      <nav aria-label="Legal">{% for l in site.legal %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</nav>
+    </div>
+  </div>
+</footer>

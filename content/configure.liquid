@@ -1,0 +1,79 @@
+---
+layout: layouts/base.liquid
+permalink: /bikes/configure/
+title: Configure your SENDA
+description: Choose road or gravel, a finish, a build and your size. Reserve with a refundable deposit.
+hideSignup: true
+---
+<div class="wrap">
+  <header class="page-head" style="padding-bottom: var(--s-4)">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/bikes/">Bikes</a><span>/</span><span>Configure</span></nav>
+    <h1 class="h1">Configure your SENDA</h1>
+    <p class="lead">Five steps, then a refundable CHF 300 deposit reserves your bike. Prices are indicative until pre-orders open.</p>
+  </header>
+
+  <form class="config" data-configurator onsubmit="return false">
+    <div>
+      <fieldset class="config__step" style="border-left:0;border-right:0;border-bottom:0">
+        <div class="config__step-head"><span class="config__n">1</span><legend class="h3">Platform</legend></div>
+        <div class="options">
+          <label class="option"><input type="radio" name="platform" value="SENDA Road" data-price="0" data-img="/assets/img/web/rider-road-1000.jpg" checked><span class="option__box"><span class="option__name">SENDA Road</span><span class="option__meta">Tarmac, long climbs, fast descents</span></span></label>
+          <label class="option"><input type="radio" name="platform" value="SENDA Gravel" data-price="0" data-img="/assets/img/web/larch-road-1000.jpg"><span class="option__box"><span class="option__name">SENDA Gravel</span><span class="option__meta">Mixed surfaces, wide tyres, all seasons</span></span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="config__step" style="border-left:0;border-right:0;border-bottom:0">
+        <div class="config__step-head"><span class="config__n">2</span><legend class="h3">Finish</legend></div>
+        <div class="options" style="--opt-cols: 4">
+          {% for f in finishes %}
+          <label class="option"><input type="radio" name="finish" value="{{ f.name }}" data-hex="{{ f.hex }}" {% if forloop.first %}checked{% endif %}><span class="option__box"><span class="option__swatch" style="background:{{ f.hex }}"></span><span class="option__name">{{ f.name }}</span><span class="option__meta">{{ f.surface }}</span></span></label>
+          {% endfor %}
+        </div>
+      </fieldset>
+
+      <fieldset class="config__step" style="border-left:0;border-right:0;border-bottom:0">
+        <div class="config__step-head"><span class="config__n">3</span><legend class="h3">Build</legend></div>
+        <div class="options" style="--opt-cols: 3">
+          <label class="option"><input type="radio" name="kit" value="Build one" data-price="5800" checked><span class="option__box"><span class="option__name">Build one</span><span class="option__meta">Electronic groupset, alloy cockpit. CHF 5,800</span></span></label>
+          <label class="option"><input type="radio" name="kit" value="Build two" data-price="7100"><span class="option__box"><span class="option__name">Build two</span><span class="option__meta">Higher-tier groupset, ORMA aero bar, power meter. CHF 7,100</span></span></label>
+          <label class="option"><input type="radio" name="kit" value="Build three" data-price="8500"><span class="option__box"><span class="option__name">Build three</span><span class="option__meta">Top-tier groupset, full ORMA cockpit and saddle. CHF 8,500</span></span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="config__step" style="border-left:0;border-right:0;border-bottom:0">
+        <div class="config__step-head"><span class="config__n">4</span><legend class="h3">Wheels</legend></div>
+        <div class="options">
+          <label class="option"><input type="radio" name="wheels" value="ORMA Momentum 45" data-price="0" checked><span class="option__box"><span class="option__name">ORMA Momentum 45</span><span class="option__meta">Standard. 1207 g, 45 mm, tubeless</span></span></label>
+          <label class="option"><input type="radio" name="wheels" value="ORMA, deeper rim" data-price="400" disabled><span class="option__box" style="opacity:.55"><span class="option__name">ORMA, deeper rim</span><span class="option__meta">Planned upgrade. Price to come</span></span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="config__step" style="border-left:0;border-right:0;border-bottom:0">
+        <div class="config__step-head"><span class="config__n">5</span><legend class="h3">Fit</legend></div>
+        <div class="fit-fields">
+          <label>Your height in cm<input class="field" name="height" type="number" inputmode="numeric" min="140" max="210" placeholder="e.g. 178"></label>
+          <label>Inseam in cm, optional<input class="field" name="inseam" type="number" inputmode="numeric" min="60" max="100" placeholder="e.g. 84"></label>
+        </div>
+        <p class="small mt-2">This gives an indicative size. Your fitting at a partner studio confirms size, stem and bar width before the frame is built.</p>
+      </fieldset>
+    </div>
+
+    <aside class="summary" aria-label="Your configuration" aria-live="polite">
+      <p class="label">Your SENDA</p>
+      <div class="frame ratio-bike"><img data-out-img src="/assets/img/web/rider-road-1000.jpg" alt=""></div>
+      <dl>
+        <dt>Platform</dt><dd data-out="platform"></dd>
+        <dt>Finish</dt><dd><span data-out-swatch style="display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle"></span><span data-out="finish"></span></dd>
+        <dt>Build</dt><dd data-out="kit"></dd>
+        <dt>Wheels</dt><dd data-out="wheels"></dd>
+        <dt>Size</dt><dd data-out="size"></dd>
+      </dl>
+      <div class="summary__total"><span class="small">Total, indicative</span><strong data-out="total"></strong></div>
+      <p class="tiny mt-1">Deposit today: CHF 300, refundable. Balance by bank transfer before delivery. Delivery window: 2027.</p>
+      <div class="buy__actions">
+        <button class="btn" type="button">Reserve with CHF 300 deposit</button>
+        <a class="btn btn--quiet" href="/service/#fitting">Book a fitting first</a>
+      </div>
+    </aside>
+  </form>
+</div>

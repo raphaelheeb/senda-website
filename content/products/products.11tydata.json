@@ -1,0 +1,10 @@
+{
+  "layout": "layouts/product.liquid",
+  "tags": [],
+  "permalink": "/{{ category }}/{{ page.fileSlug }}/",
+  "promise": [
+    ["Free delivery", "in Switzerland."],
+    ["30 days", "to return unused items."],
+    ["Questions?", "We answer within one working day."]
+  ]
+}

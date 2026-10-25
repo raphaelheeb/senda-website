@@ -1,0 +1,7 @@
+{%- comment -%} Image in a fixed-ratio frame. Without an image it shows a labelled placeholder at the same ratio. {%- endcomment -%}
+{%- assign r = ratio | default: "bike" -%}
+{%- if img and img != "" -%}
+<div class="frame ratio-{{ r }}{% if contain %} frame--contain{% endif %}"><img src="{{ img }}" alt="{{ alt }}" loading="lazy" decoding="async"></div>
+{%- else -%}
+<div class="frame frame--placeholder ratio-{{ r }}"><span>{{ label | default: "Image to come" }}</span></div>
+{%- endif -%}

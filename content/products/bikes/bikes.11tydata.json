@@ -1,0 +1,21 @@
+{
+  "category": "bikes",
+  "type": "bike",
+  
+  "ratio": "bike",
+  "list": "senda",
+  "sizes": ["XS", "S", "M", "L", "XL"],
+  "geometry": ["Stack", "Reach", "Effective top tube", "Head tube angle", "Seat tube angle", "Chainstay length"],
+  "override:promise": [
+    ["Fitting included", "at a partner studio before your bike is built."],
+    ["First service", "included."],
+    ["Crash replacement", "frame at a reduced price for the first owner."],
+    ["Frame registration", "for warranty and theft records."]
+  ],
+  "faq": [
+    ["When will the first bikes be delivered?", "First deliveries are planned for 2027. Every reservation gets a delivery window, and we write if anything moves."],
+    ["Is the deposit refundable?", "Yes. You can cancel a reservation and get the deposit back until the frame goes into production for your order."],
+    ["Can I test ride before buying?", "Test rides will run from partner studios in the Zürich area. Join the list to hear when the first dates open."],
+    ["Do you sell outside Switzerland?", "We start in Switzerland. EU delivery follows once the first series is out."]
+  ]
+}

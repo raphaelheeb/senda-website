@@ -1,0 +1,201 @@
+---
+layout: layouts/base.liquid
+---
+{%- assign catLabel = category | capitalize -%}
+<div class="wrap">
+  <nav class="crumbs mt-3" aria-label="Breadcrumb"><a href="/{{ category }}/">{{ catLabel }}</a><span>/</span><span>{{ title }}</span></nav>
+
+  <div class="product-top">
+    <div class="gallery">
+      {% include "partials/frame.liquid", img: image, ratio: ratio, contain: imageContain, alt: alt, label: imageLabel %}
+      <div class="gallery__thumbs">
+        {% include "partials/frame.liquid", img: image2, ratio: ratio, contain: image2Contain, alt: "", label: image2Label %}
+        {% include "partials/frame.liquid", img: image3, ratio: ratio, alt: "", label: image3Label %}
+      </div>
+    </div>
+
+    <aside class="buy" aria-label="Purchase">
+      <div class="buy__brand">
+        {% if brand == "ORMA" %}<a href="/orma/" class="orma-mark orma-mark--small" style="text-decoration:none"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">by SENDA</span></a>{% else %}<span class="label">SENDA {{ kind }}</span>{% endif %}
+      </div>
+      <h1 class="buy__title">{{ title }}</h1>
+      <p class="buy__summary">{{ summary }}</p>
+
+      <div class="buy__status">
+        <span class="badge js-status-badge badge--{{ status }}">{{ status | status_label }}</span>
+
+        <div data-states="announced">
+          {% if price %}<p class="buy__price">Expected price: {{ price }}{% if priceNote %}<span class="tiny">{{ priceNote }}</span>{% endif %}</p>{% endif %}
+          <p class="buy__note">{{ delivery | default: "Details to come" }}. Leave your email and we tell you first when it opens for pre-order.</p>
+        </div>
+        <div data-states="preorder">
+          <p class="buy__price">{{ price }}{% if priceNote %}<span class="tiny">{{ priceNote }}</span>{% endif %}</p>
+          <p class="buy__note">{% if deposit %}Reserve with a refundable {{ deposit }} deposit. {% endif %}Delivery window: {{ delivery }}.</p>
+        </div>
+        <div data-states="available">
+          <p class="buy__price">{{ price | replace: "From ", "From " }}{% if priceNote %}<span class="tiny">{{ priceNote }}</span>{% endif %}</p>
+          <p class="buy__note">{{ availableNote | default: "In stock. Ships from Zürich in 2 to 3 working days." }}</p>
+        </div>
+      </div>
+
+      {% if options %}
+      {% for opt in options %}
+      <fieldset class="buy__block" data-states="preorder available" style="border:0">
+        <legend class="option-label">{{ opt.label }}</legend>
+        <div class="chips">
+          {% for v in opt.values %}
+          <label class="chip"><input type="radio" name="{{ opt.label | slugify }}" {% if forloop.first %}checked{% endif %}><span>{% if v.hex %}<i style="background:{{ v.hex }}"></i>{% endif %}{{ v.name | default: v }}</span></label>
+          {% endfor %}
+        </div>
+        {% if opt.note %}<p class="tiny mt-1">{{ opt.note }}</p>{% endif %}
+      </fieldset>
+      {% endfor %}
+      {% endif %}
+
+      <form class="buy__actions js-signup" data-list="{{ list | default: 'senda' }}" data-states="announced" novalidate>
+        <label class="visually-hidden" for="notify-email">Email address</label>
+        <input class="field" id="notify-email" name="email" type="email" placeholder="Email address" autocomplete="email">
+        <button class="btn" type="submit">Notify me</button>
+        <label class="consent"><input type="checkbox" name="consent"> I agree to receive emails about this product and SENDA news.</label>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+      </form>
+      <div class="buy__actions" data-states="preorder">
+        {% if type == "bike" %}
+        <a class="btn" href="/bikes/configure/?platform={{ platform }}">Configure and reserve</a>
+        <a class="btn btn--quiet" href="/service/#fitting">Book a fitting first</a>
+        {% else %}
+        <button class="btn" type="button">Pre-order</button>
+        {% endif %}
+      </div>
+      <div class="buy__actions" data-states="available">
+        {% if type == "bike" %}
+        <a class="btn" href="/bikes/configure/?platform={{ platform }}">Configure your {{ title }}</a>
+        <a class="btn btn--quiet" href="/service/#fitting">Book a fitting first</a>
+        {% else %}
+        <button class="btn" type="button">Add to cart</button>
+        {% endif %}
+      </div>
+
+      <ul class="promise">
+        {% for p in promise %}<li><strong>{{ p[0] }}</strong> {{ p[1] }}</li>{% endfor %}
+      </ul>
+    </aside>
+  </div>
+</div>
+
+{% if dims %}
+<section class="section--tight section">
+  <div class="wrap">
+    <div class="dims" style="--dims: {{ dims.size }}">
+      {% for d in dims %}<div class="dim"><span class="dim__value">{{ d[0] }}</span><span class="dim__label">{{ d[1] }}</span></div>{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if content != blank %}
+<section class="section section--stone">
+  <div class="wrap split">
+    <div>
+      <h2 class="h2">{{ storyTitle }}</h2>
+      <div class="prose mt-3">{{ content }}</div>
+    </div>
+    {% include "partials/frame.liquid", img: storyImage, ratio: "bike", alt: storyAlt, label: "Detail photography to come" %}
+  </div>
+</section>
+{% endif %}
+
+{% if type == "bike" %}
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2 class="h2">Finishes</h2><p class="lead">Four colours, each chosen to age well. Every finish is available on every build.</p></div>
+    <div class="swatches">
+      {% for f in finishes %}<div><div class="swatch__color" style="background:{{ f.hex }}"></div><p class="swatch__name">{{ f.name }}</p><p class="swatch__note">{{ f.surface }} finish</p></div>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2 class="h2">Build kits</h2><p class="lead">Three builds on the same frame. Groupsets are being finalised; the lists below show the structure, not final parts.</p></div>
+    <div class="kits">
+      {% for k in kits %}
+      <div class="kit"><h3 class="h3">{{ k.name }}</h3><p class="kit__price">{{ k.price }}</p><ul>{% for i in k.items %}<li>{{ i }}</li>{% endfor %}</ul></div>
+      {% endfor %}
+    </div>
+    <div class="specced mt-5">
+      {% include "partials/frame.liquid", img: "/assets/img/web/orma-momentum-45-1000.jpg", ratio: "bike", contain: true, alt: "ORMA Momentum 45 wheelset" %}
+      <div>
+        <p class="orma-mark orma-mark--small"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">by SENDA</span></p>
+        {% if platform == "gravel" %}
+        <h3 class="h3 mt-2">Specced with ORMA, wider for gravel</h3>
+        <p class="small mt-1">A wider ORMA gravel wheelset is in development and will be standard on every {{ title }}. Momentum 45 shows the approach.</p>
+        {% else %}
+        <h3 class="h3 mt-2">Specced with ORMA Momentum 45</h3>
+        <p class="small mt-1">Every {{ title }} rolls on ORMA wheels, developed by the same team to the same standard.</p>
+        {% endif %}
+        <a class="text-link mt-2" style="display:inline-block" href="/wheelsets/orma-momentum-45/">See the wheelset</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--stone" id="geometry">
+  <div class="wrap">
+    <div class="section-head"><h2 class="h2">Geometry and sizing</h2><p class="lead">Five sizes. Final numbers are published when pre-orders open; the size finder in the configurator gives an indicative size today.</p></div>
+    <div class="scroll-x">
+      <table class="table table--wide">
+        <thead><tr><th>Measurement</th>{% for s in sizes %}<th>{{ s }}</th>{% endfor %}</tr></thead>
+        <tbody>
+          {% for row in geometry %}<tr><th>{{ row }}</th>{% for s in sizes %}<td class="no">to come</td>{% endfor %}</tr>{% endfor %}
+          <tr><th>Rider height (indicative)</th><td>155–163 cm</td><td>163–172 cm</td><td>172–180 cm</td><td>180–188 cm</td><td>188–198 cm</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row-between mt-4">
+      <p class="small">Between two sizes, or riding with a specific position? A fitting at a partner studio settles it.</p>
+      <a class="btn btn--quiet" href="/service/#fitting">Book a fitting</a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if specs %}
+<section class="section">
+  <div class="wrap split" style="align-items:start">
+    <div>
+      <h2 class="h2">{{ specsTitle | default: "Specifications" }}</h2>
+      {% if specsNote %}<p class="lead mt-2">{{ specsNote }}</p>{% endif %}
+    </div>
+    <table class="table">
+      <tbody>{% for s in specs %}<tr><th>{{ s[0] }}</th><td>{{ s[1] }}</td></tr>{% endfor %}</tbody>
+    </table>
+  </div>
+</section>
+{% endif %}
+
+{% if compat %}
+<section class="section section--stone" id="compatibility">
+  <div class="wrap">
+    <div class="section-head"><h2 class="h2">Will it fit my bike?</h2><p class="lead">Check your frame against the standards below. Items marked "to confirm" are being settled with the hub supplier.</p></div>
+    <div class="scroll-x">
+      <table class="table">
+        <thead><tr><th>Your bike</th><th>Fits</th><th>Note</th></tr></thead>
+        <tbody>{% for c in compat %}<tr><th>{{ c[0] }}</th><td class="{{ c[1] }}">{% case c[1] %}{% when "yes" %}Yes{% when "no" %}No{% when "planned" %}Planned{% else %}To confirm{% endcase %}</td><td>{{ c[2] }}</td></tr>{% endfor %}</tbody>
+      </table>
+    </div>
+    {% if type == "wheelset" %}<p class="small mt-3">Standard on SENDA Road. A wider ORMA wheelset for SENDA Gravel is in development. <a class="text-link" href="/bikes/">See the bikes</a></p>{% endif %}
+  </div>
+</section>
+{% endif %}
+
+{% if faq %}
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2 class="h2">Questions</h2><p class="lead">Anything else: <a class="text-link" href="/service/#contact">write to us</a>.</p></div>
+    <div class="faq">
+      {% for q in faq %}<details><summary>{{ q[0] }}</summary><p>{{ q[1] }}</p></details>{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

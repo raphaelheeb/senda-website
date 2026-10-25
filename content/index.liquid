@@ -1,0 +1,123 @@
+---
+layout: layouts/base.liquid
+permalink: /
+title: SENDA
+description: Swiss road and gravel bikes, precisely engineered and quietly designed. ORMA wheels and components by SENDA.
+---
+{%- assign bikes = collections.products | in_category: "bikes" -%}
+{%- assign wheels = collections.products | in_category: "wheelsets" -%}
+{%- assign parts = collections.products | in_category: "components" -%}
+{%- assign clothes = collections.products | in_category: "clothing" -%}
+
+<section class="hero">
+  <img src="/assets/img/web/hero-pass-2000.jpg" srcset="/assets/img/web/hero-pass-1000.jpg 1000w, /assets/img/web/hero-pass-2000.jpg 2000w" sizes="100vw" alt="Two riders on a road through an alpine valley in autumn" fetchpriority="high">
+  <div class="wrap hero__content">
+    <h1 class="display hero__title">From the Swiss Alps. Designed for roads and gravel.</h1>
+    <p class="hero__sub">Carbon road and gravel bikes, precisely engineered and quietly designed. First deliveries in 2027.</p>
+    <div class="hero__actions">
+      <a class="btn btn--light" href="/bikes/">See the bikes</a>
+      <a class="btn btn--ghost-light" href="#newsletter">Join the list</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="h2">Two bikes. One way of building them.</h2>
+      <p class="lead">Road and gravel share one design language and one engineering standard. Both are announced; reservations open with the first series.</p>
+    </div>
+    <div class="duo">
+      {% for b in bikes %}
+      <a class="duo__item" href="{{ b.url }}">
+        {% include "partials/frame.liquid", img: b.data.image, ratio: "bike", alt: b.data.alt %}
+        <div class="duo__meta"><h3 class="h3">{{ b.data.title }}</h3>{% include "partials/badge.liquid", status: b.data.status %}</div>
+        <p class="duo__desc">{{ b.data.summary }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section on-dark">
+  <div class="wrap">
+    <div class="orma-band__grid">
+      <div>
+        <p class="orma-mark"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">Wheels and components by SENDA</span></p>
+        <h2 class="h2 mt-4">Same team. Same standard. Available first.</h2>
+        <p class="lead mt-3">ORMA brings SENDA's engineering to the parts that connect a bike with the road. Every SENDA rolls on ORMA, and ORMA fits most other disc-brake road bikes too.</p>
+        <div class="hero__actions">
+          <a class="btn btn--light" href="/wheelsets/">See the wheelsets</a>
+          <a class="btn btn--ghost-light" href="/orma/">The ORMA story</a>
+        </div>
+      </div>
+      <div class="orma-band__products">
+        {% for p in wheels limit: 1 %}{% include "partials/card.liquid", p: p %}{% endfor %}
+        {% for p in parts limit: 1 %}{% include "partials/card.liquid", p: p %}{% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap split">
+    <div>
+      <h2 class="h2">Every fibre has a purpose.</h2>
+      <p class="lead mt-3">We are a materials scientist and an architect. Every angle, radius and carbon layer is drawn, tested and ridden before it is kept.</p>
+      <div class="dims mt-5" style="--dims: 2">
+        <div class="dim"><span class="dim__value">&lt; 7 kg</span><span class="dim__label">Target weight, top build</span></div>
+        <div class="dim"><span class="dim__value">45 mm</span><span class="dim__label">ORMA Momentum rim depth</span></div>
+      </div>
+      <a class="text-link mt-5" style="display:inline-block" href="/about/#engineering">How we engineer</a>
+    </div>
+    {% include "partials/frame.liquid", img: "/assets/img/web/frame-sketch-1000.jpg", ratio: "part", alt: "Pencil study of the SENDA frame", contain: true %}
+  </div>
+</section>
+
+<section class="section section--stone">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="h2">From first click to first ride.</h2>
+      <p class="lead">We sell directly, so what you pay goes into the bike. Fitting and delivery run through partner studios close to you.</p>
+    </div>
+    <ol class="steps">
+      <li class="step"><h3 class="h3">Configure</h3><p>Choose road or gravel, a finish and a build. Reserve with a refundable deposit.</p></li>
+      <li class="step"><h3 class="h3">Get fitted</h3><p>A partner studio fits you before your bike is built, so size and cockpit are right from day one.</p></li>
+      <li class="step"><h3 class="h3">Ride</h3><p>We assemble and check your bike in Switzerland. Pick it up at the studio or have it delivered.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="split">
+      {% include "partials/frame.liquid", img: "/assets/img/web/group-lake-close-1000.jpg", ratio: "bike", alt: "Four riders in clothing of different colours on a lakeside road" %}
+      <div>
+        <h2 class="h2">Clothing, first drop.</h2>
+        <p class="lead mt-3">Jersey, bib shorts, gilet and socks in graphite, champagne and rust. Small batches, made to be worn for years.</p>
+        <div class="cards mt-4" style="--cols: 2">
+          {% for p in clothes limit: 2 %}<a class="card" href="{{ p.url }}"><div class="card__top"><span class="card__name">{{ p.data.title }}</span>{% include "partials/badge.liquid", status: p.data.status %}</div><p class="card__sub">{{ p.data.price }}</p></a>{% endfor %}
+        </div>
+        <a class="btn btn--quiet mt-4" href="/clothing/">See all clothing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="row-between" style="margin-bottom: var(--s-4)">
+      <h2 class="h2">Journal</h2>
+      <a class="text-link" href="/journal/">All posts</a>
+    </div>
+    <div class="cards">
+      {% for post in collections.journal limit: 3 %}
+      <a class="card" href="{{ post.url }}">
+        {% include "partials/frame.liquid", img: post.data.image, ratio: "journal", alt: "" %}
+        <p class="label">{{ post.data.topic }}</p>
+        <h3 class="h3 mt-1">{{ post.data.title }}</h3>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

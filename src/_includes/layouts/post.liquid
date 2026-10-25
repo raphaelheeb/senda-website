@@ -1,0 +1,13 @@
+---
+layout: layouts/base.liquid
+---
+<article>
+  <div class="wrap">
+    <header class="post-head">
+      <p class="post-meta"><a href="/journal/" style="text-decoration:none">Journal</a><span>{{ topic }}</span><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | readable_date }}</time></p>
+      <h1 class="h1">{{ title }}</h1>
+    </header>
+    {% include "partials/frame.liquid", img: image, ratio: "journal", alt: "" %}
+    <div class="post-body section--tight section"><div class="prose">{{ content }}</div></div>
+  </div>
+</article>

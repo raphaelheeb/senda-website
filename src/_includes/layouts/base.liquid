@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="{{ lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title and page.url != "/" %}{{ title }} | SENDA{% else %}SENDA | Swiss road and gravel bikes{% endif %}</title>
+  <meta name="description" content="{{ description | default: site.description }}">
+  {% if site.proposal %}<meta name="robots" content="noindex, nofollow">{% endif %}
+  <meta property="og:title" content="{{ title | default: 'SENDA' }}">
+  <meta property="og:description" content="{{ description | default: site.description }}">
+  <meta property="og:image" content="{{ site.url }}/assets/img/web/hero-pass-2000.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/tokens.css">
+  <link rel="stylesheet" href="/styles/site.css">
+  <script src="/assets/js/cookie-consent.js" defer></script>
+  <script src="/scripts/site.js" defer></script>
+</head>
+<body>
+  <a class="visually-hidden" href="#main">Skip to content</a>
+  {% include "partials/header.liquid" %}
+  <main id="main"{% if status %} data-product data-state="{{ status }}"{% endif %}>
+    {{ content }}
+  </main>
+  {% include "partials/footer.liquid" %}
+  {% if site.proposal and status %}
+  <div class="review-bar" role="group" aria-label="Preview product state">
+    <span>Preview state</span>
+    <button type="button" data-set-state="announced">Announced</button>
+    <button type="button" data-set-state="preorder">Pre-order</button>
+    <button type="button" data-set-state="available">Available</button>
+  </div>
+  {% endif %}
+  <script>window.SENDA = { subscribeUrl: "{{ site.subscribeUrl }}" };</script>
+</body>
+</html>

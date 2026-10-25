@@ -1,0 +1,55 @@
+---
+layout: layouts/base.liquid
+permalink: /orma/
+title: ORMA
+signupList: orma
+description: ORMA is SENDA's line of wheels and components. Same team, same standard.
+---
+{%- assign wheels = collections.products | in_category: "wheelsets" -%}
+{%- assign parts = collections.products | in_category: "components" -%}
+<section class="section on-dark">
+  <div class="wrap split">
+    <div>
+      <p class="orma-mark"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">Wheels and components by SENDA</span></p>
+      <h1 class="h1 mt-4">Same team. Same standard.</h1>
+      <p class="lead mt-3">ORMA is SENDA's line of wheels and components. The same people, design principles and direct-to-rider approach, applied to the parts that connect a bike with the road beneath it.</p>
+      <div class="hero__actions">
+        <a class="btn btn--light" href="/wheelsets/">See the wheelsets</a>
+        <a class="btn btn--ghost-light" href="/components/">See the components</a>
+      </div>
+    </div>
+    {% include "partials/frame.liquid", img: "/assets/img/web/orma-momentum-45-1000.jpg", ratio: "bike", contain: true, alt: "ORMA Momentum 45 wheelset" %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2 class="h2">One clear starting point.</h2><p class="lead">Momentum 45 comes first. More rim depths and a wider gravel version follow, then the cockpit and saddle.</p></div>
+    <ol class="steps">
+      <li class="step"><h3 class="h3">Momentum 45</h3><p>A 45 mm all-round road wheelset for fast days, long distances and varied roads.</p></li>
+      <li class="step"><h3 class="h3">More road options</h3><p>Additional rim depths for climbing and for pure aerodynamic performance.</p></li>
+      <li class="step"><h3 class="h3">Wider for gravel</h3><p>Wider rims built around the tyre volumes and terrain that gravel riding asks for.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section--stone">
+  <div class="wrap">
+    <h2 class="h2" style="margin-bottom: var(--s-4)">The range</h2>
+    <div class="cards" style="--cols: 4">
+      {% for p in wheels %}{% include "partials/card.liquid", p: p %}{% endfor %}
+      {% for p in parts %}{% include "partials/card.liquid", p: p %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap split">
+    {% include "partials/frame.liquid", img: "/assets/img/web/rider-road-1000.jpg", ratio: "bike", alt: "A rider on a SENDA road bike with ORMA wheels" %}
+    <div>
+      <h2 class="h2">Standard on every SENDA.</h2>
+      <p class="lead mt-3">ORMA was developed alongside our bikes, so every SENDA is built with it. It also fits most other disc-brake road bikes.</p>
+      <a class="text-link mt-3" style="display:inline-block" href="/bikes/">See the bikes</a>
+    </div>
+  </div>
+</section>

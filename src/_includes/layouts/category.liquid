@@ -1,0 +1,34 @@
+---
+layout: layouts/base.liquid
+---
+{%- assign items = collections.products | in_category: category -%}
+<div class="wrap">
+  <header class="page-head">
+    <h1 class="h1">{{ title }}</h1>
+    <p class="lead">{{ intro }}</p>
+  </header>
+
+  {% if orma %}
+  <section class="orma-intro" aria-label="About ORMA">
+    <p class="orma-mark"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">Wheels and components by SENDA</span></p>
+    <div>
+      <p>ORMA is SENDA's line of wheels and components: the same team, the same engineering standard and the same direct-to-rider approach, applied to the parts that connect a bike with the road. Every SENDA bike is built with them, and they fit many other bikes too.</p>
+      <a class="text-link mt-2" style="display:inline-block" href="/orma/">The ORMA story</a>
+    </div>
+  </section>
+  {% endif %}
+
+  <div class="cards" style="--cols: {{ cols | default: 3 }}">
+    {% for p in items %}{% include "partials/card.liquid", p: p %}{% endfor %}
+  </div>
+
+  {% if guides %}
+  <div class="row-between mt-5" style="padding: var(--s-4) 0; border-top: 1px solid var(--rule);">
+    <p class="small">{{ guidesText }}</p>
+    <div style="display:flex; gap: var(--s-1); flex-wrap: wrap">
+      {% for g in guides %}<a class="btn btn--quiet" href="{{ g[1] }}">{{ g[0] }}</a>{% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+<div class="section--tight section"></div>

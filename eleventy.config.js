@@ -1,17 +1,17 @@
 // Eleventy build for sendabikes.com
 //
-// Phase 1 ("eleventy-port"): the existing hand-written pages are copied
-// through unchanged, so the built site in _site/ is identical to today's.
-// From "proposal-v1" on, pages move into Liquid layouts (src/_includes)
-// and content files (content/), one template at a time.
+// proposal-v1: new site structure built from Liquid templates (src/_includes)
+// and content files (content/). Liquid is the same template language Shopify
+// themes use, so layouts and partials can move to the shop later.
+//
+// Pages not yet redesigned (DE pages, story, legal) are still copied through
+// unchanged. The old index.html and orma/ are kept in the repo (the live site
+// on GitHub Pages serves them) but replaced in the build.
 
 export default function (eleventyConfig) {
-  // Existing static pages and assets, copied as-is
   const passthrough = [
-    "index.html",
     "story.html",
     "de",
-    "orma",
     "legal",
     "assets",
     "favicon.ico",
@@ -22,8 +22,30 @@ export default function (eleventyConfig) {
   for (const path of passthrough) {
     eleventyConfig.addPassthroughCopy(path);
   }
+  eleventyConfig.addPassthroughCopy({ "src/styles": "styles" });
+  eleventyConfig.addPassthroughCopy({ "src/scripts": "scripts" });
 
-  // Templates (Liquid, same language as Shopify themes) and Markdown content
+  // All products, in the order set by `order` in each file
+  eleventyConfig.addCollection("products", (api) =>
+    api
+      .getFilteredByGlob("content/products/**/*.md")
+      .sort((a, b) => (a.data.order || 99) - (b.data.order || 99))
+  );
+  eleventyConfig.addCollection("journal", (api) =>
+    api.getFilteredByGlob("content/journal/*.md").sort((a, b) => b.date - a.date)
+  );
+
+  // Products of one category: {% assign items = collections.products | in_category: "wheelsets" %}
+  eleventyConfig.addFilter("in_category", (items, category) =>
+    (items || []).filter((p) => p.data.category === category)
+  );
+  eleventyConfig.addFilter("status_label", (status) => {
+    return { announced: "Announced", preorder: "Pre-order", available: "Available" }[status] || status;
+  });
+  eleventyConfig.addFilter("readable_date", (date) =>
+    new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
+  );
+
   return {
     templateFormats: ["liquid", "md"],
     htmlTemplateEngine: "liquid",
