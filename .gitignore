@@ -1,2 +1,5 @@
 api_token.txt
 .DS_Store
+node_modules/
+_site/
+review/
