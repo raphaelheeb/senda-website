@@ -1,0 +1,95 @@
+/* SENDA design tokens
+   One file for the whole visual system. Micha's InDesign style sheet maps here:
+   swatches -> colours, paragraph styles -> type, spacing scale -> space.
+   Values below come from today's site and are a starting point for review. */
+
+:root {
+  /* Colour: surfaces */
+  --paper: #faf9f6;        /* page background */
+  --stone: #f4f1eb;        /* quiet sections */
+  --white: #ffffff;        /* product image ground */
+  --graphite: #272420;     /* ORMA band, footer */
+
+  /* Colour: text and lines */
+  --ink: #1a1916;
+  --ink-mid: #5a574f;
+  --ink-light: #8f8c84;
+  --rule: #e2dfd8;
+  --rule-light: #eeebe5;
+  --on-dark: #faf9f6;
+  --on-dark-mid: rgba(250, 249, 246, 0.64);
+  --rule-dark: rgba(250, 249, 246, 0.16);
+
+  /* Colour: accent (measurement lines, pre-order, focus) */
+  --gold: #c4a96b;
+  --gold-deep: #9c8350;    /* gold text on light ground, meets contrast */
+
+  /* Colour: bike finishes */
+  --finish-slate-blue: #7e9aab;
+  --finish-champagne-silver: #c2bfb5;
+  --finish-dusky-rose: #c4a099;
+  --finish-graphite: #494641;
+
+  /* Type: one family, four weights */
+  --font: "Hanken Grotesk", system-ui, sans-serif;
+  --w-light: 200;
+  --w-book: 300;
+  --w-regular: 400;
+  --w-medium: 500;
+
+  /* Type scale (desktop; mobile steps down in site.css) */
+  --t-display: 5.5rem;     /* 88 px  hero */
+  --t-h1: 4rem;            /* 64 px  page titles */
+  --t-h2: 2.75rem;         /* 44 px  section titles */
+  --t-h3: 1.5rem;          /* 24 px  card and block titles */
+  --t-lead: 1.25rem;       /* 20 px  intro paragraphs */
+  --t-body: 1.0625rem;     /* 17 px  running text */
+  --t-small: 0.875rem;     /* 14 px  labels, meta */
+  --t-tiny: 0.75rem;       /* 12 px  captions, legal */
+
+  --lh-tight: 1.04;
+  --lh-head: 1.15;
+  --lh-body: 1.7;
+  --track-tight: -0.03em;
+  --track-head: -0.02em;
+
+  /* Space: 8-point scale */
+  --s-1: 0.5rem;   /* 8 */
+  --s-2: 1rem;     /* 16 */
+  --s-3: 1.5rem;   /* 24 */
+  --s-4: 2.5rem;   /* 40 */
+  --s-5: 4rem;     /* 64 */
+  --s-6: 6.5rem;   /* 104 */
+  --s-7: 9rem;     /* 144 */
+
+  /* Layout: 1440 artboard, 1200 content, 12 columns, 24 gutter */
+  --content: 1200px;
+  --gutter: 24px;
+  --margin: 40px;
+  --header-h: 72px;
+
+  /* Image ratios */
+  --ratio-hero: 16 / 9;
+  --ratio-bike: 3 / 2;
+  --ratio-clothing: 4 / 5;
+  --ratio-journal: 3 / 2;
+  --ratio-part: 1 / 1;
+
+  --radius: 2px;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+@media (max-width: 760px) {
+  :root {
+    --t-display: 3rem;
+    --t-h1: 2.5rem;
+    --t-h2: 2rem;
+    --t-h3: 1.3rem;
+    --t-lead: 1.125rem;
+    --t-body: 1rem;
+    --margin: 20px;
+    --gutter: 16px;
+    --header-h: 60px;
+    --ratio-hero: 4 / 5;
+  }
+}

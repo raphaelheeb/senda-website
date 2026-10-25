@@ -1,0 +1,15 @@
+<section class="section section--stone" id="newsletter">
+  <div class="wrap signup">
+    <div>
+      <h2 class="h2">Hear from us when there is something to show.</h2>
+      <p class="lead mt-2">Development notes, first rides and early access to bikes, ORMA wheels and clothing. A few emails a year.</p>
+    </div>
+    <form class="signup__form js-signup" data-list="{{ signupList | default: 'senda' }}" novalidate>
+      <label class="visually-hidden" for="signup-email">Email address</label>
+      <input class="field" id="signup-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+      <button class="btn" type="submit">Join the list</button>
+      <label class="consent"><input type="checkbox" name="consent" required> I agree to receive occasional emails from SENDA and can unsubscribe at any time. <a href="/legal/privacy.html">Privacy</a></label>
+      <p class="form-msg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>

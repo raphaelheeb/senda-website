@@ -1,0 +1,63 @@
+<header class="site-header">
+  <div class="wrap site-header__bar">
+    <a class="logo" href="/" aria-label="SENDA home"><img src="/assets/logo/senda-wordmark.png" alt="SENDA" width="645" height="112"></a>
+
+    <nav class="nav" aria-label="Shop">
+      {% for item in site.nav %}
+      {% assign items = collections.products | in_category: item.category %}
+      <div class="nav__item">
+        <a class="nav__link" href="{{ item.url }}"{% if page.url contains item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+        <div class="mega">
+          <div class="wrap mega__inner">
+            <div>
+              {% if item.orma %}<p class="mega__orma"><span class="orma-mark orma-mark--small"><span class="orma-mark__word">ORMA</span></span> Wheels and components by SENDA</p>{% endif %}
+              <div class="mega__products">
+                {% for p in items limit: 4 %}
+                <a class="mega__product" href="{{ p.url }}">
+                  {% assign thumb = p.data.image | replace: "-2000", "-1000" %}{% include "partials/frame.liquid", img: thumb, ratio: p.data.ratio, contain: p.data.imageContain, alt: "", label: p.data.imageLabel %}
+                  <span class="mega__product-name">{{ p.data.title }}</span><br>
+                  {% include "partials/badge.liquid", status: p.data.status %}
+                </a>
+                {% endfor %}
+              </div>
+            </div>
+            <ul class="mega__links">
+              <li><a href="{{ item.url }}">All {{ item.label | downcase }}</a></li>
+              {% for l in item.links %}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </nav>
+
+    <nav class="nav nav--secondary" aria-label="Brand">
+      {% for l in site.secondary %}<div class="nav__item"><a class="nav__link" href="{{ l.url }}"{% if page.url contains l.url %} aria-current="page"{% endif %}>{{ l.label }}</a></div>{% endfor %}
+    </nav>
+
+    <div class="header-tools">
+      <a class="icon-btn search-btn" href="#" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+      </a>
+      <a class="lang" href="/de/?lang=de" aria-label="Deutsch"><strong>EN</strong> / DE</a>
+      <a class="btn header-cta" href="#newsletter">Join the list</a>
+      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" data-open="false">
+    {% for item in site.nav %}
+    <div class="drawer__group">
+      <a class="drawer__main" href="{{ item.url }}">{{ item.label }}</a>
+      <ul class="drawer__sub">{% for l in item.links %}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{% endfor %}</ul>
+    </div>
+    {% endfor %}
+    <div class="drawer__secondary">
+      {% for l in site.secondary %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}
+      <a href="/de/?lang=de">Deutsch</a>
+    </div>
+    <a class="btn btn--wide" href="#newsletter">Join the list</a>
+  </div>

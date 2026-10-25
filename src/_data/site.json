@@ -1,0 +1,94 @@
+{
+  "name": "SENDA",
+  "url": "https://sendabikes.com",
+  "description": "Swiss road and gravel bikes, and ORMA wheels and components by SENDA.",
+  "proposal": true,
+  "subscribeUrl": "https://senda-website-chi.vercel.app/api/subscribe",
+  "nav": [
+    {
+      "label": "Bikes",
+      "url": "/bikes/",
+      "category": "bikes",
+      "links": [
+        { "label": "Configure your SENDA", "url": "/bikes/configure/" },
+        { "label": "Find your size", "url": "/service/#sizing" },
+        { "label": "Fitting and test rides", "url": "/service/#fitting" },
+        { "label": "Road or gravel?", "url": "/journal/road-or-gravel/" }
+      ]
+    },
+    {
+      "label": "Wheelsets",
+      "url": "/wheelsets/",
+      "category": "wheelsets",
+      "orma": true,
+      "links": [
+        { "label": "Compatibility", "url": "/wheelsets/orma-momentum-45/#compatibility" },
+        { "label": "The ORMA story", "url": "/orma/" }
+      ]
+    },
+    {
+      "label": "Components",
+      "url": "/components/",
+      "category": "components",
+      "orma": true,
+      "links": [
+        { "label": "The ORMA story", "url": "/orma/" }
+      ]
+    },
+    {
+      "label": "Clothing",
+      "url": "/clothing/",
+      "category": "clothing",
+      "links": [
+        { "label": "Size guide", "url": "/service/#clothing-sizes" }
+      ]
+    }
+  ],
+  "secondary": [
+    { "label": "Journal", "url": "/journal/" },
+    { "label": "About", "url": "/about/" }
+  ],
+  "footer": [
+    {
+      "title": "Shop",
+      "links": [
+        { "label": "Bikes", "url": "/bikes/" },
+        { "label": "Wheelsets", "url": "/wheelsets/" },
+        { "label": "Components", "url": "/components/" },
+        { "label": "Clothing", "url": "/clothing/" },
+        { "label": "Configure your SENDA", "url": "/bikes/configure/" }
+      ]
+    },
+    {
+      "title": "Support",
+      "links": [
+        { "label": "Sizing and geometry", "url": "/service/#sizing" },
+        { "label": "Fitting and test rides", "url": "/service/#fitting" },
+        { "label": "Pre-order and delivery", "url": "/service/#preorder" },
+        { "label": "Warranty and crash replacement", "url": "/service/#warranty" },
+        { "label": "Register your SENDA", "url": "/service/#register" },
+        { "label": "FAQ", "url": "/service/#faq" },
+        { "label": "Contact", "url": "/service/#contact" }
+      ]
+    },
+    {
+      "title": "SENDA",
+      "links": [
+        { "label": "About", "url": "/about/" },
+        { "label": "Our story", "url": "/story.html" },
+        { "label": "The ORMA story", "url": "/orma/" },
+        { "label": "Journal", "url": "/journal/" },
+        { "label": "Partners", "url": "/about/#partners" }
+      ]
+    }
+  ],
+  "social": [
+    { "label": "Instagram", "url": "#" },
+    { "label": "Strava", "url": "#" }
+  ],
+  "legal": [
+    { "label": "Impressum", "url": "/legal/impressum.html" },
+    { "label": "Privacy", "url": "/legal/privacy.html" },
+    { "label": "Terms (AGB)", "url": "/service/#terms" }
+  ]
+}

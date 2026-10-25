@@ -1,0 +1,117 @@
+---
+layout: layouts/base.liquid
+permalink: /styleguide/
+title: Style guide
+hideSignup: true
+---
+<div class="wrap">
+  <header class="page-head">
+    <h1 class="h1">Style guide, proposal v1</h1>
+    <p class="lead">The visual system behind every page, for review. Colours, type, spacing and image ratios come from tokens.css; changing a value there changes the whole site.</p>
+  </header>
+
+  <section class="sg-row">
+    <h2 class="h3">Colour</h2>
+    <div>
+      <div class="sg-colors">
+        <div class="sg-color"><div class="sg-color__chip" style="background:var(--paper)"></div><p>Paper <code>#faf9f6</code></p></div>
+        <div class="sg-color"><div class="sg-color__chip" style="background:var(--stone)"></div><p>Stone <code>#f4f1eb</code></p></div>
+        <div class="sg-color"><div class="sg-color__chip" style="background:var(--white)"></div><p>White <code>#ffffff</code></p></div>
+        <div class="sg-color"><div class="sg-color__chip" style="background:var(--graphite)"></div><p>Graphite <code>#272420</code></p></div>
+        <div class="sg-color"><div class="sg-color__chip" style="background:var(--ink)"></div><p>Ink <code>#1a1916</code></p></div>
+        <div class="sg-color"><div class="sg-color__chip" style="background:var(--ink-mid)"></div><p>Ink mid <code>#5a574f</code></p></div>
+        <div class="sg-color"><div class="sg-color__chip" style="background:var(--ink-light)"></div><p>Ink light <code>#8f8c84</code></p></div>
+        <div class="sg-color"><div class="sg-color__chip" style="background:var(--rule)"></div><p>Rule <code>#e2dfd8</code></p></div>
+        <div class="sg-color"><div class="sg-color__chip" style="background:var(--gold)"></div><p>Gold <code>#c4a96b</code></p></div>
+        <div class="sg-color"><div class="sg-color__chip" style="background:var(--gold-deep)"></div><p>Gold deep <code>#9c8350</code></p></div>
+      </div>
+      <p class="small mt-3">Two values differ from today's site to meet text contrast: Ink light (was #9b9890) and Gold deep, a darker gold for text on light grounds.</p>
+      <div class="sg-colors mt-4">
+        {% for f in finishes %}<div class="sg-color"><div class="sg-color__chip" style="background:{{ f.hex }}"></div><p>{{ f.name }} <code>{{ f.hex }}</code></p></div>{% endfor %}
+      </div>
+      <p class="small mt-2">Bike finishes, used for swatches only.</p>
+    </div>
+  </section>
+
+  <section class="sg-row">
+    <h2 class="h3">Type</h2>
+    <div class="sg-type">
+      <div><code>Display 88/200</code><span class="display">Quietly fast</span></div>
+      <div><code>H1 64/200</code><span class="h1">Configure your SENDA</span></div>
+      <div><code>H2 44/300</code><span class="h2">Every fibre has a purpose.</span></div>
+      <div><code>H3 24/400</code><span class="h3">Build two</span></div>
+      <div><code>Lead 20/300</code><span class="lead">Road and gravel share one design language and one engineering standard.</span></div>
+      <div><code>Body 17/300</code><span>We combine advanced carbon materials with a precise construction, so stiffness goes where power goes.</span></div>
+      <div><code>Label 14/500</code><span class="label">Target weight, top build</span></div>
+      <div><code>Tiny 12/500</code><span class="tiny">Indicative price</span></div>
+      <p class="small mt-3">Hanken Grotesk throughout. Mobile steps: display 48, H1 40, H2 32, H3 21. Labels are set in sentence case, not capitals.</p>
+    </div>
+  </section>
+
+  <section class="sg-row">
+    <h2 class="h3">Space</h2>
+    <div class="sg-space">
+      <div><span style="width:8px"></span>8 px, s-1</div>
+      <div><span style="width:16px"></span>16 px, s-2</div>
+      <div><span style="width:24px"></span>24 px, s-3, gutter</div>
+      <div><span style="width:40px"></span>40 px, s-4</div>
+      <div><span style="width:64px"></span>64 px, s-5</div>
+      <div><span style="width:104px"></span>104 px, s-6</div>
+      <div><span style="width:144px"></span>144 px, s-7, between sections</div>
+      <p class="small mt-2">Desktop 1440 artboard, 1200 content, 12 columns, 24 px gutters. Mobile 390, 20 px margins.</p>
+    </div>
+  </section>
+
+  <section class="sg-row">
+    <h2 class="h3">Image ratios</h2>
+    <div class="sg-ratios">
+      <div>{% include "partials/frame.liquid", ratio: "hero", label: "Hero 16:9, mobile 4:5" %}</div>
+      <div>{% include "partials/frame.liquid", ratio: "bike", label: "Bike 3:2" %}</div>
+      <div>{% include "partials/frame.liquid", ratio: "clothing", label: "Clothing 4:5" %}</div>
+      <div>{% include "partials/frame.liquid", ratio: "journal", label: "Journal 3:2" %}</div>
+      <div>{% include "partials/frame.liquid", ratio: "part", label: "Component 1:1" %}</div>
+    </div>
+  </section>
+
+  <section class="sg-row">
+    <h2 class="h3">Measure</h2>
+    <div>
+      <div class="dims" style="--dims: 3">
+        <div class="dim"><span class="dim__value">&lt; 7 kg</span><span class="dim__label">Target weight, top build</span></div>
+        <div class="dim"><span class="dim__value">45 mm</span><span class="dim__label">Rim depth</span></div>
+        <div class="dim"><span class="dim__value">1207 g</span><span class="dim__label">Wheelset weight</span></div>
+      </div>
+      <p class="small mt-3">The one distinctive device: key figures set on a drawn dimension line, borrowed from technical drawings. Used only for real measurements.</p>
+    </div>
+  </section>
+
+  <section class="sg-row">
+    <h2 class="h3">Status and actions</h2>
+    <div>
+      <p style="display:flex;gap:var(--s-3);flex-wrap:wrap">{% include "partials/badge.liquid", status: "announced" %}{% include "partials/badge.liquid", status: "preorder" %}{% include "partials/badge.liquid", status: "available" %}</p>
+      <p class="mt-3" style="display:flex;gap:var(--s-1);flex-wrap:wrap"><a class="btn" href="#">Primary action</a><a class="btn btn--quiet" href="#">Secondary action</a><a class="text-link" href="#" style="align-self:center">Text link</a></p>
+      <div class="mt-3" style="max-width:420px"><input class="field" placeholder="Email address"></div>
+    </div>
+  </section>
+
+  <section class="sg-row">
+    <h2 class="h3">ORMA mark</h2>
+    <div>
+      <p class="orma-mark"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">Wheels and components by SENDA</span></p>
+      <p class="small mt-2">Typeset placeholder. The ORMA wordmark and its "by SENDA" lockup are still to be designed.</p>
+    </div>
+  </section>
+
+  <section class="sg-row" style="padding-bottom: var(--s-7)">
+    <h2 class="h3">Open questions</h2>
+    <ol class="sg-open">
+      <li>Keep Hanken Grotesk, or set headlines in a second face?</li>
+      <li>Is the light 200 weight for headlines right, or should headlines sit at 300?</li>
+      <li>Gold as the only accent: enough contrast, or too quiet for prices and status?</li>
+      <li>Homepage hero: landscape photograph as today, or a studio side profile of the bike once available?</li>
+      <li>ORMA band in graphite: right weight below SENDA, or should ORMA sit on stone?</li>
+      <li>Section spacing at 144 px: generous enough, or too much on long pages?</li>
+      <li>Clothing colour rust (#a4583c in the proposal): final value from the textile samples.</li>
+    </ol>
+  </section>
+</div>

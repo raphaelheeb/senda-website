@@ -1,0 +1,72 @@
+---
+layout: layouts/base.liquid
+permalink: /about/
+title: About
+description: SENDA means path in Romansh. Two friends from the Swiss Alps, a materials scientist and an architect, building road and gravel bikes.
+---
+<div class="wrap">
+  <header class="page-head">
+    <h1 class="h1">SENDA means path.</h1>
+    <p class="lead">In Romansh, one of Switzerland's four national languages. Two friends from the Swiss Alps, riding together since the late 1990s, building the road and gravel bikes we always looked for.</p>
+  </header>
+  <nav class="toc" aria-label="On this page">
+    <a href="#story">Our story</a><a href="#engineering">Engineering and materials</a><a href="#design">Design</a><a href="#partners">Partners</a><a href="#community">Rides and community</a>
+  </nav>
+</div>
+
+<section class="section" id="story">
+  <div class="wrap split">
+    {% include "partials/frame.liquid", img: "/assets/img/web/hero-pass-1000.jpg", ratio: "bike", alt: "Two riders on an alpine valley road" %}
+    <div>
+      <h2 class="h2">Two friends. One shared passion.</h2>
+      <div class="prose mt-3">
+        <p>We grew up in the Swiss Alps and found cycling together at a time when road riding was a niche and gravel bikes did not exist as a category. We raced locally, climbed passes, travelled by bike and built our own frames in steel, aluminium and later carbon.</p>
+        <p>One of us studied materials science and wanted to know how a bike works. The other studied architecture and wanted to know why a product feels right. SENDA is where those two questions meet.</p>
+      </div>
+      <a class="text-link mt-3" style="display:inline-block" href="/story.html">Read the full story</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--stone" id="engineering">
+  <div class="wrap">
+    <div class="section-head"><h2 class="h2">Engineering and materials</h2><p class="lead">Efficient power transfer, precise handling, balance over long distances. Carbon is laid where it does work and left out where it doesn't.</p></div>
+    <div class="dims" style="--dims: 3">
+      <div class="dim"><span class="dim__value">&lt; 7 kg</span><span class="dim__label">Target weight, SENDA Road top build</span></div>
+      <div class="dim"><span class="dim__value">1207 g</span><span class="dim__label">ORMA Momentum 45 wheelset</span></div>
+      <div class="dim"><span class="dim__value">2026</span><span class="dim__label">Test bikes on the road since</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="design">
+  <div class="wrap">
+    <div class="section-head"><h2 class="h2">Design</h2><p class="lead">Performance does not need to be loud. Quiet lines, balanced proportions and surfaces that age well.</p></div>
+    <div class="kits">
+      <div class="kit"><h3 class="h3">Clear engineering</h3><p class="small mt-2">Every fibre has a purpose. We combine advanced carbon with a precise construction to put performance where it matters.</p></div>
+      <div class="kit"><h3 class="h3">Refined design</h3><p class="small mt-2">Beautiful without distraction, timeless beyond trends. Four finishes, one frame.</p></div>
+      <div class="kit"><h3 class="h3">Direct to rider</h3><p class="small mt-2">More value in the bike, less in the layers around it. We sell directly and invest in development, materials and quality.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--stone" id="partners">
+  <div class="wrap split">
+    <div>
+      <h2 class="h2">Partners</h2>
+      <p class="lead mt-3">Fitting studios and independent workshops in the Zürich area fit, deliver and service SENDA bikes. Partner names are published once agreements are in place.</p>
+    </div>
+    {% include "partials/frame.liquid", ratio: "bike", label: "Partner studio photography to come" %}
+  </div>
+</section>
+
+<section class="section" id="community">
+  <div class="wrap split split--reverse">
+    <div>
+      <h2 class="h2">Rides and community</h2>
+      <p class="lead mt-3">Monthly rides from partner studios, test-ride days and a Strava club. Dates go to the list first.</p>
+      <a class="btn btn--quiet mt-4" href="#newsletter">Join the list</a>
+    </div>
+    {% include "partials/frame.liquid", img: "/assets/img/web/group-lake-1000.jpg", ratio: "bike", alt: "Four riders on a lakeside road" %}
+  </div>
+</section>
