@@ -1,0 +1,175 @@
+{
+  "name": "SENDA",
+  "url": "https://sendabikes.com",
+  "description": "Swiss road and gravel bikes, and ORMA wheels and components by SENDA.",
+  "subscribeUrl": "https://senda-website-chi.vercel.app/api/subscribe",
+  "nav": [
+    {
+      "label": "Bikes",
+      "url": "/bikes/",
+      "category": "bikes",
+      "links": [
+        {
+          "label": "Fitting and test rides",
+          "url": "/service/#fitting"
+        },
+        {
+          "label": "Road or gravel?",
+          "url": "/journal/road-or-gravel/"
+        },
+        {
+          "label": "Configure your SENDA",
+          "url": "/bikes/configure/",
+          "draft": true
+        }
+      ]
+    },
+    {
+      "label": "Wheelsets",
+      "url": "/wheelsets/",
+      "category": "wheelsets",
+      "orma": true,
+      "links": [
+        {
+          "label": "Will it fit my bike?",
+          "url": "/wheelsets/orma-momentum-45/#compatibility"
+        },
+        {
+          "label": "The ORMA story",
+          "url": "/orma/"
+        }
+      ]
+    },
+    {
+      "label": "Components",
+      "url": "/components/",
+      "category": "components",
+      "orma": true,
+      "empty": "Cockpit, saddle and the small parts that matter on long rides. First ORMA components follow in 2027.",
+      "links": [
+        {
+          "label": "The ORMA story",
+          "url": "/orma/"
+        }
+      ]
+    },
+    {
+      "label": "Clothing",
+      "url": "/clothing/",
+      "category": "clothing",
+      "links": [
+        {
+          "label": "Size guide",
+          "url": "/service/#clothing-sizes",
+          "draft": true
+        }
+      ]
+    }
+  ],
+  "secondary": [
+    {
+      "label": "Journal",
+      "url": "/journal/"
+    },
+    {
+      "label": "About",
+      "url": "/about/"
+    }
+  ],
+  "footer": [
+    {
+      "title": "Shop",
+      "links": [
+        {
+          "label": "Bikes",
+          "url": "/bikes/"
+        },
+        {
+          "label": "Wheelsets",
+          "url": "/wheelsets/"
+        },
+        {
+          "label": "Components",
+          "url": "/components/"
+        },
+        {
+          "label": "Clothing",
+          "url": "/clothing/"
+        }
+      ]
+    },
+    {
+      "title": "Support",
+      "links": [
+        {
+          "label": "Fitting and test rides",
+          "url": "/service/#fitting"
+        },
+        {
+          "label": "Will ORMA fit my bike?",
+          "url": "/wheelsets/orma-momentum-45/#compatibility"
+        },
+        {
+          "label": "Pre-order and delivery",
+          "url": "/service/#preorder",
+          "draft": true
+        },
+        {
+          "label": "Warranty and crash replacement",
+          "url": "/service/#warranty",
+          "draft": true
+        },
+        {
+          "label": "FAQ",
+          "url": "/service/#faq"
+        },
+        {
+          "label": "Contact",
+          "url": "/service/#contact"
+        }
+      ]
+    },
+    {
+      "title": "SENDA",
+      "links": [
+        {
+          "label": "About",
+          "url": "/about/"
+        },
+        {
+          "label": "The ORMA story",
+          "url": "/orma/"
+        },
+        {
+          "label": "Journal",
+          "url": "/journal/"
+        }
+      ]
+    }
+  ],
+  "social": [
+    {
+      "label": "Instagram",
+      "url": "#"
+    },
+    {
+      "label": "Strava",
+      "url": "#"
+    }
+  ],
+  "legal": [
+    {
+      "label": "Impressum",
+      "url": "/legal/impressum.html"
+    },
+    {
+      "label": "Privacy",
+      "url": "/legal/privacy.html"
+    },
+    {
+      "label": "Terms",
+      "url": "/service/#terms",
+      "draft": true
+    }
+  ]
+}

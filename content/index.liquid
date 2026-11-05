@@ -1,0 +1,147 @@
+---
+layout: layouts/base.liquid
+permalink: /
+title: SENDA
+description: Swiss road and gravel bikes, made for the way out. ORMA wheels and components by SENDA.
+---
+{%- assign bikes = collections.products | in_category: "bikes" -%}
+{%- assign wheels = collections.products | in_category: "wheelsets" -%}
+{%- assign clothes = collections.products | in_category: "clothing" -%}
+{%- assign jersey = clothes | first -%}
+
+<section class="opening" aria-label="SENDA">
+  <picture>
+    <source media="(max-width: 760px)" srcset="/assets/img/web/opening-belvedere-mobile-900.jpg">
+    <img src="/assets/img/web/opening-belvedere-2000.jpg" srcset="/assets/img/web/opening-belvedere-1000.jpg 1000w, /assets/img/web/opening-belvedere-2000.jpg 2000w" sizes="100vw" width="2048" height="1117" alt="Two cyclists in a misty hairpin below Hotel Belvédère on the Furka Pass" fetchpriority="high">
+  </picture>
+  <div class="wrap opening__copy">
+    <p class="micro">SENDA / Swiss road and gravel bikes</p>
+    <div class="opening__row">
+      <h1 class="display opening__title">Made for the way out.</h1>
+      <div class="opening__aside">
+        <p>Performance without the noise. Bikes, wheels and clothing for the hours spent beyond the familiar.</p>
+        <a class="linkline" href="#bikes">See the bikes ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="introline">
+  <div class="wrap"><strong>Good design gets out of the way.</strong><span class="micro">First bikes 2027 / ORMA wheels first</span></div>
+</div>
+
+<section class="section section--flush-top" id="bikes" style="padding-top: var(--section)">
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="micro">01 / The platforms</p><h2 class="h2">Two ways<br>to go further.</h2></div>
+      <p class="lead">One design philosophy, expressed across road and gravel. Each platform is shaped by the same priorities: clarity, balance and purpose.</p>
+    </div>
+    <div class="duo">
+      {% for b in bikes %}
+      <a class="duo__item" href="{{ b.url }}">
+        {% assign img = b.data.image | replace: "-2000", "-1000" %}{% include "partials/frame.liquid", img: img, ratio: "square", pos: b.data.imagePosition, alt: b.data.alt %}
+        <div class="duo__meta">
+          <span class="micro">Platform 00{{ forloop.index }} / {{ b.data.platform }}</span>
+          {% include "partials/badge.liquid", status: b.data.status %}
+          <h3 class="h3">{{ b.data.title }}</h3>
+        </div>
+        <p class="duo__desc">{{ b.data.teaser }}</p>
+        <p class="card__sub mt-2">Expected {{ b.data.delivery }} / Notify me ↗</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% for w in wheels limit: 1 %}
+<section class="section" id="orma">
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="micro">02 / ORMA</p><h2 class="h2">Where the<br>details add up.</h2></div>
+      <p class="lead">ORMA is SENDA's line of wheels and components: same team, same standard, fitted to every SENDA. And the first thing you can order from us.</p>
+    </div>
+    <div class="orma-feature">
+      <div>
+        <p class="orma-mark"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">by SENDA</span></p>
+        <h3 class="h3 mt-4">{{ w.data.title }}</h3>
+        <p class="small mt-2">{{ w.data.summary }}</p>
+        <div class="orma-feature__facts">
+          {% include "partials/badge.liquid", status: w.data.status %}
+          <span class="orma-feature__price">{{ w.data.price }} <span class="tiny">{{ w.data.priceNote }}</span></span>
+          <span class="micro">Delivery {{ w.data.delivery }} / 1207 g / 45 mm</span>
+        </div>
+        <div class="actions">
+          <a class="btn" href="{{ w.url }}">Pre-order</a>
+          <a class="linkline" href="{{ w.url }}#compatibility">Will it fit my bike? ↗</a>
+        </div>
+      </div>
+      {% include "partials/frame.liquid", img: "/assets/img/web/orma-wheels-2000.jpg", ratio: "bike", contain: true, alt: "ORMA Momentum 45 carbon wheelset" %}
+    </div>
+  </div>
+</section>
+{% endfor %}
+
+<section class="section" id="clothing">
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="micro">03 / Clothing</p><h2 class="h2">Quiet form.<br>Everyday function.</h2></div>
+      <p class="lead">Three colour studies for the SENDA long-sleeve jersey. An understated palette, with the graphics left to speak for themselves.</p>
+    </div>
+    <div class="cards" style="--cols: 3">
+      {% for c in jersey.data.colours %}
+      <a class="card" href="{{ jersey.url }}">
+        {% include "partials/frame.liquid", img: c.image, ratio: "bike", contain: true, alt: c.alt %}
+        <div class="card__top"><span class="card__name">{{ c.name }}</span><span class="micro">Colour study / 0{{ forloop.index }}</span></div>
+      </a>
+      {% endfor %}
+    </div>
+    <div class="row-between mt-5">
+      <span class="micro">Long-sleeve jersey / Expected {{ jersey.data.delivery }}</span>
+      <a class="linkline" href="{{ jersey.url }}">Notify me ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="fullbleed" id="approach" style="--pos: center 60%">
+  <img src="/assets/img/web/valley-pair-2000.jpg" alt="Two cyclists riding into a wide Alpine valley" loading="lazy">
+  <div class="wrap fullbleed__copy">
+    <p class="micro">04 / Approach</p>
+    <img class="emblem" src="/assets/logo/senda-emblem.png" alt="" width="345" height="600">
+    <h2 class="h2">Every detail has a reason.</h2>
+    <p>We start with the whole: how a frame rides, how its parts work together, how every decision earns its place.</p>
+    <a class="linkline" href="/about/">How we work ↗</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap principles">
+    <div>
+      <p class="micro">The SENDA standard</p>
+      <h2 class="h2 mt-2">Nothing added<br>for show.</h2>
+    </div>
+    <ol class="principles__list">
+      <li class="principle"><span class="micro principle__n">01</span><div><h3 class="h3">Purpose before excess</h3><p>We strip back decisions until what remains is useful, considered and coherent.</p></div></li>
+      <li class="principle"><span class="micro principle__n">02</span><div><h3 class="h3">Performance you can feel</h3><p>Geometry, materials and components are evaluated as one system, not a list of specifications.</p></div></li>
+      <li class="principle"><span class="micro principle__n">03</span><div><h3 class="h3">Quiet by design</h3><p>Clear forms and restrained graphics leave room for the ride, the landscape and the rider.</p></div></li>
+      <li class="principle"><span class="micro principle__n">04</span><div><h3 class="h3">Made to be used</h3><p>Equipment should invite long days out, regular use and the confidence to take the less obvious route.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="journal">
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="micro">05 / Journal</p><h2 class="h2">Out there<br>is the point.</h2></div>
+      <p class="lead">Testing, decisions and the people who shape SENDA. A work in progress, documented along the way. <a class="linkline" style="margin-top:16px" href="/journal/">All notes ↗</a></p>
+    </div>
+    <div class="cards">
+      {% for post in collections.journal limit: 3 %}
+      <a class="card" href="{{ post.url }}">
+        {% include "partials/frame.liquid", img: post.data.image, ratio: "journal", contain: post.data.imageContain, alt: "" %}
+        <div class="card__top"><span class="micro">{{ post.data.topic }}</span><time class="micro" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%d.%m.%Y" }}</time></div>
+        <h3 class="h3 mt-2">{{ post.data.title }}</h3>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

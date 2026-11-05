@@ -1,0 +1,116 @@
+/* SENDA design tokens, proposal v2
+   Based on Micha's V22 direction: white architectural canvas, hairline rules,
+   a neutral sans for statements, a monospace for technical notes.
+   Fonts are served from /assets/fonts, so every visitor sees the same type. */
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/assets/fonts/inter-latin-wght-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/assets/fonts/inter-latin-ext-wght-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/jetbrains-mono-latin-ext-400-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/assets/fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  /* Colour: monochrome, as V22 */
+  --paper: #ffffff;
+  --ink: #151515;        /* headlines, primary text, rules that carry structure */
+  --ink-mid: #444444;    /* running text */
+  --grey: #666666;       /* labels and captions; 5.7:1 on white */
+  --line: #d2d2d2;       /* hairlines */
+  --tint: #f4f4f2;       /* image ground before a photo loads */
+
+  /* Bike finishes, for swatches only */
+  --finish-slate-blue: #7e9aab;
+  --finish-champagne-silver: #c2bfb5;
+  --finish-dusky-rose: #c4a099;
+  --finish-graphite: #494641;
+
+  /* Type */
+  --sans: "Inter", Arial, Helvetica, sans-serif;
+  --mono: "JetBrains Mono", "Courier New", Courier, monospace;
+
+  /* Type scale: fluid between mobile (390) and desktop (1440) */
+  --t-display: clamp(48px, 6.1vw, 88px);   /* homepage statement */
+  --t-h1: clamp(40px, 4.45vw, 64px);       /* page titles */
+  --t-h2: clamp(36px, 4.45vw, 64px);       /* section headlines */
+  --t-h3: clamp(24px, 2.2vw, 32px);        /* card, product and principle titles */
+  --t-lead: clamp(17px, 1.25vw, 18px);     /* running text */
+  --t-body: clamp(16px, 1.15vw, 17px);
+  --t-small: 15px;
+  --t-label: 12px;                          /* mono labels, uppercase */
+  --t-nav: 13px;
+
+  --lh-display: 1.0;
+  --lh-head: 1.05;
+  --lh-body: 1.55;
+  --track-display: -0.04em;
+  --track-head: -0.035em;
+  --track-h3: -0.02em;
+  --track-label: 0.06em;
+
+  /* Space: 8-point scale */
+  --s-1: 8px;
+  --s-2: 16px;
+  --s-3: 24px;
+  --s-4: 32px;
+  --s-5: 48px;
+  --s-6: 72px;
+  --s-7: 128px;
+  --section: clamp(72px, 9vw, 128px);       /* between sections */
+  --head-gap: clamp(32px, 3.4vw, 48px);     /* section headline to content */
+
+  /* Layout */
+  --max: 1600px;                             /* page never stretches beyond this */
+  --margin: clamp(20px, 4.6vw, 76px);        /* V22 gutter */
+  --gutter: clamp(16px, 1.7vw, 24px);
+  --header-h: 74px;
+
+  /* Image ratios */
+  --ratio-hero: 2048 / 1117;   /* opening photograph, uncropped */
+  --ratio-bike: 3 / 2;
+  --ratio-square: 1 / 1;
+  --ratio-portrait: 4 / 5;
+  --ratio-journal: 3 / 2;
+  --ratio-part: 1 / 1;
+  --ratio-clothing: 4 / 5;
+
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+@media (max-width: 760px) {
+  :root { --header-h: 64px; --t-small: 14px; }
+}

@@ -1,0 +1,14 @@
+node_modules/
+_site/
+tmp/
+api/
+scripts/
+review/
+README.md
+CLAUDE.md
+slides.md
+senda_deck.py
+index-new.html
+index-old.html
+src/styles/
+src/scripts/
