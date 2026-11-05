@@ -9,10 +9,6 @@ priceNote: Indicative
 deposit: CHF 300
 delivery: after SENDA Road, in 2027
 summary: The same frame philosophy, made for unpaved roads. Room for wide tyres, stable when the surface changes, still quick on tarmac.
-image: /assets/img/web/larch-road-2000.jpg
-alt: Two riders on a road through autumn larch forest
-image2Label: Side profile, studio photography to come
-image3Label: Gravel riding photography to come
 dims:
   - ["4", "Finishes, one frame"]
   - ["2027", "First deliveries"]
@@ -30,6 +26,11 @@ kits:
   - name: Build three
     price: From CHF 8,500 (indicative)
     items: ["Top-tier electronic groupset", "ORMA gravel wheelset, in development", "ORMA cockpit", "ORMA saddle, carbon rails"]
+image: /assets/img/web/gravel-forest-2000.jpg
+imagePosition: center 40%
+alt: A rider on a SENDA Gravel bike on a forest track in autumn
+teaser: For the roads that fade into tracks, and routes that become the point of the ride.
+image2: /assets/img/web/larch-road-1000.jpg
 ---
 Gravel riding asks for a different balance: tyre volume, a calmer front end and room for long days away from service.
 

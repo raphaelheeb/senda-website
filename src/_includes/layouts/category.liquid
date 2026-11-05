@@ -3,32 +3,54 @@ layout: layouts/base.liquid
 ---
 {%- assign items = collections.products | in_category: category -%}
 <div class="wrap">
-  <header class="page-head">
-    <h1 class="h1">{{ title }}</h1>
-    <p class="lead">{{ intro }}</p>
+  <header class="page-head page-head--ruled">
+    <p class="micro">{{ index }} / {{ title }}</p>
+    <div class="section-head section-head--plain" style="margin:0">
+      <h1 class="h1">{{ headline }}</h1>
+      <p class="lead">{{ intro }}</p>
+    </div>
   </header>
 
   {% if orma %}
   <section class="orma-intro" aria-label="About ORMA">
     <p class="orma-mark"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">Wheels and components by SENDA</span></p>
     <div>
-      <p>ORMA is SENDA's line of wheels and components: the same team, the same engineering standard and the same direct-to-rider approach, applied to the parts that connect a bike with the road. Every SENDA bike is built with them, and they fit many other bikes too.</p>
-      <a class="text-link mt-2" style="display:inline-block" href="/orma/">The ORMA story</a>
+      <p>ORMA is SENDA's line of wheels and components: the same team, the same engineering standard and the same direct-to-rider approach, applied to the parts that connect a bike with the road. Standard on every SENDA, and made to fit many other bikes too.</p>
+      <a class="linkline mt-3" href="/orma/">The ORMA story ↗</a>
     </div>
   </section>
   {% endif %}
 
-  <div class="cards" style="--cols: {{ cols | default: 3 }}">
-    {% for p in items %}{% include "partials/card.liquid", p: p %}{% endfor %}
+  {% if items.size > 0 %}
+  <div class="cards" style="--cols: {{ cols | default: 3 }}; padding-bottom: var(--section)">
+    {% for p in items %}
+      {% if expandColours and p.data.colours %}
+        {% for c in p.data.colours %}
+        <a class="card" href="{{ p.url }}">
+          {% include "partials/frame.liquid", img: c.image, ratio: "bike", contain: true, alt: c.alt %}
+          <div class="card__top"><span class="card__name">{{ p.data.title }}, {{ c.name }}</span>{% include "partials/badge.liquid", status: p.data.status %}</div>
+          <p class="card__sub">{% if p.data.status == "announced" %}Expected {{ p.data.delivery }}{% else %}{{ p.data.price }}{% endif %}</p>
+        </a>
+        {% endfor %}
+      {% else %}{% include "partials/card.liquid", p: p, cardRatio: cardRatio %}{% endif %}
+    {% endfor %}
   </div>
-
-  {% if guides %}
-  <div class="row-between mt-5" style="padding: var(--s-4) 0; border-top: 1px solid var(--rule);">
-    <p class="small">{{ guidesText }}</p>
-    <div style="display:flex; gap: var(--s-1); flex-wrap: wrap">
-      {% for g in guides %}<a class="btn btn--quiet" href="{{ g[1] }}">{{ g[0] }}</a>{% endfor %}
+  {% else %}
+  <section class="coming" style="margin-bottom: var(--section)">
+    <div>
+      <p class="micro">In development</p>
+      <h2 class="h2 mt-2">{{ comingTitle }}</h2>
+      <p class="lead mt-3">{{ comingText }}</p>
     </div>
-  </div>
+    <form class="js-signup" data-list="{{ list | default: 'senda' }}" novalidate>
+      <div class="signup__form">
+        <label class="visually-hidden" for="coming-email">Email address</label>
+        <input class="field" id="coming-email" name="email" type="email" placeholder="Your email address" autocomplete="email">
+        <button type="submit">Notify me ↗</button>
+      </div>
+      <label class="consent mt-2"><input type="checkbox" name="consent"> I agree to receive emails about ORMA and SENDA news.</label>
+      <p class="form-msg mt-2" role="status" aria-live="polite"></p>
+    </form>
+  </section>
   {% endif %}
 </div>
-<div class="section--tight section"></div>

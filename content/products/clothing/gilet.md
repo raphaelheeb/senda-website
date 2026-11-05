@@ -15,4 +15,6 @@ specs:
   - ["Front", "Windproof, to confirm"]
   - ["Back", "Breathable mesh"]
   - ["Packed size", "Fits a jersey pocket"]
+published: false
+eleventyExcludeFromCollections: true
 ---

@@ -4,17 +4,20 @@ permalink: /journal/
 title: Journal
 ---
 <div class="wrap">
-  <header class="page-head">
-    <h1 class="h1">Journal</h1>
-    <p class="lead">Development notes, engineering and rides. Filter by topic once there are more posts.</p>
+  <header class="page-head page-head--ruled">
+    <p class="micro">Journal / Notes from the road</p>
+    <div class="section-head section-head--plain" style="margin:0">
+      <h1 class="h1">Out there is the point.</h1>
+      <p class="lead">Testing, decisions and the people who shape SENDA. A work in progress, documented along the way.</p>
+    </div>
   </header>
-  <div class="cards" style="padding-bottom: var(--s-6)">
+  <div class="cards" style="padding-bottom: var(--section)">
     {% for post in collections.journal %}
     <a class="card" href="{{ post.url }}">
-      {% include "partials/frame.liquid", img: post.data.image, ratio: "journal", alt: "" %}
-      <p class="label">{{ post.data.topic }}</p>
-      <h2 class="h3 mt-1">{{ post.data.title }}</h2>
-      <p class="card__sub mt-1">{{ post.data.excerpt }}</p>
+      {% include "partials/frame.liquid", img: post.data.image, ratio: "journal", contain: post.data.imageContain, alt: "" %}
+      <div class="card__top"><span class="micro">{{ post.data.topic }}</span><time class="micro" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%d.%m.%Y" }}</time></div>
+      <h2 class="h3 mt-2">{{ post.data.title }}</h2>
+      <p class="small mt-2">{{ post.data.excerpt }}</p>
     </a>
     {% endfor %}
   </div>

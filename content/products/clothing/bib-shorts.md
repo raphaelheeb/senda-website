@@ -15,4 +15,6 @@ specs:
   - ["Fit", "Race fit"]
   - ["Chamois", "Long-distance pad, to confirm"]
   - ["Fabric", "Compressive Lycra blend, to confirm"]
+published: false
+eleventyExcludeFromCollections: true
 ---

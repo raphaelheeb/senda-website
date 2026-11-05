@@ -9,4 +9,6 @@ specs:
   - ["Material", "Carbon, to confirm"]
   - ["Bottle size", "Standard 74 mm"]
   - ["Weight", "To come"]
+published: false
+eleventyExcludeFromCollections: true
 ---

@@ -4,10 +4,11 @@ layout: layouts/base.liquid
 <article>
   <div class="wrap">
     <header class="post-head">
-      <p class="post-meta"><a href="/journal/" style="text-decoration:none">Journal</a><span>{{ topic }}</span><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | readable_date }}</time></p>
+      <p class="post-meta micro"><a href="/journal/">Journal</a><span>{{ topic }}</span><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%d.%m.%Y" }}</time></p>
       <h1 class="h1">{{ title }}</h1>
+      {% if excerpt %}<p class="lead mt-3">{{ excerpt }}</p>{% endif %}
     </header>
-    {% include "partials/frame.liquid", img: image, ratio: "journal", alt: "" %}
-    <div class="post-body section--tight section"><div class="prose">{{ content }}</div></div>
+    {% include "partials/frame.liquid", img: image, ratio: "journal", contain: imageContain, alt: imageAlt %}
+    <div class="post-body"><div class="prose">{{ content }}</div></div>
   </div>
 </article>

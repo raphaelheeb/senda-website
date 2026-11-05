@@ -16,4 +16,6 @@ options:
 specs:
   - ["Height", "Mid-calf"]
   - ["Fabric", "Recycled polyamide blend, to confirm"]
+published: false
+eleventyExcludeFromCollections: true
 ---

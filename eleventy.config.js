@@ -1,6 +1,6 @@
 // Eleventy build for sendabikes.com
 //
-// proposal-v1: new site structure built from Liquid templates (src/_includes)
+// Site structure built from Liquid templates (src/_includes)
 // and content files (content/). Liquid is the same template language Shopify
 // themes use, so layouts and partials can move to the shop later.
 //
@@ -8,7 +8,14 @@
 // unchanged. The old index.html and orma/ are kept in the repo (the live site
 // on GitHub Pages serves them) but replaced in the build.
 
+const production = process.env.SENDA_BUILD === "production";
+
 export default function (eleventyConfig) {
+  // Launch scope: pages marked `published: false` exist in previews only.
+  eleventyConfig.addPreprocessor("launch-scope", "*", (data) => {
+    if (production && data.published === false) return false;
+  });
+
   const passthrough = [
     "story.html",
     "de",

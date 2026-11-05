@@ -6,11 +6,8 @@ price: CHF 1,450
 priceNote: Indicative
 delivery: spring 2027
 summary: A lightweight all-round road wheelset. Low rotating weight, a 45 mm profile and the confidence to keep going when the road gets less predictable.
-image: /assets/img/web/orma-momentum-45-2000.jpg
 imageContain: true
 alt: ORMA Momentum 45 carbon wheelset, front and rear
-image2Label: Hub and spoke detail to come
-image3: /assets/img/web/rider-road-1000.jpg
 options:
   - label: Freehub body
     values: ["Shimano HG", "SRAM XDR", "Campagnolo N3W"]
@@ -48,6 +45,9 @@ faq:
   - ["Is Momentum 45 tubeless-ready?", "Yes. The hooked rim is tubeless-compatible and ships with tape installed."]
   - ["Can I use it with rim brakes?", "No. Momentum 45 is built for disc brakes and thru-axles only."]
   - ["What warranty applies?", "Two years on materials and workmanship, plus crash replacement at a reduced price for the first owner. Terms to be confirmed."]
+image: /assets/img/web/orma-wheels-2000.jpg
+image2: /assets/img/web/road-rider-1000.jpg
+image3: /assets/img/web/rider-road-1000.jpg
 ---
 A hooked, tubeless-compatible rim chosen for modern road riding rather than one narrowly defined condition. The 24.8 mm internal width is designed around the wider tubeless tyres found on current road bikes.
 

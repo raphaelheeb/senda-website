@@ -2,10 +2,10 @@
 layout: layouts/category.liquid
 permalink: /clothing/
 title: Clothing
+index: "04"
 category: clothing
-cols: 4
-intro: The first SENDA clothing drop, in graphite, champagne and rust. Made in small batches; when a colour is gone, it's gone.
-guides:
-  - ["Size guide", "/service/#clothing-sizes"]
-guidesText: Race fit throughout. Check the size guide before you order.
+cols: 3
+expandColours: true
+headline: Quiet form. Everyday function.
+intro: The first SENDA clothing, made in small batches. Colour studies for the long-sleeve jersey; more pieces follow as samples are approved.
 ---

@@ -1,117 +1,105 @@
 ---
+published: false
+eleventyExcludeFromCollections: true
 layout: layouts/base.liquid
 permalink: /styleguide/
 title: Style guide
 hideSignup: true
 ---
 <div class="wrap">
-  <header class="page-head">
-    <h1 class="h1">Style guide, proposal v1</h1>
-    <p class="lead">The visual system behind every page, for review. Colours, type, spacing and image ratios come from tokens.css; changing a value there changes the whole site.</p>
+  <header class="page-head page-head--ruled">
+    <p class="micro">Internal / Proposal v2</p>
+    <div class="section-head section-head--plain" style="margin:0">
+      <h1 class="h1">Style guide</h1>
+      <p class="lead">Micha's V22 direction as a system. Every value lives in tokens.css; change it there and the whole site follows.</p>
+    </div>
   </header>
 
   <section class="sg-row">
-    <h2 class="h3">Colour</h2>
+    <h2 class="micro">Colour</h2>
     <div>
       <div class="sg-colors">
-        <div class="sg-color"><div class="sg-color__chip" style="background:var(--paper)"></div><p>Paper <code>#faf9f6</code></p></div>
-        <div class="sg-color"><div class="sg-color__chip" style="background:var(--stone)"></div><p>Stone <code>#f4f1eb</code></p></div>
-        <div class="sg-color"><div class="sg-color__chip" style="background:var(--white)"></div><p>White <code>#ffffff</code></p></div>
-        <div class="sg-color"><div class="sg-color__chip" style="background:var(--graphite)"></div><p>Graphite <code>#272420</code></p></div>
-        <div class="sg-color"><div class="sg-color__chip" style="background:var(--ink)"></div><p>Ink <code>#1a1916</code></p></div>
-        <div class="sg-color"><div class="sg-color__chip" style="background:var(--ink-mid)"></div><p>Ink mid <code>#5a574f</code></p></div>
-        <div class="sg-color"><div class="sg-color__chip" style="background:var(--ink-light)"></div><p>Ink light <code>#8f8c84</code></p></div>
-        <div class="sg-color"><div class="sg-color__chip" style="background:var(--rule)"></div><p>Rule <code>#e2dfd8</code></p></div>
-        <div class="sg-color"><div class="sg-color__chip" style="background:var(--gold)"></div><p>Gold <code>#c4a96b</code></p></div>
-        <div class="sg-color"><div class="sg-color__chip" style="background:var(--gold-deep)"></div><p>Gold deep <code>#9c8350</code></p></div>
+        <div class="sg-color"><div class="sg-color__chip" style="background:#fff"></div><p>Paper <span class="micro">#ffffff</span></p></div>
+        <div class="sg-color"><div class="sg-color__chip" style="background:var(--ink)"></div><p>Ink <span class="micro">#151515</span></p></div>
+        <div class="sg-color"><div class="sg-color__chip" style="background:var(--ink-mid)"></div><p>Text <span class="micro">#444444</span></p></div>
+        <div class="sg-color"><div class="sg-color__chip" style="background:var(--grey)"></div><p>Label <span class="micro">#666666</span></p></div>
+        <div class="sg-color"><div class="sg-color__chip" style="background:var(--line)"></div><p>Rule <span class="micro">#d2d2d2</span></p></div>
+        <div class="sg-color"><div class="sg-color__chip" style="background:var(--tint)"></div><p>Tint <span class="micro">#f4f4f2</span></p></div>
       </div>
-      <p class="small mt-3">Two values differ from today's site to meet text contrast: Ink light (was #9b9890) and Gold deep, a darker gold for text on light grounds.</p>
-      <div class="sg-colors mt-4">
-        {% for f in finishes %}<div class="sg-color"><div class="sg-color__chip" style="background:{{ f.hex }}"></div><p>{{ f.name }} <code>{{ f.hex }}</code></p></div>{% endfor %}
+      <p class="small mt-4">Monochrome, as V22. Labels move from #777 to #666 so small text meets the WCAG contrast minimum.</p>
+      <div class="sg-colors mt-5">
+        {% for f in finishes %}<div class="sg-color"><div class="sg-color__chip" style="background:{{ f.hex }}"></div><p>{{ f.name }} <span class="micro">{{ f.hex }}</span></p></div>{% endfor %}
       </div>
-      <p class="small mt-2">Bike finishes, used for swatches only.</p>
+      <p class="small mt-3">Bike finishes, for swatches only.</p>
     </div>
   </section>
 
   <section class="sg-row">
-    <h2 class="h3">Type</h2>
+    <h2 class="micro">Type</h2>
     <div class="sg-type">
-      <div><code>Display 88/200</code><span class="display">Quietly fast</span></div>
-      <div><code>H1 64/200</code><span class="h1">Configure your SENDA</span></div>
-      <div><code>H2 44/300</code><span class="h2">Every fibre has a purpose.</span></div>
-      <div><code>H3 24/400</code><span class="h3">Build two</span></div>
-      <div><code>Lead 20/300</code><span class="lead">Road and gravel share one design language and one engineering standard.</span></div>
-      <div><code>Body 17/300</code><span>We combine advanced carbon materials with a precise construction, so stiffness goes where power goes.</span></div>
-      <div><code>Label 14/500</code><span class="label">Target weight, top build</span></div>
-      <div><code>Tiny 12/500</code><span class="tiny">Indicative price</span></div>
-      <p class="small mt-3">Hanken Grotesk throughout. Mobile steps: display 48, H1 40, H2 32, H3 21. Labels are set in sentence case, not capitals.</p>
+      <div><span class="micro">Display / Inter 88·48</span><span class="display">Made for the way out.</span></div>
+      <div><span class="micro">H1 / Inter 64·40</span><span class="h1">Two ways to go further.</span></div>
+      <div><span class="micro">H2 / Inter 64·36</span><span class="h2">Every detail has a reason.</span></div>
+      <div><span class="micro">H3 / Inter 32·24</span><span class="h3">SENDA Road</span></div>
+      <div><span class="micro">Text / Inter 18·17</span><span class="lead">One design philosophy, expressed across road and gravel. Each platform is shaped by the same priorities.</span></div>
+      <div><span class="micro">Small / Inter 15·14</span><span class="small">Early access, product updates and notes from the workshop.</span></div>
+      <div><span class="micro">Label / JetBrains Mono 12</span><span class="micro">Platform 001 / Road</span></div>
+      <div><span class="micro">Nav, buttons / Mono 13</span><span class="linkline">See the bikes ↗</span></div>
     </div>
   </section>
 
   <section class="sg-row">
-    <h2 class="h3">Space</h2>
+    <h2 class="micro">Rules</h2>
+    <div>
+      <ul class="sg-open" style="counter-reset:none">
+        <li>Sans for every statement and every paragraph; mono only for labels, navigation, buttons, prices' notes and captions.</li>
+        <li>Headlines at weight 400, letter-spacing −0.035 to −0.04em, line height 1.0–1.05.</li>
+        <li>Running text never below 16 px, line length at most about 60 characters.</li>
+        <li>A section opens with label and headline left, short text right, and a black rule below.</li>
+        <li>One solid button per screen at most, for the commercial action. Everything else is an underlined mono link with ↗.</li>
+        <li>Status shown with ○ announced, ◐ pre-order, ● available.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sg-row">
+    <h2 class="micro">Space</h2>
     <div class="sg-space">
-      <div><span style="width:8px"></span>8 px, s-1</div>
-      <div><span style="width:16px"></span>16 px, s-2</div>
-      <div><span style="width:24px"></span>24 px, s-3, gutter</div>
-      <div><span style="width:40px"></span>40 px, s-4</div>
-      <div><span style="width:64px"></span>64 px, s-5</div>
-      <div><span style="width:104px"></span>104 px, s-6</div>
-      <div><span style="width:144px"></span>144 px, s-7, between sections</div>
-      <p class="small mt-2">Desktop 1440 artboard, 1200 content, 12 columns, 24 px gutters. Mobile 390, 20 px margins.</p>
+      <div><span style="width:8px"></span>8</div><div><span style="width:16px"></span>16</div><div><span style="width:24px"></span>24, gutter</div><div><span style="width:32px"></span>32</div><div><span style="width:48px"></span>48, headline to content</div><div><span style="width:72px"></span>72, between sections on mobile</div><div><span style="width:128px"></span>128, between sections on desktop</div>
+      <p class="small mt-3">Page margin 20–76 px (V22 gutter), maximum content width 1600 px.</p>
     </div>
   </section>
 
   <section class="sg-row">
-    <h2 class="h3">Image ratios</h2>
+    <h2 class="micro">Image ratios</h2>
     <div class="sg-ratios">
-      <div>{% include "partials/frame.liquid", ratio: "hero", label: "Hero 16:9, mobile 4:5" %}</div>
-      <div>{% include "partials/frame.liquid", ratio: "bike", label: "Bike 3:2" %}</div>
-      <div>{% include "partials/frame.liquid", ratio: "clothing", label: "Clothing 4:5" %}</div>
-      <div>{% include "partials/frame.liquid", ratio: "journal", label: "Journal 3:2" %}</div>
-      <div>{% include "partials/frame.liquid", ratio: "part", label: "Component 1:1" %}</div>
+      <div>{% include "partials/frame.liquid", ratio: "bike", label: "3:2 products, journal" %}</div>
+      <div>{% include "partials/frame.liquid", ratio: "square", label: "1:1 bike teasers" %}</div>
+      <div>{% include "partials/frame.liquid", ratio: "portrait", label: "4:5 portrait, mobile hero" %}</div>
+      <div>{% include "partials/frame.liquid", ratio: "part", label: "1:1 components" %}</div>
+      <div>{% include "partials/frame.liquid", ratio: "hero", label: "Opening, uncropped" %}</div>
     </div>
   </section>
 
   <section class="sg-row">
-    <h2 class="h3">Measure</h2>
+    <h2 class="micro">Components</h2>
     <div>
-      <div class="dims" style="--dims: 3">
-        <div class="dim"><span class="dim__value">&lt; 7 kg</span><span class="dim__label">Target weight, top build</span></div>
-        <div class="dim"><span class="dim__value">45 mm</span><span class="dim__label">Rim depth</span></div>
-        <div class="dim"><span class="dim__value">1207 g</span><span class="dim__label">Wheelset weight</span></div>
-      </div>
-      <p class="small mt-3">The one distinctive device: key figures set on a drawn dimension line, borrowed from technical drawings. Used only for real measurements.</p>
+      <p style="display:flex;gap:28px;flex-wrap:wrap">{% include "partials/badge.liquid", status: "announced" %}{% include "partials/badge.liquid", status: "preorder" %}{% include "partials/badge.liquid", status: "available" %}</p>
+      <div class="actions"><a class="btn" href="#">Pre-order</a><a class="btn btn--quiet" href="#">Book a fitting</a><a class="linkline" href="#">Will it fit my bike? ↗</a></div>
+      <div class="dims mt-5" style="--dims: 3"><div class="dim"><span class="dim__value">1207 g</span><span class="dim__label">Wheelset weight</span></div><div class="dim"><span class="dim__value">45 mm</span><span class="dim__label">Rim depth</span></div><div class="dim"><span class="dim__value">&lt; 7 kg</span><span class="dim__label">Target weight</span></div></div>
+      <p class="orma-mark mt-5"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">Wheels and components by SENDA</span></p>
+      <p class="small mt-2">Typeset placeholder until the ORMA wordmark and its "by SENDA" lockup are designed.</p>
     </div>
   </section>
 
-  <section class="sg-row">
-    <h2 class="h3">Status and actions</h2>
-    <div>
-      <p style="display:flex;gap:var(--s-3);flex-wrap:wrap">{% include "partials/badge.liquid", status: "announced" %}{% include "partials/badge.liquid", status: "preorder" %}{% include "partials/badge.liquid", status: "available" %}</p>
-      <p class="mt-3" style="display:flex;gap:var(--s-1);flex-wrap:wrap"><a class="btn" href="#">Primary action</a><a class="btn btn--quiet" href="#">Secondary action</a><a class="text-link" href="#" style="align-self:center">Text link</a></p>
-      <div class="mt-3" style="max-width:420px"><input class="field" placeholder="Email address"></div>
-    </div>
-  </section>
-
-  <section class="sg-row">
-    <h2 class="h3">ORMA mark</h2>
-    <div>
-      <p class="orma-mark"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">Wheels and components by SENDA</span></p>
-      <p class="small mt-2">Typeset placeholder. The ORMA wordmark and its "by SENDA" lockup are still to be designed.</p>
-    </div>
-  </section>
-
-  <section class="sg-row" style="padding-bottom: var(--s-7)">
-    <h2 class="h3">Open questions</h2>
+  <section class="sg-row" style="padding-bottom: var(--section)">
+    <h2 class="micro">Open questions</h2>
     <ol class="sg-open">
-      <li>Keep Hanken Grotesk, or set headlines in a second face?</li>
-      <li>Is the light 200 weight for headlines right, or should headlines sit at 300?</li>
-      <li>Gold as the only accent: enough contrast, or too quiet for prices and status?</li>
-      <li>Homepage hero: landscape photograph as today, or a studio side profile of the bike once available?</li>
-      <li>ORMA band in graphite: right weight below SENDA, or should ORMA sit on stone?</li>
-      <li>Section spacing at 144 px: generous enough, or too much on long pages?</li>
-      <li>Clothing colour rust (#a4583c in the proposal): final value from the textile samples.</li>
+      <li>Opening photograph: headline set on the photo (proposed), or below it as in V22?</li>
+      <li>Mobile crop of the opening photograph: the automatic 4:5 crop, or a crop chosen by Micha?</li>
+      <li>"Clothing" (navigation) or "Apparel" (V22): one word for both.</li>
+      <li>The V22 approach photograph shows a Scott bike and Biehler clothing; the proposal uses the valley photograph instead.</li>
+      <li>ORMA wordmark and lockup.</li>
     </ol>
   </section>
 </div>

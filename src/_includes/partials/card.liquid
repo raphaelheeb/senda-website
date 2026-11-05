@@ -1,5 +1,5 @@
 <a class="card" href="{{ p.url }}">
-  {% assign thumb = p.data.image | replace: "-2000", "-1000" %}{% include "partials/frame.liquid", img: thumb, ratio: p.data.ratio, contain: p.data.imageContain, alt: p.data.alt, label: p.data.imageLabel %}
+  {% assign cr = cardRatio | default: p.data.ratio %}{% assign thumb = p.data.image | replace: "-2000", "-1000" %}{% include "partials/frame.liquid", img: thumb, ratio: cr, contain: p.data.imageContain, pos: p.data.imagePosition, alt: p.data.alt, label: p.data.imageLabel %}
   <div class="card__top">
     <span class="card__name">{{ p.data.title }}</span>
     {% include "partials/badge.liquid", status: p.data.status %}

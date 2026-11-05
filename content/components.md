@@ -2,7 +2,12 @@
 layout: layouts/category.liquid
 permalink: /components/
 title: Components
+index: "03"
 category: components
 orma: true
-intro: Cockpit, saddle and the small parts that matter on long rides. In development; leave your email on any product to hear first.
+list: orma
+headline: The parts you touch.
+intro: Cockpit, saddle and the small parts that matter on long rides, developed to the same standard as ORMA wheels.
+comingTitle: First components in 2027.
+comingText: We publish components when they have passed testing, not before. Leave your email and we write when the first one is ready.
 ---

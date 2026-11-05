@@ -19,19 +19,19 @@ const PAGES = [
   ["03-bike-road-announced", "/bikes/road/?state=announced"],
   ["04-bike-road-preorder", "/bikes/road/?state=preorder"],
   ["05-bike-gravel", "/bikes/gravel/"],
-  ["06-configure", "/bikes/configure/"],
+  ["06-configure-not-in-launch", "/bikes/configure/"],
   ["07-wheelsets", "/wheelsets/"],
   ["08-orma-momentum-45", "/wheelsets/orma-momentum-45/"],
   ["09-components", "/components/"],
-  ["10-orma-aero-bar", "/components/orma-aero-bar/"],
+  ["10-orma-aero-bar-not-in-launch", "/components/orma-aero-bar/"],
   ["11-clothing", "/clothing/"],
-  ["12-jersey", "/clothing/jersey/"],
+  ["12-long-sleeve-jersey", "/clothing/jersey/"],
   ["13-journal", "/journal/"],
   ["14-journal-post", "/journal/geometry-first/"],
   ["15-about", "/about/"],
   ["16-orma", "/orma/"],
   ["17-service", "/service/"],
-  ["18-styleguide", "/styleguide/"],
+  ["18-styleguide-internal", "/styleguide/"],
 ];
 
 const WIDTHS = [

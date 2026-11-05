@@ -13,4 +13,6 @@ specs:
   - ["Widths", "138 and 148 mm, to confirm"]
   - ["Length", "Short nose, to confirm"]
   - ["Weight", "To come"]
+published: false
+eleventyExcludeFromCollections: true
 ---

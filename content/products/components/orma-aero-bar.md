@@ -17,4 +17,6 @@ specs:
   - ["Routing", "Fully internal"]
   - ["Steerer", "1 1/8 to 1 1/2 in, to confirm"]
   - ["Weight", "To come"]
+published: false
+eleventyExcludeFromCollections: true
 ---

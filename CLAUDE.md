@@ -23,19 +23,30 @@ This repo is the brand site; it becomes a Shopify shop later (theme in a separat
   because the live site (GitHub Pages, serving `main` as-is) still uses them.
 - Merging the redesign into `main` only changes the live site once production serves the Eleventy build (Vercel or Cloudflare Pages).
   Until that hosting move, review on Vercel previews only.
-- Proposal mode (`site.proposal` in `src/_data/site.json`): adds noindex and the product state switch. Set to false before going live.
+- Previews (any build without SENDA_BUILD=production) add noindex, the product state switch and draft markers.
 - `api/subscribe.js` is the newsletter endpoint (Vercel function, MailerLite). Keep it working.
 - Never commit secrets (`api_token.txt` is ignored).
 
 ## Brand rules
+- Design reference: Micha's V22 concept (white, architectural, hairline rules, quiet). Proposal v2 implements it.
 - Tone: understated, precise, never loud. Tagline "QUIETLY FAST". No hype words, no exclamation marks.
-- Site font: Hanken Grotesk (Google Fonts). The SENDA wordmark (Swiss 721) is used only as a logo graphic.
-- Palette (from the current site):
-  `--bg #faf9f6` · `--bg-warm #f4f1eb` · `--ink #1a1916` · `--ink-mid #5a574f` · `--ink-light #9b9890` ·
-  `--charcoal #272420` · `--gold #c4a96b` · `--gold-muted #b5a280` · `--rose #dcc5be` · `--rule #e2dfd8` · `--rule-light #eeebe5`
+- Fonts: Inter (all statements and running text) and JetBrains Mono (labels, navigation, buttons, captions), both
+  self-hosted from `assets/fonts/` (SIL OFL), so every visitor sees the same type. Never load fonts from Google.
+  The SENDA wordmark is a logo graphic (`assets/logo/senda-wordmark-v22.png`).
+- Colour: monochrome. Paper #fff, ink #151515, text #444, labels #666, rules #d2d2d2. No accent colour.
+- Type scale (desktop/mobile): display 88/48, H1 64/40, H2 64/36, H3 32/24, text 18/17, labels 12 mono uppercase.
+  Running text never below 16 px.
+- Sections: label + headline left, short text right, black rule below (`.section-head`).
+- One solid button per screen for the commercial action; all other links are underlined mono links with ↗.
+- Status: ○ announced, ◐ pre-order, ● available.
 - Finishes: Slate Blue (satin), Champagne Silver (pearl), Dusky Rose (satin), Graphite (matte).
-- Layout specs: desktop 1440 px, content 1200 px, 12 columns, 24 px gutters; mobile 390 px, 20 px margins, 4 columns.
-- Micha (co-founder) owns colours, fonts, image ratios, spacing and paragraph styles. Take these from his style sheet once delivered; do not invent new colours.
+- Micha (co-founder) owns colours, fonts, image ratios, spacing and paragraph styles. Change tokens only on his input.
+
+## Launch scope
+- `published: false` (plus `eleventyExcludeFromCollections: true`) keeps a page in previews only.
+- `{% unless env.production %}...{% endunless %}` wraps draft sections; give them `class="draft" data-draft="reason"`.
+- `SENDA_BUILD=production npm run build` builds the launch scope only (set this env var for production on the host).
+- Rule for publishing a page: real text, real images, no "to come" visible.
 
 ## Site structure (target)
 - Header: Bikes · Wheelsets · Components · Clothing | Journal · About · Search · DE/EN · Cart (or "Join the list" before the shop).
