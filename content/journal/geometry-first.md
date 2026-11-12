@@ -2,7 +2,7 @@
 title: Geometry first
 topic: Development
 date: 2026-10-10
-image: /assets/img/web/frame-sketch-1000.jpg
+image: /assets/img/web/geometry-drawing-1000.jpg
 imageContain: true
 excerpt: Before the first carbon layer, there were months of drawings. Why we started with the rider's position, not the frame.
 ---

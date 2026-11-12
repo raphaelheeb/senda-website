@@ -31,7 +31,7 @@ imagePosition: center 40%
 alt: A rider on a SENDA Gravel bike on a forest track in autumn
 teaser: For the roads that fade into tracks, and routes that become the point of the ride.
 tileNote: Announced, 2027
-image2: /assets/img/web/larch-road-1000.jpg
+image2: /assets/img/web/larch-pass-1000.jpg
 ---
 Gravel riding asks for a different balance: tyre volume, a calmer front end and room for long days away from service.
 

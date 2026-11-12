@@ -321,7 +321,7 @@ button, input, select { font: inherit; color: inherit; }
 
 /* Swatches, kits, specced-with */
 .swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gutter); }
-.swatch__color { aspect-ratio: 4 / 3; }
+.swatch__color { aspect-ratio: var(--ratio-bike); }
 .swatch__name { margin-top: 14px; }
 .swatch__note { margin-top: 2px; }
 @media (max-width: 760px) { .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -503,3 +503,7 @@ main > .section:last-child, main > div:last-child { padding-bottom: var(--sectio
 .site-footer .footer-brand img { filter: invert(1); }
 .site-footer a:hover { opacity: 0.6; }
 .site-footer .footer-base { border-top-color: rgba(255, 255, 255, 0.18); color: rgba(255, 255, 255, 0.6); }
+
+/* Finish renders and geometry drawing */
+.swatch__render { background: #e4e4e4; }
+.geometry-drawing { width: 100%; max-width: 980px; margin: 0 auto var(--s-5); }

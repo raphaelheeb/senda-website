@@ -106,7 +106,7 @@ layout: layouts/base.liquid
       <p class="lead">Each chosen to age well. Every finish is available on every build.</p>
     </div>
     <div class="swatches">
-      {% for f in finishes %}<div><div class="swatch__color" style="background:{{ f.hex }}"></div><p class="swatch__name">{{ f.name }}</p><p class="micro swatch__note">{{ f.surface }}</p></div>{% endfor %}
+      {% for f in finishes %}<div>{% if f.image %}<div class="frame ratio-bike swatch__render"><img src="{{ f.image }}" alt="SENDA frame in {{ f.name }}" loading="lazy"></div>{% else %}<div class="swatch__color" style="background:{{ f.hex }}"></div>{% endif %}<p class="swatch__name">{{ f.name }}</p><p class="micro swatch__note">{{ f.surface }}</p></div>{% endfor %}
     </div>
     <div class="specced mt-5">
       {% include "partials/frame.liquid", img: "/assets/img/web/orma-wheels-1000.jpg", ratio: "bike", contain: true, alt: "ORMA Momentum 45 wheelset" %}
@@ -142,14 +142,18 @@ layout: layouts/base.liquid
 
 <section class="section" id="geometry">
   <div class="wrap draft" data-draft="Not in launch: geometry to confirm">
-    <div class="section-head">
-      <div><h2 class="h2">Five sizes.</h2></div>
-      <p class="lead">Final numbers are published when pre-orders open.</p>
-    </div>
+    <div class="section-head"><h2 class="h2">Geometry.</h2>{% if geometrySource %}<p class="lead">{{ geometrySource }}</p>{% else %}<p class="lead">Final numbers are published when pre-orders open.</p>{% endif %}</div>
+    {% if geometryImage %}<img class="geometry-drawing" src="{{ geometryImage }}" alt="Geometry drawing of the {{ title }} frame with stack, reach and angles" loading="lazy">{% endif %}
     <div class="scroll-x">
       <table class="table table--wide">
-        <thead><tr><th>Measurement</th>{% for s in sizes %}<th>{{ s }}</th>{% endfor %}</tr></thead>
-        <tbody>{% for row in geometry %}<tr><th>{{ row }}</th>{% for s in sizes %}<td class="no">To come</td>{% endfor %}</tr>{% endfor %}</tbody>
+        <thead><tr><th>Size</th>{% for s in sizes %}<th>{{ s }}</th>{% endfor %}</tr></thead>
+        <tbody>
+        {% if geometryRows %}
+          {% for row in geometryRows %}<tr>{% for c in row %}{% if forloop.first %}<th>{{ c }}</th>{% else %}<td>{{ c }}</td>{% endif %}{% endfor %}</tr>{% endfor %}
+        {% else %}
+          {% for row in geometry %}<tr><th>{{ row }}</th>{% for s in sizes %}<td class="no">To come</td>{% endfor %}</tr>{% endfor %}
+        {% endif %}
+        </tbody>
       </table>
     </div>
   </div>
