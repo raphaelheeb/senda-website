@@ -492,3 +492,14 @@ main > .section:last-child, main > div:last-child { padding-bottom: var(--sectio
 .opening__copy .display { max-width: 7em; }
 .orma-intro { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; }
 @media (max-width: 1080px) { .site-header__bar { grid-template-columns: 1fr auto; } }
+
+/* Language switch: DE / EN, current language in ink */
+.lang a { color: var(--grey); }
+.lang a:hover { color: var(--ink); }
+.lang [aria-current] { color: var(--ink); }
+
+/* Proposal: dark footer as the page's one point of contrast (Micha to confirm) */
+.site-footer { background: var(--ink); color: #fff; border-top: 0; }
+.site-footer .footer-brand img { filter: invert(1); }
+.site-footer a:hover { opacity: 0.6; }
+.site-footer .footer-base { border-top-color: rgba(255, 255, 255, 0.18); color: rgba(255, 255, 255, 0.6); }
