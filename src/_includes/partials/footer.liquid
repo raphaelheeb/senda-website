@@ -2,20 +2,13 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="/assets/logo/senda-wordmark-v22.png" alt="SENDA" width="1747" height="307" loading="lazy">
-        <p>Swiss road and gravel bikes. Wheels and components by ORMA. Designed for the long way round.</p>
-      </div>
+      <a class="footer-brand" href="/" aria-label="SENDA home"><img src="/assets/logo/senda-wordmark-v22.png" alt="SENDA" width="1747" height="307" loading="lazy"></a>
       {% for col in site.footer %}
-      <div>
-        <h2 class="micro">{{ col.title }}</h2>
-        <ul>{% for l in col.links %}{% unless l.draft and env.production %}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{% endunless %}{% endfor %}</ul>
-      </div>
+      <ul>{% for l in col.links %}{% unless l.draft and env.production %}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{% endunless %}{% endfor %}</ul>
       {% endfor %}
     </div>
-    <div class="footer-base micro">
+    <div class="footer-base">
       <span>© SENDA 2026, Zürich</span>
-      <nav aria-label="Social">{% for l in site.social %}<a href="{{ l.url }}">{{ l.label }} ↗</a>{% endfor %}</nav>
       <nav aria-label="Legal">{% for l in site.legal %}{% unless l.draft and env.production %}<a href="{{ l.url }}">{{ l.label }}</a>{% endunless %}{% endfor %}</nav>
     </div>
   </div>

@@ -4,20 +4,16 @@ permalink: /journal/
 title: Journal
 ---
 <div class="wrap">
-  <header class="page-head page-head--ruled">
-    <p class="micro">Journal / Notes from the road</p>
-    <div class="section-head section-head--plain" style="margin:0">
-      <h1 class="h1">Out there is the point.</h1>
-      <p class="lead">Testing, decisions and the people who shape SENDA. A work in progress, documented along the way.</p>
-    </div>
+  <header class="page-head">
+    <h1 class="h1">Journal</h1>
+    <p class="lead">Testing, decisions and the people who shape SENDA, documented along the way.</p>
   </header>
-  <div class="cards" style="padding-bottom: var(--section)">
+  <div class="trio" style="padding-bottom: var(--section); row-gap: var(--s-6)">
     {% for post in collections.journal %}
-    <a class="card" href="{{ post.url }}">
+    <a class="tile" href="{{ post.url }}">
       {% include "partials/frame.liquid", img: post.data.image, ratio: "journal", contain: post.data.imageContain, alt: "" %}
-      <div class="card__top"><span class="micro">{{ post.data.topic }}</span><time class="micro" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%d.%m.%Y" }}</time></div>
-      <h2 class="h3 mt-2">{{ post.data.title }}</h2>
-      <p class="small mt-2">{{ post.data.excerpt }}</p>
+      <span class="tile__name">{{ post.data.title }}</span>
+      <time class="tile__note" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.data.topic }}, {{ post.date | date: "%d.%m.%Y" }}</time>
     </a>
     {% endfor %}
   </div>

@@ -28,6 +28,7 @@ image: /assets/img/web/road-rider-2000.jpg
 imagePosition: center 40%
 alt: A rider with a SENDA Road bike on an Alpine road
 teaser: Direct, light and composed. Built for the pace of a long climb and the precision of the descent.
+tileNote: Announced, 2027
 image2: /assets/img/web/valley-pair-1000.jpg
 image3: /assets/img/web/rider-road-1000.jpg
 storyImage: /assets/img/web/opening-belvedere-1000.jpg

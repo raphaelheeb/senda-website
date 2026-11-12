@@ -422,3 +422,73 @@ button, input, select { font: inherit; color: inherit; }
 /* Utilities */
 .mt-1 { margin-top: var(--s-1); } .mt-2 { margin-top: var(--s-2); } .mt-3 { margin-top: var(--s-3); } .mt-4 { margin-top: var(--s-4); } .mt-5 { margin-top: var(--s-5); }
 .row-between { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); flex-wrap: wrap; }
+
+/* =====================================================================
+   v3: quieter structure. One idea per section: headline, at most one
+   sentence, one link. Space separates sections, not lines or labels.
+   ===================================================================== */
+.section { border-top: 0; padding: var(--section) 0 0; }
+main > .section:last-child, main > div:last-child { padding-bottom: var(--section); }
+#newsletter { padding-bottom: var(--section); }
+.block-title { max-width: 14em; margin-bottom: var(--head-gap); }
+.block { display: grid; gap: var(--s-3); justify-items: start; max-width: 30em; }
+.block .orma-mark { margin-bottom: var(--s-2); }
+.block__text { font-size: var(--t-lead); color: var(--ink-mid); }
+.block-link { margin-top: var(--s-5); }
+.linkline { padding-bottom: 6px; }
+
+/* Tiles: image, name, at most one quiet note */
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); }
+.tile { display: block; }
+.tile .frame { margin-bottom: var(--s-2); }
+.tile__name { display: block; font-size: clamp(18px, 1.5vw, 22px); letter-spacing: var(--track-h3); line-height: 1.25; }
+.tile__note { display: block; margin-top: 4px; font-size: 14px; color: var(--grey); }
+.tile:hover .tile__name { opacity: 0.6; }
+.duo { gap: var(--gutter); }
+@media (max-width: 760px) { .trio { grid-template-columns: 1fr; gap: var(--s-5); } }
+
+/* Opening: headline and one link */
+.opening__copy { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s-4); }
+.opening__copy .display { max-width: 9em; }
+.opening__copy .linkline { color: #fff; flex-shrink: 0; }
+@media (max-width: 760px) {
+  .opening__copy { flex-direction: column; align-items: flex-start; gap: var(--s-3); }
+  .opening__copy .linkline { color: var(--ink); }
+}
+.fullbleed__copy .h2 { max-width: 9em; margin-bottom: var(--s-4); }
+.fullbleed { margin-top: var(--section); border-top: 0; }
+
+/* Header: logo, six links, two tools. No drop-downs. */
+.site-header__bar { grid-template-columns: 1fr auto 1fr; }
+.nav { gap: clamp(14px, 2vw, 32px); }
+.nav__link { padding: 0; }
+.header-tools { gap: var(--s-4); }
+.lang { color: var(--grey); text-transform: uppercase; }
+.lang:hover { color: var(--ink); }
+@media (max-width: 1080px) {
+  .drawer { display: flex; flex-direction: column; }
+  .drawer__main { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .drawer__secondary { margin-top: var(--s-3); }
+}
+
+/* Section heads on inner pages: headline, one sentence below, no rule */
+.section-head { display: block; border-bottom: 0; padding-bottom: 0; }
+.section-head > p, .section-head > .lead { margin-top: var(--s-3); max-width: 34em; }
+.page-head { padding-bottom: var(--s-6); }
+.page-head--ruled { border-bottom: 0; margin-bottom: 0; }
+.page-head .lead { margin-top: var(--s-3); }
+.orma-intro { border-top: 0; border-bottom: 0; padding: 0; margin-bottom: var(--s-6); }
+
+/* Newsletter: one line */
+.signup { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); align-items: end; }
+.signup .h2 { max-width: 10em; }
+
+/* Footer: logo and three short lists, no headings */
+.site-footer { margin-top: 0; }
+.footer-grid { grid-template-columns: minmax(0, 6fr) repeat(3, minmax(0, 2fr)); }
+.footer-base { margin-top: var(--s-6); font: 400 var(--t-label)/1.5 var(--mono); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--grey); }
+@media (max-width: 900px) { .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .footer-brand { grid-column: 1 / -1; } }
+.section-head > p, .section-head > .lead { margin-left: 0; margin-right: auto; text-align: left; }
+.opening__copy .display { max-width: 7em; }
+.orma-intro { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; }
+@media (max-width: 1080px) { .site-header__bar { grid-template-columns: 1fr auto; } }

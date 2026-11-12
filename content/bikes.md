@@ -7,5 +7,5 @@ category: bikes
 cols: 2
 cardRatio: square
 headline: Two ways to go further.
-intro: One road bike, one gravel bike, designed in Switzerland. Both are announced; reservations open with the first series in 2027.
+intro: One road bike and one gravel bike, designed in Switzerland. First deliveries in 2027.
 ---
