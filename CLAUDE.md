@@ -28,7 +28,7 @@ This repo is the brand site; it becomes a Shopify shop later (theme in a separat
 - Never commit secrets (`api_token.txt` is ignored).
 
 ## Brand rules
-- Design reference: Micha's V22 concept (white, architectural, hairline rules, quiet). Proposal v2 implements it.
+- Design reference: Micha's V22 concept (white, architectural, quiet). Proposal v3 reduces noise further: one idea per section (headline, at most one sentence, one link), no section numbers or labels above headlines, no drop-down menus, product tiles show name and one note only. Structure benchmark: ridefire.cc (structure only, not its look).
 - Tone: understated, precise, never loud. Tagline "QUIETLY FAST". No hype words, no exclamation marks.
 - Fonts: Inter (all statements and running text) and JetBrains Mono (labels, navigation, buttons, captions), both
   self-hosted from `assets/fonts/` (SIL OFL), so every visitor sees the same type. Never load fonts from Google.
@@ -36,7 +36,7 @@ This repo is the brand site; it becomes a Shopify shop later (theme in a separat
 - Colour: monochrome. Paper #fff, ink #151515, text #444, labels #666, rules #d2d2d2. No accent colour.
 - Type scale (desktop/mobile): display 88/48, H1 64/40, H2 64/36, H3 32/24, text 18/17, labels 12 mono uppercase.
   Running text never below 16 px.
-- Sections: label + headline left, short text right, black rule below (`.section-head`).
+- Sections: headline, then at most one sentence. Space separates sections, not rules or labels.
 - One solid button per screen for the commercial action; all other links are underlined mono links with ↗.
 - Status: ○ announced, ◐ pre-order, ● available.
 - Finishes: Slate Blue (satin), Champagne Silver (pearl), Dusky Rose (satin), Graphite (matte).

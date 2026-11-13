@@ -28,10 +28,21 @@ image: /assets/img/web/road-rider-2000.jpg
 imagePosition: center 40%
 alt: A rider with a SENDA Road bike on an Alpine road
 teaser: Direct, light and composed. Built for the pace of a long climb and the precision of the descent.
-image2: /assets/img/web/valley-pair-1000.jpg
-image3: /assets/img/web/rider-road-1000.jpg
-storyImage: /assets/img/web/opening-belvedere-1000.jpg
-storyAlt: Cyclists in a hairpin on the Furka Pass
+tileNote: Announced, 2027
+image2: /assets/img/web/frame-detail-slate-blue-1000.jpg
+image3: /assets/img/web/frame-detail-champagne-1000.jpg
+storyImage: /assets/img/web/frame-slate-blue-1000.jpg
+storyAlt: SENDA Road frameset in Slate Blue
+geometrySource: Values from the B02 Aero geometry chart, units as in the chart. To confirm before publishing.
+geometryImage: /assets/img/web/geometry-drawing-2000.jpg
+override:sizes: ["XS", "S", "M", "L", "XL", "XXL"]
+geometryRows:
+  - ["Stack", "51", "52", "53.5", "55", "57", "59.5"]
+  - ["Reach", "37", "37.5", "38.0", "39.5", "40", "41"]
+  - ["Head angle", "71°", "71.5°", "72°", "72.8°", "73°", "73°"]
+  - ["Seat angle", "75°", "74.5°", "74°", "73.5°", "73°", "73°"]
+  - ["Chainstay", "41", "41", "41", "41", "41", "41"]
+  - ["Wheelbase", "97", "97.5", "98.5", "99.5", "100.5", "102"]
 ---
 We combine advanced carbon materials with a precise construction, so stiffness goes where power goes and compliance where the road hits you.
 

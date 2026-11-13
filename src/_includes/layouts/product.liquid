@@ -18,7 +18,7 @@ layout: layouts/base.liquid
 
     <aside class="buy" aria-label="Purchase">
       <div class="buy__brand">
-        {% if brand == "ORMA" %}<a href="/orma/" class="orma-mark orma-mark--small"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">by SENDA</span></a>{% else %}<span class="micro">SENDA / {{ kind | default: category }}</span>{% endif %}
+        {% if brand == "ORMA" %}<a href="/orma/" class="orma-mark orma-mark--small"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">by SENDA</span></a>{% endif %}
       </div>
       <h1 class="buy__title">{{ title }}</h1>
       <p class="buy__summary">{{ summary }}</p>
@@ -90,8 +90,7 @@ layout: layouts/base.liquid
 <section class="section">
   <div class="wrap split">
     <div>
-      <p class="micro">{{ title }} / Design</p>
-      <h2 class="h2 mt-2">{{ storyTitle }}</h2>
+      <h2 class="h2">{{ storyTitle }}</h2>
       <div class="prose mt-4">{{ content }}</div>
     </div>
     {% include "partials/frame.liquid", img: storyImage, ratio: "bike", alt: storyAlt %}
@@ -103,11 +102,11 @@ layout: layouts/base.liquid
 <section class="section">
   <div class="wrap">
     <div class="section-head">
-      <div><p class="micro">Finishes</p><h2 class="h2">Four colours,<br>one frame.</h2></div>
+      <div><h2 class="h2">Four colours,<br>one frame.</h2></div>
       <p class="lead">Each chosen to age well. Every finish is available on every build.</p>
     </div>
     <div class="swatches">
-      {% for f in finishes %}<div><div class="swatch__color" style="background:{{ f.hex }}"></div><p class="swatch__name">{{ f.name }}</p><p class="micro swatch__note">{{ f.surface }}</p></div>{% endfor %}
+      {% for f in finishes %}<div>{% if f.image %}<div class="frame ratio-bike swatch__render"><img src="{{ f.image }}" alt="SENDA frame in {{ f.name }}" loading="lazy"></div>{% else %}<div class="swatch__color" style="background:{{ f.hex }}"></div>{% endif %}<p class="swatch__name">{{ f.name }}</p><p class="micro swatch__note">{{ f.surface }}</p></div>{% endfor %}
     </div>
     <div class="specced mt-5">
       {% include "partials/frame.liquid", img: "/assets/img/web/orma-wheels-1000.jpg", ratio: "bike", contain: true, alt: "ORMA Momentum 45 wheelset" %}
@@ -120,7 +119,7 @@ layout: layouts/base.liquid
         <h3 class="h3 mt-3">Specced with ORMA Momentum 45</h3>
         <p class="small mt-2">Every {{ title }} rolls on ORMA wheels, developed by the same team to the same standard.</p>
         {% endif %}
-        <a class="linkline mt-3" href="/wheelsets/orma-momentum-45/">See the wheelset ↗</a>
+        <a class="linkline mt-3" href="/wheelsets/orma-momentum-45/">See the wheelset</a>
       </div>
     </div>
   </div>
@@ -130,7 +129,7 @@ layout: layouts/base.liquid
 <section class="section">
   <div class="wrap draft" data-draft="Not in launch: builds and prices to confirm">
     <div class="section-head">
-      <div><p class="micro">Builds</p><h2 class="h2">Three builds.</h2></div>
+      <div><h2 class="h2">Three builds.</h2></div>
       <p class="lead">Groupsets are being finalised; the lists show the structure, not final parts.</p>
     </div>
     <div class="kits">
@@ -143,14 +142,18 @@ layout: layouts/base.liquid
 
 <section class="section" id="geometry">
   <div class="wrap draft" data-draft="Not in launch: geometry to confirm">
-    <div class="section-head">
-      <div><p class="micro">Geometry</p><h2 class="h2">Five sizes.</h2></div>
-      <p class="lead">Final numbers are published when pre-orders open.</p>
-    </div>
+    <div class="section-head"><h2 class="h2">Geometry.</h2>{% if geometrySource %}<p class="lead">{{ geometrySource }}</p>{% else %}<p class="lead">Final numbers are published when pre-orders open.</p>{% endif %}</div>
+    {% if geometryImage %}<img class="geometry-drawing" src="{{ geometryImage }}" alt="Geometry drawing of the {{ title }} frame with stack, reach and angles" loading="lazy">{% endif %}
     <div class="scroll-x">
       <table class="table table--wide">
-        <thead><tr><th>Measurement</th>{% for s in sizes %}<th>{{ s }}</th>{% endfor %}</tr></thead>
-        <tbody>{% for row in geometry %}<tr><th>{{ row }}</th>{% for s in sizes %}<td class="no">To come</td>{% endfor %}</tr>{% endfor %}</tbody>
+        <thead><tr><th>Size</th>{% for s in sizes %}<th>{{ s }}</th>{% endfor %}</tr></thead>
+        <tbody>
+        {% if geometryRows %}
+          {% for row in geometryRows %}<tr>{% for c in row %}{% if forloop.first %}<th>{{ c }}</th>{% else %}<td>{{ c }}</td>{% endif %}{% endfor %}</tr>{% endfor %}
+        {% else %}
+          {% for row in geometry %}<tr><th>{{ row }}</th>{% for s in sizes %}<td class="no">To come</td>{% endfor %}</tr>{% endfor %}
+        {% endif %}
+        </tbody>
       </table>
     </div>
   </div>
@@ -162,8 +165,7 @@ layout: layouts/base.liquid
 <section class="section">
   <div class="wrap split split--top">
     <div>
-      <p class="micro">{{ title }}</p>
-      <h2 class="h2 mt-2">{{ specsTitle | default: "Specifications" }}</h2>
+      <h2 class="h2">{{ specsTitle | default: "Specifications" }}</h2>
       {% if specsNote %}<p class="lead mt-3">{{ specsNote }}</p>{% endif %}
     </div>
     <table class="table">
@@ -177,7 +179,7 @@ layout: layouts/base.liquid
 <section class="section" id="compatibility">
   <div class="wrap">
     <div class="section-head">
-      <div><p class="micro">Compatibility</p><h2 class="h2">Will it fit<br>my bike?</h2></div>
+      <div><h2 class="h2">Will it fit<br>my bike?</h2></div>
       <p class="lead">Check your frame against the standards below. Items marked "to confirm" are being settled with the hub supplier.</p>
     </div>
     <div class="scroll-x">
@@ -186,7 +188,7 @@ layout: layouts/base.liquid
         <tbody>{% for c in compat %}<tr><th>{{ c[0] }}</th><td class="{{ c[1] }}">{% case c[1] %}{% when "yes" %}Yes{% when "no" %}No{% when "planned" %}Planned{% else %}To confirm{% endcase %}</td><td>{{ c[2] }}</td></tr>{% endfor %}</tbody>
       </table>
     </div>
-    {% if type == "wheelset" %}<p class="small mt-4">Standard on SENDA Road. A wider ORMA wheelset for SENDA Gravel is in development. <a class="linkline" href="/bikes/">See the bikes ↗</a></p>{% endif %}
+    {% if type == "wheelset" %}<p class="small mt-4">Standard on SENDA Road. A wider ORMA wheelset for SENDA Gravel is in development. <a class="linkline" href="/bikes/">See the bikes</a></p>{% endif %}
   </div>
 </section>
 {% endif %}
@@ -195,8 +197,8 @@ layout: layouts/base.liquid
 <section class="section">
   <div class="wrap">
     <div class="section-head">
-      <div><p class="micro">Questions</p><h2 class="h2">Good to know.</h2></div>
-      <p class="lead">Anything else: <a class="linkline" href="/service/#contact">Write to us ↗</a></p>
+      <div><h2 class="h2">Good to know.</h2></div>
+      <p class="lead">Anything else: <a class="linkline" href="/service/#contact">Write to us</a></p>
     </div>
     <div class="faq">
       {% for q in faq %}<details><summary>{{ q[0] }}</summary><p>{{ q[1] }}</p></details>{% endfor %}

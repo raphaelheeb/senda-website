@@ -1,17 +1,13 @@
 <section class="section" id="newsletter">
   <div class="wrap signup">
-    <div>
-      <p class="micro">Newsletter</p>
-      <h2 class="h2 mt-2">Follow the<br>road ahead.</h2>
-    </div>
+    <h2 class="h2">Ride along.</h2>
     <form class="js-signup" data-list="{{ signupList | default: 'senda' }}" novalidate>
-      <p class="small signup__text">Early access, product updates and notes from the workshop. A few emails a year.</p>
       <div class="signup__form">
         <label class="visually-hidden" for="signup-email">Email address</label>
-        <input class="field" id="signup-email" name="email" type="email" placeholder="Your email address" autocomplete="email" required>
-        <button type="submit">Sign up ↗</button>
+        <input class="field" id="signup-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+        <button type="submit">Sign up</button>
       </div>
-      <label class="consent"><input type="checkbox" name="consent" required> I agree to receive occasional emails from SENDA and can unsubscribe at any time. <a href="/legal/privacy.html">Privacy</a></label>
+      <label class="consent"><input type="checkbox" name="consent" required> A few emails a year. Unsubscribe any time. <a href="/legal/privacy.html">Privacy</a></label>
       <p class="form-msg" role="status" aria-live="polite"></p>
     </form>
   </div>
