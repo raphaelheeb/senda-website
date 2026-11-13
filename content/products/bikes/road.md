@@ -24,11 +24,30 @@ kits:
   - name: Build three
     price: From CHF 8,500 (indicative)
     items: ["Top-tier electronic groupset", "ORMA Momentum 45 wheelset", "ORMA one-piece aero bar", "ORMA saddle, carbon rails"]
-image: /assets/img/web/road-rider-2000.jpg
-imagePosition: center 40%
-alt: A rider with a SENDA Road bike on an Alpine road
+image: /assets/img/web/road-courtyard-orma-2000.jpg
+imagePosition: center 60%
+alt: SENDA Road in Slate Blue with ORMA wheels, standing in a stone courtyard
 teaser: Direct, light and composed. Built for the pace of a long climb and the precision of the descent.
 tileNote: Announced, 2027
+tileImage: /assets/img/web/road-rider-1000.jpg
+tileAlt: A rider with a SENDA Road bike on an Alpine road
+features:
+  - title: Carbon laid along the load.
+    text: Stiff where your power goes, around the bottom bracket and head tube. Compliant where the road hits you.
+    image: /assets/img/web/frame-detail-slate-blue-1000.jpg
+    alt: Close-up of the SENDA Road head tube and down tube in Slate Blue
+  - title: Drawn for long climbs.
+    text: A geometry for riders who climb all day and descend with confidence. Sizes and final numbers follow with pre-orders.
+    image: /assets/img/web/geometry-drawing-1000.jpg
+    contain: true
+    alt: Geometry drawing of the SENDA Road frame
+  - title: Specced with ORMA Momentum 45.
+    text: Every SENDA Road rolls on ORMA wheels, developed by the same team to the same standard.
+    image: /assets/img/web/orma-wheels-1000.jpg
+    contain: true
+    alt: ORMA Momentum 45 carbon wheelset
+    link: /wheelsets/orma-momentum-45/
+    linkText: See the wheelset
 image2: /assets/img/web/frame-detail-slate-blue-1000.jpg
 image3: /assets/img/web/frame-detail-champagne-1000.jpg
 storyImage: /assets/img/web/frame-slate-blue-1000.jpg
