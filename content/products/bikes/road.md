@@ -24,9 +24,9 @@ kits:
   - name: Build three
     price: From CHF 8,500 (indicative)
     items: ["Top-tier electronic groupset", "ORMA Momentum 45 wheelset", "ORMA one-piece aero bar", "ORMA saddle, carbon rails"]
-image: /assets/img/web/road-courtyard-orma-2000.jpg
-imagePosition: center 60%
-alt: SENDA Road in Slate Blue with ORMA wheels, standing in a stone courtyard
+image: /assets/img/web/road-garage-rear-2000.jpg
+imagePosition: center 58%
+alt: The SENDA Road prototype in Slate Blue in front of a grey wood-wool wall
 teaser: Direct, light and composed. Built for the pace of a long climb and the precision of the descent.
 tileNote: Announced, 2027
 tileImage: /assets/img/web/road-rider-1000.jpg
