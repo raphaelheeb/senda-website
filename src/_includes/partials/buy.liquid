@@ -1,0 +1,50 @@
+{%- comment -%} Status, price and the one commercial action for a product. Content marked data-states shows only in that lifecycle state. {%- endcomment -%}
+<div class="buy__status">
+  <span class="badge js-status-badge badge--{{ status }}">{{ status | status_label }}</span>
+  <div data-states="announced">
+    {% if price %}<p class="buy__price">{{ price }} <span class="tiny">Expected{% if priceNote %}, {{ priceNote | downcase }}{% endif %}</span></p>{% endif %}
+    <p class="buy__note">Expected {{ delivery | default: "later" }}. Leave your email and we write first when pre-orders open.</p>
+  </div>
+  <div data-states="preorder">
+    <p class="buy__price">{{ price }}{% if priceNote %} <span class="tiny">{{ priceNote }}</span>{% endif %}</p>
+    <p class="buy__note">{% if deposit %}Reserve with a refundable {{ deposit }} deposit. {% endif %}Delivery {{ delivery }}.</p>
+  </div>
+  <div data-states="available">
+    <p class="buy__price">{{ price }}{% if priceNote %} <span class="tiny">{{ priceNote }}</span>{% endif %}</p>
+    <p class="buy__note">{{ availableNote | default: "In stock. Ships from Zürich in 2 to 3 working days." }}</p>
+  </div>
+</div>
+
+{% for opt in options %}
+<fieldset class="buy__block" data-states="preorder available">
+  <legend class="option-label">{{ opt.label }}</legend>
+  <div class="chips">
+    {% for v in opt.values %}
+    <label class="chip"><input type="radio" name="{{ opt.label | slugify }}" {% if forloop.first %}checked{% endif %}><span>{% if v.hex %}<i style="background:{{ v.hex }}"></i>{% endif %}{{ v.name | default: v }}</span></label>
+    {% endfor %}
+  </div>
+  {% if opt.note %}<p class="tiny mt-2">{{ opt.note }}</p>{% endif %}
+</fieldset>
+{% endfor %}
+
+<form class="buy__actions js-signup" data-list="{{ list | default: 'senda' }}" data-states="announced" novalidate>
+  <label class="visually-hidden" for="notify-email">Email address</label>
+  <input class="field" id="notify-email" name="email" type="email" placeholder="Your email address" autocomplete="email">
+  <button class="btn" type="submit">Notify me</button>
+  <label class="consent"><input type="checkbox" name="consent"> I agree to receive emails about this product and SENDA news.</label>
+  <p class="form-msg" role="status" aria-live="polite"></p>
+</form>
+<div class="buy__actions" data-states="preorder">
+  <button class="btn" type="button">{% if type == "bike" %}Reserve with {{ deposit }} deposit{% else %}Pre-order{% endif %}</button>
+  {% if type == "bike" %}<a class="btn btn--quiet" href="/service/#fitting">Book a fitting first</a>{% endif %}
+</div>
+<div class="buy__actions" data-states="available">
+  <button class="btn" type="button">{% if type == "bike" %}Order{% else %}Add to cart{% endif %}</button>
+  {% if type == "bike" %}<a class="btn btn--quiet" href="/service/#fitting">Book a fitting first</a>{% endif %}
+</div>
+
+{% unless env.production %}
+<ul class="promise draft" data-draft="Service promises: to confirm">
+  {% for p in promise %}<li><strong>{{ p[0] }}</strong> {{ p[1] }}</li>{% endfor %}
+</ul>
+{% endunless %}

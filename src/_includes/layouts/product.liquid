@@ -2,6 +2,44 @@
 layout: layouts/base.liquid
 ---
 {%- assign catLabel = category | capitalize -%}
+{% if type == "bike" %}
+<nav class="subbar" aria-label="{{ title }}">
+  <div class="wrap subbar__inner">
+    <a class="subbar__name" href="#overview">{{ title }}</a>
+    <span class="subbar__links">
+      <a href="#overview">Overview</a>
+      <a href="#colours">Colours</a>
+      {% if features %}<a href="#details">Details</a>{% endif %}
+      {% if specs %}<a href="#specs">Specifications</a>{% endif %}
+      {% if faq %}<a href="#faq">FAQ</a>{% endif %}
+    </span>
+    <span class="subbar__action">
+      <a class="btn btn--small" href="#buy" data-states="announced">Notify me</a>
+      <a class="btn btn--small" href="#buy" data-states="preorder">Reserve</a>
+      <a class="btn btn--small" href="#buy" data-states="available">Order</a>
+    </span>
+  </div>
+</nav>
+
+<section class="stage" id="overview">
+  <div class="wrap stage__head">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/{{ category }}/">{{ catLabel }}</a><span>/</span><span>{{ title }}</span></nav>
+    <h1 class="stage__title">{{ title }}</h1>
+    <p class="stage__summary">{{ summary }}</p>
+  </div>
+  <div class="wrap">
+    {% include "partials/frame.liquid", img: image, ratio: "hero", pos: imagePosition, alt: alt %}
+  </div>
+  <div class="wrap stage__base">
+    {% if dims %}<div class="dims" style="--dims: {{ dims.size }}">
+      {% for d in dims %}<div class="dim"><span class="dim__value">{{ d[0] }}</span><span class="dim__label">{{ d[1] }}</span></div>{% endfor %}
+    </div>{% endif %}
+    <div class="buy stage__buy" id="buy" aria-label="Purchase">
+      {% include "partials/buy.liquid" %}
+    </div>
+  </div>
+</section>
+{% else %}
 <div class="wrap">
   <nav class="crumbs" style="padding-top: var(--s-4)" aria-label="Breadcrumb"><a href="/{{ category }}/">{{ catLabel }}</a><span>/</span><span>{{ title }}</span></nav>
 
@@ -23,60 +61,14 @@ layout: layouts/base.liquid
       <h1 class="buy__title">{{ title }}</h1>
       <p class="buy__summary">{{ summary }}</p>
 
-      <div class="buy__status">
-        <span class="badge js-status-badge badge--{{ status }}">{{ status | status_label }}</span>
-        <div data-states="announced">
-          {% if price %}<p class="buy__price">{{ price }} <span class="tiny">Expected{% if priceNote %}, {{ priceNote | downcase }}{% endif %}</span></p>{% endif %}
-          <p class="buy__note">Expected {{ delivery | default: "later" }}. Leave your email and we write first when pre-orders open.</p>
-        </div>
-        <div data-states="preorder">
-          <p class="buy__price">{{ price }}{% if priceNote %} <span class="tiny">{{ priceNote }}</span>{% endif %}</p>
-          <p class="buy__note">{% if deposit %}Reserve with a refundable {{ deposit }} deposit. {% endif %}Delivery {{ delivery }}.</p>
-        </div>
-        <div data-states="available">
-          <p class="buy__price">{{ price }}{% if priceNote %} <span class="tiny">{{ priceNote }}</span>{% endif %}</p>
-          <p class="buy__note">{{ availableNote | default: "In stock. Ships from Zürich in 2 to 3 working days." }}</p>
-        </div>
-      </div>
-
-      {% for opt in options %}
-      <fieldset class="buy__block" data-states="preorder available">
-        <legend class="option-label">{{ opt.label }}</legend>
-        <div class="chips">
-          {% for v in opt.values %}
-          <label class="chip"><input type="radio" name="{{ opt.label | slugify }}" {% if forloop.first %}checked{% endif %}><span>{% if v.hex %}<i style="background:{{ v.hex }}"></i>{% endif %}{{ v.name | default: v }}</span></label>
-          {% endfor %}
-        </div>
-        {% if opt.note %}<p class="tiny mt-2">{{ opt.note }}</p>{% endif %}
-      </fieldset>
-      {% endfor %}
-
-      <form class="buy__actions js-signup" data-list="{{ list | default: 'senda' }}" data-states="announced" novalidate>
-        <label class="visually-hidden" for="notify-email">Email address</label>
-        <input class="field" id="notify-email" name="email" type="email" placeholder="Your email address" autocomplete="email">
-        <button class="btn" type="submit">Notify me</button>
-        <label class="consent"><input type="checkbox" name="consent"> I agree to receive emails about this product and SENDA news.</label>
-        <p class="form-msg" role="status" aria-live="polite"></p>
-      </form>
-      <div class="buy__actions" data-states="preorder">
-        <button class="btn" type="button">{% if type == "bike" %}Reserve with {{ deposit }} deposit{% else %}Pre-order{% endif %}</button>
-        {% if type == "bike" %}<a class="btn btn--quiet" href="/service/#fitting">Book a fitting first</a>{% endif %}
-      </div>
-      <div class="buy__actions" data-states="available">
-        <button class="btn" type="button">{% if type == "bike" %}Order{% else %}Add to cart{% endif %}</button>
-        {% if type == "bike" %}<a class="btn btn--quiet" href="/service/#fitting">Book a fitting first</a>{% endif %}
-      </div>
-
-      {% unless env.production %}
-      <ul class="promise draft" data-draft="Service promises: to confirm">
-        {% for p in promise %}<li><strong>{{ p[0] }}</strong> {{ p[1] }}</li>{% endfor %}
-      </ul>
-      {% endunless %}
+      {% include "partials/buy.liquid" %}
     </aside>
   </div>
 </div>
 
-{% if dims %}
+{% endif %}
+
+{% if dims and type != "bike" %}
 <section class="section section--tight">
   <div class="wrap">
     <div class="dims" style="--dims: {{ dims.size }}">
@@ -99,16 +91,47 @@ layout: layouts/base.liquid
 {% endif %}
 
 {% if type == "bike" %}
+<section class="section" id="colours">
+  <div class="wrap">
+    <h2 class="h2 block-title">Four colours, one frame.</h2>
+    <div class="picker" data-picker>
+      <div class="picker__stage">
+        {% for f in finishes %}
+        <div class="picker__view{% if forloop.first %} is-active{% endif %}" data-finish="{{ f.name | slugify }}">
+          {% if f.image %}<img src="{{ f.image | replace: '-1000', '-2000' }}" alt="SENDA frame in {{ f.name }}" loading="lazy">{% else %}<div class="picker__flat" style="background: {{ f.hex }}"></div>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      <div class="picker__controls" role="radiogroup" aria-label="Finish">
+        {% for f in finishes %}<button type="button" class="picker__chip" role="radio" aria-checked="{% if forloop.first %}true{% else %}false{% endif %}" data-finish="{{ f.name | slugify }}" data-caption="{{ f.name }}, {{ f.surface | downcase }}"><i style="background: {{ f.hex }}"></i><span>{{ f.name }}</span></button>{% endfor %}
+      </div>
+      {% assign f0 = finishes | first %}<p class="picker__caption micro" aria-live="polite">{{ f0.name }}, {{ f0.surface | downcase }}</p>
+    </div>
+  </div>
+</section>
+
+{% if features %}
+<section class="section" id="details">
+  <div class="wrap">
+    <h2 class="h2 block-title">{{ featuresTitle | default: "Look closer." }}</h2>
+    <div class="features">
+      {% for f in features %}
+      <article class="feature">
+        {% include "partials/frame.liquid", img: f.image, ratio: "bike", contain: f.contain, pos: f.pos, alt: f.alt %}
+        <details class="feature__more">
+          <summary>{{ f.title }}</summary>
+          <p>{{ f.text }}</p>
+          {% if f.link %}<a class="linkline" href="{{ f.link }}">{{ f.linkText }}</a>{% endif %}
+        </details>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% else %}
 <section class="section">
   <div class="wrap">
-    <div class="section-head">
-      <div><h2 class="h2">Four colours,<br>one frame.</h2></div>
-      <p class="lead">Each chosen to age well. Every finish is available on every build.</p>
-    </div>
-    <div class="swatches">
-      {% for f in finishes %}<div>{% if f.image %}<div class="frame ratio-bike swatch__render"><img src="{{ f.image }}" alt="SENDA frame in {{ f.name }}" loading="lazy"></div>{% else %}<div class="swatch__color" style="background:{{ f.hex }}"></div>{% endif %}<p class="swatch__name">{{ f.name }}</p><p class="micro swatch__note">{{ f.surface }}</p></div>{% endfor %}
-    </div>
-    <div class="specced mt-5">
+    <div class="specced">
       {% include "partials/frame.liquid", img: "/assets/img/web/orma-wheels-1000.jpg", ratio: "bike", contain: true, alt: "ORMA Momentum 45 wheelset" %}
       <div>
         <p class="orma-mark orma-mark--small"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">by SENDA</span></p>
@@ -124,6 +147,7 @@ layout: layouts/base.liquid
     </div>
   </div>
 </section>
+{% endif %}
 
 {% unless env.production %}
 <section class="section">
@@ -162,7 +186,7 @@ layout: layouts/base.liquid
 {% endif %}
 
 {% if specs %}
-<section class="section">
+<section class="section" id="specs">
   <div class="wrap split split--top">
     <div>
       <h2 class="h2">{{ specsTitle | default: "Specifications" }}</h2>
@@ -194,7 +218,7 @@ layout: layouts/base.liquid
 {% endif %}
 
 {% if faq %}
-<section class="section">
+<section class="section" id="faq">
   <div class="wrap">
     <div class="section-head">
       <div><h2 class="h2">Good to know.</h2></div>
@@ -202,6 +226,20 @@ layout: layouts/base.liquid
     </div>
     <div class="faq">
       {% for q in faq %}<details><summary>{{ q[0] }}</summary><p>{{ q[1] }}</p></details>{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if type == "bike" %}
+{%- assign family = collections.products | in_category: category -%}
+{%- assign wheelsets = collections.products | in_category: "wheelsets" -%}
+<section class="section">
+  <div class="wrap">
+    <h2 class="h2 block-title">More from SENDA.</h2>
+    <div class="duo">
+      {% for p in family %}{% if p.url != page.url %}{% include "partials/card.liquid", p: p, cardRatio: "bike" %}{% endif %}{% endfor %}
+      {% for p in wheelsets limit: 1 %}{% include "partials/card.liquid", p: p, cardRatio: "bike" %}{% endfor %}
     </div>
   </div>
 </section>
