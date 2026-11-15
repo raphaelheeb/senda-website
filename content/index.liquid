@@ -30,7 +30,7 @@ description: Swiss road and gravel bikes, made for the way out. ORMA wheels and 
   </div>
   <div class="wrap">
     <a class="moment__image" href="/bikes/road/" tabindex="-1" aria-hidden="true">
-      <img src="/assets/img/web/road-garage-front-2000.jpg" srcset="/assets/img/web/road-garage-front-1000.jpg 1000w, /assets/img/web/road-garage-front-2000.jpg 2000w" sizes="(max-width: 1600px) 92vw, 1376px" width="2000" height="1116" alt="" loading="lazy">
+      <img src="/assets/img/web/road-toni-side-2000.jpg" srcset="/assets/img/web/road-toni-side-1000.jpg 1000w, /assets/img/web/road-toni-side-2000.jpg 2000w" sizes="(max-width: 1600px) 92vw, 1376px" width="2000" height="1333" alt="" loading="lazy">
     </a>
   </div>
 </section>
@@ -41,7 +41,7 @@ description: Swiss road and gravel bikes, made for the way out. ORMA wheels and 
     <div class="duo">
       {% for b in bikes %}
       <a class="tile" href="{{ b.url }}">
-        {% assign img = b.data.tileImage | default: b.data.image | replace: "-2000", "-1000" %}{% assign tpos = b.data.imagePosition %}{% if b.data.tileImage %}{% assign tpos = "center 40%" %}{% endif %}{% assign talt = b.data.tileAlt | default: b.data.alt %}{% include "partials/frame.liquid", img: img, ratio: "square", pos: tpos, alt: talt %}
+        {% assign img = b.data.tileImage | default: b.data.image | replace: "-2000", "-1000" %}{% assign tpos = b.data.imagePosition %}{% if b.data.tileImage %}{% assign tpos = "center" %}{% endif %}{% assign talt = b.data.tileAlt | default: b.data.alt %}{% include "partials/frame.liquid", img: img, ratio: "square", pos: tpos, alt: talt %}
         <span class="tile__name">{{ b.data.title }}</span>
         <span class="tile__note">{{ b.data.tileNote }}</span>
       </a>
