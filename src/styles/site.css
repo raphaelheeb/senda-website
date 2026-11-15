@@ -507,3 +507,72 @@ main > .section:last-child, main > div:last-child { padding-bottom: var(--sectio
 /* Finish renders and geometry drawing */
 .swatch__render { background: #e4e4e4; }
 .geometry-drawing { width: 100%; max-width: 980px; margin: 0 auto var(--s-5); }
+
+/* ==========================================================================
+   v4: product stage, sub-bar, colour selector, detail cards
+   (layout patterns adapted from car configurator pages; tokens unchanged)
+   ========================================================================== */
+.btn--small { min-height: 36px; padding: 0 16px; font-size: 11px; }
+
+/* Sticky product sub-bar under the site header */
+.subbar { position: sticky; top: var(--header-h); z-index: 40; background: var(--paper); border-bottom: 1px solid var(--line); }
+.subbar__inner { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--s-3); height: 52px; }
+.subbar__name { font-size: 15px; letter-spacing: var(--track-h3); }
+.subbar__links { display: flex; gap: clamp(16px, 2.2vw, 32px); font: 400 var(--t-label)/1 var(--mono); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--grey); }
+.subbar__links a { padding: 19px 0 17px; border-bottom: 1px solid transparent; }
+.subbar__links a:hover, .subbar__links a[aria-current] { color: var(--ink); border-bottom-color: var(--ink); }
+.subbar__action { justify-self: end; opacity: 0; visibility: hidden; transition: opacity 0.2s var(--ease), visibility 0s linear 0.2s; }
+.subbar.is-past .subbar__action { opacity: 1; visibility: visible; transition-delay: 0s; }
+html:has(.subbar) { scroll-padding-top: calc(var(--header-h) + 52px + 16px); }
+@media (max-width: 860px) {
+  .subbar__inner { grid-template-columns: minmax(0, 1fr) auto; height: 48px; }
+  .subbar__name { display: none; }
+  .subbar__links { overflow-x: auto; scrollbar-width: none; gap: 20px; }
+  .subbar__links::-webkit-scrollbar { display: none; }
+  .subbar__links a { padding: 17px 0 15px; white-space: nowrap; }
+}
+
+/* Product stage: centred name, one sentence, the bike, then facts and the action */
+.stage { padding: var(--s-4) 0 var(--section); }
+.stage__head { display: grid; justify-items: center; text-align: center; padding-bottom: clamp(32px, 4vw, 64px); }
+.stage__head .crumbs { justify-self: start; margin-bottom: clamp(32px, 4vw, 64px); }
+.stage__title { font-size: var(--t-display); font-weight: 400; line-height: var(--lh-display); letter-spacing: var(--track-display); }
+.stage__summary { margin-top: var(--s-3); max-width: 34em; font-size: var(--t-lead); color: var(--ink-mid); }
+.stage__base { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s-5) clamp(32px, 5vw, 96px); align-items: start; margin-top: clamp(40px, 5vw, 72px); }
+.stage__buy { position: static; }
+.stage__buy .buy__status { margin-top: 0; }
+@media (max-width: 900px) { .stage__base { grid-template-columns: 1fr; } }
+
+/* Colour selector */
+.picker { max-width: 1180px; margin: 0 auto; }
+.picker__stage { position: relative; aspect-ratio: var(--ratio-bike); background: #e4e4e4; overflow: hidden; }
+.picker__view { position: absolute; inset: 0; opacity: 0; transition: opacity 0.45s var(--ease); }
+.picker__view.is-active { opacity: 1; }
+.picker__view img { width: 100%; height: 100%; object-fit: cover; }
+.picker__flat { width: 100%; height: 100%; }
+.picker__controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px var(--s-3); margin-top: var(--s-4); }
+.picker__chip { display: inline-flex; align-items: center; gap: 10px; padding: 8px 2px; background: none; border: 0; border-bottom: 1px solid transparent; font: inherit; font-size: 15px; color: var(--grey); cursor: pointer; }
+.picker__chip i { width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, 0.12); box-shadow: 0 0 0 3px var(--paper); }
+.picker__chip[aria-checked="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+.picker__chip[aria-checked="true"] i { box-shadow: 0 0 0 3px var(--paper), 0 0 0 4px var(--ink); }
+.picker__chip:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.picker__caption { margin-top: var(--s-2); text-align: center; }
+
+/* Detail cards: image, title, text on request */
+.features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); }
+.feature .frame { margin-bottom: var(--s-2); }
+.feature .frame--contain { background: var(--paper); }
+.feature__more summary { list-style: none; cursor: pointer; position: relative; padding: 4px 44px 4px 0; font-size: clamp(18px, 1.5vw, 22px); letter-spacing: var(--track-h3); line-height: 1.25; }
+.feature__more summary::-webkit-details-marker { display: none; }
+.feature__more summary::after { content: "+"; position: absolute; right: 0; top: 0; width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; font-size: 18px; font-weight: 300; color: var(--ink); }
+.feature__more[open] summary::after { content: "\2212"; }
+.feature__more p { margin-top: var(--s-2); color: var(--ink-mid); max-width: 30em; }
+.feature__more .linkline { margin-top: var(--s-2); }
+@media (max-width: 860px) { .features { grid-template-columns: 1fr; gap: var(--s-5); } }
+
+/* Homepage product moment: centred, the bike on its own */
+.moment__copy { display: grid; justify-items: center; gap: var(--s-3); text-align: center; margin-bottom: clamp(40px, 5vw, 72px); }
+.moment__copy .block__text { max-width: 30em; }
+.moment__image { display: block; max-width: 1376px; margin: 0 auto; }
+.moment__image img { width: 100%; height: auto; }
+@media (max-width: 760px) { .stage .frame { --ratio: 4 / 3; } }

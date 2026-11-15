@@ -24,15 +24,35 @@ kits:
   - name: Build three
     price: From CHF 8,500 (indicative)
     items: ["Top-tier electronic groupset", "ORMA Momentum 45 wheelset", "ORMA one-piece aero bar", "ORMA saddle, carbon rails"]
-image: /assets/img/web/road-rider-2000.jpg
-imagePosition: center 40%
-alt: A rider with a SENDA Road bike on an Alpine road
+image: /assets/img/web/road-toni-side-2000.jpg
+imagePosition: center 62%
+alt: The SENDA Road prototype in Slate Blue in front of a board-marked concrete wall
 teaser: Direct, light and composed. Built for the pace of a long climb and the precision of the descent.
 tileNote: Announced, 2027
+cardImage: /assets/img/web/road-toni-studio-1000.jpg
+tileImage: /assets/img/web/road-toni-lettering-1000.jpg
+tileAlt: SENDA lettering in copper on the Slate Blue down tube
+features:
+  - title: Carbon laid along the load.
+    text: Stiff where your power goes, around the bottom bracket and head tube. Compliant where the road hits you.
+    image: /assets/img/web/road-toni-lettering-1000.jpg
+    alt: SENDA lettering in copper on the Slate Blue down tube
+  - title: Drawn for long climbs.
+    text: A geometry for riders who climb all day and descend with confidence. Sizes and final numbers follow with pre-orders.
+    image: /assets/img/web/geometry-drawing-1000.jpg
+    contain: true
+    alt: Geometry drawing of the SENDA Road frame
+  - title: Specced with ORMA Momentum 45.
+    text: Every SENDA Road rolls on ORMA wheels, developed by the same team to the same standard.
+    image: /assets/img/web/orma-wheels-1000.jpg
+    contain: true
+    alt: ORMA Momentum 45 carbon wheelset
+    link: /wheelsets/orma-momentum-45/
+    linkText: See the wheelset
 image2: /assets/img/web/frame-detail-slate-blue-1000.jpg
 image3: /assets/img/web/frame-detail-champagne-1000.jpg
-storyImage: /assets/img/web/frame-slate-blue-1000.jpg
-storyAlt: SENDA Road frameset in Slate Blue
+storyImage: /assets/img/web/road-toni-cockpit-1000.jpg
+storyAlt: Cockpit of the SENDA Road prototype seen from above
 geometrySource: Values from the B02 Aero geometry chart, units as in the chart. To confirm before publishing.
 geometryImage: /assets/img/web/geometry-drawing-2000.jpg
 override:sizes: ["XS", "S", "M", "L", "XL", "XXL"]

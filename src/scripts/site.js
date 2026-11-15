@@ -130,3 +130,44 @@
     update();
   }
 })();
+
+// v4: colour selector and product sub-bar
+(function () {
+  "use strict";
+  document.querySelectorAll("[data-picker]").forEach(function (picker) {
+    var chips = picker.querySelectorAll(".picker__chip");
+    var caption = picker.querySelector(".picker__caption");
+    chips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        var key = chip.getAttribute("data-finish");
+        chips.forEach(function (c) { c.setAttribute("aria-checked", String(c === chip)); });
+        picker.querySelectorAll(".picker__view").forEach(function (v) {
+          v.classList.toggle("is-active", v.getAttribute("data-finish") === key);
+        });
+        if (caption) caption.textContent = chip.getAttribute("data-caption");
+      });
+    });
+  });
+
+  var bar = document.querySelector(".subbar");
+  if (bar && "IntersectionObserver" in window) {
+    // Show the bar's action only once the purchase block has scrolled away: one solid button per screen.
+    var buy = document.getElementById("buy");
+    if (buy) {
+      new IntersectionObserver(function (entries) {
+        var e = entries[0];
+        bar.classList.toggle("is-past", !e.isIntersecting && e.boundingClientRect.top < 0);
+      }).observe(buy);
+    }
+    var links = Array.prototype.slice.call(bar.querySelectorAll(".subbar__links a"));
+    var targets = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var i = targets.indexOf(e.target);
+        links.forEach(function (a, j) { if (j === i) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    targets.forEach(function (t) { if (t) io.observe(t); });
+  }
+})();
