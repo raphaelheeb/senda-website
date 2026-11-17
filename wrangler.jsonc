@@ -1,0 +1,13 @@
+// Cloudflare Workers: serves the Eleventy build in _site as static assets.
+// Production branch builds run `npm run build` then `npx wrangler deploy`;
+// other branches get a preview URL via `npx wrangler preview`.
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "senda-website",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./_site",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  }
+}
