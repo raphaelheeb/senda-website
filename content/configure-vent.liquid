@@ -1,152 +1,156 @@
 ---
 layout: layouts/base.liquid
 title: Configure SENDA Vent
-permalink: /bikes/vent/configure/
+pagination: { data: site.langs, size: 1, alias: lang, addAllPagesToCollections: true }
+permalink: "{% if lang == 'de' %}/de{% endif %}/bikes/vent/configure/"
+de:
+  title: SENDA Vent konfigurieren
+  description: Wähle Grösse, Farbe, Schaltgruppe, Laufräder, Cockpit und Reifen für Dein SENDA Vent. Verbindliche Bestellung mit 20 % Anzahlung auf Rechnung.
 description: Choose size, colour, groupset, wheels, cockpit and tyres for your SENDA Vent. Binding order with a 20% deposit by invoice.
 hideSignup: true
-eleventyExcludeFromCollections: true
 ---
 {%- assign v = configurator.vent -%}
+{%- assign c = t.config -%}
 {%- comment -%}
   One row per choice. Each row shows its current value and opens on tap (one at a time).
   Every row starts with a sensible value, so a customer can go straight to "Continue".
   Stage 1 builds the bike, stage 2 asks for the details. Behaviour: /scripts/configure.js
 {%- endcomment -%}
 <div class="wrap order-page">
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/bikes/">Bikes</a><span>/</span><a href="/bikes/vent/">{{ v.name }}</a><span>/</span><span>Configure</span></nav>
+  <nav class="crumbs" aria-label="{{ t.a11y.breadcrumb }}"><a href="{{ '/bikes/' | lurl: lang }}">{{ t.nav["/bikes/"] }}</a><span>/</span><a href="{{ '/bikes/vent/' | lurl: lang }}">{{ v.name }}</a><span>/</span><span>{{ c.crumb_configure }}</span></nav>
 
-  <noscript><p class="lead">The configurator needs JavaScript. You can also order by email: <a class="linkline" href="mailto:{{ configurator.orderEmail }}">{{ configurator.orderEmail }}</a></p></noscript>
+  <noscript><p class="lead">{{ c.noscript }} <a class="linkline" href="mailto:{{ configurator.orderEmail }}">{{ configurator.orderEmail }}</a></p></noscript>
 
-  <form class="config" data-order="vent" data-stage="build" novalidate>
+  <form class="config" data-order="vent" data-lang="{{ lang }}" data-stage="build" novalidate>
     <div class="config__main">
       <header class="order-head">
-        <h1 class="h2" data-stage-title="build">Your {{ v.name }}.</h1>
-        <h1 class="h2" data-stage-title="details" hidden>Your details.</h1>
-        <p class="order-head__offer" data-offer-until="{{ v.earlyBird.until }}">{{ v.earlyBird.label }} until {{ v.earlyBird.until | long_date }}: CHF {{ v.earlyBird.discount }} off every build.</p>
+        <h1 class="h2" data-stage-title="build">{{ c.your | fill: "name", v.name }}</h1>
+        <h1 class="h2" data-stage-title="details" hidden>{{ c.your_details }}</h1>
+        <p class="order-head__offer" data-offer-until="{{ v.earlyBird.until }}">{% assign d = v.earlyBird.until | long_date: lang %}{{ t.offer.head_vent | fill: "date", d, "discount", v.earlyBird.discount }}</p>
       </header>
 
       <div class="config__build">
         <details class="cstep" name="cstep" open>
-          <summary><span class="cstep__title">Size</span><span class="cstep__value" data-show="size"></span></summary>
+          <summary><span class="cstep__title">{{ c.size }}</span><span class="cstep__value" data-show="size"></span></summary>
           <div class="cstep__body">
             <div class="chips">{% for s in v.sizes %}<label class="chip"><input type="radio" name="size" value="{{ s.id }}"><span>{{ s.label }} <em>{{ s.cm }} cm</em></span></label>{% endfor %}</div>
             <details class="more" data-fit>
-              <summary>Find your fit</summary>
+              <summary>{{ c.fit.open }}</summary>
               <div class="more__body">
-                <p class="more__intro">Four measurements, taken barefoot. We set size, cockpit and crank length to match.</p>
+                <p class="more__intro">{{ c.fit.intro }}</p>
                 <div class="fitcalc__fields">
-                  <label>Height<input class="field" type="number" name="fitHeight" inputmode="decimal" min="145" max="210" step="0.5" placeholder="cm"></label>
-                  <label>Inseam<input class="field" type="number" name="fitInseam" inputmode="decimal" min="60" max="110" step="0.5" placeholder="cm"></label>
-                  <label>Arm length<input class="field" type="number" name="fitArm" inputmode="decimal" min="45" max="90" step="0.5" placeholder="cm"></label>
-                  <label>Shoulders <span>optional</span><input class="field" type="number" name="fitShoulders" inputmode="decimal" min="30" max="55" step="0.5" placeholder="cm"></label>
+                  <label>{{ c.fit.height }}<input class="field" type="number" name="fitHeight" inputmode="decimal" min="145" max="210" step="0.5" placeholder="cm"></label>
+                  <label>{{ c.fit.inseam }}<input class="field" type="number" name="fitInseam" inputmode="decimal" min="60" max="110" step="0.5" placeholder="cm"></label>
+                  <label>{{ c.fit.arm }}<input class="field" type="number" name="fitArm" inputmode="decimal" min="45" max="90" step="0.5" placeholder="cm"></label>
+                  <label>{{ c.fit.shoulders }} <span>{{ c.fit.optional }}</span><input class="field" type="number" name="fitShoulders" inputmode="decimal" min="30" max="55" step="0.5" placeholder="cm"></label>
                 </div>
                 <details class="howto">
-                  <summary>How to measure</summary>
+                  <summary>{{ c.fit.how }}</summary>
                   <div class="howto__grid">
                   {% include "svg/fit-measure.svg" %}
                   <dl>
-                    <dt>Height</dt><dd>Barefoot, back against a wall.</dd>
-                    <dt>Inseam</dt><dd>Stand with your back to a wall, feet 15 cm apart. Pull a book firmly up between your legs, spine against the wall. Measure from the floor to the top of the book.</dd>
-                    <dt>Arm length</dt><dd>Arm hanging straight: from the bony point at the top of your shoulder to the centre of your closed fist.</dd>
-                    <dt>Shoulders</dt><dd>Between the bony points at the top of both shoulders. Sets the bar width.</dd>
+                    <dt>{{ c.fit.height }}</dt><dd>{{ c.fit.how_height }}</dd>
+                    <dt>{{ c.fit.inseam }}</dt><dd>{{ c.fit.how_inseam }}</dd>
+                    <dt>{{ c.fit.arm }}</dt><dd>{{ c.fit.how_arm }}</dd>
+                    <dt>{{ c.fit.shoulders }}</dt><dd>{{ c.fit.how_shoulders }}</dd>
                   </dl>
                   </div>
                 </details>
-                <div class="fitcalc__pos" role="radiogroup" aria-label="Position">
-                  {% for p in v.fit.positions %}<label class="chip"><input type="radio" name="fitPosition" value="{{ p[0] }}"{% if forloop.first %} checked{% endif %}><span>{{ p[1].label }}</span></label>{% endfor %}
-                  <span class="fitcalc__posnote" data-fit-posnote>Lower and longer, for speed.</span>
+                <div class="fitcalc__pos" role="radiogroup" aria-label="{{ c.fit.position }}">
+                  {% for p in v.fit.positions %}<label class="chip"><input type="radio" name="fitPosition" value="{{ p[0] }}"{% if forloop.first %} checked{% endif %}><span>{{ c.fit.positions[p[0]] | default: p[1].label }}</span></label>{% endfor %}
+                  <span class="fitcalc__posnote" data-fit-posnote>{{ t.js.fit_race }}</span>
                 </div>
                 <div class="fitcalc__result" data-fit-result aria-live="polite" hidden>
                   <dl data-fit-list></dl>
                   <p class="fitcalc__note" data-fit-note></p>
-                  <button class="textbtn" type="button" data-fit-apply>Apply to your bike</button>
+                  <button class="textbtn" type="button" data-fit-apply>{{ c.fit.apply }}</button>
                 </div>
                 <p class="fitcalc__error" data-fit-error aria-live="polite"></p>
-                <p class="small">A starting point from your measurements, not a fitting. Geometry: <a href="/bikes/vent/#geometry">stack and reach per size</a>. For a fitting: <a href="mailto:{{ configurator.orderEmail }}?subject=Fitting%20SENDA%20Vent">{{ configurator.orderEmail }}</a></p>
+                <p class="small">{{ c.fit.footnote }} <a href="{{ '/bikes/vent/' | lurl: lang }}#geometry">{{ c.fit.geometry_link }}</a>. {{ c.fit.fitting }} <a href="mailto:{{ configurator.orderEmail }}?subject=Fitting%20SENDA%20Vent">{{ configurator.orderEmail }}</a></p>
               </div>
             </details>
           </div>
         </details>
 
         <details class="cstep" name="cstep">
-          <summary><span class="cstep__title">Colour</span><span class="cstep__value" data-show="finish"></span></summary>
+          <summary><span class="cstep__title">{{ c.colour }}</span><span class="cstep__value" data-show="finish"></span></summary>
           <div class="cstep__body">
-            <div class="swatches">{% for f in v.finishes %}<label class="swatch"><input type="radio" name="finish" value="{{ f.id }}"><span class="swatch__dot" style="background:{{ f.hex }}"></span><span class="swatch__name">{{ f.label }}<em>{{ f.surface }}</em></span></label>{% endfor %}</div>
+            <div class="swatches">{% for f in v.finishes %}<label class="swatch"><input type="radio" name="finish" value="{{ f.id }}"><span class="swatch__dot" style="background:{{ f.hex }}"></span><span class="swatch__name">{{ f.label }}<em>{{ t.surface[f.surface] | default: f.surface }}</em></span></label>{% endfor %}</div>
           </div>
         </details>
 
         <details class="cstep" name="cstep">
-          <summary><span class="cstep__title">Groupset</span><span class="cstep__value" data-show="groupset"></span></summary>
+          <summary><span class="cstep__title">{{ c.groupset }}</span><span class="cstep__value" data-show="groupset"></span></summary>
           <div class="cstep__body">
             <div class="rows">{% for g in v.groupsets %}<label class="row"><input type="radio" name="groupset" value="{{ g.id }}"><span class="row__name">{{ g.label }}</span><span class="row__price" data-groupset-price="{{ g.id }}">CHF {{ g.price | chf }}</span></label>{% endfor %}</div>
           </div>
         </details>
 
         <details class="cstep" name="cstep">
-          <summary><span class="cstep__title">Gearing</span><span class="cstep__value" data-show="gearing"></span></summary>
+          <summary><span class="cstep__title">{{ c.gearing }}</span><span class="cstep__value" data-show="gearing"></span></summary>
           <div class="cstep__body">
-            <p class="option-label">Crank length</p>
-            <div class="chips">{% for c in v.cranks %}<label class="chip"><input type="radio" name="crank" value="{{ c }}"><span>{{ c }}</span></label>{% endfor %}</div>
-            <p class="option-label">Chainrings</p>
-            <div class="chips">{% for c in v.chainrings %}<label class="chip"><input type="radio" name="chainring" value="{{ c.id }}"><span>{{ c.label }}</span></label>{% endfor %}</div>
-            <p class="option-label">Cassette</p>
-            <div class="chips">{% for c in v.cassettes %}<label class="chip"><input type="radio" name="cassette" value="{{ c.id }}"><span>{{ c.label }}</span></label>{% endfor %}</div>
+            <p class="option-label">{{ c.crank }}</p>
+            <div class="chips">{% for x in v.cranks %}<label class="chip"><input type="radio" name="crank" value="{{ x }}"><span>{{ x }}</span></label>{% endfor %}</div>
+            <p class="option-label">{{ c.chainrings }}</p>
+            <div class="chips">{% for x in v.chainrings %}<label class="chip"><input type="radio" name="chainring" value="{{ x.id }}"><span>{{ t.chainrings[x.id] | default: x.label }}</span></label>{% endfor %}</div>
+            <p class="option-label">{{ c.cassette }}</p>
+            <div class="chips">{% for x in v.cassettes %}<label class="chip"><input type="radio" name="cassette" value="{{ x.id }}"><span>{{ x.label }}</span></label>{% endfor %}</div>
           </div>
         </details>
 
         <details class="cstep" name="cstep">
-          <summary><span class="cstep__title">Wheels</span><span class="cstep__value" data-show="wheels"></span></summary>
+          <summary><span class="cstep__title">{{ c.wheels }}</span><span class="cstep__value" data-show="wheels"></span></summary>
           <div class="cstep__body">
-            <p class="option-label">ORMA Momentum, front</p>
+            <p class="option-label">{{ c.front_orma }}</p>
             <div class="chips">{% for r in v.rims %}<label class="chip"><input type="radio" name="rimFront" value="{{ r }}"><span>{{ r }} mm</span></label>{% endfor %}</div>
-            <p class="option-label">Rear</p>
+            <p class="option-label">{{ c.rear }}</p>
             <div class="chips">{% for r in v.rims %}<label class="chip"><input type="radio" name="rimRear" value="{{ r }}"><span>{{ r }} mm</span></label>{% endfor %}</div>
           </div>
         </details>
 
         <details class="cstep" name="cstep">
-          <summary><span class="cstep__title">Cockpit</span><span class="cstep__value" data-show="cockpit"></span></summary>
+          <summary><span class="cstep__title">{{ c.cockpit }}</span><span class="cstep__value" data-show="cockpit"></span></summary>
           <div class="cstep__body">
-            <p class="cstep__hint">Set for your size. One-piece carbon bar and stem.</p>
-            <p class="option-label">Bar width at the hoods</p>
+            <p class="cstep__hint">{{ c.cockpit_hint }}</p>
+            <p class="option-label">{{ c.bar }}</p>
             <div class="chips">{% for b in v.bars %}<label class="chip"><input type="radio" name="bar" value="{{ b }}"><span>{{ b }}</span></label>{% endfor %}</div>
-            <p class="option-label">Stem length</p>
+            <p class="option-label">{{ c.stem }}</p>
             <div class="chips">{% for s in v.stems %}<label class="chip"><input type="radio" name="stem" value="{{ s }}"><span>{{ s }}</span></label>{% endfor %}</div>
-            <p class="option-label">Spacers</p>
+            <p class="option-label">{{ c.spacers }}</p>
             <div class="chips">{% for s in v.spacers %}<label class="chip"><input type="radio" name="spacers" value="{{ s }}"><span>{{ s }}</span></label>{% endfor %}</div>
-            <p class="cstep__hint">All values in mm. At the drops the bar is 20 mm wider.</p>
+            <p class="cstep__hint">{{ c.cockpit_note }}</p>
           </div>
         </details>
 
         <details class="cstep" name="cstep">
-          <summary><span class="cstep__title">Tyres</span><span class="cstep__value" data-show="tyre"></span></summary>
+          <summary><span class="cstep__title">{{ c.tyres }}</span><span class="cstep__value" data-show="tyre"></span></summary>
           <div class="cstep__body">
             <p class="option-label">{{ v.tyreModel }}</p>
-            <div class="chips">{% for t in v.tyres %}<label class="chip"><input type="radio" name="tyre" value="{{ t.id }}"><span>{{ t.label }}</span></label>{% endfor %}</div>
+            <div class="chips">{% for ty in v.tyres %}<label class="chip"><input type="radio" name="tyre" value="{{ ty.id }}"><span>{{ ty.label }}</span></label>{% endfor %}</div>
           </div>
         </details>
 
         <div class="config__next">
-          <button class="btn" type="button" data-go="details">Continue</button>
-          <p class="small">Other parts or a fitting: <a href="mailto:{{ configurator.orderEmail }}">{{ configurator.orderEmail }}</a></p>
+          <button class="btn" type="button" data-go="details">{{ c.continue }}</button>
+          <p class="small">{{ c.other_parts }} <a href="mailto:{{ configurator.orderEmail }}">{{ configurator.orderEmail }}</a></p>
         </div>
       </div>
 
       <div class="config__details" hidden>
-        <button class="back" type="button" data-go="build">Back to your bike</button>
-        {% include "partials/order-details.liquid", submitLabel: "Place binding order", termsNote: "I understand that this order is binding and that the deposit is not refunded if I withdraw." %}
+        <button class="back" type="button" data-go="build">{{ c.back_bike }}</button>
+        {% include "partials/order-details.liquid", submitLabel: c.place_order, termsNote: c.terms_vent %}
       </div>
     </div>
 
-    {% include "partials/order-summary.liquid", productName: v.name, image: "/assets/img/web/road-toni-studio-1000.jpg", terms: "Binding order. Delivery from March 2027." %}
+    {% include "partials/order-summary.liquid", productName: v.name, image: "/assets/img/web/road-toni-studio-1000.jpg", terms: c.summary_vent %}
   </form>
 
   {% include "partials/order-done.liquid" %}
 </div>
 
 <div class="order-bar" data-order-bar hidden>
-  <div><span class="order-bar__label">Total</span> <strong data-bar-total></strong></div>
-  <button class="btn btn--small" type="button" data-go="details">Continue</button>
+  <div><span class="order-bar__label">{{ c.total }}</span> <strong data-bar-total></strong></div>
+  <button class="btn btn--small" type="button" data-go="details">{{ c.continue }}</button>
 </div>
 
 <script id="order-config" type="application/json">{{ configurator | json }}</script>

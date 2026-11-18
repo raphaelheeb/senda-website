@@ -125,8 +125,7 @@
     },
     {
       "label": "Terms",
-      "url": "/terms/",
-      "draft": true
+      "url": "/terms/"
     }
   ],
   "show": {
@@ -135,5 +134,9 @@
   },
   "turnstileSiteKey": "1x00000000000000000000AA",
   "_turnstileNote": "Test key (always passes) until the real Turnstile widget for sendabikes.com is created; then replace it here and set TURNSTILE_SECRET in Cloudflare.",
-  "orderApi": "/api/order"
+  "orderApi": "/api/order",
+  "langs": [
+    "en",
+    "de"
+  ]
 }

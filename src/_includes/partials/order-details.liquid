@@ -1,20 +1,23 @@
 {%- comment -%} Customer details, terms and submit for an order. Used by every order page. {%- endcomment -%}
+{%- assign dd = t.config.details -%}
 <fieldset class="order-details" id="details">
-  <legend class="visually-hidden">Your details</legend>
+  <legend class="visually-hidden">{{ dd.legend }}</legend>
   <div class="fit-fields order-fields">
-    <label>First name<input class="field" name="firstName" autocomplete="given-name" required maxlength="80"></label>
-    <label>Last name<input class="field" name="lastName" autocomplete="family-name" required maxlength="80"></label>
-    <label>Email<input class="field" name="email" type="email" autocomplete="email" required maxlength="160"></label>
-    <label>Phone<input class="field" name="phone" type="tel" autocomplete="tel" required maxlength="40"></label>
-    <label class="order-fields__wide">Street and number<input class="field" name="street" autocomplete="street-address" required maxlength="120"></label>
-    <label>Postcode<input class="field" name="zip" inputmode="numeric" autocomplete="postal-code" required pattern="[0-9]{4}" maxlength="4"></label>
-    <label>Town<input class="field" name="city" autocomplete="address-level2" required maxlength="80"></label>
-    <label class="order-fields__wide">Country (we deliver within Switzerland)<input class="field" value="Switzerland" disabled></label>
-    <label class="order-fields__wide">Message (optional)<textarea class="field field--area" name="message" rows="3" maxlength="1000" placeholder="For example: I would like a fitting before the size is confirmed."></textarea></label>
+    <label>{{ dd.first }}<input class="field" name="firstName" autocomplete="given-name" required maxlength="80"></label>
+    <label>{{ dd.last }}<input class="field" name="lastName" autocomplete="family-name" required maxlength="80"></label>
+    <label>{{ dd.email }}<input class="field" name="email" type="email" autocomplete="email" required maxlength="160"></label>
+    <label>{{ dd.phone }}<input class="field" name="phone" type="tel" autocomplete="tel" required maxlength="40"></label>
+    <label class="order-fields__wide">{{ dd.street }}<input class="field" name="street" autocomplete="street-address" required maxlength="120"></label>
+    <label>{{ dd.zip }}<input class="field" name="zip" inputmode="numeric" autocomplete="postal-code" required pattern="[0-9]{4}" maxlength="4"></label>
+    <label>{{ dd.city }}<input class="field" name="city" autocomplete="address-level2" required maxlength="80"></label>
+    <label class="order-fields__wide">{{ dd.country }}<input class="field" value="{{ dd.country_value }}" disabled></label>
+    <label class="order-fields__wide">{{ dd.message }}<textarea class="field field--area" name="message" rows="3" maxlength="1000" placeholder="{{ dd.message_placeholder }}"></textarea></label>
   </div>
-  <label class="consent mt-3"><input type="checkbox" name="terms" required> <span>I accept the <a href="/terms/" target="_blank">order terms</a> and the <a href="/legal/privacy.html" target="_blank">privacy notice</a>. {{ termsNote }}</span></label>
-  <label class="consent mt-2"><input type="checkbox" name="newsletter"> <span>Send me occasional news from SENDA. Unsubscribe at any time.</span></label>
-  <div class="cf-turnstile mt-3" data-sitekey="{{ site.turnstileSiteKey }}" data-appearance="interaction-only" data-size="flexible"></div>
+  {%- capture termsA -%}<a href="{{ '/terms/' | lurl: lang }}" target="_blank">{{ dd.terms_link }}</a>{%- endcapture -%}
+  {%- capture privacyA -%}<a href="/legal/privacy.html" target="_blank">{{ dd.privacy_link }}</a>{%- endcapture -%}
+  <label class="consent mt-3"><input type="checkbox" name="terms" required> <span>{{ dd.accept | fill: "terms", termsA, "privacy", privacyA }} {{ termsNote }}</span></label>
+  <label class="consent mt-2"><input type="checkbox" name="newsletter"> <span>{{ dd.newsletter }}</span></label>
+  <div class="cf-turnstile mt-3" data-sitekey="{{ site.turnstileSiteKey }}" data-appearance="interaction-only" data-size="flexible" data-language="{{ lang | default: 'en' }}"></div>
   <button class="btn order-submit mt-3" type="submit">{{ submitLabel }}</button>
   <p class="form-msg order-msg" role="status" aria-live="polite"></p>
 </fieldset>

@@ -1,13 +1,13 @@
 <section class="section" id="newsletter">
   <div class="wrap signup">
-    <h2 class="h2">Ride along.</h2>
+    <h2 class="h2">{{ t.signup.title }}</h2>
     <form class="js-signup" data-list="{{ signupList | default: 'senda' }}" novalidate>
       <div class="signup__form">
-        <label class="visually-hidden" for="signup-email">Email address</label>
-        <input class="field" id="signup-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
-        <button type="submit">Sign up</button>
+        <label class="visually-hidden" for="signup-email">{{ t.signup.email }}</label>
+        <input class="field" id="signup-email" name="email" type="email" placeholder="{{ t.signup.email }}" autocomplete="email" required>
+        <button type="submit">{{ t.signup.submit }}</button>
       </div>
-      <label class="consent"><input type="checkbox" name="consent" required> A few emails a year. Unsubscribe any time. <a href="/legal/privacy.html">Privacy</a></label>
+      <label class="consent"><input type="checkbox" name="consent" required> {{ t.signup.consent }} <a href="/legal/privacy.html">{{ t.signup.privacy }}</a></label>
       <p class="form-msg" role="status" aria-live="polite"></p>
     </form>
   </div>

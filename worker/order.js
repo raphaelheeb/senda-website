@@ -22,6 +22,19 @@ const CUSTOMER_FIELDS = {
   message: { required: false, max: 1000 },
 };
 
+// German versions of the messages customers can see.
+const DE = {
+  "Please fill in your details.": "Bitte fülle Deine Angaben aus.",
+  "Please check the marked fields.": "Bitte prüfe die markierten Felder.",
+  "Orders are briefly unavailable.": "Bestellungen sind kurz nicht möglich.",
+  "The spam check did not complete.": "Die Spam-Prüfung wurde nicht abgeschlossen.",
+  "The spam check is briefly unavailable.": "Die Spam-Prüfung ist kurz nicht verfügbar.",
+  "The order could not be stored.": "Die Bestellung konnte nicht gespeichert werden.",
+  "Unexpected request.": "Unerwartete Anfrage.",
+  "Please accept the order terms.": "Bitte akzeptiere die Bestellbedingungen.",
+  "This configuration is not available. Please reload the page.": "Diese Konfiguration ist nicht verfügbar. Bitte lade die Seite neu.",
+};
+
 export class OrderError extends Error {
   constructor(status, message, fields) {
     super(message);
@@ -117,6 +130,17 @@ export async function handleOrder(request, env, ctx, now = new Date()) {
   try { body = JSON.parse(raw); } catch { throw new OrderError(400, "Unexpected request."); }
 
   const { requestId, product, selection, customer, terms, turnstileToken, fit } = body || {};
+  const lang = body && body.lang === "de" ? "de" : "en";
+  try {
+    return await storeOrder(env, ctx, now, request, { requestId, product, selection, customer, terms, turnstileToken, fit, lang });
+  } catch (e) {
+    if (e instanceof OrderError && lang === "de") e.message = DE[e.message] || e.message;
+    throw e;
+  }
+}
+
+async function storeOrder(env, ctx, now, request, { requestId, product, selection, customer, terms, turnstileToken, fit, lang }) {
+  const kv = env.ORDERS;
   if (typeof requestId !== "string" || !UUID.test(requestId)) throw new OrderError(400, "Unexpected request.");
 
   // Same requestId again (double click, retry after a lost response): same answer, no second order.
@@ -130,7 +154,7 @@ export async function handleOrder(request, env, ctx, now = new Date()) {
   const cust = validateCustomer(customer);
   const sel = {};
   for (const [k, v] of Object.entries(selection || {})) sel[k] = String(v).slice(0, 20);
-  const price = priceOrder(cfg, product, sel, now);
+  const price = priceOrder(cfg, product, sel, now, lang);
   if (!price.ok) throw new OrderError(400, "This configuration is not available. Please reload the page.", price.errors);
 
   const ip = request.headers.get("cf-connecting-ip") || "";
@@ -138,7 +162,7 @@ export async function handleOrder(request, env, ctx, now = new Date()) {
 
   const number = await newOrderNumber(kv, product, now);
   const order = {
-    number, requestId, product, selection: sel, customer: cust, price, fit: product === "vent" ? cleanFit(fit) : null,
+    number, requestId, product, lang, selection: sel, customer: cust, price, fit: product === "vent" ? cleanFit(fit) : null,
     receivedAt: now.toISOString(),
     meta: { ip, country: request.cf?.country || "", ua: (request.headers.get("user-agent") || "").slice(0, 200) },
     tasks: {

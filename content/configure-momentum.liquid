@@ -1,63 +1,67 @@
 ---
 layout: layouts/base.liquid
 title: Order ORMA Momentum
-permalink: /wheelsets/orma-momentum/configure/
+pagination: { data: site.langs, size: 1, alias: lang, addAllPagesToCollections: true }
+permalink: "{% if lang == 'de' %}/de{% endif %}/wheelsets/orma-momentum/configure/"
+de:
+  title: ORMA Momentum bestellen
+  description: Wähle Felgenhöhe vorne und hinten und den Freilauf für Deinen ORMA Momentum. Volle Rechnung nach Bestellung.
 description: Choose rim depth front and rear and the freehub for your ORMA Momentum wheelset. Invoiced in full.
 hideSignup: true
-eleventyExcludeFromCollections: true
 ---
 {%- assign m = configurator.momentum -%}
+{%- assign c = t.config -%}
 <div class="wrap order-page">
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/wheelsets/">Wheelsets</a><span>/</span><a href="/wheelsets/orma-momentum/">{{ m.name }}</a><span>/</span><span>Order</span></nav>
+  <nav class="crumbs" aria-label="{{ t.a11y.breadcrumb }}"><a href="{{ '/wheelsets/' | lurl: lang }}">{{ t.nav["/wheelsets/"] }}</a><span>/</span><a href="{{ '/wheelsets/orma-momentum/' | lurl: lang }}">{{ m.name }}</a><span>/</span><span>{{ c.crumb_order }}</span></nav>
 
-  <noscript><p class="lead">The order form needs JavaScript. You can also order by email: <a class="linkline" href="mailto:{{ configurator.orderEmail }}">{{ configurator.orderEmail }}</a></p></noscript>
+  <noscript><p class="lead">{{ c.noscript }} <a class="linkline" href="mailto:{{ configurator.orderEmail }}">{{ configurator.orderEmail }}</a></p></noscript>
 
-  <form class="config" data-order="momentum" data-stage="build" novalidate>
+  <form class="config" data-order="momentum" data-lang="{{ lang }}" data-stage="build" novalidate>
     <div class="config__main">
       <header class="order-head">
-        <h1 class="h2" data-stage-title="build">Your {{ m.name }}.</h1>
-        <h1 class="h2" data-stage-title="details" hidden>Your details.</h1>
-        <p class="order-head__offer" data-offer-until="{{ m.earlyBird.until }}">{{ m.earlyBird.label }} until {{ m.earlyBird.until | long_date }}: CHF {{ m.price | minus: m.earlyBird.price }} off.</p>
+        <h1 class="h2" data-stage-title="build">{{ c.your | fill: "name", m.name }}</h1>
+        <h1 class="h2" data-stage-title="details" hidden>{{ c.your_details }}</h1>
+        <p class="order-head__offer" data-offer-until="{{ m.earlyBird.until }}">{% assign d = m.earlyBird.until | long_date: lang %}{% assign off = m.price | minus: m.earlyBird.price %}{{ t.offer.head_momentum | fill: "date", d, "discount", off }}</p>
       </header>
 
       <div class="config__build">
         <details class="cstep" name="cstep" open>
-          <summary><span class="cstep__title">Rim depth</span><span class="cstep__value" data-show="wheels"></span></summary>
+          <summary><span class="cstep__title">{{ c.rim_depth }}</span><span class="cstep__value" data-show="wheels"></span></summary>
           <div class="cstep__body">
-            <p class="option-label">Front</p>
+            <p class="option-label">{{ c.front }}</p>
             <div class="chips">{% for r in m.rims %}<label class="chip"><input type="radio" name="rimFront" value="{{ r }}"><span>{{ r }} mm</span></label>{% endfor %}</div>
-            <p class="option-label">Rear</p>
+            <p class="option-label">{{ c.rear }}</p>
             <div class="chips">{% for r in m.rims %}<label class="chip"><input type="radio" name="rimRear" value="{{ r }}"><span>{{ r }} mm</span></label>{% endfor %}</div>
           </div>
         </details>
 
         <details class="cstep" name="cstep">
-          <summary><span class="cstep__title">Freehub</span><span class="cstep__value" data-show="freehub"></span></summary>
+          <summary><span class="cstep__title">{{ c.freehub }}</span><span class="cstep__value" data-show="freehub"></span></summary>
           <div class="cstep__body">
             <div class="chips">{% for h in m.freehubs %}<label class="chip"><input type="radio" name="freehub" value="{{ h.id }}"><span>{{ h.label }}</span></label>{% endfor %}</div>
           </div>
         </details>
 
         <div class="config__next">
-          <button class="btn" type="button" data-go="details">Continue</button>
+          <button class="btn" type="button" data-go="details">{{ c.continue }}</button>
         </div>
       </div>
 
       <div class="config__details" hidden>
-        <button class="back" type="button" data-go="build">Back to your wheels</button>
-        {% include "partials/order-details.liquid", submitLabel: "Place binding order", termsNote: "I understand that this order is binding." %}
+        <button class="back" type="button" data-go="build">{{ c.back_wheels }}</button>
+        {% include "partials/order-details.liquid", submitLabel: c.place_order, termsNote: c.terms_momentum %}
       </div>
     </div>
 
-    {% include "partials/order-summary.liquid", productName: m.name, image: "/assets/img/web/orma-wheels-1000.jpg", terms: "Binding order. Delivery from March 2027." %}
+    {% include "partials/order-summary.liquid", productName: m.name, image: "/assets/img/web/orma-wheels-1000.jpg", terms: c.summary_momentum %}
   </form>
 
   {% include "partials/order-done.liquid" %}
 </div>
 
 <div class="order-bar" data-order-bar hidden>
-  <div><span class="order-bar__label">Total</span> <strong data-bar-total></strong></div>
-  <button class="btn btn--small" type="button" data-go="details">Continue</button>
+  <div><span class="order-bar__label">{{ c.total }}</span> <strong data-bar-total></strong></div>
+  <button class="btn btn--small" type="button" data-go="details">{{ c.continue }}</button>
 </div>
 
 <script id="order-config" type="application/json">{{ configurator | json }}</script>

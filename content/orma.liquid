@@ -1,41 +1,71 @@
 ---
 layout: layouts/base.liquid
-permalink: /orma/
+pagination: { data: site.langs, size: 1, alias: lang, addAllPagesToCollections: true }
+permalink: "{% if lang == 'de' %}/de{% endif %}/orma/"
 title: ORMA
 signupList: orma
-description: ORMA is SENDA's line of wheels and components. Same team, same standard.
+en:
+  title: ORMA
+  description: ORMA is SENDA's line of wheels and components. Same team, same standard.
+  h1: Same team. Same standard.
+  lead: SENDA's wheels and components, made for the parts that connect a bike with the road.
+  alt: ORMA Momentum carbon wheelset
+  start_title: One clear<br>starting point.
+  start_text: Momentum comes first, in 45 and 50 mm. A wider gravel version follows, then cockpit and saddle.
+  steps:
+    - ["Momentum", "All-round road wheels, 45 or 50 mm deep, chosen front and rear."]
+    - ["Cockpit and saddle", "The one-piece bar already on every SENDA Vent, then a saddle."]
+    - ["Wider for gravel", "Wider rims built around the tyre volumes and terrain that gravel riding asks for."]
+  standard_alt: A rider with a SENDA Vent bike
+  standard_title: Standard on every SENDA.
+  standard_text: ORMA is tested alongside our bikes, so every SENDA is built with it. It also fits most other disc-brake road bikes.
+  standard_link: See the bikes
+de:
+  title: ORMA
+  description: ORMA ist die Linie von SENDA für Laufräder und Komponenten. Dasselbe Team, derselbe Anspruch.
+  h1: Dasselbe Team. Derselbe Anspruch.
+  lead: Laufräder und Komponenten von SENDA, gemacht für die Teile, die ein Bike mit der Strasse verbinden.
+  alt: ORMA Momentum Carbon-Laufradsatz
+  start_title: Ein klarer<br>Anfang.
+  start_text: Zuerst kommt der Momentum, in 45 und 50 mm. Es folgen eine breitere Gravel-Version, dann Cockpit und Sattel.
+  steps:
+    - ["Momentum", "Allround-Laufräder für die Strasse, 45 oder 50 mm hoch, vorne und hinten frei wählbar."]
+    - ["Cockpit und Sattel", "Der einteilige Lenker, den jedes SENDA Vent schon hat, danach ein Sattel."]
+    - ["Breiter für Gravel", "Breitere Felgen, abgestimmt auf die Reifenvolumen und das Gelände, die Gravel verlangt."]
+  standard_alt: Ein Velofahrer mit einem SENDA Vent
+  standard_title: Standard an jedem SENDA.
+  standard_text: ORMA wird zusammen mit unseren Bikes getestet, deshalb ist jedes SENDA damit ausgerüstet. Die Laufräder passen auch an die meisten anderen Rennräder mit Scheibenbremse.
+  standard_link: Zu den Bikes
 ---
-{%- assign wheels = collections.products | in_category: "wheelsets" -%}
 <div class="wrap">
   <header class="page-head">
-    <p class="orma-mark"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">by SENDA</span></p>
-    <h1 class="h1 mt-5">Same team. Same standard.</h1>
-    <p class="lead">SENDA's wheels and components, made for the parts that connect a bike with the road.</p>
+    <p class="orma-mark"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">{{ t.product.orma_by }}</span></p>
+    <h1 class="h1 mt-5">{{ C.h1 }}</h1>
+    <p class="lead">{{ C.lead }}</p>
   </header>
-  {% include "partials/frame.liquid", img: "/assets/img/web/orma-wheels-2000.jpg", ratio: "bike", contain: true, alt: "ORMA Momentum carbon wheelset" %}
+  {% include "partials/frame.liquid", img: "/assets/img/web/orma-wheels-2000.jpg", ratio: "bike", contain: true, alt: C.alt %}
 </div>
 
 <section class="section" style="margin-top: var(--section)">
   <div class="wrap">
     <div class="section-head">
-      <div><h2 class="h2">One clear<br>starting point.</h2></div>
-      <p class="lead">Momentum comes first, in 45 and 50 mm. A wider gravel version follows, then cockpit and saddle.</p>
+      <div><h2 class="h2">{{ C.start_title }}</h2></div>
+      <p class="lead">{{ C.start_text }}</p>
     </div>
     <ol class="steps">
-      <li class="step"><h3 class="h3">Momentum</h3><p>All-round road wheels, 45 or 50 mm deep, chosen front and rear.</p></li>
-      <li class="step"><h3 class="h3">Cockpit and saddle</h3><p>The one-piece bar already on every SENDA Vent, then a saddle.</p></li>
-      <li class="step"><h3 class="h3">Wider for gravel</h3><p>Wider rims built around the tyre volumes and terrain that gravel riding asks for.</p></li>
+      {% for s in C.steps %}<li class="step"><h3 class="h3">{{ s[0] }}</h3><p>{{ s[1] }}</p></li>
+      {% endfor %}
     </ol>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap split">
-    {% include "partials/frame.liquid", img: "/assets/img/web/road-rider-1000.jpg", ratio: "bike", alt: "A rider with a SENDA Vent bike" %}
+    {% include "partials/frame.liquid", img: "/assets/img/web/road-rider-1000.jpg", ratio: "bike", alt: C.standard_alt %}
     <div>
-      <h2 class="h2">Standard on every SENDA.</h2>
-      <p class="lead mt-3">ORMA is tested alongside our bikes, so every SENDA is built with it. It also fits most other disc-brake road bikes.</p>
-      <a class="linkline mt-4" href="/bikes/">See the bikes</a>
+      <h2 class="h2">{{ C.standard_title }}</h2>
+      <p class="lead mt-3">{{ C.standard_text }}</p>
+      <a class="linkline mt-4" href="{{ '/bikes/' | lurl: lang }}">{{ C.standard_link }}</a>
     </div>
   </div>
 </section>

@@ -74,6 +74,42 @@ geometryRows:
   - ["Wheelbase", "971", "976", "983", "993", "1005", "1020"]
   - ["Standover", "727", "744", "766", "790", "814", "844"]
   - ["Trail", "71.5", "68.3", "65.1", "60.0", "58.7", "58.7"]
+de:
+  price: Ab CHF 5’400
+  priceNote: Inkl. MWST
+  delivery: ab März 2027
+  summary: Ein Carbon-Rennrad in sechs Grössen, mit einteiligem Carbon-Cockpit und ORMA Laufrädern, auf Deine Position eingestellt.
+  alt: Der SENDA Vent Prototyp in Slate Blue vor einer Sichtbetonwand
+  dims:
+    - ["< 7 kg", "Zielgewicht, Topausstattung"]
+    - ["45 / 50 mm", "Felgenhöhe ORMA Momentum, frei wählbar"]
+    - ["4", "Farben, ein Rahmen"]
+  storyTitle: Carbon, Abschnitt für Abschnitt abgestimmt.
+  storyAlt: Cockpit des SENDA Vent Prototyps von oben
+  tileNote: Jetzt bestellen, Lieferung März 2027
+  tileAlt: SENDA Schriftzug in Kupfer auf dem Unterrohr in Slate Blue
+  geometrySource: Alle Werte in mm, sofern nicht anders angegeben.
+  features:
+    - title: In der Schweiz lackiert und montiert.
+      text: Jede Farbe ist von SENDA gestaltet, danach wird das Bike in der Schweiz lackiert und montiert.
+      image: /assets/img/web/road-toni-lettering-1000.jpg
+      alt: SENDA Schriftzug in Kupfer auf dem Unterrohr in Slate Blue
+    - title: Sechs Grössen, alle Werte veröffentlicht.
+      text: Stack, Reach und jeder Winkel pro Grösse, damit Du vor der Bestellung vergleichen kannst.
+      image: /assets/img/web/geometry-drawing-1000.jpg
+      contain: true
+      alt: Geometriezeichnung des SENDA Vent Rahmens
+    - title: Mit ORMA Momentum.
+      text: Jedes SENDA Vent rollt auf ORMA Laufrädern, 45 oder 50 mm hoch, vorne und hinten frei wählbar.
+      image: /assets/img/web/orma-wheels-1000.jpg
+      contain: true
+      alt: ORMA Momentum Carbon-Laufradsatz
+      link: /wheelsets/orma-momentum/
+      linkText: Zum Laufradsatz
+  body: |
+    Unterschiedliche Lagenaufbauten und Fasertypen in jedem Abschnitt: steif rund um Tretlager und Steuerrohr, wo die Kraft hineingeht, nachgiebig, wo Du sitzt, und leicht im Ganzen.
+
+    Jeder Prototyp fährt auf Schweizer Strassen, bevor wir ihn freigeben.
 ---
 Different layups and fibre types in each section: stiff around the bottom bracket and head tube where power goes in, compliant where you sit, light overall.
 

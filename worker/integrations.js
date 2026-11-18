@@ -15,68 +15,114 @@ async function call(url, init, what) {
 }
 
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-export const monthYear = (iso) => { const [y, m] = iso.split("-"); return `${MONTHS[Number(m) - 1]} ${y}`; };
+const MONTHS = {
+  en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  de: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+};
+export const monthYear = (iso, lang = "en") => { const [y, m] = iso.split("-"); return `${(MONTHS[lang] || MONTHS.en)[Number(m) - 1]} ${y}`; };
+
+// Customer email text, per language. Placeholders in braces.
+const MAIL = {
+  en: {
+    subject: "Your {name} order {number}",
+    greeting: "Dear {first} {last}",
+    intro: "Thank you for your order. We have received it as follows.",
+    number: "Order number",
+    code: "Article code",
+    total: "Total incl. VAT",
+    deposit: "Deposit ({percent}%): {deposit}. Within two working days we confirm your order with the invoice for the deposit.",
+    balance: "Balance: {balance}, invoiced before delivery.",
+    full: "Amount: {total}. Within two working days we confirm your order with the invoice.",
+    delivery: "Planned delivery: {date}.",
+    address: "Delivery address",
+    country: "Switzerland",
+    refundDeposit: "Your order is binding under our order terms. If SENDA cannot deliver, or delivers substantially later than planned, you receive your deposit back in full.",
+    refundFull: "Your order is binding under our order terms. If SENDA cannot deliver, or delivers substantially later than planned, you receive your payment back in full.",
+    terms: "Order terms",
+    termsUrl: "https://sendabikes.com/terms/",
+    close: "If anything is not right, reply to this email.",
+  },
+  de: {
+    subject: "Deine Bestellung {name} {number}",
+    greeting: "Hallo {first} {last}",
+    intro: "Danke für Deine Bestellung. Wir haben sie wie folgt erhalten.",
+    number: "Bestellnummer",
+    code: "Artikelcode",
+    total: "Total inkl. MWST",
+    deposit: "Anzahlung ({percent} %): {deposit}. Innert zwei Arbeitstagen bestätigen wir Deine Bestellung mit der Rechnung für die Anzahlung.",
+    balance: "Restbetrag: {balance}, in Rechnung gestellt vor der Lieferung.",
+    full: "Betrag: {total}. Innert zwei Arbeitstagen bestätigen wir Deine Bestellung mit der Rechnung.",
+    delivery: "Geplante Lieferung: {date}.",
+    address: "Lieferadresse",
+    country: "Schweiz",
+    refundDeposit: "Deine Bestellung ist gemäss unseren Bestellbedingungen verbindlich. Kann SENDA nicht liefern oder liefert deutlich später als geplant, erhältst Du Deine Anzahlung vollständig zurück.",
+    refundFull: "Deine Bestellung ist gemäss unseren Bestellbedingungen verbindlich. Kann SENDA nicht liefern oder liefert deutlich später als geplant, erhältst Du Deine Zahlung vollständig zurück.",
+    terms: "Bestellbedingungen",
+    termsUrl: "https://sendabikes.com/de/terms/",
+    close: "Falls etwas nicht stimmt, antworte einfach auf diese E-Mail.",
+  },
+};
+const fill = (str, vars) => str.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");
 
 /** Content of the customer confirmation, as text blocks shared by the text and HTML versions. */
 export function customerMailContent(order, cfg) {
+  const lang = order.lang === "de" ? "de" : "en";
+  const w = MAIL[lang];
   const p = order.price;
   const c = order.customer;
   const name = order.product === "vent" ? cfg.vent.name : cfg.momentum.name;
   const pay = p.payment === "deposit"
-    ? [
-        `Deposit (${p.depositPercent}%): ${chf(p.deposit)}. Within two working days we confirm your order with the invoice for the deposit.`,
-        `Balance: ${chf(p.balance)}, invoiced before delivery.`,
-      ]
-    : [`Amount: ${chf(p.total)}. Within two working days we confirm your order with the invoice.`];
-  const refund = p.payment === "deposit"
-    ? "Your order is binding under our order terms. If SENDA cannot deliver, or delivers substantially later than planned, you receive your deposit back in full."
-    : "Your order is binding under our order terms. If SENDA cannot deliver, or delivers substantially later than planned, you receive your payment back in full.";
+    ? [fill(w.deposit, { percent: p.depositPercent, deposit: chf(p.deposit) }), fill(w.balance, { balance: chf(p.balance) })]
+    : [fill(w.full, { total: chf(p.total) })];
   return {
-    subject: `Your ${name} order ${order.number}`,
-    greeting: `Dear ${c.firstName} ${c.lastName}`,
-    intro: `Thank you for your order. We have received it as follows.`,
+    lang,
+    labels: w,
+    subject: fill(w.subject, { name, number: order.number }),
+    greeting: fill(w.greeting, { first: c.firstName, last: c.lastName }),
+    intro: w.intro,
     number: order.number,
     summary: p.summary,
     code: p.code,
     lines: p.lines.map(([k, v]) => [k, chf(v)]),
     total: chf(p.total),
     pay,
-    delivery: `Planned delivery: ${monthYear(p.delivery)}.`,
-    address: [`${c.firstName} ${c.lastName}`, c.street, `${c.zip} ${c.city}`, "Switzerland"],
-    refund,
-    terms: "https://sendabikes.com/terms/",
-    close: "If anything is not right, reply to this email.",
+    delivery: fill(w.delivery, { date: monthYear(p.delivery, lang) }),
+    address: [`${c.firstName} ${c.lastName}`, c.street, `${c.zip} ${c.city}`, w.country],
+    refund: p.payment === "deposit" ? w.refundDeposit : w.refundFull,
+    terms: w.termsUrl,
+    close: w.close,
   };
 }
 
 function renderText(m) {
+  const w = m.labels;
   return [
     `${m.greeting},`, "", m.intro, "",
-    `Order number: ${m.number}`, "",
+    `${w.number}: ${m.number}`, "",
     ...m.summary.map(([k, v]) => `${k}: ${v}`), "",
     ...m.lines.map(([k, v]) => `${k}: ${v}`),
-    `Total incl. VAT: ${m.total}`, "",
+    `${w.total}: ${m.total}`, "",
     ...m.pay, m.delivery, "",
-    "Delivery address:", ...m.address, "",
-    m.refund, `Order terms: ${m.terms}`, "",
+    `${w.address}:`, ...m.address, "",
+    m.refund, `${w.terms}: ${m.terms}`, "",
     m.close, "", "SENDA", "Quietly fast.", "sendabikes.com",
   ].join("\n");
 }
 
 function renderHtml(m) {
+  const w = m.labels;
   const row = ([k, v], strong) => `<tr><td style="padding:6px 16px 6px 0;color:#666;vertical-align:top">${esc(k)}</td><td style="padding:6px 0;text-align:right;${strong ? "font-weight:600;color:#151515" : ""}">${esc(v)}</td></tr>`;
   const table = (rows) => `<table role="presentation" style="width:100%;border-collapse:collapse;border-top:1px solid #d2d2d2;margin:16px 0">${rows}</table>`;
-  return `<!doctype html><html><body style="margin:0;background:#fff">
+  return `<!doctype html><html lang="${m.lang}"><body style="margin:0;background:#fff">
 <div style="max-width:560px;margin:0 auto;padding:32px 20px;font:16px/1.55 -apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#444">
 <p style="font:600 13px/1 monospace;letter-spacing:.12em;color:#151515">SENDA</p>
 <p>${esc(m.greeting)},</p><p>${esc(m.intro)}</p>
-<p style="color:#151515">Order number <strong>${esc(m.number)}</strong></p>
+<p style="color:#151515">${esc(w.number)} <strong>${esc(m.number)}</strong></p>
 ${table(m.summary.map((r) => row(r)).join(""))}
-${table(m.lines.map((r) => row(r)).join("") + row(["Total incl. VAT", m.total], true))}
+${table(m.lines.map((r) => row(r)).join("") + row([w.total, m.total], true))}
 ${m.pay.map((t) => `<p>${esc(t)}</p>`).join("")}<p>${esc(m.delivery)}</p>
-<p style="color:#666">Delivery address<br>${m.address.map(esc).join("<br>")}</p>
-<p>${esc(m.refund)} <a href="${m.terms}" style="color:#151515">Order terms</a></p>
+<p style="color:#666">${esc(w.address)}<br>${m.address.map(esc).join("<br>")}</p>
+<p>${esc(m.refund)} <a href="${m.terms}" style="color:#151515">${esc(w.terms)}</a></p>
 <p>${esc(m.close)}</p>
 <p style="color:#151515">SENDA<br><span style="color:#666">Quietly fast.</span></p>
 </div></body></html>`;
@@ -123,7 +169,7 @@ export function internalMailText(order) {
     `Measurements: ${fitText(order.fit) || "not given"}`,
     `Newsletter: ${c.newsletter ? "yes" : "no"}`,
     `Message: ${c.message || "none"}`, "",
-    `Request ${order.requestId} · ${order.meta.country} · ${order.meta.ip}`,
+    `Language ${order.lang || "en"} · request ${order.requestId} · ${order.meta.country} · ${order.meta.ip}`,
   ].join("\n");
 }
 

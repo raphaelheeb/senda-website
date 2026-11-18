@@ -152,3 +152,23 @@ test("sheet row matches the columns; mail text has no exclamation marks", async 
   assert.ok(!JSON.stringify(m).includes("!"));
   assert.match(m.delivery, /March 2027/);
 });
+
+test("German order: German summary, email and error messages", async () => {
+  const e = env(SECRETS);
+  const out = await (await post(e, body({ lang: "de" }))).json();
+  assert.equal(out.summary[0][0], "Rahmengrösse");
+  const o = await e.ORDERS.get(`order:${out.orderNumber}`, "json");
+  assert.equal(o.lang, "de");
+  const m = customerMailContent(o, cfg);
+  assert.match(m.subject, /^Deine Bestellung SENDA Vent SV-/);
+  assert.match(m.delivery, /März 2027/);
+  assert.ok(m.lines.some(([k]) => k === "Frühbestellpreis"));
+  const bad = await post(e, body({ lang: "de", terms: false }));
+  assert.equal((await bad.json()).message, "Bitte akzeptiere die Bestellbedingungen.");
+});
+
+test("unknown language falls back to English", async () => {
+  const e = env(SECRETS);
+  const out = await (await post(e, body({ lang: "fr" }))).json();
+  assert.equal(out.summary[0][0], "Frame size");
+});

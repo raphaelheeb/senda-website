@@ -1,5 +1,5 @@
 <svg class="measure" viewBox="0 0 300 440" role="img" aria-labelledby="measure-title" xmlns="http://www.w3.org/2000/svg">
-  <title id="measure-title">How to measure: height, inseam with a book, arm length from shoulder to closed fist, shoulder width</title>
+  <title id="measure-title">{{ t.config.fit.figure_title }}</title>
   <!-- figure -->
   <g class="measure__body">
     <circle cx="150" cy="64" r="21"/>
@@ -20,14 +20,14 @@
     <line class="measure__guide" x1="40" y1="43" x2="146" y2="43"/>
     <line x1="40" y1="43" x2="40" y2="420"/>
     <line x1="34" y1="43" x2="46" y2="43"/><line x1="34" y1="420" x2="46" y2="420"/>
-    <text x="30" y="232" transform="rotate(-90 30 232)" text-anchor="middle">Height</text>
+    <text x="30" y="232" transform="rotate(-90 30 232)" text-anchor="middle">{{ t.config.fit.figure.height }}</text>
   </g>
   <!-- shoulders -->
   <g class="measure__dim">
     <line class="measure__guide" x1="104" y1="104" x2="104" y2="22"/><line class="measure__guide" x1="196" y1="104" x2="196" y2="22"/>
     <line x1="104" y1="26" x2="196" y2="26"/>
     <line x1="104" y1="20" x2="104" y2="32"/><line x1="196" y1="20" x2="196" y2="32"/>
-    <text x="150" y="16" text-anchor="middle">Shoulders</text>
+    <text x="150" y="16" text-anchor="middle">{{ t.config.fit.figure.shoulders }}</text>
   </g>
   <!-- arm: bony point of the shoulder to the centre of the closed fist -->
   <g class="measure__dim">
@@ -35,7 +35,7 @@
     <circle class="measure__point" cx="208" cy="258" r="2.5"/>
     <line class="measure__guide" x1="198" y1="106" x2="236" y2="100"/><line class="measure__guide" x1="208" y1="258" x2="246" y2="252"/>
     <line x1="232" y1="100.6" x2="242" y2="252.6"/>
-    <text x="252" y="176">Arm</text>
+    <text x="252" y="176">{{ t.config.fit.figure.arm }}</text>
   </g>
   <!-- inseam: floor to the top of a book pulled up firmly -->
   <rect class="measure__book" x="124" y="236" width="52" height="7"/>
@@ -43,6 +43,6 @@
     <line class="measure__guide" x1="176" y1="236" x2="282" y2="236"/>
     <line x1="276" y1="236" x2="276" y2="420"/>
     <line x1="270" y1="236" x2="282" y2="236"/><line x1="270" y1="420" x2="282" y2="420"/>
-    <text x="266" y="330" transform="rotate(-90 266 330)" text-anchor="middle">Inseam</text>
+    <text x="266" y="330" transform="rotate(-90 266 330)" text-anchor="middle">{{ t.config.fit.figure.inseam }}</text>
   </g>
 </svg>

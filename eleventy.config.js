@@ -4,9 +4,12 @@
 // and content files (content/). Liquid is the same template language Shopify
 // themes use, so layouts and partials can move to the shop later.
 //
-// Pages not yet redesigned (DE pages, story, legal) are still copied through
+// Every page is built in English and German (pagination over site.langs).
+// Pages not yet redesigned (story, legal) are still copied through
 // unchanged. The old index.html and orma/ are kept in the repo (the live site
 // on GitHub Pages serves them) but replaced in the build.
+
+import markdownIt from "markdown-it";
 
 const production = process.env.SENDA_BUILD === "production";
 
@@ -18,7 +21,6 @@ export default function (eleventyConfig) {
 
   const passthrough = [
     "story.html",
-    "de",
     "legal",
     "assets",
     "favicon.ico",
@@ -43,23 +45,52 @@ export default function (eleventyConfig) {
     api.getFilteredByGlob("content/journal/*.md").sort((a, b) => b.date - a.date)
   );
 
-  // Products of one category: {% assign items = collections.products | in_category: "wheelsets" %}
-  eleventyConfig.addFilter("in_category", (items, category) =>
-    (items || []).filter((p) => p.data.category === category)
+  // Products of one category in one language:
+  // {% assign items = collections.products | in_category: "wheelsets", lang %}
+  eleventyConfig.addFilter("in_category", (items, category, lang = "en") =>
+    (items || []).filter((p) => p.data.category === category && (p.data.lang || "en") === lang)
   );
-  // 5400 -> "5,400" (Swiss prices on the English site)
+
+  // Swiss number format with apostrophe: 5400 -> "5’400"
   eleventyConfig.addFilter("chf", (n) => String(Math.round(Math.abs(Number(n)))).replace(/\B(?=(\d{3})+(?!\d))/g, "’"));
-  // "2026-12-31" -> "31 December 2026"
-  eleventyConfig.addFilter("long_date", (iso) =>
-    new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }));
-  eleventyConfig.addFilter("day_month", (iso) =>
-    new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", timeZone: "UTC" }));
-  eleventyConfig.addFilter("status_label", (status) => {
-    return { announced: "Announced", preorder: "Pre-order", available: "Available" }[status] || status;
+
+  // Dates: "2026-12-31" -> "31 December 2026" / "31. Dezember 2026"
+  const locale = (lang) => (lang === "de" ? "de-CH" : "en-GB");
+  const at = (iso) => new Date(`${String(iso).slice(0, 10)}T12:00:00Z`);
+  eleventyConfig.addFilter("long_date", (iso, lang) =>
+    at(iso).toLocaleDateString(locale(lang), { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }));
+  eleventyConfig.addFilter("day_month", (iso, lang) =>
+    at(iso).toLocaleDateString(locale(lang), { day: "numeric", month: "long", timeZone: "UTC" }));
+  eleventyConfig.addFilter("readable_date", (date, lang) =>
+    new Date(date).toLocaleDateString(locale(lang), { day: "numeric", month: "long", year: "numeric" }));
+
+  // "Hello {name}" | fill: "name", "Raphael"  (pairs of key, value)
+  eleventyConfig.addFilter("fill", (str, ...pairs) => {
+    let out = String(str ?? "");
+    for (let i = 0; i < pairs.length; i += 2) out = out.replaceAll(`{${pairs[i]}}`, pairs[i + 1] ?? "");
+    return out;
   });
-  eleventyConfig.addFilter("readable_date", (date) =>
-    new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
-  );
+
+  // Internal link in the page's language: "/bikes/" | lurl: lang -> "/de/bikes/"
+  const shared = /^\/(legal|assets|scripts|styles|api|journal)\/|^\/story\.html/;
+  const lurl = (url, lang) => {
+    const u = String(url ?? "");
+    if (lang !== "de" || !u.startsWith("/") || shared.test(u) || u.startsWith("/de/")) return u;
+    return u === "/" ? "/de/" : `/de${u}`;
+  };
+  eleventyConfig.addFilter("lurl", lurl);
+
+  // The same page in the other language, or that language's home page if there is none.
+  eleventyConfig.addFilter("alt_url", (url, lang, all) => {
+    const target = lang === "de" ? (url.replace(/^\/de(\/|$)/, "/") || "/") : lurl(url, "de");
+    const exists = (all || []).some((p) => p.url === target);
+    return exists ? target : lang === "de" ? "/" : "/de/";
+  });
+
+  // Markdown for translated body text kept in front matter (de.body)
+  const md = markdownIt({ html: true });
+  eleventyConfig.addFilter("md", (s) => (s ? md.render(String(s)) : ""));
+
 
   return {
     templateFormats: ["liquid", "md"],

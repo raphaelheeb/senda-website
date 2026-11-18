@@ -1,26 +1,88 @@
 ---
 layout: layouts/base.liquid
-permalink: /about/
+pagination: { data: site.langs, size: 1, alias: lang, addAllPagesToCollections: true }
+permalink: "{% if lang == 'de' %}/de{% endif %}/about/"
 title: About
-description: SENDA means path in Romansh. Two friends from the Swiss Alps, a materials scientist and an architect, building road and gravel bikes.
+en:
+  title: About
+  description: SENDA means path in Romansh. Two friends from the Swiss Alps, a materials scientist and an architect, building road and gravel bikes.
+  h1: SENDA means path.
+  lead: In Romansh, one of Switzerland's four national languages.
+  story_alt: Two riders on a lakeside road in the Engadin
+  story_title: Two friends.<br>One question.
+  story_p1: We grew up in the Swiss Alps and found cycling together when road riding was a niche and gravel bikes did not exist as a category. We raced locally, climbed passes, travelled by bike and built our own frames in steel, aluminium and later carbon.
+  story_p2: One of us studied materials science and wanted to know how a bike works. The other studied architecture and wanted to know why a product feels right. SENDA is where those two questions meet.
+  story_link: Read the full story
+  made_title: Chosen with care.<br>Finished in Switzerland.
+  made_text: We select and audit our frame makers, design every finish ourselves, and have each bike painted and assembled in Switzerland.
+  carbon_title: Carbon tuned<br>section by section.
+  carbon_text: "Different layups and fibre types in each section: stiff where power goes in, compliant where you sit, light overall."
+  dims:
+    - ["&lt; 7 kg", "Target weight, SENDA Vent top build"]
+    - ["1’207 g", "ORMA Momentum wheelset, 45/45"]
+    - ["2026", "Test bikes on the road since"]
+  principles_title: Nothing added<br>for show.
+  principles:
+    - ["Purpose before excess", "We strip back decisions until what remains is useful, considered and coherent."]
+    - ["Top-tier numbers, felt on every ride", "Weight, stiffness and geometry are measured against the best bikes in their class, then judged on the road."]
+    - ["Nothing for show, nothing missing", "Clear forms and restrained graphics leave room for the ride, the landscape and the rider."]
+    - ["Road and gravel, nothing else", "Two kinds of bike, done properly. Clothing and components follow, chosen to match them."]
+    - ["Direct to rider", "We sell directly and put the difference into development, materials and quality."]
+  community_title: Out there,<br>together.
+  community_text: Rides from partner studios, test-ride days and a Strava club. Dates go to the list first.
+  community_link: Join the list
+  community_alt: Two riders resting in a concrete underpass
+  partners_title: Partners
+  partners_text: Fitting studios and independent workshops in the Zürich area fit, deliver and service SENDA bikes. Names are published once agreements are in place.
+de:
+  title: Über uns
+  description: SENDA heisst Weg auf Rätoromanisch. Zwei Freunde aus den Schweizer Alpen, ein Materialwissenschaftler und ein Architekt, bauen Rennräder und Gravelbikes.
+  h1: SENDA heisst Weg.
+  lead: Auf Rätoromanisch, einer der vier Landessprachen der Schweiz.
+  story_alt: Zwei Velofahrende auf einer Seestrasse im Engadin
+  story_title: Zwei Freunde.<br>Eine Frage.
+  story_p1: Wir sind in den Schweizer Alpen aufgewachsen und haben das Velofahren zusammen entdeckt, als Rennradfahren eine Nische war und es Gravelbikes als Kategorie noch nicht gab. Wir sind lokale Rennen gefahren, über Pässe geklettert, mit dem Velo gereist und haben eigene Rahmen gebaut, aus Stahl, Aluminium und später Carbon.
+  story_p2: Einer von uns hat Materialwissenschaften studiert und wollte wissen, wie ein Bike funktioniert. Der andere hat Architektur studiert und wollte wissen, warum sich ein Produkt richtig anfühlt. SENDA ist der Ort, an dem sich diese zwei Fragen treffen.
+  story_link: Die ganze Geschichte
+  made_title: Sorgfältig ausgewählt.<br>In der Schweiz vollendet.
+  made_text: Wir wählen und prüfen unsere Rahmenhersteller, gestalten jede Farbe selbst und lassen jedes Bike in der Schweiz lackieren und montieren.
+  carbon_title: Carbon, Abschnitt<br>für Abschnitt abgestimmt.
+  carbon_text: "Unterschiedliche Lagenaufbauten und Fasertypen in jedem Abschnitt: steif, wo die Kraft hineingeht, nachgiebig, wo Du sitzt, und leicht im Ganzen."
+  dims:
+    - ["&lt; 7 kg", "Zielgewicht, SENDA Vent Topausstattung"]
+    - ["1’207 g", "ORMA Momentum Laufradsatz, 45/45"]
+    - ["2026", "Testbikes auf der Strasse seit"]
+  principles_title: Nichts nur<br>für den Auftritt.
+  principles:
+    - ["Zweck vor Überfluss", "Wir reduzieren jede Entscheidung, bis nur bleibt, was nützlich, durchdacht und stimmig ist."]
+    - ["Werte auf Topniveau, spürbar auf jeder Fahrt", "Gewicht, Steifigkeit und Geometrie messen wir an den besten Bikes ihrer Klasse und beurteilen sie dann auf der Strasse."]
+    - ["Nichts zu viel, nichts fehlt", "Klare Formen und zurückhaltende Grafik lassen Raum für die Fahrt, die Landschaft und die Fahrerin oder den Fahrer."]
+    - ["Strasse und Gravel, sonst nichts", "Zwei Arten von Bikes, und die richtig. Bekleidung und Komponenten folgen, passend dazu ausgewählt."]
+    - ["Direkt zu Dir", "Wir verkaufen direkt und stecken die Differenz in Entwicklung, Material und Qualität."]
+  community_title: Draussen,<br>gemeinsam.
+  community_text: Ausfahrten mit Partner-Studios, Testtage und ein Strava-Club. Die Termine gehen zuerst an die Liste.
+  community_link: Auf die Liste
+  community_alt: Zwei Velofahrende machen Pause in einer Betonunterführung
+  partners_title: Partner
+  partners_text: Fitting-Studios und unabhängige Werkstätten in der Region Zürich passen SENDA Bikes an, liefern sie aus und warten sie. Die Namen veröffentlichen wir, sobald die Vereinbarungen stehen.
 ---
 <div class="wrap">
   <header class="page-head">
-    <h1 class="h1">SENDA means path.</h1>
-    <p class="lead">In Romansh, one of Switzerland's four national languages.</p>
+    <h1 class="h1">{{ C.h1 }}</h1>
+    <p class="lead">{{ C.lead }}</p>
   </header>
 </div>
 
 <section class="section section--flush-top" id="story">
   <div class="wrap split">
-    {% include "partials/frame.liquid", img: "/assets/img/web/lake-pair-1000.jpg", ratio: "bike", alt: "Two riders on a lakeside road in the Engadin" %}
+    {% include "partials/frame.liquid", img: "/assets/img/web/lake-pair-1000.jpg", ratio: "bike", alt: C.story_alt %}
     <div>
-      <h2 class="h2">Two friends.<br>One question.</h2>
+      <h2 class="h2">{{ C.story_title }}</h2>
       <div class="prose mt-4">
-        <p>We grew up in the Swiss Alps and found cycling together when road riding was a niche and gravel bikes did not exist as a category. We raced locally, climbed passes, travelled by bike and built our own frames in steel, aluminium and later carbon.</p>
-        <p>One of us studied materials science and wanted to know how a bike works. The other studied architecture and wanted to know why a product feels right. SENDA is where those two questions meet.</p>
+        <p>{{ C.story_p1 }}</p>
+        <p>{{ C.story_p2 }}</p>
       </div>
-      <a class="linkline mt-4" href="/story.html">Read the full story</a>
+      {% if lang != "de" %}<a class="linkline mt-4" href="/story.html">{{ C.story_link }}</a>{% endif %}
     </div>
   </div>
 </section>
@@ -28,21 +90,20 @@ description: SENDA means path in Romansh. Two friends from the Swiss Alps, a mat
 <section class="section" id="made">
   <div class="wrap">
     <div class="section-head">
-      <div><h2 class="h2">Chosen with care.<br>Finished in Switzerland.</h2></div>
-      <p class="lead">We select and audit our frame makers, design every finish ourselves, and have each bike painted and assembled in Switzerland.</p>
+      <div><h2 class="h2">{{ C.made_title }}</h2></div>
+      <p class="lead">{{ C.made_text }}</p>
     </div>
   </div>
 </section>
+
 <section class="section" id="engineering">
   <div class="wrap">
     <div class="section-head">
-      <div><h2 class="h2">Carbon tuned<br>section by section.</h2></div>
-      <p class="lead">Different layups and fibre types in each section: stiff where power goes in, compliant where you sit, light overall.</p>
+      <div><h2 class="h2">{{ C.carbon_title }}</h2></div>
+      <p class="lead">{{ C.carbon_text }}</p>
     </div>
-    <div class="dims" style="--dims: 3">
-      <div class="dim"><span class="dim__value">&lt; 7 kg</span><span class="dim__label">Target weight, SENDA Vent top build</span></div>
-      <div class="dim"><span class="dim__value">1’207 g</span><span class="dim__label">ORMA Momentum wheelset, 45/45</span></div>
-      <div class="dim"><span class="dim__value">2026</span><span class="dim__label">Test bikes on the road since</span></div>
+    <div class="dims" style="--dims: {{ C.dims.size }}">
+      {% for d in C.dims %}<div class="dim"><span class="dim__value">{{ d[0] }}</span><span class="dim__label">{{ d[1] }}</span></div>{% endfor %}
     </div>
   </div>
 </section>
@@ -50,14 +111,11 @@ description: SENDA means path in Romansh. Two friends from the Swiss Alps, a mat
 <section class="section">
   <div class="wrap principles">
     <div>
-      <h2 class="h2">Nothing added<br>for show.</h2>
+      <h2 class="h2">{{ C.principles_title }}</h2>
     </div>
     <ol class="principles__list">
-      <li class="principle"><span class="micro principle__n">01</span><div><h3 class="h3">Purpose before excess</h3><p>We strip back decisions until what remains is useful, considered and coherent.</p></div></li>
-      <li class="principle"><span class="micro principle__n">02</span><div><h3 class="h3">Top-tier numbers, felt on every ride</h3><p>Weight, stiffness and geometry are measured against the best bikes in their class, then judged on the road.</p></div></li>
-      <li class="principle"><span class="micro principle__n">03</span><div><h3 class="h3">Nothing for show, nothing missing</h3><p>Clear forms and restrained graphics leave room for the ride, the landscape and the rider.</p></div></li>
-      <li class="principle"><span class="micro principle__n">04</span><div><h3 class="h3">Road and gravel, nothing else</h3><p>Two kinds of bike, done properly. Clothing and components follow, chosen to match them.</p></div></li>
-      <li class="principle"><span class="micro principle__n">05</span><div><h3 class="h3">Direct to rider</h3><p>We sell directly and put the difference into development, materials and quality.</p></div></li>
+      {% for p in C.principles %}<li class="principle"><span class="micro principle__n">0{{ forloop.index }}</span><div><h3 class="h3">{{ p[0] }}</h3><p>{{ p[1] }}</p></div></li>
+      {% endfor %}
     </ol>
   </div>
 </section>
@@ -65,11 +123,11 @@ description: SENDA means path in Romansh. Two friends from the Swiss Alps, a mat
 <section class="section" id="community">
   <div class="wrap split split--reverse">
     <div>
-      <h2 class="h2">Out there,<br>together.</h2>
-      <p class="lead mt-3">Rides from partner studios, test-ride days and a Strava club. Dates go to the list first.</p>
-      <a class="linkline mt-4" href="#newsletter">Join the list</a>
+      <h2 class="h2">{{ C.community_title }}</h2>
+      <p class="lead mt-3">{{ C.community_text }}</p>
+      <a class="linkline mt-4" href="#newsletter">{{ C.community_link }}</a>
     </div>
-    {% include "partials/frame.liquid", img: "/assets/img/web/riders-underpass-1000.jpg", ratio: "portrait", alt: "Two riders resting in a concrete underpass" %}
+    {% include "partials/frame.liquid", img: "/assets/img/web/riders-underpass-1000.jpg", ratio: "portrait", alt: C.community_alt %}
   </div>
 </section>
 
@@ -77,8 +135,8 @@ description: SENDA means path in Romansh. Two friends from the Swiss Alps, a mat
 <section class="section" id="partners">
   <div class="wrap split draft" data-draft="Not in launch: partners to confirm">
     <div>
-      <h2 class="h2">Partners</h2>
-      <p class="lead mt-3">Fitting studios and independent workshops in the Zürich area fit, deliver and service SENDA bikes. Names are published once agreements are in place.</p>
+      <h2 class="h2">{{ C.partners_title }}</h2>
+      <p class="lead mt-3">{{ C.partners_text }}</p>
     </div>
     {% include "partials/frame.liquid", ratio: "bike", label: "Partner studio photography to come" %}
   </div>

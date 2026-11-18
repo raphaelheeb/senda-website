@@ -1,8 +1,9 @@
 {%- assign cr = cardRatio | default: p.data.ratio -%}
 {%- assign thumb = p.data.cardImage | default: p.data.image | replace: "-2000", "-1000" -%}
 {%- assign cpos = p.data.imagePosition -%}{%- if p.data.cardImage -%}{%- assign cpos = "center" -%}{%- endif -%}
+{%- assign pd = p.data.L -%}
 <a class="tile" href="{{ p.url }}">
-  {% include "partials/frame.liquid", img: thumb, ratio: cr, contain: p.data.imageContain, pos: cpos, alt: p.data.alt, label: p.data.imageLabel %}
+  {% include "partials/frame.liquid", img: thumb, ratio: cr, contain: p.data.imageContain, pos: cpos, alt: pd.alt | default: p.data.alt, label: p.data.imageLabel %}
   <span class="tile__name">{{ p.data.title }}</span>
-  <span class="tile__note">{% case p.data.status %}{% when "announced" %}Announced, {{ p.data.delivery }}{% when "preorder" %}Pre-order, {{ p.data.price }}{% else %}{{ p.data.price }}{% endcase %}</span>
+  <span class="tile__note">{% case p.data.status %}{% when "announced" %}{{ t.status.announced }}, {{ pd.delivery | default: p.data.delivery }}{% when "preorder" %}{{ t.status.preorder }}, {{ pd.price | default: p.data.price }}{% else %}{{ pd.price | default: p.data.price }}{% endcase %}</span>
 </a>

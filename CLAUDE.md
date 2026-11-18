@@ -19,8 +19,13 @@ This repo is the brand site; it becomes a Shopify shop later (theme in a separat
   Use `override:` in a folder data file when an array must replace, not extend, the parent value.
 - Design tokens in `src/styles/tokens.css`, components in `src/styles/site.css`, behaviour in `src/scripts/site.js`.
 - Images for the web go in `assets/img/web/` as `<name>-2000.jpg` and `<name>-1000.jpg`. Cards and menus use the 1000 version.
-- Not yet rebuilt in templates and copied through unchanged: `de/`, `story.html`, `legal/`. The old `index.html` and `orma/` stay in the repo
-  because the live site (GitHub Pages, serving `main` as-is) still uses them.
+- Not yet rebuilt in templates and copied through unchanged: `story.html`, `legal/`. The old `index.html`, `orma/` and `de/` stay in the repo
+  because the live site (GitHub Pages, serving `main` as-is) still uses them; `de/` is no longer copied into the build.
+- Languages: every page is built in English and German (`pagination` over `site.langs`, German under `/de/`).
+  Interface text: `src/_data/i18n/en.json` and `de.json` (same keys, available as `t`). Page copy: `en:` and `de:` blocks in each page's
+  front matter (available as `C`). Product text: English in the product file, German in its `de:` block (available as `L`, used as
+  `{{ L.summary | default: summary }}`). Internal links go through `| lurl: lang`. German: Swiss spelling (ss), Du capitalised.
+- Numbers: Swiss apostrophe as thousands separator (CHF 5’400), on both languages.
 - Merging the redesign into `main` only changes the live site once production serves the Eleventy build (Vercel or Cloudflare Pages).
   Until that hosting move, review on Vercel previews only.
 - Previews (any build without SENDA_BUILD=production) add noindex, the product state switch and draft markers.

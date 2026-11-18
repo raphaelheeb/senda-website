@@ -1,53 +1,75 @@
 ---
 layout: layouts/base.liquid
-permalink: /service/
+pagination: { data: site.langs, size: 1, alias: lang, addAllPagesToCollections: true }
+permalink: "{% if lang == 'de' %}/de{% endif %}/service/"
 title: Service
-description: Fitting and test rides, frequently asked questions and how to reach SENDA.
+en:
+  title: Service
+  description: Fitting and test rides, frequently asked questions and how to reach SENDA.
+  lead: Fitting, questions and how to reach us.
+  fitting_title: Fitting and test rides
+  fitting_text: If you know your position, set size, stem and spacers yourself. Otherwise the configurator sets them from four body measurements. If you want a fitting before you order, write to us and we arrange it.
+  fitting_link: Ask for a fitting
+  faq_title: Questions
+  faq:
+    - ["When will the first bikes be delivered?", "SENDA Vent and ORMA Momentum are delivered from March 2027. We write if anything moves."]
+    - ["What can I order now?", "The SENDA Vent road bike, configured to your size and parts, and the ORMA Momentum wheelset. SENDA Gravel follows; join the list to hear first."]
+    - ["How does ordering work?", "Your order is binding. For SENDA Vent you pay a 20% deposit by invoice and the balance before delivery; ORMA Momentum is invoiced in full. If SENDA cannot deliver, or delivers substantially later than planned, you get your payment back. See the order terms."]
+    - ["Do ORMA wheels fit my bike?", "Momentum is made for disc brakes and 12 mm thru-axles. The compatibility table on the wheelset page covers the details."]
+    - ["Do you deliver outside Switzerland?", "For now we deliver within Switzerland only. Shipping costs CHF 50 per bike and CHF 30 per wheelset."]
+  terms_link: Order terms
+  contact_title: Contact
+  contact_text: "Write to {email}. We answer within one working day."
+de:
+  title: Service
+  description: Fitting und Probefahrten, häufige Fragen und wie Du SENDA erreichst.
+  lead: Fitting, Fragen und wie Du uns erreichst.
+  fitting_title: Fitting und Probefahrten
+  fitting_text: Kennst Du Deine Position, stellst Du Grösse, Vorbau und Spacer selbst ein. Sonst übernimmt das der Konfigurator aus vier Körpermassen. Möchtest Du vor der Bestellung ein Fitting, schreib uns, wir organisieren es.
+  fitting_link: Fitting anfragen
+  faq_title: Fragen
+  faq:
+    - ["Wann werden die ersten Bikes ausgeliefert?", "SENDA Vent und ORMA Momentum werden ab März 2027 ausgeliefert. Wir melden uns, falls sich etwas verschiebt."]
+    - ["Was kann ich jetzt bestellen?", "Das Rennrad SENDA Vent, konfiguriert nach Deiner Grösse und Deinen Teilen, und den Laufradsatz ORMA Momentum. Das SENDA Gravel folgt; trag Dich auf die Liste ein, dann erfährst Du es zuerst."]
+    - ["Wie funktioniert die Bestellung?", "Deine Bestellung ist verbindlich. Für das SENDA Vent leistest Du 20 % Anzahlung auf Rechnung und den Restbetrag vor der Lieferung; ORMA Momentum wird voll in Rechnung gestellt. Kann SENDA nicht liefern oder liefert deutlich später als geplant, erhältst Du Deine Zahlung zurück. Siehe Bestellbedingungen."]
+    - ["Passen ORMA Laufräder an mein Bike?", "Der Momentum ist für Scheibenbremsen und 12-mm-Steckachsen gemacht. Die Kompatibilitätstabelle auf der Laufrad-Seite zeigt die Details."]
+    - ["Liefert ihr auch ausserhalb der Schweiz?", "Vorerst liefern wir nur innerhalb der Schweiz. Der Versand kostet CHF 50 pro Bike und CHF 30 pro Laufradsatz."]
+  terms_link: Bestellbedingungen
+  contact_title: Kontakt
+  contact_text: "Schreib an {email}. Wir antworten innert eines Arbeitstags."
 ---
 <div class="wrap">
   <header class="page-head">
-    <h1 class="h1">Service</h1>
-    <p class="lead">Fitting, questions and how to reach us.</p>
+    <h1 class="h1">{{ C.title }}</h1>
+    <p class="lead">{{ C.lead }}</p>
   </header>
 
   <section class="service-block" id="fitting" style="padding-top:0">
-    <h2 class="h3">Fitting and test rides</h2>
+    <h2 class="h3">{{ C.fitting_title }}</h2>
     <div class="prose">
-      <p>If you know your position, set size, stem and spacers yourself. Otherwise the configurator sets them from four body measurements. If you want a fitting before you order, write to us and we arrange it.</p>
-      <a class="linkline mt-4" href="mailto:info@sendabikes.com?subject=Fitting">Ask for a fitting</a>
+      <p>{{ C.fitting_text }}</p>
+      <a class="linkline mt-4" href="mailto:info@sendabikes.com?subject=Fitting">{{ C.fitting_link }}</a>
     </div>
   </section>
 
   <section class="service-block" id="faq">
-    <h2 class="h3">Questions</h2>
+    <h2 class="h3">{{ C.faq_title }}</h2>
     <div class="faq">
-      <details><summary>When will the first bikes be delivered?</summary><p>SENDA Vent and ORMA Momentum are delivered from March 2027. We write if anything moves.</p></details>
-      <details><summary>What can I order now?</summary><p>The SENDA Vent road bike, configured to your size and parts, and the ORMA Momentum wheelset. SENDA Gravel follows; join the list to hear first.</p></details>
-      <details><summary>How does ordering work?</summary><p>Your order is binding. For SENDA Vent you pay a 20% deposit by invoice and the balance before delivery; ORMA Momentum is invoiced in full. If SENDA cannot deliver, or delivers substantially later than planned, you get your payment back. See the <a href="/terms/">order terms</a>.</p></details>
-      <details><summary>Do ORMA wheels fit my bike?</summary><p>Momentum is made for disc brakes and 12 mm thru-axles. The compatibility table on the wheelset page covers the details.</p></details>
-      <details><summary>Do you deliver outside Switzerland?</summary><p>For now we deliver within Switzerland only. Shipping costs CHF 50.</p></details>
+      {% for q in C.faq %}<details><summary>{{ q[0] }}</summary><p>{{ q[1] }}</p></details>
+      {% endfor %}
     </div>
+    <a class="linkline mt-4" href="{{ '/terms/' | lurl: lang }}">{{ C.terms_link }}</a>
   </section>
 
   <section class="service-block" id="contact">
-    <h2 class="h3">Contact</h2>
+    <h2 class="h3">{{ C.contact_title }}</h2>
     <div class="prose">
-      <p>Write to <a href="mailto:info@sendabikes.com">info@sendabikes.com</a>. We answer within one working day.</p>
+      <p>{{ C.contact_text | fill: "email", '<a href="mailto:info@sendabikes.com">info@sendabikes.com</a>' }}</p>
     </div>
   </section>
 
-  {% unless env.production %}
+  {% unless env.production or lang == "de" %}
   <div class="draft" data-draft="Not in launch: terms to confirm" style="margin: 48px 0 var(--section)">
-    <section class="service-block" id="sizing">
-      <h2 class="h3">Sizing and geometry</h2>
-      <div class="prose">
-        <p>SENDA Vent comes in six sizes, XS to XXL. The geometry is on the bike page; the configurator can set size and cockpit from your body measurements.</p>
-      </div>
-    </section>
-    <section class="service-block" id="preorder">
-      <h2 class="h3">Pre-order and delivery</h2>
-      <div class="prose"><p>Orders are binding. SENDA Vent: 20% deposit by invoice, balance before delivery. ORMA Momentum: invoiced in full. Shipping within Switzerland CHF 50.</p></div>
-    </section>
     <section class="service-block" id="warranty">
       <h2 class="h3">Warranty and crash replacement</h2>
       <div class="prose"><p>Frames and ORMA carbon parts carry a warranty on materials and workmanship. After a crash, the first owner can replace a damaged frame or wheel at a reduced price.</p></div>
@@ -55,14 +77,6 @@ description: Fitting and test rides, frequently asked questions and how to reach
     <section class="service-block" id="register">
       <h2 class="h3">Register your SENDA</h2>
       <div class="prose"><p>Register your frame number to activate the warranty and record ownership in case of theft. The form opens with the first deliveries.</p></div>
-    </section>
-    <section class="service-block" id="clothing-sizes">
-      <h2 class="h3">Clothing sizes</h2>
-      <div class="prose"><p>Race fit, close to the body. Between two sizes, take the larger one. Body measurements follow with the production sample.</p></div>
-    </section>
-    <section class="service-block" id="terms" style="border-bottom:0">
-      <h2 class="h3">Terms (AGB)</h2>
-      <div class="prose"><p>See the <a href="/terms/">order terms</a>.</p></div>
     </section>
   </div>
   {% endunless %}

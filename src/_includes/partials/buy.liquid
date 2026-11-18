@@ -1,49 +1,40 @@
 {%- comment -%} Status, price and the one commercial action for a product. Content marked data-states shows only in that lifecycle state. {%- endcomment -%}
+{%- assign delivery_ = L.delivery | default: delivery -%}
+{%- assign price_ = L.price | default: price -%}
+{%- assign priceNote_ = L.priceNote | default: priceNote -%}
 <div class="buy__status">
-  <span class="badge js-status-badge badge--{{ status }}">{{ status | status_label }}</span>
+  <span class="badge js-status-badge badge--{{ status }}">{{ t.status[status] | default: status }}</span>
   <div data-states="announced">
-    {% if price %}<p class="buy__price">{{ price }} <span class="tiny">Expected{% if priceNote %}, {{ priceNote | downcase }}{% endif %}</span></p>{% endif %}
-    <p class="buy__note">Expected {{ delivery | default: "later" }}. Leave your email and we write first when pre-orders open.</p>
+    {% if price_ %}<p class="buy__price">{{ price_ }} <span class="tiny">{{ t.buy.expected }}{% if priceNote_ %}, {% if lang == "de" %}{{ priceNote_ }}{% else %}{{ priceNote_ | downcase }}{% endif %}{% endif %}</span></p>{% endif %}
+    <p class="buy__note">{{ t.buy.announced_note | fill: "delivery", delivery_ }}</p>
   </div>
   <div data-states="preorder">
-    {% if orderKey %}{% include "partials/offer.liquid", key: orderKey %}{% else %}<p class="buy__price">{{ price }}{% if priceNote %} <span class="tiny">{{ priceNote }}</span>{% endif %}</p>{% endif %}
-    <p class="buy__note">{% if orderKey == "vent" %}20% deposit by invoice. Delivery {{ delivery }}.{% elsif orderKey == "momentum" %}Invoiced in full. Delivery {{ delivery }}.{% else %}Delivery {{ delivery }}.{% endif %}</p>
+    {% if orderKey %}{% include "partials/offer.liquid", key: orderKey %}{% else %}<p class="buy__price">{{ price_ }}{% if priceNote_ %} <span class="tiny">{{ priceNote_ }}</span>{% endif %}</p>{% endif %}
+    <p class="buy__note">{% if orderKey == "vent" %}{{ t.buy.vent_note | fill: "delivery", delivery_ }}{% elsif orderKey == "momentum" %}{{ t.buy.momentum_note | fill: "delivery", delivery_ }}{% else %}{{ t.buy.delivery_note | fill: "delivery", delivery_ }}{% endif %}</p>
   </div>
   <div data-states="available">
-    <p class="buy__price">{{ price }}{% if priceNote %} <span class="tiny">{{ priceNote }}</span>{% endif %}</p>
-    <p class="buy__note">{{ availableNote | default: "In stock. Ships from Zürich in 2 to 3 working days." }}</p>
+    <p class="buy__price">{{ price_ }}{% if priceNote_ %} <span class="tiny">{{ priceNote_ }}</span>{% endif %}</p>
+    <p class="buy__note">{{ L.availableNote | default: availableNote | default: t.buy.available_note }}</p>
   </div>
 </div>
 
-{% for opt in options %}
-<fieldset class="buy__block" data-states="preorder available">
-  <legend class="option-label">{{ opt.label }}</legend>
-  <div class="chips">
-    {% for v in opt.values %}
-    <label class="chip"><input type="radio" name="{{ opt.label | slugify }}" {% if forloop.first %}checked{% endif %}><span>{% if v.hex %}<i style="background:{{ v.hex }}"></i>{% endif %}{{ v.name | default: v }}</span></label>
-    {% endfor %}
-  </div>
-  {% if opt.note %}<p class="tiny mt-2">{{ opt.note }}</p>{% endif %}
-</fieldset>
-{% endfor %}
-
 <form class="buy__actions js-signup" data-list="{{ list | default: 'senda' }}" data-states="announced" novalidate>
-  <label class="visually-hidden" for="notify-email">Email address</label>
-  <input class="field" id="notify-email" name="email" type="email" placeholder="Your email address" autocomplete="email">
-  <button class="btn" type="submit">Notify me</button>
-  <label class="consent"><input type="checkbox" name="consent"> I agree to receive emails about this product and SENDA news.</label>
+  <label class="visually-hidden" for="notify-email">{{ t.signup.email }}</label>
+  <input class="field" id="notify-email" name="email" type="email" placeholder="{{ t.signup.placeholder }}" autocomplete="email">
+  <button class="btn" type="submit">{{ t.signup.notify }}</button>
+  <label class="consent"><input type="checkbox" name="consent"> {{ t.signup.notify_consent }}</label>
   <p class="form-msg" role="status" aria-live="polite"></p>
 </form>
 <div class="buy__actions" data-states="preorder">
-  {% if configureUrl %}<a class="btn" href="{{ configureUrl }}">{% if type == "bike" %}Configure yours{% else %}Order{% endif %}</a>{% endif %}
+  {% if configureUrl %}<a class="btn" href="{{ configureUrl | lurl: lang }}">{% if type == "bike" %}{{ t.buy.configure }}{% else %}{{ t.buy.order }}{% endif %}</a>{% endif %}
 </div>
 <div class="buy__actions" data-states="available">
-  <button class="btn" type="button">{% if type == "bike" %}Order{% else %}Add to cart{% endif %}</button>
-  {% if type == "bike" %}<a class="btn btn--quiet" href="/service/#fitting">Book a fitting first</a>{% endif %}
+  <button class="btn" type="button">{{ t.buy.order }}</button>
 </div>
 
 {% unless env.production %}
-<ul class="promise draft" data-draft="Service promises: to confirm">
-  {% for p in promise %}<li><strong>{{ p[0] }}</strong> {{ p[1] }}</li>{% endfor %}
+{%- assign promise_ = L.promise | default: promise -%}
+<ul class="promise draft" data-draft="{{ t.buy.promise_draft }}">
+  {% for p in promise_ %}<li><strong>{{ p[0] }}</strong> {{ p[1] }}</li>{% endfor %}
 </ul>
 {% endunless %}

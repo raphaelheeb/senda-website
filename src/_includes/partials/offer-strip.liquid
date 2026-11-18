@@ -1,6 +1,7 @@
 {%- assign v = configurator.vent -%}
-<a class="offer-strip" href="/bikes/vent/configure/" data-offer-until="{{ v.earlyBird.until }}">
-  <span class="offer-strip__long">Order now: CHF {{ v.earlyBird.discount }} off SENDA Vent until {{ v.earlyBird.until | day_month }}</span>
-  <span class="offer-strip__short">CHF {{ v.earlyBird.discount }} off until {{ v.earlyBird.until | day_month }}</span>
-  <span class="offer-strip__go">Configure ↗</span>
+{%- assign d = v.earlyBird.until | day_month: lang -%}
+<a class="offer-strip" href="{{ '/bikes/vent/configure/' | lurl: lang }}" data-offer-until="{{ v.earlyBird.until }}">
+  <span class="offer-strip__long">{{ t.offer.strip_long | fill: "discount", v.earlyBird.discount, "date", d }}</span>
+  <span class="offer-strip__short">{{ t.offer.strip_short | fill: "discount", v.earlyBird.discount, "date", d }}</span>
+  <span class="offer-strip__go">{{ t.offer.configure }}</span>
 </a>

@@ -1,13 +1,14 @@
 <header class="site-header">
   <div class="wrap site-header__bar">
-    <a class="logo" href="/" aria-label="SENDA home"><img src="/assets/logo/senda-wordmark-v22.png" alt="SENDA" width="1747" height="307"></a>
-    <nav class="nav" aria-label="Main">
-      {% for item in site.nav %}{% assign skip = item.hidden %}{% if item.draft and env.production %}{% assign skip = true %}{% endif %}{% unless skip %}<a class="nav__link" href="{{ item.url }}"{% if page.url contains item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>{% endunless %}{% endfor %}
+    <a class="logo" href="{{ '/' | lurl: lang }}" aria-label="{{ t.a11y.home }}"><img src="/assets/logo/senda-wordmark-v22.png" alt="SENDA" width="1747" height="307"></a>
+    <nav class="nav" aria-label="{{ t.a11y.main }}">
+      {% for item in site.nav %}{% assign skip = item.hidden %}{% if item.draft and env.production %}{% assign skip = true %}{% endif %}{% unless skip %}{% assign href = item.url | lurl: lang %}<a class="nav__link" href="{{ href }}"{% if page.url contains href %} aria-current="page"{% endif %}>{{ t.nav[item.url] | default: item.label }}</a>{% endunless %}{% endfor %}
     </nav>
     <div class="header-tools">
-      <span class="lang"><a href="/de/?lang=de" lang="de" hreflang="de">DE</a> / <span aria-current="true">EN</span></span>
-      <a class="header-cta" href="/bikes/vent/configure/">Order now</a>
-      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menu">
+      {% assign other = page.url | alt_url: lang, collections.all %}
+      <span class="lang">{% if lang == "de" %}<span aria-current="true">DE</span> / <a href="{{ other }}" lang="en" hreflang="en">EN</a>{% else %}<a href="{{ other }}" lang="de" hreflang="de">DE</a> / <span aria-current="true">EN</span>{% endif %}</span>
+      <a class="header-cta" href="{{ '/bikes/vent/configure/' | lurl: lang }}">{{ t.header.order_now }}</a>
+      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="{{ t.a11y.menu }}">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18M3 16h18"/></svg>
       </button>
     </div>
@@ -15,10 +16,10 @@
 </header>
 
 <div class="drawer" id="drawer" data-open="false">
-  {% for item in site.nav %}{% assign skip = item.hidden %}{% if item.draft and env.production %}{% assign skip = true %}{% endif %}{% unless skip %}<a class="drawer__main" href="{{ item.url }}">{{ item.label }}</a>{% endunless %}{% endfor %}
+  {% for item in site.nav %}{% assign skip = item.hidden %}{% if item.draft and env.production %}{% assign skip = true %}{% endif %}{% unless skip %}<a class="drawer__main" href="{{ item.url | lurl: lang }}">{{ t.nav[item.url] | default: item.label }}</a>{% endunless %}{% endfor %}
   <div class="drawer__secondary">
-    <a href="/de/?lang=de" lang="de">Deutsch</a>
-    <a href="/bikes/vent/configure/">Order now</a>
-    <a href="#newsletter">Join the list</a>
+    <a href="{{ other }}" lang="{{ t.other.code }}">{{ t.other.name }}</a>
+    <a href="{{ '/bikes/vent/configure/' | lurl: lang }}">{{ t.header.order_now }}</a>
+    <a href="#newsletter">{{ t.header.join }}</a>
   </div>
 </div>

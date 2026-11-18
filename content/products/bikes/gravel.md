@@ -41,5 +41,27 @@ tileImage: /assets/img/web/gravel-sketch-tile.svg
 tileAlt: Line drawing of the SENDA Gravel frame
 cardImage: /assets/img/web/gravel-sketch-tile.svg
 image2: /assets/img/web/larch-pass-1000.jpg
+de:
+  price: Ab CHF 5’800
+  priceNote: Richtpreis
+  delivery: nach dem SENDA Vent, 2027
+  summary: Aero-Rohrformen und die Präzision des Vent, mit Platz für breite Reifen und einer ruhigeren Front.
+  alt: Ein Gravel-Fahrer auf einem Waldweg im Herbst
+  dims:
+    - ["4", "Farben, ein Rahmen"]
+    - ["2027", "Erste Auslieferungen"]
+    - ["CH", "In der Schweiz lackiert und montiert"]
+  storyTitle: Länger, tiefer, ruhiger.
+  storyAlt: Bleistiftstudie des SENDA Rahmens
+  tileNote: In Entwicklung, 2027
+  tileAlt: Linienzeichnung des SENDA Gravel Rahmens
+  sketchNote: Längere Kettenstreben, ein tieferes Tretlager und ein flacherer Lenkwinkel als beim SENDA Vent. Der Rest folgt, wenn der Rahmen final ist.
+  sketchHidden:
+    - ["Reach", "000"]
+    - ["Stack", "000"]
+    - ["Radstand", "0000"]
+    - ["Reifenfreiheit", "00"]
+  body: |
+    430 mm Kettenstreben, ein tieferes Tretlager und ein Lenkwinkel von 71° halten es ruhig, wenn der Untergrund wechselt. Aero-Rohrprofile halten es schnell auf Asphalt.
 ---
 430 mm chainstays, a lower bottom bracket and a 71° head angle keep it steady when the surface changes. Aero tube profiles keep it quick on tarmac.

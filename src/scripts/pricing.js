@@ -51,11 +51,33 @@ export function ventDefaults(vent, sizeId) {
   return sel;
 }
 
+/** Labels for summaries, price lines and emails, per language. */
+export const WORDS = {
+  en: {
+    size: "Frame size", colour: "Colour", groupset: "Groupset", crank: "Crank length", chainrings: "Chainrings",
+    cassette: "Cassette", wheels: "Wheels", wheelsValue: "ORMA Momentum {f} front / {r} rear", bar: "Handlebar width",
+    stem: "Stem length", spacers: "Spacers", tyres: "Tyres", rim: "Rim depth", rimValue: "{f} mm front / {r} mm rear",
+    freehub: "Freehub", shipping: "Shipping within Switzerland", early: "Early order price", intro: "Introductory price",
+    surface: { Satin: "satin", Pearl: "pearl", Matte: "matte" },
+    chainringLabels: { "50-34": "50-34 (compact)", "52-36": "52-36 (semi-compact)" },
+  },
+  de: {
+    size: "Rahmengrösse", colour: "Farbe", groupset: "Schaltgruppe", crank: "Kurbellänge", chainrings: "Kettenblätter",
+    cassette: "Kassette", wheels: "Laufräder", wheelsValue: "ORMA Momentum {f} vorne / {r} hinten", bar: "Lenkerbreite",
+    stem: "Vorbaulänge", spacers: "Spacer", tyres: "Reifen", rim: "Felgenhöhe", rimValue: "{f} mm vorne / {r} mm hinten",
+    freehub: "Freilauf", shipping: "Versand innerhalb der Schweiz", early: "Frühbestellpreis", intro: "Einführungspreis",
+    surface: { Satin: "seidenmatt", Pearl: "Perlmutt", Matte: "matt" },
+    chainringLabels: { "50-34": "50-34 (Kompakt)", "52-36": "52-36 (Semi-Kompakt)" },
+  },
+};
+const words = (lang) => WORDS[lang] || WORDS.en;
+
 /**
  * Validates a SENDA Vent selection and prices it.
  * Returns { ok, errors[], lines[], subtotal, discount, shipping, total, deposit, balance, code, summary[] }.
  */
-export function priceVent(cfg, sel, now = new Date()) {
+export function priceVent(cfg, sel, now = new Date(), lang = "en") {
+  const w = words(lang);
   const vent = cfg.vent;
   const opts = ventOptions(vent);
   const errors = [];
@@ -75,21 +97,21 @@ export function priceVent(cfg, sel, now = new Date()) {
 
   const size = find(vent.sizes, sel.size);
   const summary = [
-    ["Frame size", `${size.label} (${size.cm} cm)`],
-    ["Colour", `${finish.label}, ${finish.surface.toLowerCase()}`],
-    ["Groupset", groupset.label],
-    ["Crank length", `${sel.crank} mm`],
-    ["Chainrings", label(vent.chainrings, sel.chainring)],
-    ["Cassette", label(vent.cassettes, sel.cassette)],
-    ["Wheels", `ORMA Momentum ${sel.rimFront} front / ${sel.rimRear} rear`],
-    ["Handlebar width", `${sel.bar} mm`],
-    ["Stem length", `${sel.stem} mm`],
-    ["Spacers", `${sel.spacers} mm`],
-    ["Tyres", `${vent.tyreModel}, ${label(vent.tyres, sel.tyre)}`],
+    [w.size, `${size.label} (${size.cm} cm)`],
+    [w.colour, `${finish.label}, ${w.surface[finish.surface] || finish.surface.toLowerCase()}`],
+    [w.groupset, groupset.label],
+    [w.crank, `${sel.crank} mm`],
+    [w.chainrings, w.chainringLabels[sel.chainring] || label(vent.chainrings, sel.chainring)],
+    [w.cassette, label(vent.cassettes, sel.cassette)],
+    [w.wheels, w.wheelsValue.replace("{f}", sel.rimFront).replace("{r}", sel.rimRear)],
+    [w.bar, `${sel.bar} mm`],
+    [w.stem, `${sel.stem} mm`],
+    [w.spacers, `${sel.spacers} mm`],
+    [w.tyres, `${vent.tyreModel}, ${label(vent.tyres, sel.tyre)}`],
   ];
   const lines = [[`${vent.name}, ${groupset.label}`, base]];
-  if (discount) lines.push([vent.earlyBird.label, -discount]);
-  lines.push([cfg.shipping.label, shipping]);
+  if (discount) lines.push([w.early, -discount]);
+  lines.push([w.shipping, shipping]);
 
   const code = [
     vent.code, sel.size, sel.finish, sel.groupset, sel.crank, sel.chainring, sel.cassette,
@@ -106,7 +128,8 @@ export function priceVent(cfg, sel, now = new Date()) {
 export const MOMENTUM_FIELDS = ["rimFront", "rimRear", "freehub"];
 
 /** Validates and prices an ORMA Momentum wheelset (paid in full). */
-export function priceMomentum(cfg, sel, now = new Date()) {
+export function priceMomentum(cfg, sel, now = new Date(), lang = "en") {
+  const w = words(lang);
   const m = cfg.momentum;
   const allowed = { rimFront: m.rims, rimRear: m.rims, freehub: ids(m.freehubs) };
   const errors = MOMENTUM_FIELDS.filter((f) => !sel || !allowed[f].includes(String(sel[f])));
@@ -117,11 +140,11 @@ export function priceMomentum(cfg, sel, now = new Date()) {
   const total = m.price - discount + shipping;
   const hub = find(m.freehubs, sel.freehub);
   const lines = [[`${m.name} ${sel.rimFront}/${sel.rimRear}`, m.price]];
-  if (discount) lines.push([m.earlyBird.label, -discount]);
-  lines.push([cfg.shipping.label, shipping]);
+  if (discount) lines.push([w.intro, -discount]);
+  lines.push([w.shipping, shipping]);
   return {
     ok: true, errors: [], product: "momentum", lines,
-    summary: [["Rim depth", `${sel.rimFront} mm front / ${sel.rimRear} mm rear`], ["Freehub", hub.label]],
+    summary: [[w.rim, w.rimValue.replace("{f}", sel.rimFront).replace("{r}", sel.rimRear)], [w.freehub, hub.label]],
     code: `${m.code}-${sel.rimFront}/${sel.rimRear}-${sel.freehub}`,
     subtotal: m.price, discount, shipping, total, deposit: total, balance: 0,
     payment: "full", delivery: m.delivery,
@@ -133,9 +156,9 @@ export function momentumDefaults(m) {
   return { rimFront: m.rims[0], rimRear: m.rims[m.rims.length - 1], freehub: ids(m.freehubs)[0] };
 }
 
-export function priceOrder(cfg, product, sel, now) {
-  if (product === "vent") return priceVent(cfg, sel, now);
-  if (product === "momentum") return priceMomentum(cfg, sel, now);
+export function priceOrder(cfg, product, sel, now, lang = "en") {
+  if (product === "vent") return priceVent(cfg, sel, now, lang);
+  if (product === "momentum") return priceMomentum(cfg, sel, now, lang);
   return { ok: false, errors: ["product"] };
 }
 

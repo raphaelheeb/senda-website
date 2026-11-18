@@ -1,10 +1,25 @@
 {
   "layout": "layouts/product.liquid",
   "tags": [],
-  "permalink": "/{{ category }}/{{ page.fileSlug }}/",
+  "permalink": "{% if lang == 'de' %}/de{% endif %}/{{ category }}/{{ page.fileSlug }}/",
   "promise": [
-    ["Free delivery", "in Switzerland."],
-    ["30 days", "to return unused items."],
-    ["Questions?", "We answer within one working day."]
-  ]
+    [
+      "Free delivery",
+      "in Switzerland."
+    ],
+    [
+      "30 days",
+      "to return unused items."
+    ],
+    [
+      "Questions?",
+      "We answer within one working day."
+    ]
+  ],
+  "pagination": {
+    "data": "site.langs",
+    "size": 1,
+    "alias": "lang",
+    "addAllPagesToCollections": true
+  }
 }

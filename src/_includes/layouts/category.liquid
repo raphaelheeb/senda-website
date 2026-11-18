@@ -1,15 +1,15 @@
 ---
 layout: layouts/base.liquid
 ---
-{%- assign items = collections.products | in_category: category -%}
+{%- assign items = collections.products | in_category: category, lang -%}
 <div class="wrap">
   <header class="page-head">
-    <h1 class="h1">{{ title }}</h1>
-    <p class="lead">{{ intro }}</p>
+    <h1 class="h1">{{ C.title | default: title }}</h1>
+    <p class="lead">{{ C.intro | default: intro }}</p>
   </header>
 
   {% if orma %}
-  <p class="orma-intro orma-mark"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">Wheels and components by SENDA. <a href="/orma/" style="text-decoration:underline">The ORMA story</a></span></p>
+  <p class="orma-intro orma-mark"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">{{ t.category.orma_intro }} <a href="{{ '/orma/' | lurl: lang }}" style="text-decoration:underline">{{ t.category.orma_story }}</a></span></p>
   {% endif %}
 
   {% if items.size > 0 %}
@@ -34,11 +34,11 @@ layout: layouts/base.liquid
     </div>
     <form class="js-signup" data-list="{{ list | default: 'senda' }}" novalidate>
       <div class="signup__form">
-        <label class="visually-hidden" for="coming-email">Email address</label>
-        <input class="field" id="coming-email" name="email" type="email" placeholder="Your email address" autocomplete="email">
-        <button type="submit">Notify me</button>
+        <label class="visually-hidden" for="coming-email">{{ t.signup.email }}</label>
+        <input class="field" id="coming-email" name="email" type="email" placeholder="{{ t.signup.placeholder }}" autocomplete="email">
+        <button type="submit">{{ t.signup.notify }}</button>
       </div>
-      <label class="consent mt-2"><input type="checkbox" name="consent"> I agree to receive emails about ORMA and SENDA news.</label>
+      <label class="consent mt-2"><input type="checkbox" name="consent"> {{ t.signup.orma_consent }}</label>
       <p class="form-msg mt-2" role="status" aria-live="polite"></p>
     </form>
   </section>

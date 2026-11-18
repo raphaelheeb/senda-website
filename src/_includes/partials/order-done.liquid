@@ -1,8 +1,8 @@
 {%- comment -%} Shown in place of the form once the order is stored. {%- endcomment -%}
 <section class="order-done" data-order-done hidden tabindex="-1">
-  <h2 class="h2">Thank you. Your order is in.</h2>
-  <p class="lead mt-3">Order number <strong data-done-number></strong>. A confirmation is on its way to <span data-done-email></span>.</p>
+  <h2 class="h2">{{ t.config.done.title }}</h2>
+  <p class="lead mt-3">{{ t.config.done.number }} <strong data-done-number></strong>. {{ t.config.done.sent }} <span data-done-email></span>.</p>
   <p class="block__text mt-3" data-done-next></p>
   <dl class="order-done__list" data-done-list></dl>
-  <p class="small mt-4">Questions about your order: <a class="linkline" href="mailto:{{ configurator.orderEmail }}">{{ configurator.orderEmail }}</a></p>
+  <p class="small mt-4">{{ t.config.done.questions }} <a class="linkline" href="mailto:{{ configurator.orderEmail }}">{{ configurator.orderEmail }}</a></p>
 </section>

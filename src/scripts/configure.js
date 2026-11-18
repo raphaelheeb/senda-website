@@ -6,8 +6,13 @@ import { fitVent } from "./fit.js";
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const byId = (list, id) => list.find((x) => (typeof x === "string" ? x : x.id) === String(id));
 
+// Interface text for the page's language, set by the base layout (src/_data/i18n/<lang>.json, key "js").
+const T = (window.SENDA && window.SENDA.t) || {};
+const tr = (key, vars = {}) => String(T[key] || key).replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");
+
 function init(form) {
   const product = form.dataset.order;
+  const lang = form.dataset.lang === "de" ? "de" : "en";
   const cfg = JSON.parse(document.getElementById("order-config").textContent);
   const imgData = document.getElementById("order-images");
   const images = imgData ? JSON.parse(imgData.textContent) : {};
@@ -35,14 +40,14 @@ function init(form) {
   const params = new URLSearchParams(location.search);
   let sel = defaults(params.get("size") || "M");
   for (const f of fields) if (params.get(f)) sel[f] = params.get(f);
-  if (!priceOrder(cfg, product, sel).ok) sel = defaults();
+  if (!priceOrder(cfg, product, sel, undefined, lang).ok) sel = defaults();
 
   const apply = () => {
     for (const f of fields) radios(f).forEach((r) => { r.checked = r.value === String(sel[f]); });
   };
 
   const render = () => {
-    const r = priceOrder(cfg, product, sel);
+    const r = priceOrder(cfg, product, sel, undefined, lang);
     if (!r.ok) { sel = defaults(); apply(); return render(); }
     form.querySelectorAll("[data-show]").forEach((el) => {
       const key = el.dataset.show;
@@ -54,15 +59,15 @@ function init(form) {
     $("[data-summary-total]").textContent = chf(r.total);
     $("[data-bar-total]").textContent = chf(r.total);
     $("[data-summary-pay]").textContent = r.payment === "deposit"
-      ? `Deposit ${chf(r.deposit)} after your order, balance ${chf(r.balance)} before delivery.`
-      : `Invoiced in full after your order.`;
+      ? tr("deposit", { deposit: chf(r.deposit), balance: chf(r.balance) })
+      : tr("full");
     if (product === "vent") {
       const finish = byId(v.finishes, sel.finish);
       const img = images[finish.label];
       const note = $("[data-summary-imgnote]");
       $("[data-summary-img]").src = img || images["Slate Blue"];
       note.hidden = Boolean(img);
-      note.textContent = img ? "" : `Shown in Slate Blue. Yours comes in ${finish.label}.`;
+      note.textContent = img ? "" : tr("shown_in", { finish: finish.label });
       for (const g of v.groupsets) {
         const m = form.querySelector(`[data-groupset-price="${g.id}"]`);
         if (m) m.innerHTML = r.discount ? `${chf(g.price - r.discount)} <s>${chf(g.price)}</s>` : chf(g.price);
@@ -94,13 +99,8 @@ function init(form) {
     const q = (n) => fitBox.querySelector(`[name="${n}"]`);
     const result = fitBox.querySelector("[data-fit-result]");
     const error = fitBox.querySelector("[data-fit-error]");
-    const notes = { race: "Lower and longer, for speed.", relaxed: "Higher and shorter, for long days." };
-    const reasons = {
-      height: "Please check your height.",
-      inseam: "Please check your inseam. It is usually 43 to 50% of your height.",
-      arm: "Please check your arm length: shoulder to the centre of your closed fist.",
-      standover: "Your inseam is below our smallest frame. Write to us and we look at it together.",
-    };
+    const notes = { race: tr("fit_race"), relaxed: tr("fit_relaxed") };
+    const reasons = { height: tr("fit_height"), inseam: tr("fit_inseam"), arm: tr("fit_arm"), standover: tr("fit_standover") };
     let current = null;
     const run = () => {
       const position = fitBox.querySelector("[name=fitPosition]:checked").value;
@@ -116,16 +116,15 @@ function init(form) {
       current = { r, input: { ...input, position } };
       fitInput = { ...current.input, applied: false };
       const z = byId(v.sizes, r.size);
+      const w = T.fit_rows || {};
       const rows = [
-        ["Size", `${z.label} · ${z.cm} cm`], ["Stem", `${r.stem} mm`], ["Spacers", `${r.spacers} mm`],
-        ["Bar width", `${r.bar} mm`], ["Crank", `${r.crank} mm`], ["Saddle height", `about ${r.saddleHeight} mm`],
+        [w.size, `${z.label} · ${z.cm} cm`], [w.stem, `${r.stem} mm`], [w.spacers, `${r.spacers} mm`],
+        [w.bar, `${r.bar} mm`], [w.crank, `${r.crank} mm`], [w.saddle, `${w.about} ${r.saddleHeight} mm`],
       ];
       fitBox.querySelector("[data-fit-list]").innerHTML = rows.map(([k, x]) => `<div><dt>${k}</dt><dd>${x}</dd></div>`).join("");
       const note = [];
-      if (r.alternatives.length) note.push(`Close to ${r.alternatives.join(" and ")} as well.`);
-      if (r.miss > 30) note.push(position === "relaxed"
-        ? "This is as upright as the SENDA Vent goes. Write to us before you order."
-        : "Your proportions are at the edge of what the cockpit covers. Write to us before you order.");
+      if (r.alternatives.length) note.push(tr("fit_close", { sizes: r.alternatives.join(` ${tr("fit_and")} `) }));
+      if (r.miss > 30) note.push(position === "relaxed" ? tr("fit_limit_relaxed") : tr("fit_limit"));
       fitBox.querySelector("[data-fit-note]").textContent = note.join(" ");
       result.hidden = false;
     };
@@ -139,8 +138,9 @@ function init(form) {
       apply();
       render();
       const btn = fitBox.querySelector("[data-fit-apply]");
-      btn.textContent = "Applied";
-      setTimeout(() => { btn.textContent = "Apply to your bike"; }, 2000);
+      const label = btn.textContent;
+      btn.textContent = tr("applied");
+      setTimeout(() => { btn.textContent = label; }, 2000);
     });
   }
   form.fitInput = () => fitInput;
@@ -161,14 +161,14 @@ function init(form) {
 
   apply();
   render();
-  form.addEventListener("submit", (e) => submit(e, form, product, () => sel, cfg));
+  form.addEventListener("submit", (e) => submit(e, form, product, () => sel, cfg, lang));
 }
 
 // One id per filled-in form: a double click or a retry sends the same id,
 // and the server returns the same order instead of creating a second one.
 let requestId = crypto.randomUUID();
 
-async function submit(e, form, product, getSel, cfg) {
+async function submit(e, form, product, getSel, cfg, lang) {
   e.preventDefault();
   const msg = form.querySelector(".order-msg");
   const btn = form.querySelector(".order-submit");
@@ -182,28 +182,28 @@ async function submit(e, form, product, getSel, cfg) {
   const missing = [...form.querySelectorAll("#details [required]")].filter((el) => el.type !== "checkbox" && !el.checkValidity());
   form.querySelectorAll("[aria-invalid]").forEach((el) => el.removeAttribute("aria-invalid"));
   if (missing.length || !terms) {
-    msg.textContent = missing.length ? "Please fill in the marked fields." : "Please accept the order terms.";
+    msg.textContent = missing.length ? tr("fill") : tr("accept_terms");
     missing.forEach((el) => el.setAttribute("aria-invalid", "true"));
     (missing[0] || form.querySelector("[name=terms]")).focus();
     return;
   }
 
   btn.disabled = true;
-  msg.textContent = "Sending your order…";
+  msg.textContent = tr("sending");
   try {
     const res = await fetch("/api/order", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ requestId, product, selection: getSel(), customer, terms, fit: form.fitInput ? form.fitInput() : null, turnstileToken: data.get("cf-turnstile-response") || "" }),
+      body: JSON.stringify({ requestId, product, lang, selection: getSel(), customer, terms, fit: form.fitInput ? form.fitInput() : null, turnstileToken: data.get("cf-turnstile-response") || "" }),
     });
     const out = await res.json().catch(() => ({}));
     if (!res.ok || !out.ok) {
       (out.fields || []).forEach((f) => form.querySelector(`[name="${f}"]`)?.setAttribute("aria-invalid", "true"));
-      throw new Error(out.message || "The order could not be sent.");
+      throw new Error(out.message || tr("failed"));
     }
     done(form, out, customer);
   } catch (err) {
-    msg.textContent = `${err.message} Please try again, or write to ${cfg.orderEmail}.`;
+    msg.textContent = `${err.message} ${tr("retry", { email: cfg.orderEmail })}`;
     btn.disabled = false;
     if (window.turnstile) window.turnstile.reset();
   }
@@ -214,10 +214,10 @@ function done(form, out, customer) {
   box.querySelector("[data-done-number]").textContent = out.orderNumber;
   box.querySelector("[data-done-email]").textContent = customer.email;
   box.querySelector("[data-done-next]").textContent = out.payment === "deposit"
-    ? `Within two working days we confirm your order by email, with the invoice for the deposit of ${chf(out.deposit)}.`
-    : `Within two working days we confirm your order by email, with the invoice of ${chf(out.total)}.`;
+    ? tr("next_deposit", { deposit: chf(out.deposit) })
+    : tr("next_full", { total: chf(out.total) });
   box.querySelector("[data-done-list]").innerHTML = out.summary.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")
-    + `<dt>Total</dt><dd>${chf(out.total)}</dd>`;
+    + `<dt>${esc(tr("total"))}</dt><dd>${chf(out.total)}</dd>`;
   form.hidden = true;
   document.querySelector("[data-order-bar]").hidden = true;
   box.hidden = false;

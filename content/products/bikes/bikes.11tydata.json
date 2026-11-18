@@ -1,21 +1,95 @@
 {
   "category": "bikes",
   "type": "bike",
-  
   "ratio": "bike",
   "list": "senda",
-  "sizes": ["XS", "S", "M", "L", "XL"],
-  "geometry": ["Stack", "Reach", "Effective top tube", "Head tube angle", "Seat tube angle", "Chainstay length"],
+  "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "geometry": [
+    "Stack",
+    "Reach",
+    "Effective top tube",
+    "Head tube angle",
+    "Seat tube angle",
+    "Chainstay length"
+  ],
   "override:promise": [
-    ["Fitting on request", "write to us before you order and we arrange it."],
-    ["Crash replacement", "frame at a reduced price for the first owner."],
-    ["Frame registration", "for warranty and theft records."]
+    [
+      "Fitting on request",
+      "write to us before you order and we arrange it."
+    ],
+    [
+      "Crash replacement",
+      "frame at a reduced price for the first owner."
+    ],
+    [
+      "Frame registration",
+      "for warranty and theft records."
+    ]
   ],
   "faq": [
-    ["When will the first bikes be delivered?", "The first SENDA Vent is delivered from March 2027. We write if anything moves."],
-    ["Is the order binding?", "Yes. You pay a 20% deposit by invoice. If you withdraw, the deposit is not refunded. If SENDA cannot deliver, or delivers substantially later than planned, you get it back in full. Details in the order terms."],
-    ["How do I choose my size?", "If you know your position, choose size, stem and spacers directly; the geometry is on the bike page. Otherwise, Find your fit in the configurator sets them from four body measurements. For a fitting first, write to info@sendabikes.com."],
-    ["Can I test ride before buying?", "Test rides will run from partner studios in the Zürich area. Join the list to hear when the first dates open."],
-    ["Do you sell outside Switzerland?", "We deliver within Switzerland only for now."]
-  ]
+    [
+      "When will the first bikes be delivered?",
+      "The first SENDA Vent is delivered from March 2027. We write if anything moves."
+    ],
+    [
+      "Is the order binding?",
+      "Yes. You pay a 20% deposit by invoice. If you withdraw, the deposit is not refunded. If SENDA cannot deliver, or delivers substantially later than planned, you get it back in full. Details in the order terms."
+    ],
+    [
+      "How do I choose my size?",
+      "If you know your position, choose size, stem and spacers directly; the geometry is on the bike page. Otherwise, Find your fit in the configurator sets them from four body measurements. For a fitting first, write to info@sendabikes.com."
+    ],
+    [
+      "Can I test ride before buying?",
+      "Test rides will run from partner studios in the Zürich area. Join the list to hear when the first dates open."
+    ],
+    [
+      "Do you sell outside Switzerland?",
+      "We deliver within Switzerland only for now."
+    ]
+  ],
+  "de": {
+    "faq": [
+      [
+        "Wann werden die ersten Bikes ausgeliefert?",
+        "Das erste SENDA Vent wird ab März 2027 ausgeliefert. Wir melden uns, falls sich etwas verschiebt."
+      ],
+      [
+        "Ist die Bestellung verbindlich?",
+        "Ja. Du leistest eine Anzahlung von 20 % auf Rechnung. Trittst Du zurück, wird die Anzahlung nicht zurückerstattet. Kann SENDA nicht liefern oder liefert deutlich später als geplant, erhältst Du sie vollständig zurück. Details in den Bestellbedingungen."
+      ],
+      [
+        "Wie wähle ich meine Grösse?",
+        "Kennst Du Deine Position, wählst Du Grösse, Vorbau und Spacer direkt; die Geometrie steht auf der Bike-Seite. Sonst stellt «Finde Deine Position» im Konfigurator alles aus vier Körpermassen ein. Für ein Fitting vorab schreib an info@sendabikes.com."
+      ],
+      [
+        "Kann ich vor dem Kauf Probe fahren?",
+        "Probefahrten finden bei Partner-Studios in der Region Zürich statt. Trag Dich auf die Liste ein, dann erfährst Du die ersten Termine."
+      ],
+      [
+        "Liefert ihr auch ausserhalb der Schweiz?",
+        "Vorerst liefern wir nur innerhalb der Schweiz."
+      ]
+    ],
+    "promise": [
+      [
+        "Fitting auf Anfrage",
+        "schreib uns vor der Bestellung, wir organisieren es."
+      ],
+      [
+        "Crash Replacement",
+        "Rahmen zu einem reduzierten Preis für Erstbesitzer."
+      ],
+      [
+        "Rahmenregistrierung",
+        "für Garantie und Diebstahl."
+      ]
+    ]
+  }
 }

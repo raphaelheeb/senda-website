@@ -51,12 +51,12 @@
       var msg = form.querySelector(".form-msg");
       var btn = form.querySelector('[type="submit"]');
       if (!email.value || email.value.indexOf("@") < 1) {
-        msg.textContent = "Enter a valid email address.";
+        msg.textContent = window.SENDA.t.news_email;
         email.focus();
         return;
       }
       if (consent && !consent.checked) {
-        msg.textContent = "Tick the box to agree to receive emails.";
+        msg.textContent = window.SENDA.t.news_consent;
         consent.focus();
         return;
       }
@@ -69,11 +69,11 @@
       })
         .then(function (r) {
           if (!r.ok) throw new Error();
-          msg.textContent = "You're on the list. We'll write when there is news.";
+          msg.textContent = window.SENDA.t.news_ok;
           form.reset();
         })
         .catch(function () {
-          msg.textContent = "That didn't go through. Try again, or write to info@sendabikes.com.";
+          msg.textContent = window.SENDA.t.news_fail;
         })
         .finally(function () { btn.disabled = false; });
     });
