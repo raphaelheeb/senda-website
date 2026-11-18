@@ -1,13 +1,14 @@
 ---
-title: SENDA Road
+title: SENDA Vent
 kind: road bike
+categoryLabel: Road
 platform: road
 order: 1
-status: announced
-price: From CHF 5,800
-priceNote: Indicative
-deposit: CHF 300
-delivery: first deliveries in 2027
+status: preorder
+price: From CHF 5,400
+priceNote: Incl. VAT
+deposit: 20%
+delivery: from March 2027
 summary: A light carbon road bike for long days in the mountains. Efficient on climbs, precise through fast corners, comfortable over distance.
 dims:
   - ["< 7 kg", "Target weight, top build"]
@@ -26,9 +27,9 @@ kits:
     items: ["Top-tier electronic groupset", "ORMA Momentum 45 wheelset", "ORMA one-piece aero bar", "ORMA saddle, carbon rails"]
 image: /assets/img/web/road-toni-side-2000.jpg
 imagePosition: center 62%
-alt: The SENDA Road prototype in Slate Blue in front of a board-marked concrete wall
+alt: The SENDA Vent prototype in Slate Blue in front of a board-marked concrete wall
 teaser: Direct, light and composed. Built for the pace of a long climb and the precision of the descent.
-tileNote: Announced, 2027
+tileNote: Order now, delivery March 2027
 cardImage: /assets/img/web/road-toni-studio-1000.jpg
 tileImage: /assets/img/web/road-toni-lettering-1000.jpg
 tileAlt: SENDA lettering in copper on the Slate Blue down tube
@@ -41,28 +42,36 @@ features:
     text: A geometry for riders who climb all day and descend with confidence. Sizes and final numbers follow with pre-orders.
     image: /assets/img/web/geometry-drawing-1000.jpg
     contain: true
-    alt: Geometry drawing of the SENDA Road frame
-  - title: Specced with ORMA Momentum 45.
-    text: Every SENDA Road rolls on ORMA wheels, developed by the same team to the same standard.
+    alt: Geometry drawing of the SENDA Vent frame
+  - title: Specced with ORMA Momentum.
+    text: Every SENDA Vent rolls on ORMA wheels, developed by the same team to the same standard.
     image: /assets/img/web/orma-wheels-1000.jpg
     contain: true
-    alt: ORMA Momentum 45 carbon wheelset
-    link: /wheelsets/orma-momentum-45/
+    alt: ORMA Momentum carbon wheelset
+    link: /wheelsets/orma-momentum/
     linkText: See the wheelset
 image2: /assets/img/web/frame-detail-slate-blue-1000.jpg
 image3: /assets/img/web/frame-detail-champagne-1000.jpg
 storyImage: /assets/img/web/road-toni-cockpit-1000.jpg
-storyAlt: Cockpit of the SENDA Road prototype seen from above
-geometrySource: Values from the B02 Aero geometry chart, units as in the chart. To confirm before publishing.
+storyAlt: Cockpit of the SENDA Vent prototype seen from above
+geometrySource: All values in mm unless stated.
 geometryImage: /assets/img/web/geometry-drawing-2000.jpg
 override:sizes: ["XS", "S", "M", "L", "XL", "XXL"]
 geometryRows:
-  - ["Stack", "51", "52", "53.5", "55", "57", "59.5"]
-  - ["Reach", "37", "37.5", "38.0", "39.5", "40", "41"]
-  - ["Head angle", "71°", "71.5°", "72°", "72.8°", "73°", "73°"]
-  - ["Seat angle", "75°", "74.5°", "74°", "73.5°", "73°", "73°"]
-  - ["Chainstay", "41", "41", "41", "41", "41", "41"]
-  - ["Wheelbase", "97", "97.5", "98.5", "99.5", "100.5", "102"]
+  - ["Stack", "510", "520", "534", "550", "572", "594"]
+  - ["Reach", "368", "375", "382", "393", "400", "408"]
+  - ["Effective top tube", "505", "519", "535", "556", "575", "590"]
+  - ["Seat tube", "430", "455", "485", "515", "545", "580"]
+  - ["Head tube", "108.5", "117.5", "130", "145", "167", "191"]
+  - ["Head tube angle", "71°", "71.5°", "72°", "72.8°", "73°", "73°"]
+  - ["Seat tube angle", "75°", "74.5°", "74°", "73.5°", "73°", "73°"]
+  - ["Chainstay", "410", "410", "410", "410", "410", "410"]
+  - ["BB drop", "71", "71", "71", "70", "70", "70"]
+  - ["Fork length", "370", "370", "370", "370", "370", "370"]
+  - ["Fork offset", "45", "45", "45", "45", "45", "45"]
+  - ["Wheelbase", "971", "976", "983", "993", "1005", "1020"]
+  - ["Standover", "727", "744", "766", "790", "814", "844"]
+  - ["Trail", "71.5", "68.3", "65.1", "60.0", "58.7", "58.7"]
 ---
 We combine advanced carbon materials with a precise construction, so stiffness goes where power goes and compliance where the road hits you.
 

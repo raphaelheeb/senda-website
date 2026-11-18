@@ -1,4 +1,6 @@
 ---
+published: false
+eleventyExcludeFromCollections: true
 layout: layouts/category.liquid
 permalink: /clothing/
 title: Clothing

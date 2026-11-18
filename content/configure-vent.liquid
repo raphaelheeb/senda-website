@@ -1,0 +1,100 @@
+---
+layout: layouts/base.liquid
+title: Configure SENDA Vent
+permalink: /bikes/vent/configure/
+description: Choose size, colour, groupset, wheels, cockpit and tyres for your SENDA Vent. Binding order with a 20% deposit by invoice.
+hideSignup: true
+eleventyExcludeFromCollections: true
+---
+{%- assign v = configurator.vent -%}
+<div class="wrap">
+  <nav class="crumbs" style="padding-top: var(--s-4)" aria-label="Breadcrumb"><a href="/bikes/">Bikes</a><span>/</span><a href="/bikes/vent/">{{ v.name }}</a><span>/</span><span>Configure</span></nav>
+  <header class="page-head">
+    <h1 class="h1">Configure your {{ v.name }}.</h1>
+    <p class="lead">Binding order with a {{ v.deposit.percent }}% deposit by invoice. Delivery from March 2027. {{ configurator.vatNote }} Shipping within Switzerland CHF {{ configurator.shipping.price }}.</p>
+  </header>
+
+  <noscript><p class="lead">The configurator needs JavaScript. You can also order by email: <a class="linkline" href="mailto:{{ configurator.orderEmail }}">{{ configurator.orderEmail }}</a></p></noscript>
+
+  <form class="config" data-order="vent" novalidate>
+    <div>
+      <fieldset class="config__step">
+        <div class="config__step-head"><span class="micro config__n">1</span><legend class="h3">Size</legend></div>
+        <div class="chips">{% for s in v.sizes %}<label class="chip"><input type="radio" name="size" value="{{ s.id }}"><span>{{ s.label }} <em>{{ s.cm }} cm</em></span></label>{% endfor %}</div>
+        <details class="sizeguide mt-3">
+          <summary>Not sure? Find your size</summary>
+          <div class="sizeguide__body">
+            <label class="sizeguide__height option-label">Your height in cm<input class="field" type="number" min="140" max="210" inputmode="numeric" data-height></label>
+            <p class="sizeguide__result small" data-height-result aria-live="polite"></p>
+            <table class="table sizeguide__table"><thead><tr><th>Size</th><th>Height</th><th>Stack / reach</th></tr></thead><tbody>
+              {% for s in v.sizes %}<tr><th>{{ s.label }}</th><td>{{ s.height[0] }}–{{ s.height[1] }} cm</td><td>{{ s.stack }} / {{ s.reach }} mm</td></tr>{% endfor %}
+            </tbody></table>
+            <p class="small mt-2">A first guide, not a fitting. Between two sizes, or with long legs or a short torso: <a class="linkline" href="mailto:{{ configurator.orderEmail }}?subject=Size%20advice%20SENDA%20Vent">write to us</a> and we help you choose, or arrange a fitting.</p>
+          </div>
+        </details>
+      </fieldset>
+
+      <fieldset class="config__step">
+        <div class="config__step-head"><span class="micro config__n">2</span><legend class="h3">Colour</legend></div>
+        <div class="options" style="--opt-cols: 4">
+          {% for f in v.finishes %}<label class="option"><input type="radio" name="finish" value="{{ f.id }}"><span class="option__box"><span class="option__swatch" style="background:{{ f.hex }}"></span><span class="option__name">{{ f.label }}</span><span class="option__meta">{{ f.surface }}</span></span></label>{% endfor %}
+        </div>
+      </fieldset>
+
+      <fieldset class="config__step">
+        <div class="config__step-head"><span class="micro config__n">3</span><legend class="h3">Groupset</legend></div>
+        <div class="options" style="--opt-cols: 3">
+          {% for g in v.groupsets %}<label class="option"><input type="radio" name="groupset" value="{{ g.id }}"><span class="option__box"><span class="option__name">{{ g.label }}</span><span class="option__meta" data-groupset-price="{{ g.id }}">CHF {{ g.price | chf }}</span></span></label>{% endfor %}
+        </div>
+      </fieldset>
+
+      <fieldset class="config__step">
+        <div class="config__step-head"><span class="micro config__n">4</span><legend class="h3">Gearing</legend></div>
+        <p class="option-label">Crank length</p>
+        <div class="chips">{% for c in v.cranks %}<label class="chip"><input type="radio" name="crank" value="{{ c }}"><span>{{ c }} mm</span></label>{% endfor %}</div>
+        <p class="option-label mt-3">Chainrings</p>
+        <div class="chips">{% for c in v.chainrings %}<label class="chip"><input type="radio" name="chainring" value="{{ c.id }}"><span>{{ c.label }}</span></label>{% endfor %}</div>
+        <p class="option-label mt-3">Cassette</p>
+        <div class="chips">{% for c in v.cassettes %}<label class="chip"><input type="radio" name="cassette" value="{{ c.id }}"><span>{{ c.label }}</span></label>{% endfor %}</div>
+        <p class="small mt-2">{{ v.otherOptionsNote }} <a class="linkline" href="mailto:{{ configurator.orderEmail }}">{{ configurator.orderEmail }}</a></p>
+      </fieldset>
+
+      <fieldset class="config__step">
+        <div class="config__step-head"><span class="micro config__n">5</span><legend class="h3">Wheels</legend></div>
+        <p class="small">ORMA Momentum carbon wheels. Choose the rim depth front and rear.</p>
+        <p class="option-label mt-3">Front</p>
+        <div class="chips">{% for r in v.rims %}<label class="chip"><input type="radio" name="rimFront" value="{{ r }}"><span>{{ r }} mm</span></label>{% endfor %}</div>
+        <p class="option-label mt-3">Rear</p>
+        <div class="chips">{% for r in v.rims %}<label class="chip"><input type="radio" name="rimRear" value="{{ r }}"><span>{{ r }} mm</span></label>{% endfor %}</div>
+      </fieldset>
+
+      <fieldset class="config__step">
+        <div class="config__step-head"><span class="micro config__n">6</span><legend class="h3">Cockpit</legend></div>
+        <p class="small">One-piece carbon handlebar and stem. Set to the suggestion for your size; change it if you know your position.</p>
+        <p class="option-label mt-3">Handlebar width</p>
+        <div class="chips">{% for b in v.bars %}<label class="chip"><input type="radio" name="bar" value="{{ b }}"><span>{{ b }} mm</span></label>{% endfor %}</div>
+        <p class="small mt-1">{{ v.barNote }}</p>
+        <p class="option-label mt-3">Stem length</p>
+        <div class="chips">{% for s in v.stems %}<label class="chip"><input type="radio" name="stem" value="{{ s }}"><span>{{ s }} mm</span></label>{% endfor %}</div>
+        <p class="option-label mt-3">Spacers under the stem</p>
+        <div class="chips">{% for s in v.spacers %}<label class="chip"><input type="radio" name="spacers" value="{{ s }}"><span>{{ s }} mm</span></label>{% endfor %}</div>
+      </fieldset>
+
+      <fieldset class="config__step">
+        <div class="config__step-head"><span class="micro config__n">7</span><legend class="h3">Tyres</legend></div>
+        <p class="small">{{ v.tyreModel }}.</p>
+        <div class="chips mt-2">{% for t in v.tyres %}<label class="chip"><input type="radio" name="tyre" value="{{ t.id }}"><span>{{ t.label }}</span></label>{% endfor %}</div>
+      </fieldset>
+
+      {% include "partials/order-details.liquid", stepNo: "8", submitLabel: "Place binding order", termsNote: "I understand that this order is binding and that the deposit is not refunded if I withdraw." %}
+    </div>
+
+    {% include "partials/order-summary.liquid", productName: v.name, image: "/assets/img/web/road-toni-studio-1000.jpg" %}
+  </form>
+
+  {% include "partials/order-done.liquid" %}
+</div>
+<script id="order-config" type="application/json">{{ configurator | json }}</script>
+<script id="order-images" type="application/json">{ {% for f in finishes %}{% if f.image %}"{{ f.name }}": "{{ f.image }}",{% endif %}{% endfor %} "_": "" }</script>
+<script type="module" src="/scripts/configure.js"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>

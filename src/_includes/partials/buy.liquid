@@ -7,7 +7,7 @@
   </div>
   <div data-states="preorder">
     <p class="buy__price">{{ price }}{% if priceNote %} <span class="tiny">{{ priceNote }}</span>{% endif %}</p>
-    <p class="buy__note">{% if deposit %}Reserve with a refundable {{ deposit }} deposit. {% endif %}Delivery {{ delivery }}.</p>
+    <p class="buy__note">{% if type == "bike" %}Binding order with a {{ deposit }} deposit by invoice. {% endif %}Delivery {{ delivery }}. Shipping within Switzerland CHF {{ configurator.shipping.price }}.</p>
   </div>
   <div data-states="available">
     <p class="buy__price">{{ price }}{% if priceNote %} <span class="tiny">{{ priceNote }}</span>{% endif %}</p>
@@ -35,8 +35,8 @@
   <p class="form-msg" role="status" aria-live="polite"></p>
 </form>
 <div class="buy__actions" data-states="preorder">
-  <button class="btn" type="button">{% if type == "bike" %}Reserve with {{ deposit }} deposit{% else %}Pre-order{% endif %}</button>
-  {% if type == "bike" %}<a class="btn btn--quiet" href="/service/#fitting">Book a fitting first</a>{% endif %}
+  {% if configureUrl %}<a class="btn" href="{{ configureUrl }}">{% if type == "bike" %}Configure and order{% else %}Choose and order{% endif %}</a>{% endif %}
+  {% if type == "bike" %}<a class="btn btn--quiet" href="mailto:info@sendabikes.com?subject=Fitting%20{{ title | url_encode }}">Not sure about your size? Write to us</a>{% endif %}
 </div>
 <div class="buy__actions" data-states="available">
   <button class="btn" type="button">{% if type == "bike" %}Order{% else %}Add to cart{% endif %}</button>

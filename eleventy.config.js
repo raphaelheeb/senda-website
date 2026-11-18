@@ -25,6 +25,7 @@ export default function (eleventyConfig) {
     "favicon.svg",
     "apple-touch-icon.png",
     "CNAME",
+    "_redirects",
   ];
   for (const path of passthrough) {
     eleventyConfig.addPassthroughCopy(path);
@@ -46,6 +47,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("in_category", (items, category) =>
     (items || []).filter((p) => p.data.category === category)
   );
+  // 5400 -> "5,400" (Swiss prices on the English site)
+  eleventyConfig.addFilter("chf", (n) => Number(n).toLocaleString("en-US"));
   eleventyConfig.addFilter("status_label", (status) => {
     return { announced: "Announced", preorder: "Pre-order", available: "Available" }[status] || status;
   });

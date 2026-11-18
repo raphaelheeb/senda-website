@@ -2,7 +2,7 @@
   "name": "SENDA",
   "url": "https://sendabikes.com",
   "description": "Swiss road and gravel bikes, and ORMA wheels and components by SENDA.",
-  "subscribeUrl": "https://senda-website-chi.vercel.app/api/subscribe",
+  "subscribeUrl": "/api/subscribe",
   "nav": [
     {
       "label": "Bikes",
@@ -17,12 +17,14 @@
     {
       "label": "Components",
       "url": "/components/",
-      "category": "components"
+      "category": "components",
+      "hidden": true
     },
     {
       "label": "Clothing",
       "url": "/clothing/",
-      "category": "clothing"
+      "category": "clothing",
+      "hidden": true
     },
     {
       "label": "Journal",
@@ -47,11 +49,13 @@
         },
         {
           "label": "Components",
-          "url": "/components/"
+          "url": "/components/",
+          "hidden": true
         },
         {
           "label": "Clothing",
-          "url": "/clothing/"
+          "url": "/clothing/",
+          "hidden": true
         }
       ]
     },
@@ -119,8 +123,15 @@
     },
     {
       "label": "Terms",
-      "url": "/service/#terms",
+      "url": "/terms/",
       "draft": true
     }
-  ]
+  ],
+  "show": {
+    "components": false,
+    "clothing": false
+  },
+  "turnstileSiteKey": "1x00000000000000000000AA",
+  "_turnstileNote": "Test key (always passes) until the real Turnstile widget for sendabikes.com is created; then replace it here and set TURNSTILE_SECRET in Cloudflare.",
+  "orderApi": "/api/order"
 }

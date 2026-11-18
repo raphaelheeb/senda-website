@@ -4,7 +4,7 @@
     <div class="footer-grid">
       <a class="footer-brand" href="/" aria-label="SENDA home"><img src="/assets/logo/senda-wordmark-v22.png" alt="SENDA" width="1747" height="307" loading="lazy"></a>
       {% for col in site.footer %}
-      <ul>{% for l in col.links %}{% unless l.draft and env.production %}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{% endunless %}{% endfor %}</ul>
+      <ul>{% for l in col.links %}{% unless l.hidden or l.draft and env.production %}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{% endunless %}{% endfor %}</ul>
       {% endfor %}
     </div>
     <div class="footer-base">

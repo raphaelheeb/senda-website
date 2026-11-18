@@ -1,13 +1,30 @@
-// Cloudflare Workers: serves the Eleventy build in _site as static assets.
-// Production branch builds run `npm run build` then `npx wrangler deploy`;
-// other branches get a preview URL via `npx wrangler preview`.
+// Cloudflare Workers: serves the Eleventy build in _site as static assets and
+// runs worker/index.js for /api/* only (orders, newsletter sign-up).
+// Production branch (launch) builds run `npm run build` then `npx wrangler deploy`.
+// Secrets are set in the Cloudflare dashboard (Worker > Settings > Variables and secrets),
+// never here: TURNSTILE_SECRET, MAILERSEND_TOKEN, GOOGLE_SA_EMAIL, GOOGLE_SA_KEY,
+// SHEET_ID, ML_TOKEN, ML_GROUP, ML_GROUP_ORMA.
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "senda-website",
+  "main": "worker/index.js",
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": "./_site",
+    "binding": "ASSETS",
     "not_found_handling": "404-page",
-    "html_handling": "auto-trailing-slash"
-  }
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": ["/api/*"]
+  },
+  // Every order is stored here first; emails and the sheet row follow.
+  "kv_namespaces": [{ "binding": "ORDERS", "id": "eea3418e5c2849dd85a1fcc3747ac004" }],
+  // Retries emails, sheet rows and sign-ups that did not go through.
+  "triggers": { "crons": ["*/10 * * * *"] },
+  "vars": {
+    "ORDER_INBOX": "info@sendabikes.com",
+    "MAIL_FROM": "info@sendabikes.com",
+    "SHEET_TAB": "Orders"
+  },
+  "keep_vars": true,
+  "observability": { "enabled": true }
 }

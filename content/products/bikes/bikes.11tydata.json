@@ -7,15 +7,16 @@
   "sizes": ["XS", "S", "M", "L", "XL"],
   "geometry": ["Stack", "Reach", "Effective top tube", "Head tube angle", "Seat tube angle", "Chainstay length"],
   "override:promise": [
-    ["Fitting included", "at a partner studio before your bike is built."],
+    ["Fitting on request", "write to us before you order and we arrange it."],
     ["First service", "included."],
     ["Crash replacement", "frame at a reduced price for the first owner."],
     ["Frame registration", "for warranty and theft records."]
   ],
   "faq": [
-    ["When will the first bikes be delivered?", "First deliveries are planned for 2027. Every reservation gets a delivery window, and we write if anything moves."],
-    ["Is the deposit refundable?", "Yes. You can cancel a reservation and get the deposit back until the frame goes into production for your order."],
+    ["When will the first bikes be delivered?", "The first SENDA Vent is delivered from March 2027. We write if anything moves."],
+    ["Is the order binding?", "Yes. You pay a 20% deposit by invoice. If you withdraw, the deposit is not refunded. If SENDA cannot deliver, or delivers substantially later than planned, you get it back in full. Details in the order terms."],
+    ["How do I choose my size?", "The configurator suggests a size from your height. Between two sizes, or if you want a fitting first, write to info@sendabikes.com."],
     ["Can I test ride before buying?", "Test rides will run from partner studios in the Zürich area. Join the list to hear when the first dates open."],
-    ["Do you sell outside Switzerland?", "We start in Switzerland. EU delivery follows once the first series is out."]
+    ["Do you sell outside Switzerland?", "We deliver within Switzerland only for now."]
   ]
 }

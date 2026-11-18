@@ -1,0 +1,10 @@
+{%- comment -%} Live summary beside an order form. Filled by /scripts/configure.js. {%- endcomment -%}
+<aside class="summary" aria-label="Your configuration">
+  <p class="option-label">Your {{ productName }}</p>
+  <div class="summary__frame"><img src="{{ image }}" alt="" data-summary-img></div>
+  <p class="small summary__imgnote" data-summary-imgnote hidden></p>
+  <dl data-summary-list></dl>
+  <dl class="summary__lines" data-summary-lines></dl>
+  <div class="summary__total"><span>Total</span><strong data-summary-total>–</strong></div>
+  <p class="small summary__pay" data-summary-pay></p>
+</aside>

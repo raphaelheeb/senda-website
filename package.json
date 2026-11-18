@@ -13,6 +13,7 @@
   "scripts": {
     "dev": "eleventy --serve",
     "build": "eleventy",
-    "review": "node scripts/review-pdf.js"
+    "review": "node scripts/review-pdf.js",
+    "test": "node --test test/*.test.js"
   }
 }

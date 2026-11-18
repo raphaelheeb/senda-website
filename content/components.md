@@ -1,4 +1,6 @@
 ---
+published: false
+eleventyExcludeFromCollections: true
 layout: layouts/category.liquid
 permalink: /components/
 title: Components

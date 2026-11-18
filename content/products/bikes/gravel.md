@@ -6,8 +6,7 @@ order: 2
 status: announced
 price: From CHF 5,800
 priceNote: Indicative
-deposit: CHF 300
-delivery: after SENDA Road, in 2027
+delivery: after SENDA Vent, in 2027
 summary: The same frame philosophy, made for unpaved roads. Room for wide tyres, stable when the surface changes, still quick on tarmac.
 dims:
   - ["4", "Finishes, one frame"]

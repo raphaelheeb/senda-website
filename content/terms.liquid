@@ -1,0 +1,53 @@
+---
+layout: layouts/base.liquid
+permalink: /terms/
+title: Order terms
+description: Terms for orders of SENDA bikes and ORMA wheels placed on sendabikes.com.
+---
+{%- assign v = configurator.vent -%}
+{%- assign m = configurator.momentum -%}
+<div class="wrap">
+  <header class="page-head">
+    <h1 class="h1">Order terms</h1>
+    <p class="lead">For orders placed on sendabikes.com. Version of 18 November 2026.</p>
+  </header>
+
+  {% unless env.production %}
+  <p class="draft" data-draft="Draft: to be reviewed by a lawyer before launch">Seller name and form, and every clause below, still need legal review.</p>
+  {% endunless %}
+
+  <div class="prose" style="padding-bottom: var(--section)">
+    <h2>1. Seller and scope</h2>
+    <p>The seller is SENDA Bikes, Zürich, Switzerland, info@sendabikes.com ("SENDA"). These terms apply to every order of a SENDA bike or ORMA product placed through sendabikes.com. We sell to private customers with a delivery address in Switzerland.</p>
+
+    <h2>2. Order and contract</h2>
+    <p>Your order is a binding offer to buy the configuration shown in the summary at the price shown. The contract is concluded when SENDA confirms the order in writing by email together with the invoice. The automatic message sent right after your order confirms receipt only. SENDA may decline an order, for example if a configuration cannot be built; in that case nothing is owed.</p>
+
+    <h2>3. Prices</h2>
+    <p>All prices are in Swiss francs and include Swiss VAT. Shipping within Switzerland costs CHF {{ configurator.shipping.price }} per order. The early order price ({{ v.name }}) and the introductory price ({{ m.name }}) apply to orders placed up to and including 31 December 2026. The price in your order confirmation is fixed.</p>
+
+    <h2>4. Payment</h2>
+    <p>{{ v.name }}: a deposit of {{ v.deposit.percent }}% of the bike price is due within 10 days of the invoice. The balance and shipping are invoiced before delivery and are due before the bike is shipped.</p>
+    <p>{{ m.name }}: the full amount is invoiced with the order confirmation and is due within 10 days.</p>
+    <p>Payment is by bank transfer or QR bill. If a deposit or invoice is not paid on time, SENDA may cancel the order after a reminder with a further 10 days to pay.</p>
+
+    <h2>5. Delivery</h2>
+    <p>The planned delivery date is stated in your order confirmation (currently from March 2027). SENDA informs you as soon as a delay becomes known. Delivery is to the address in Switzerland given in your order; the risk passes to you on delivery.</p>
+
+    <h2>6. Withdrawal and refunds</h2>
+    <p>The order is binding. There is no right to withdraw from it. If you withdraw nevertheless, SENDA keeps the deposit paid; any amounts paid beyond the deposit are refunded.</p>
+    <p>If SENDA cannot deliver, or if delivery is more than three months later than the date in your order confirmation, you may withdraw from the contract by email and receive every amount paid in full within 30 days.</p>
+
+    <h2>7. Size and changes</h2>
+    <p>You choose the size and the parts of your bike. The size guide on sendabikes.com is a recommendation, not a fitting. Changes to a confirmed configuration are possible until the frame goes into production for your order, if SENDA agrees in writing; a price difference is invoiced or credited.</p>
+
+    <h2>8. Warranty</h2>
+    <p>The statutory warranty under Swiss law applies for two years from delivery. Wear parts such as tyres, brake pads, chain and cassette are covered only for defects in materials or workmanship, not for normal wear. Notify defects by email as soon as you find them.</p>
+
+    <h2>9. Data protection</h2>
+    <p>SENDA uses your details to process your order. See the <a href="/legal/privacy.html">privacy notice</a>.</p>
+
+    <h2>10. Law and jurisdiction</h2>
+    <p>Swiss law applies, excluding the UN Convention on Contracts for the International Sale of Goods. The place of jurisdiction is Zürich, subject to mandatory consumer jurisdiction.</p>
+  </div>
+</div>
