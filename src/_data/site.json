@@ -28,7 +28,8 @@
     },
     {
       "label": "Journal",
-      "url": "/journal/"
+      "url": "/journal/",
+      "draft": true
     },
     {
       "label": "About",
@@ -72,7 +73,8 @@
         },
         {
           "label": "Journal",
-          "url": "/journal/"
+          "url": "/journal/",
+          "draft": true
         }
       ]
     },

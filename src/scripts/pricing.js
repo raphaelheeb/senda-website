@@ -139,8 +139,9 @@ export function priceOrder(cfg, product, sel, now) {
   return { ok: false, errors: ["product"] };
 }
 
-/** "5400" -> "CHF 5,400"; negative values keep the minus sign. */
+/** Swiss format with apostrophe: 5400 -> "CHF 5’400"; negative values keep the minus sign. */
+export const thousands = (n) => String(Math.round(Math.abs(n))).replace(/\B(?=(\d{3})+(?!\d))/g, "’");
 export function chf(n) {
-  const s = Math.abs(n).toLocaleString("en-US");
+  const s = thousands(n);
   return `${n < 0 ? "−" : ""}CHF ${s}`;
 }

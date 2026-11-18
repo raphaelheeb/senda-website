@@ -178,6 +178,8 @@ layout: layouts/base.liquid
 </section>
 {% endif %}
 
+{%- comment -%} A bike with a teaser drawing shows its geometry there until the numbers are final. {%- endcomment -%}
+{% unless sketch %}
 <section class="section" id="geometry">
   <div class="wrap">
     <div class="section-head"><h2 class="h2">Geometry.</h2>{% if geometrySource %}<p class="lead">{{ geometrySource }}</p>{% else %}<p class="lead">Final numbers are published when pre-orders open.</p>{% endif %}</div>
@@ -196,6 +198,7 @@ layout: layouts/base.liquid
     </div>
   </div>
 </section>
+{% endunless %}
 
 {% endif %}
 

@@ -7,5 +7,5 @@ category: wheelsets
 orma: true
 cols: 2
 headline: Where the details add up.
-intro: Carbon wheels developed alongside our bikes, and made for most disc-brake road bikes.
+intro: Carbon wheels tested alongside our bikes, and made for most disc-brake road bikes.
 ---

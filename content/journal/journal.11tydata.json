@@ -1,1 +1,5 @@
-{ "layout": "layouts/post.liquid", "permalink": "/journal/{{ page.fileSlug }}/" }
+{
+  "layout": "layouts/post.liquid",
+  "permalink": "/journal/{{ page.fileSlug }}/",
+  "published": false
+}

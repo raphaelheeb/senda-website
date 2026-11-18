@@ -7,5 +7,5 @@ category: bikes
 cols: 2
 cardRatio: square
 headline: Two ways to go further.
-intro: One road bike and one gravel bike, designed in Switzerland. First deliveries in 2027.
+intro: Road and gravel, nothing else. SENDA Vent from March 2027, SENDA Gravel to follow.
 ---

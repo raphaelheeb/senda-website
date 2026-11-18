@@ -29,7 +29,7 @@ description: Swiss road and gravel bikes, made for the way out. ORMA wheels and 
 <section class="section moment">
   <div class="wrap moment__copy">
     <h2 class="h2">SENDA Vent.</h2>
-    <p class="block__text">Light carbon and ORMA wheels, made for long days in the mountains.</p>
+    <p class="block__text">Race geometry, a one-piece carbon cockpit and ORMA wheels, set up to your position.</p>
     <a class="linkline" href="/bikes/vent/">Discover SENDA Vent</a>
   </div>
   <div class="wrap">
@@ -41,7 +41,7 @@ description: Swiss road and gravel bikes, made for the way out. ORMA wheels and 
 
 <section class="section">
   <div class="wrap">
-    <h2 class="h2 block-title">Road. And beyond it.</h2>
+    <h2 class="h2 block-title">Road now. Gravel next.</h2>
     <div class="duo">
       {% for b in bikes %}
       <a class="tile" href="{{ b.url }}">
@@ -59,8 +59,8 @@ description: Swiss road and gravel bikes, made for the way out. ORMA wheels and 
     {% include "partials/frame.liquid", img: "/assets/img/web/orma-wheels-2000.jpg", ratio: "bike", contain: true, alt: "ORMA Momentum carbon wheelset" %}
     <div class="block">
       <p class="orma-mark"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">by SENDA</span></p>
-      <h2 class="h2">Where the bike meets the road.</h2>
-      <p class="block__text">ORMA wheels come on every SENDA. Momentum is the first you can order, 45 or 50 mm deep.</p>
+      <h2 class="h2">1’207 grams.</h2>
+      <p class="block__text">ORMA Momentum, both wheels in 45 mm. Choose 45 or 50 mm front and rear; standard on every SENDA.</p>
       <a class="linkline" href="{{ momentum.url }}">See ORMA Momentum</a>
     </div>
   </div>
@@ -87,10 +87,12 @@ description: Swiss road and gravel bikes, made for the way out. ORMA wheels and 
   <img src="/assets/img/web/valley-pair-2000.jpg" alt="Two cyclists riding into a wide Alpine valley" loading="lazy">
   <div class="wrap fullbleed__copy">
     <h2 class="h2">A materials scientist and an architect.</h2>
-    <a class="linkline" href="/about/">Why we build bikes</a>
+    <p class="block__text fullbleed__line">We choose and audit the carbon, design every finish, and have each bike painted and assembled in Switzerland.</p>
+    <a class="linkline" href="/about/#made">How a SENDA is made</a>
   </div>
 </section>
 
+{% if collections.journal.size > 0 %}
 <section class="section">
   <div class="wrap">
     <h2 class="h2 block-title">Journal</h2>
@@ -106,3 +108,4 @@ description: Swiss road and gravel bikes, made for the way out. ORMA wheels and 
     <a class="linkline block-link" href="/journal/">All posts</a>
   </div>
 </section>
+{% endif %}

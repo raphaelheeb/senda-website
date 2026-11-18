@@ -4,26 +4,26 @@ kind: gravel bike
 platform: gravel
 order: 2
 status: announced
-price: From CHF 5,800
+price: From CHF 5’800
 priceNote: Indicative
 delivery: after SENDA Vent, in 2027
-summary: The same frame philosophy, made for unpaved roads. Room for wide tyres, stable when the surface changes, still quick on tarmac.
+summary: Aero tube shapes and the precision of the Vent, with room for wide tyres and a calmer front end.
 dims:
   - ["4", "Finishes, one frame"]
   - ["2027", "First deliveries"]
-  - ["CH", "Designed and engineered in Switzerland"]
-storyTitle: Built for roads that stop being roads.
+  - ["CH", "Painted and assembled in Switzerland"]
+storyTitle: Longer, lower, calmer.
 storyImage: /assets/img/web/frame-sketch-1000.jpg
 storyAlt: Pencil study of the SENDA frame
 kits:
   - name: Build one
-    price: From CHF 5,800 (indicative)
+    price: From CHF 5’800 (indicative)
     items: ["Electronic 1 × 12 or 2 × 12, to be confirmed", "ORMA gravel wheelset, in development", "Alloy flared bar", "Tubeless gravel tyres"]
   - name: Build two
-    price: From CHF 7,100 (indicative)
+    price: From CHF 7’100 (indicative)
     items: ["Electronic 1 × 13 groupset, to be confirmed", "ORMA gravel wheelset, in development", "Carbon flared bar", "Power meter"]
   - name: Build three
-    price: From CHF 8,500 (indicative)
+    price: From CHF 8’500 (indicative)
     items: ["Top-tier electronic groupset", "ORMA gravel wheelset, in development", "ORMA cockpit", "ORMA saddle, carbon rails"]
 image: /assets/img/web/gravel-forest-2000.jpg
 imagePosition: center 40%
@@ -42,6 +42,4 @@ tileAlt: Line drawing of the SENDA Gravel frame
 cardImage: /assets/img/web/gravel-sketch-tile.svg
 image2: /assets/img/web/larch-pass-1000.jpg
 ---
-Gravel riding asks for a different balance: tyre volume, a calmer front end and room for long days away from service.
-
-SENDA Gravel takes the carbon know-how of the road bike and adapts it to these demands, without giving up the light, direct feel that makes riding fast fun.
+430 mm chainstays, a lower bottom bracket and a 71° head angle keep it steady when the surface changes. Aero tube profiles keep it quick on tarmac.

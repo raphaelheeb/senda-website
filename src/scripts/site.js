@@ -110,7 +110,7 @@
   // Configurator
   var config = document.querySelector("[data-configurator]");
   if (config) {
-    var chf = function (n) { return "CHF " + n.toLocaleString("en-US"); };
+    var chf = function (n) { return "CHF " + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "’"); };
     var update = function () {
       var get = function (name) { return config.querySelector('[name="' + name + '"]:checked'); };
       var platform = get("platform"), finish = get("finish"), kit = get("kit"), wheels = get("wheels");

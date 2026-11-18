@@ -2,18 +2,18 @@
 title: ORMA Momentum
 order: 1
 status: preorder
-price: CHF 1,050
+price: CHF 1’050
 priceNote: Incl. VAT
 delivery: from March 2027
 summary: A lightweight all-round road wheelset in 45 or 50 mm, front and rear chosen separately. Low rotating weight and the confidence to keep going when the road gets less predictable.
 imageContain: true
 alt: ORMA Momentum carbon wheelset, front and rear
 dims:
-  - ["1207 g", "Wheelset weight, incl. rim tape"]
+  - ["1’207 g", "Wheelset weight in 45/45, incl. rim tape"]
   - ["45 / 50 mm", "Rim depth, front and rear chosen separately"]
   - ["24.8 mm", "Internal rim width"]
   - ["120 kg", "Rider weight limit"]
-storyTitle: A useful 45 mm.
+storyTitle: Two depths. Your choice.
 storyImage: /assets/img/web/hero-pass-1000.jpg
 storyAlt: Riders on an alpine road
 specsTitle: Development specification
@@ -41,7 +41,7 @@ compat:
 faq:
   - ["Is Momentum tubeless-ready?", "Yes. The hooked rim is tubeless-compatible and ships with tape installed."]
   - ["Can I use it with rim brakes?", "No. Momentum is built for disc brakes and thru-axles only."]
-  - ["What warranty applies?", "Two years on materials and workmanship, plus crash replacement at a reduced price for the first owner. Terms to be confirmed."]
+  - ["What warranty applies?", "Two years on materials and workmanship, as set out in the order terms."]
 image: /assets/img/web/orma-wheels-2000.jpg
 image2: /assets/img/web/road-rider-1000.jpg
 image3: /assets/img/web/rider-road-1000.jpg

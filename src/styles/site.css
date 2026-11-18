@@ -220,6 +220,7 @@ button, input, select { font: inherit; color: inherit; }
 .fullbleed > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, center); }
 .fullbleed::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10, 10, 10, 0.55), rgba(10, 10, 10, 0) 65%); }
 .fullbleed__copy { position: relative; z-index: 1; padding-bottom: clamp(40px, 6vw, 96px); }
+.fullbleed__line { max-width: 34em; margin: var(--s-2) 0 var(--s-3); color: rgba(255, 255, 255, 0.92); }
 .fullbleed__copy .micro { color: rgba(255, 255, 255, 0.85); }
 .fullbleed__copy .emblem { width: 36px; height: auto; margin: var(--s-3) 0; filter: invert(1); }
 .fullbleed__copy .h2 { max-width: 8em; }
