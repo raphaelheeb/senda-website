@@ -91,7 +91,7 @@ layout: layouts/base.liquid
 
     <aside class="buy" aria-label="{{ t.a11y.purchase }}">
       <div class="buy__brand">
-        {% if brand == "ORMA" %}<a href="{{ '/orma/' | lurl: lang }}" class="orma-mark orma-mark--small"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">{{ t.product.orma_by }}</span></a>{% endif %}
+        {% if brand == "ORMA" %}<a href="{{ '/orma/' | lurl: lang }}" class="orma-mark orma-mark--small"><span class="orma-mark__word">{% include "svg/orma-wordmark.svg" %}</span><span class="orma-mark__by">{{ t.product.orma_by }}</span></a>{% endif %}
       </div>
       <h1 class="buy__title">{{ title }}</h1>
       <p class="buy__summary">{{ summary_ }}</p>
@@ -169,7 +169,7 @@ layout: layouts/base.liquid
     <div class="specced">
       {% include "partials/frame.liquid", img: "/assets/img/web/orma-wheels-1000.jpg", ratio: "bike", contain: true, alt: "ORMA Momentum" %}
       <div>
-        <p class="orma-mark orma-mark--small"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">{{ t.product.orma_by }}</span></p>
+        <p class="orma-mark orma-mark--small"><span class="orma-mark__word">{% include "svg/orma-wordmark.svg" %}</span><span class="orma-mark__by">{{ t.product.orma_by }}</span></p>
         {% if platform == "gravel" %}
         <h3 class="h3 mt-3">{{ t.product.specced_gravel_title }}</h3>
         <p class="small mt-2">{{ t.product.specced_gravel_text | fill: "title", title }}</p>

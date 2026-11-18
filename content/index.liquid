@@ -96,7 +96,7 @@ de:
   <div class="wrap split">
     {% include "partials/frame.liquid", img: "/assets/img/web/orma-wheels-2000.jpg", ratio: "bike", contain: true, alt: C.orma_alt %}
     <div class="block">
-      <p class="orma-mark"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">{{ t.product.orma_by }}</span></p>
+      <p class="orma-mark"><span class="orma-mark__word">{% include "svg/orma-wordmark.svg" %}</span><span class="orma-mark__by">{{ t.product.orma_by }}</span></p>
       <h2 class="h2">{{ C.orma_title }}</h2>
       <p class="block__text">{{ C.orma_text }}</p>
       <a class="linkline" href="{{ momentum.url }}">{{ C.orma_link }}</a>

@@ -9,7 +9,7 @@ layout: layouts/base.liquid
   </header>
 
   {% if orma %}
-  <p class="orma-intro orma-mark"><span class="orma-mark__word">ORMA</span><span class="orma-mark__by">{{ t.category.orma_intro }} <a href="{{ '/orma/' | lurl: lang }}" style="text-decoration:underline">{{ t.category.orma_story }}</a></span></p>
+  <p class="orma-intro orma-mark"><span class="orma-mark__word">{% include "svg/orma-wordmark.svg" %}</span><span class="orma-mark__by">{{ t.category.orma_intro }} <a href="{{ '/orma/' | lurl: lang }}" style="text-decoration:underline">{{ t.category.orma_story }}</a></span></p>
   {% endif %}
 
   {% if items.size > 0 %}
