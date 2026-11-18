@@ -102,6 +102,15 @@ export async function sendCustomerMail(env, order, cfg) {
   });
 }
 
+/** "178 / 84 / 68 cm, shoulders 40 cm, race, applied" or "". */
+export function fitText(fit) {
+  if (!fit) return "";
+  return `height ${fit.height} / inseam ${fit.inseam} / arm ${fit.arm} cm`
+    + (fit.shoulders ? `, shoulders ${fit.shoulders} cm` : "")
+    + (fit.position ? `, ${fit.position}` : "")
+    + (fit.applied ? ", fit applied" : ", fit not applied");
+}
+
 export function internalMailText(order) {
   const c = order.customer;
   const p = order.price;
@@ -111,6 +120,7 @@ export function internalMailText(order) {
     ...p.summary.map(([k, v]) => `${k}: ${v}`), `Article code: ${p.code}`, "",
     ...p.lines.map(([k, v]) => `${k}: ${chf(v)}`), `Total: ${chf(p.total)}`,
     p.payment === "deposit" ? `Deposit to invoice: ${chf(p.deposit)} / balance ${chf(p.balance)}` : `Invoice in full: ${chf(p.total)}`, "",
+    `Measurements: ${fitText(order.fit) || "not given"}`,
     `Newsletter: ${c.newsletter ? "yes" : "no"}`,
     `Message: ${c.message || "none"}`, "",
     `Request ${order.requestId} · ${order.meta.country} · ${order.meta.ip}`,
@@ -133,7 +143,7 @@ export const SHEET_COLUMNS = [
   "Received", "Order", "Product", "Article code", "First name", "Last name", "Email", "Phone",
   "Street", "Postcode", "Town", "Size", "Colour", "Groupset", "Crank", "Chainrings", "Cassette",
   "Rim front", "Rim rear", "Bar", "Stem", "Spacers", "Tyres", "List price", "Discount", "Shipping",
-  "Total", "Deposit / invoice", "Balance", "Newsletter", "Message", "Status",
+  "Total", "Deposit / invoice", "Balance", "Measurements", "Newsletter", "Message", "Status",
 ];
 
 export function sheetRow(order) {
@@ -146,7 +156,7 @@ export function sheetRow(order) {
     c.firstName, c.lastName, c.email, c.phone, c.street, c.zip, c.city,
     s.size || "", s.finish || "", s.groupset || "", s.crank || "", s.chainring || "", s.cassette || "",
     s.rimFront || "", s.rimRear || "", s.bar || "", s.stem || "", s.spacers || "", s.tyre || "",
-    p.subtotal, p.discount, p.shipping, p.total, p.deposit, p.balance,
+    p.subtotal, p.discount, p.shipping, p.total, p.deposit, p.balance, fitText(order.fit),
     c.newsletter ? "yes" : "no", c.message, "New",
   ];
 }

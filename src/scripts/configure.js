@@ -1,6 +1,7 @@
 // Order pages: keeps the selection, shows the live price and sends the order.
 // The price shown here is for the visitor only; the server recalculates it.
 import { priceOrder, ventDefaults, momentumDefaults, chf } from "./pricing.js";
+import { fitVent } from "./fit.js";
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const byId = (list, id) => list.find((x) => (typeof x === "string" ? x : x.id) === String(id));
@@ -86,27 +87,63 @@ function init(form) {
     render();
   });
 
-  // Size guide: height to size.
-  const h = form.querySelector("[data-height]");
-  if (h) h.addEventListener("input", () => {
-    const out = form.querySelector("[data-height-result]");
-    const cm = Number(h.value);
-    out.textContent = "";
-    if (!cm || cm < 100) return;
-    const fits = v.sizes.filter((s) => cm >= s.height[0] && cm <= s.height[1]);
-    if (!fits.length) { out.textContent = "Outside our size range. Write to us and we find a solution."; return; }
-    out.append(fits.length > 1 ? `Between ${fits.map((s) => s.label).join(" and ")}. ` : `Size ${fits[0].label}. `);
-    for (const s of fits) {
-      const b = document.createElement("button");
-      b.type = "button"; b.className = "textbtn"; b.textContent = `Choose ${s.label}`;
-      b.addEventListener("click", () => {
-        const r = [...radios("size")].find((x) => x.value === s.id);
-        r.checked = true;
-        r.dispatchEvent(new Event("change", { bubbles: true }));
-      });
-      out.append(b, " ");
-    }
-  });
+  // Fit calculator: measurements to size, stem, spacers, bar and crank.
+  let fitInput = null; // sent with the order so SENDA can check the size
+  const fitBox = form.querySelector("[data-fit]");
+  if (fitBox) {
+    const q = (n) => fitBox.querySelector(`[name="${n}"]`);
+    const result = fitBox.querySelector("[data-fit-result]");
+    const error = fitBox.querySelector("[data-fit-error]");
+    const notes = { race: "Lower and longer, for speed.", relaxed: "Higher and shorter, for long days." };
+    const reasons = {
+      height: "Please check your height.",
+      inseam: "Please check your inseam. It is usually 43 to 50% of your height.",
+      arm: "Please check your arm length: shoulder to the centre of your closed fist.",
+      standover: "Your inseam is below our smallest frame. Write to us and we look at it together.",
+    };
+    let current = null;
+    const run = () => {
+      const position = fitBox.querySelector("[name=fitPosition]:checked").value;
+      fitBox.querySelector("[data-fit-posnote]").textContent = notes[position] || "";
+      const input = { height: q("fitHeight").value, inseam: q("fitInseam").value, arm: q("fitArm").value, shoulders: q("fitShoulders").value };
+      result.hidden = true;
+      error.textContent = "";
+      current = null;
+      fitInput = null;
+      if (!input.height || !input.inseam || !input.arm) return;
+      const r = fitVent(v, input, position);
+      if (!r.ok) { error.textContent = reasons[r.reason] || ""; return; }
+      current = { r, input: { ...input, position } };
+      fitInput = { ...current.input, applied: false };
+      const z = byId(v.sizes, r.size);
+      const rows = [
+        ["Size", `${z.label} · ${z.cm} cm`], ["Stem", `${r.stem} mm`], ["Spacers", `${r.spacers} mm`],
+        ["Bar width", `${r.bar} mm`], ["Crank", `${r.crank} mm`], ["Saddle height", `about ${r.saddleHeight} mm`],
+      ];
+      fitBox.querySelector("[data-fit-list]").innerHTML = rows.map(([k, x]) => `<div><dt>${k}</dt><dd>${x}</dd></div>`).join("");
+      const note = [];
+      if (r.alternatives.length) note.push(`Close to ${r.alternatives.join(" and ")} as well.`);
+      if (r.miss > 30) note.push(position === "relaxed"
+        ? "This is as upright as the SENDA Vent goes. Write to us before you order."
+        : "Your proportions are at the edge of what the cockpit covers. Write to us before you order.");
+      fitBox.querySelector("[data-fit-note]").textContent = note.join(" ");
+      result.hidden = false;
+    };
+    fitBox.addEventListener("input", run);
+    fitBox.addEventListener("change", run);
+    fitBox.querySelector("[data-fit-apply]").addEventListener("click", () => {
+      if (!current) return;
+      const { r } = current;
+      sel = { ...sel, size: r.size, crank: r.crank, bar: r.bar, stem: r.stem, spacers: r.spacers };
+      fitInput = { ...current.input, applied: true };
+      apply();
+      render();
+      const btn = fitBox.querySelector("[data-fit-apply]");
+      btn.textContent = "Applied";
+      setTimeout(() => { btn.textContent = "Apply to your bike"; }, 2000);
+    });
+  }
+  form.fitInput = () => fitInput;
 
   // Two stages: build the bike, then the details.
   const bar = $("[data-order-bar]");
@@ -157,7 +194,7 @@ async function submit(e, form, product, getSel, cfg) {
     const res = await fetch("/api/order", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ requestId, product, selection: getSel(), customer, terms, turnstileToken: data.get("cf-turnstile-response") || "" }),
+      body: JSON.stringify({ requestId, product, selection: getSel(), customer, terms, fit: form.fitInput ? form.fitInput() : null, turnstileToken: data.get("cf-turnstile-response") || "" }),
     });
     const out = await res.json().catch(() => ({}));
     if (!res.ok || !out.ok) {

@@ -3,7 +3,7 @@ import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
 import worker from "../worker/index.js";
 import { processOrder, retryPending } from "../worker/order.js";
-import { sheetRow, SHEET_COLUMNS, customerMailContent } from "../worker/integrations.js";
+import { sheetRow, SHEET_COLUMNS, customerMailContent, internalMailText } from "../worker/integrations.js";
 import cfg from "../src/_data/configurator.json" with { type: "json" };
 import { ventDefaults } from "../src/scripts/pricing.js";
 
@@ -131,6 +131,16 @@ test("ORMA Momentum order is paid in full", async () => {
   assert.match(out.orderNumber, /^OM-/);
   assert.equal(out.payment, "full");
   assert.equal(out.deposit, out.total);
+});
+
+test("measurements travel with a Vent order; junk is dropped", async () => {
+  const e = env(SECRETS);
+  const out = await (await post(e, body({ fit: { height: "178", inseam: 83.5, arm: 67, position: "race", applied: true } }))).json();
+  const o = await e.ORDERS.get(`order:${out.orderNumber}`, "json");
+  assert.deepEqual(o.fit, { height: 178, inseam: 83.5, arm: 67, shoulders: null, position: "race", applied: true });
+  assert.match(internalMailText(o), /inseam 83.5/);
+  const junk = await (await post(e, body({ fit: { height: "<script>", inseam: 83, arm: 67 } }))).json();
+  assert.equal((await e.ORDERS.get(`order:${junk.orderNumber}`, "json")).fit, null);
 });
 
 test("sheet row matches the columns; mail text has no exclamation marks", async () => {

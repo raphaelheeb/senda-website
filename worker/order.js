@@ -30,6 +30,18 @@ export class OrderError extends Error {
   }
 }
 
+/** Optional body measurements from the fit calculator; anything odd is dropped, never an error. */
+export function cleanFit(f) {
+  if (!f || typeof f !== "object") return null;
+  const num = (x, lo, hi) => { const n = Number(x); return Number.isFinite(n) && n >= lo && n <= hi ? Math.round(n * 10) / 10 : null; };
+  const out = {
+    height: num(f.height, 100, 230), inseam: num(f.inseam, 40, 130), arm: num(f.arm, 30, 110),
+    shoulders: num(f.shoulders, 20, 70), position: ["race", "relaxed"].includes(f.position) ? f.position : null,
+    applied: f.applied === true,
+  };
+  return out.height && out.inseam && out.arm ? out : null;
+}
+
 /** Checks the customer block; returns a clean copy. */
 export function validateCustomer(c) {
   if (!c || typeof c !== "object") throw new OrderError(400, "Please fill in your details.");
@@ -104,7 +116,7 @@ export async function handleOrder(request, env, ctx, now = new Date()) {
   let body;
   try { body = JSON.parse(raw); } catch { throw new OrderError(400, "Unexpected request."); }
 
-  const { requestId, product, selection, customer, terms, turnstileToken } = body || {};
+  const { requestId, product, selection, customer, terms, turnstileToken, fit } = body || {};
   if (typeof requestId !== "string" || !UUID.test(requestId)) throw new OrderError(400, "Unexpected request.");
 
   // Same requestId again (double click, retry after a lost response): same answer, no second order.
@@ -126,7 +138,7 @@ export async function handleOrder(request, env, ctx, now = new Date()) {
 
   const number = await newOrderNumber(kv, product, now);
   const order = {
-    number, requestId, product, selection: sel, customer: cust, price,
+    number, requestId, product, selection: sel, customer: cust, price, fit: product === "vent" ? cleanFit(fit) : null,
     receivedAt: now.toISOString(),
     meta: { ip, country: request.cf?.country || "", ua: (request.headers.get("user-agent") || "").slice(0, 200) },
     tasks: {

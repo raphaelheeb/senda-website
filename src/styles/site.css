@@ -412,6 +412,37 @@ button, input, select { font: inherit; color: inherit; }
 .more__table th { font: 400 var(--t-label)/1.5 var(--mono); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--grey); }
 .more .small a { text-decoration: underline; text-underline-offset: 3px; }
 
+.more__intro { margin-bottom: var(--s-3); font-size: 16px; color: var(--ink-mid); }
+.fitcalc__fields { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-2); }
+.fitcalc__fields label { font: 400 var(--t-label)/1.5 var(--mono); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--grey); }
+.fitcalc__fields label span { text-transform: none; letter-spacing: 0; }
+.fitcalc__fields .field { margin-top: 8px; font: 400 16px/1.4 var(--sans); letter-spacing: 0; color: var(--ink); background: var(--paper); }
+.howto { margin-top: var(--s-2); }
+.howto > summary { display: inline-block; cursor: pointer; list-style: none; font-size: 14px; color: var(--ink-mid); text-decoration: underline; text-underline-offset: 3px; }
+.howto > summary::-webkit-details-marker { display: none; }
+.howto dl { display: grid; grid-template-columns: 7em 1fr; gap: 8px var(--s-2); margin-top: var(--s-2); font-size: 15px; color: var(--ink-mid); }
+.howto dt { color: var(--ink); }
+.fitcalc__pos { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: var(--s-3); }
+.fitcalc__pos .chip span { background: var(--paper); }
+.fitcalc__posnote { margin-left: 8px; font-size: 15px; color: var(--grey); }
+.fitcalc__result { margin-top: var(--s-3); padding: var(--s-3); background: var(--paper); border: 1px solid var(--ink); }
+.fitcalc__result dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-2); }
+.fitcalc__result dt { font: 400 var(--t-label)/1.5 var(--mono); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--grey); }
+.fitcalc__result dd { margin-top: 2px; font-size: 18px; color: var(--ink); }
+.fitcalc__note { margin: var(--s-2) 0 0; font-size: 16px; color: var(--ink-mid); }
+.fitcalc__note:empty { display: none; }
+.fitcalc__result .textbtn { margin-top: var(--s-3); }
+.fitcalc__error { margin-top: var(--s-2); font-size: 16px; color: var(--ink); }
+.fitcalc__error:empty { display: none; }
+.more__body > .small { margin-top: var(--s-3); color: var(--grey); }
+.more__body > .small a { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 640px) {
+  .fitcalc__fields { grid-template-columns: 1fr 1fr; }
+  .fitcalc__result dl { grid-template-columns: 1fr 1fr; }
+  .howto dl { grid-template-columns: 1fr; gap: 2px; }
+  .howto dd { margin-bottom: 8px; }
+  .fitcalc__posnote { flex-basis: 100%; margin: 4px 0 0; }
+}
 .config__next { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-4); padding-top: var(--s-4); }
 .config__next .small { color: var(--grey); }
 .config__next .small a { text-decoration: underline; text-underline-offset: 3px; }

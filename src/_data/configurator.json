@@ -30,15 +30,15 @@
         "stack": 510,
         "reach": 368,
         "cm": 51,
-        "height": [
-          155,
-          163
-        ],
         "defaults": {
           "crank": "165",
           "bar": "360",
           "stem": "80"
-        }
+        },
+        "seatTube": 430,
+        "headAngle": 71,
+        "seatAngle": 75,
+        "standover": 727
       },
       {
         "id": "S",
@@ -46,15 +46,15 @@
         "stack": 520,
         "reach": 375,
         "cm": 52,
-        "height": [
-          162,
-          170
-        ],
         "defaults": {
           "crank": "170",
           "bar": "380",
           "stem": "90"
-        }
+        },
+        "seatTube": 455,
+        "headAngle": 71.5,
+        "seatAngle": 74.5,
+        "standover": 744
       },
       {
         "id": "M",
@@ -62,15 +62,15 @@
         "stack": 534,
         "reach": 382,
         "cm": 54,
-        "height": [
-          169,
-          177
-        ],
         "defaults": {
           "crank": "172.5",
           "bar": "400",
           "stem": "100"
-        }
+        },
+        "seatTube": 485,
+        "headAngle": 72,
+        "seatAngle": 74,
+        "standover": 766
       },
       {
         "id": "L",
@@ -78,15 +78,15 @@
         "stack": 550,
         "reach": 393,
         "cm": 56,
-        "height": [
-          176,
-          184
-        ],
         "defaults": {
           "crank": "172.5",
           "bar": "400",
           "stem": "110"
-        }
+        },
+        "seatTube": 515,
+        "headAngle": 72.8,
+        "seatAngle": 73.5,
+        "standover": 790
       },
       {
         "id": "XL",
@@ -94,15 +94,15 @@
         "stack": 572,
         "reach": 400,
         "cm": 58,
-        "height": [
-          183,
-          191
-        ],
         "defaults": {
           "crank": "175",
           "bar": "420",
           "stem": "110"
-        }
+        },
+        "seatTube": 545,
+        "headAngle": 73,
+        "seatAngle": 73,
+        "standover": 814
       },
       {
         "id": "XXL",
@@ -110,15 +110,15 @@
         "stack": 594,
         "reach": 408,
         "cm": 59,
-        "height": [
-          190,
-          198
-        ],
         "defaults": {
           "crank": "175",
           "bar": "420",
           "stem": "120"
-        }
+        },
+        "seatTube": 580,
+        "headAngle": 73,
+        "seatAngle": 73,
+        "standover": 844
       }
     ],
     "finishes": [
@@ -239,7 +239,83 @@
       }
     ],
     "tyreModel": "Continental Grand Prix 5000",
-    "otherOptionsNote": "Other gearing or cockpit options: write to us."
+    "otherOptionsNote": "Other gearing or cockpit options: write to us.",
+    "fit": {
+      "_comment": "Fit calculator (src/scripts/fit.js). Lengths in mm, angles in degrees. Body proportions and riding angles are starting values from bike-fit practice; tune here, not in code. Cockpit values from the cockpit drawing except stemAngle (to confirm with the supplier).",
+      "saddleHeightFactor": 0.883,
+      "hipFromSaddle": [
+        20,
+        80
+      ],
+      "shoulderHeightFactor": 0.818,
+      "hipAboveCrotchFactor": 0.055,
+      "armReachFactor": 0.9,
+      "positions": {
+        "race": {
+          "label": "Race",
+          "torsoAngle": 38,
+          "shoulderAngle": 93
+        },
+        "relaxed": {
+          "label": "Relaxed",
+          "torsoAngle": 42.0,
+          "shoulderAngle": 95.0,
+          "armReachFactor": 0.85
+        }
+      },
+      "hoodsFromBar": [
+        95,
+        25
+      ],
+      "headsetStack": 30,
+      "stemAngle": -10,
+      "standoverClearance": -15,
+      "preferredStem": 100,
+      "stemWeight": 0.15,
+      "spacerWeight": 0.1,
+      "crankByInseam": [
+        [
+          0,
+          "160"
+        ],
+        [
+          700,
+          "165"
+        ],
+        [
+          760,
+          "170"
+        ],
+        [
+          820,
+          "172.5"
+        ],
+        [
+          880,
+          "175"
+        ]
+      ],
+      "barByHeight": [
+        [
+          0,
+          "360"
+        ],
+        [
+          1650,
+          "380"
+        ],
+        [
+          1750,
+          "400"
+        ],
+        [
+          1850,
+          "420"
+        ]
+      ],
+      "_standover": "Standover may exceed the barefoot inseam by the shoe sole (15 mm).",
+      "sizeStepWeight": 20
+    }
   },
   "momentum": {
     "name": "ORMA Momentum",
