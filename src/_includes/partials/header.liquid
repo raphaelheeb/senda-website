@@ -6,7 +6,7 @@
     </nav>
     <div class="header-tools">
       <span class="lang"><a href="/de/?lang=de" lang="de" hreflang="de">DE</a> / <span aria-current="true">EN</span></span>
-      <a class="header-cta" href="#newsletter">Join the list</a>
+      <a class="header-cta" href="/bikes/vent/configure/">Order now</a>
       <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menu">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18M3 16h18"/></svg>
       </button>
@@ -18,6 +18,7 @@
   {% for item in site.nav %}{% unless item.hidden %}<a class="drawer__main" href="{{ item.url }}">{{ item.label }}</a>{% endunless %}{% endfor %}
   <div class="drawer__secondary">
     <a href="/de/?lang=de" lang="de">Deutsch</a>
+    <a href="/bikes/vent/configure/">Order now</a>
     <a href="#newsletter">Join the list</a>
   </div>
 </div>

@@ -2,6 +2,16 @@
 (function () {
   "use strict";
 
+  // Offers end on their date (Zurich time) even if the site is not rebuilt:
+  // [data-offer-until] hides after that day, [data-offer-after] shows instead.
+  var today = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Zurich", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+  document.querySelectorAll("[data-offer-until]").forEach(function (el) {
+    if (today > el.getAttribute("data-offer-until")) el.hidden = true;
+  });
+  document.querySelectorAll("[data-offer-after]").forEach(function (el) {
+    if (today > el.getAttribute("data-offer-after")) el.hidden = false;
+  });
+
   // Mobile menu
   var menuBtn = document.querySelector(".menu-btn");
   var drawer = document.getElementById("drawer");

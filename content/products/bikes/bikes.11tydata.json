@@ -8,7 +8,6 @@
   "geometry": ["Stack", "Reach", "Effective top tube", "Head tube angle", "Seat tube angle", "Chainstay length"],
   "override:promise": [
     ["Fitting on request", "write to us before you order and we arrange it."],
-    ["First service", "included."],
     ["Crash replacement", "frame at a reduced price for the first owner."],
     ["Frame registration", "for warranty and theft records."]
   ],

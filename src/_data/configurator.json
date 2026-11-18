@@ -2,65 +2,270 @@
   "_comment": "Single source of truth for the SENDA Vent configurator and ORMA Momentum orders. Prices in CHF incl. Swiss VAT. The order endpoint (worker/) recalculates every price from this file; values sent by the browser are never trusted. Dates are inclusive, Europe/Zurich.",
   "currency": "CHF",
   "vatNote": "Prices incl. Swiss VAT.",
-  "shipping": { "price": 50, "label": "Shipping within Switzerland", "countries": ["CH"] },
+  "shipping": {
+    "price": 50,
+    "label": "Shipping within Switzerland",
+    "countries": [
+      "CH"
+    ],
+    "_comment": "Default shipping (SENDA Vent). A product can set its own `shipping` price."
+  },
   "orderEmail": "info@sendabikes.com",
-
   "vent": {
     "name": "SENDA Vent",
     "code": "VENT",
-    "deposit": { "percent": 20 },
+    "deposit": {
+      "percent": 20
+    },
     "delivery": "2027-03-01",
-    "earlyBird": { "discount": 500, "until": "2026-12-31", "label": "Early order price" },
+    "earlyBird": {
+      "discount": 500,
+      "until": "2026-12-31",
+      "label": "Early order price"
+    },
     "sizes": [
-      { "id": "XS",  "label": "XS", "stack": 510, "reach": 368,  "cm": 51, "height": [155, 163], "defaults": { "crank": "165",   "bar": "360", "stem": "80"  } },
-      { "id": "S",   "label": "S", "stack": 520, "reach": 375,   "cm": 52, "height": [162, 170], "defaults": { "crank": "170",   "bar": "380", "stem": "90"  } },
-      { "id": "M",   "label": "M", "stack": 534, "reach": 382,   "cm": 54, "height": [169, 177], "defaults": { "crank": "172.5", "bar": "400", "stem": "100" } },
-      { "id": "L",   "label": "L", "stack": 550, "reach": 393,   "cm": 56, "height": [176, 184], "defaults": { "crank": "172.5", "bar": "400", "stem": "110" } },
-      { "id": "XL",  "label": "XL", "stack": 572, "reach": 400,  "cm": 58, "height": [183, 191], "defaults": { "crank": "175",   "bar": "420", "stem": "110" } },
-      { "id": "XXL", "label": "XXL", "stack": 594, "reach": 408, "cm": 59, "height": [190, 198], "defaults": { "crank": "175",   "bar": "420", "stem": "120" } }
+      {
+        "id": "XS",
+        "label": "XS",
+        "stack": 510,
+        "reach": 368,
+        "cm": 51,
+        "height": [
+          155,
+          163
+        ],
+        "defaults": {
+          "crank": "165",
+          "bar": "360",
+          "stem": "80"
+        }
+      },
+      {
+        "id": "S",
+        "label": "S",
+        "stack": 520,
+        "reach": 375,
+        "cm": 52,
+        "height": [
+          162,
+          170
+        ],
+        "defaults": {
+          "crank": "170",
+          "bar": "380",
+          "stem": "90"
+        }
+      },
+      {
+        "id": "M",
+        "label": "M",
+        "stack": 534,
+        "reach": 382,
+        "cm": 54,
+        "height": [
+          169,
+          177
+        ],
+        "defaults": {
+          "crank": "172.5",
+          "bar": "400",
+          "stem": "100"
+        }
+      },
+      {
+        "id": "L",
+        "label": "L",
+        "stack": 550,
+        "reach": 393,
+        "cm": 56,
+        "height": [
+          176,
+          184
+        ],
+        "defaults": {
+          "crank": "172.5",
+          "bar": "400",
+          "stem": "110"
+        }
+      },
+      {
+        "id": "XL",
+        "label": "XL",
+        "stack": 572,
+        "reach": 400,
+        "cm": 58,
+        "height": [
+          183,
+          191
+        ],
+        "defaults": {
+          "crank": "175",
+          "bar": "420",
+          "stem": "110"
+        }
+      },
+      {
+        "id": "XXL",
+        "label": "XXL",
+        "stack": 594,
+        "reach": 408,
+        "cm": 59,
+        "height": [
+          190,
+          198
+        ],
+        "defaults": {
+          "crank": "175",
+          "bar": "420",
+          "stem": "120"
+        }
+      }
     ],
     "finishes": [
-      { "id": "SLATE", "label": "Slate Blue", "surface": "Satin", "hex": "#7e9aab", "surcharge": 0 },
-      { "id": "CHAMP", "label": "Champagne Silver", "surface": "Pearl", "hex": "#c2bfb5", "surcharge": 0 },
-      { "id": "ROSE",  "label": "Dusky Rose", "surface": "Satin", "hex": "#c4a099", "surcharge": 0 },
-      { "id": "GRAPH", "label": "Graphite", "surface": "Matte", "hex": "#494641", "surcharge": 0 }
+      {
+        "id": "SLATE",
+        "label": "Slate Blue",
+        "surface": "Satin",
+        "hex": "#7e9aab",
+        "surcharge": 0
+      },
+      {
+        "id": "CHAMP",
+        "label": "Champagne Silver",
+        "surface": "Pearl",
+        "hex": "#c2bfb5",
+        "surcharge": 0
+      },
+      {
+        "id": "ROSE",
+        "label": "Dusky Rose",
+        "surface": "Satin",
+        "hex": "#c4a099",
+        "surcharge": 0
+      },
+      {
+        "id": "GRAPH",
+        "label": "Graphite",
+        "surface": "Matte",
+        "hex": "#494641",
+        "surcharge": 0
+      }
     ],
     "groupsets": [
-      { "id": "105", "label": "Shimano 105 Di2", "price": 5400 },
-      { "id": "ULT", "label": "Shimano Ultegra Di2", "price": 6300 },
-      { "id": "DA",  "label": "Shimano Dura-Ace Di2", "price": 7900 }
+      {
+        "id": "105",
+        "label": "Shimano 105 Di2",
+        "price": 5400
+      },
+      {
+        "id": "ULT",
+        "label": "Shimano Ultegra Di2",
+        "price": 6300
+      },
+      {
+        "id": "DA",
+        "label": "Shimano Dura-Ace Di2",
+        "price": 7900
+      }
     ],
     "defaultGroupset": "ULT",
-    "cranks": ["160", "165", "170", "172.5", "175"],
+    "cranks": [
+      "160",
+      "165",
+      "170",
+      "172.5",
+      "175"
+    ],
     "chainrings": [
-      { "id": "50-34", "label": "50-34 (compact)" },
-      { "id": "52-36", "label": "52-36 (semi-compact)" }
+      {
+        "id": "50-34",
+        "label": "50-34 (compact)"
+      },
+      {
+        "id": "52-36",
+        "label": "52-36 (semi-compact)"
+      }
     ],
     "cassettes": [
-      { "id": "11-30", "label": "11-30" },
-      { "id": "11-34", "label": "11-34" }
+      {
+        "id": "11-30",
+        "label": "11-30"
+      },
+      {
+        "id": "11-34",
+        "label": "11-34"
+      }
     ],
-    "rims": ["45", "50"],
-    "bars": ["360", "380", "400", "420"],
+    "rims": [
+      "45",
+      "50"
+    ],
+    "bars": [
+      "360",
+      "380",
+      "400",
+      "420"
+    ],
     "barNote": "Width at the hoods. At the drops add 20 mm.",
-    "stems": ["80", "90", "100", "110", "120", "130"],
-    "spacers": ["0", "5", "10", "15", "20", "25", "30"],
+    "stems": [
+      "80",
+      "90",
+      "100",
+      "110",
+      "120",
+      "130"
+    ],
+    "spacers": [
+      "0",
+      "5",
+      "10",
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
     "tyres": [
-      { "id": "28", "label": "28 mm" },
-      { "id": "30", "label": "30 mm" },
-      { "id": "32", "label": "32 mm" }
+      {
+        "id": "28",
+        "label": "28 mm"
+      },
+      {
+        "id": "30",
+        "label": "30 mm"
+      },
+      {
+        "id": "32",
+        "label": "32 mm"
+      }
     ],
     "tyreModel": "Continental Grand Prix 5000",
     "otherOptionsNote": "Other gearing or cockpit options: write to us."
   },
-
   "momentum": {
     "name": "ORMA Momentum",
     "code": "MOM",
     "payment": "full",
     "price": 1050,
-    "earlyBird": { "price": 950, "until": "2026-12-31", "label": "Introductory price" },
+    "earlyBird": {
+      "price": 950,
+      "until": "2026-12-31",
+      "label": "Introductory price"
+    },
     "delivery": "2027-03-01",
-    "rims": ["45", "50"]
+    "rims": [
+      "45",
+      "50"
+    ],
+    "shipping": 30,
+    "freehubs": [
+      {
+        "id": "HG",
+        "label": "Shimano HG"
+      },
+      {
+        "id": "XDR",
+        "label": "SRAM XDR"
+      }
+    ]
   }
 }

@@ -127,7 +127,7 @@ test("missing secrets: nothing is attempted, nothing is written by the cron", as
 
 test("ORMA Momentum order is paid in full", async () => {
   const e = env(SECRETS);
-  const out = await (await post(e, body({ product: "momentum", selection: { rimFront: "45", rimRear: "50" } }))).json();
+  const out = await (await post(e, body({ product: "momentum", selection: { rimFront: "45", rimRear: "50", freehub: "XDR" } }))).json();
   assert.match(out.orderNumber, /^OM-/);
   assert.equal(out.payment, "full");
   assert.equal(out.deposit, out.total);

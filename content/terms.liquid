@@ -13,18 +13,19 @@ description: Terms for orders of SENDA bikes and ORMA wheels placed on sendabike
   </header>
 
   {% unless env.production %}
-  <p class="draft" data-draft="Draft: to be reviewed by a lawyer before launch">Seller name and form, and every clause below, still need legal review.</p>
+  <p class="draft" data-draft="Draft: to be reviewed by a lawyer before launch">Add the full address and UID of Studio Micha Gamper GmbH (also in the imprint). Every clause still needs legal review.</p>
   {% endunless %}
 
   <div class="prose" style="padding-bottom: var(--section)">
     <h2>1. Seller and scope</h2>
-    <p>The seller is SENDA Bikes, Zürich, Switzerland, info@sendabikes.com ("SENDA"). These terms apply to every order of a SENDA bike or ORMA product placed through sendabikes.com. We sell to private customers with a delivery address in Switzerland.</p>
+    <p>Orders are accepted, invoiced and delivered by Studio Micha Gamper GmbH, Zürich, Switzerland, which sells SENDA bikes and ORMA products under the name SENDA ("SENDA"), info@sendabikes.com. These terms apply to every order of a SENDA bike or ORMA product placed through sendabikes.com. We sell to private customers with a delivery address in Switzerland.</p>
+    <p>SENDA may transfer the contract, with all rights, obligations and payments made, to SENDA GmbH once it is founded. You are informed by email; your rights under these terms stay the same.</p>
 
     <h2>2. Order and contract</h2>
     <p>Your order is a binding offer to buy the configuration shown in the summary at the price shown. The contract is concluded when SENDA confirms the order in writing by email together with the invoice. The automatic message sent right after your order confirms receipt only. SENDA may decline an order, for example if a configuration cannot be built; in that case nothing is owed.</p>
 
     <h2>3. Prices</h2>
-    <p>All prices are in Swiss francs and include Swiss VAT. Shipping within Switzerland costs CHF {{ configurator.shipping.price }} per order. The early order price ({{ v.name }}) and the introductory price ({{ m.name }}) apply to orders placed up to and including 31 December 2026. The price in your order confirmation is fixed.</p>
+    <p>All prices are in Swiss francs and include Swiss VAT. Shipping within Switzerland costs CHF {{ configurator.shipping.price }} per bike and CHF {{ m.shipping }} per wheelset. The early order price ({{ v.name }}) and the introductory price ({{ m.name }}) apply to orders placed up to and including 31 December 2026. The price in your order confirmation is fixed.</p>
 
     <h2>4. Payment</h2>
     <p>{{ v.name }}: a deposit of {{ v.deposit.percent }}% of the bike price is due within 10 days of the invoice. The balance and shipping are invoiced before delivery and are due before the bike is shipped.</p>

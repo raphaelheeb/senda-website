@@ -8,10 +8,6 @@ delivery: from March 2027
 summary: A lightweight all-round road wheelset in 45 or 50 mm, front and rear chosen separately. Low rotating weight and the confidence to keep going when the road gets less predictable.
 imageContain: true
 alt: ORMA Momentum carbon wheelset, front and rear
-options:
-  - label: Freehub body
-    values: ["Shimano HG", "SRAM XDR", "Campagnolo N3W"]
-    note: Freehub options to be confirmed with the hub supplier.
 dims:
   - ["1207 g", "Wheelset weight, incl. rim tape"]
   - ["45 / 50 mm", "Rim depth, front and rear chosen separately"]
@@ -28,6 +24,7 @@ specs:
   - ["Internal / external width", "24.80 mm / 29.52 mm"]
   - ["Rim depth", "45 or 50 mm"]
   - ["Hubs", "Sealed hubs, steel bearings"]
+  - ["Freehub body", "Shimano HG or SRAM XDR"]
   - ["Spoke system", "Straight-pull"]
   - ["Spoke holes", "20H / 20H"]
   - ["Spokes", "Carbon, 3.8 mm, T-shaped"]
@@ -49,6 +46,7 @@ image: /assets/img/web/orma-wheels-2000.jpg
 image2: /assets/img/web/road-rider-1000.jpg
 image3: /assets/img/web/rider-road-1000.jpg
 configureUrl: /wheelsets/orma-momentum/configure/
+orderKey: momentum
 ---
 A hooked, tubeless-compatible rim chosen for modern road riding rather than one narrowly defined condition. The 24.8 mm internal width is designed around the wider tubeless tyres found on current road bikes.
 

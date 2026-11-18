@@ -9,10 +9,12 @@ price: From CHF 5,400
 priceNote: Incl. VAT
 deposit: 20%
 delivery: from March 2027
+configureUrl: /bikes/vent/configure/
+orderKey: vent
 summary: A light carbon road bike for long days in the mountains. Efficient on climbs, precise through fast corners, comfortable over distance.
 dims:
   - ["< 7 kg", "Target weight, top build"]
-  - ["45 mm", "ORMA Momentum rim depth, standard"]
+  - ["45 / 50 mm", "ORMA Momentum rim depth, your choice"]
   - ["4", "Finishes, one frame"]
 storyTitle: Every fibre has a purpose.
 kits:

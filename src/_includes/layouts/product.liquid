@@ -15,7 +15,7 @@ layout: layouts/base.liquid
     </span>
     <span class="subbar__action">
       <a class="btn btn--small" href="#buy" data-states="announced">Notify me</a>
-      <a class="btn btn--small" href="{% if configureUrl %}{{ configureUrl }}{% else %}#buy{% endif %}" data-states="preorder">Order</a>
+      <a class="btn btn--small" href="{% if configureUrl %}{{ configureUrl }}{% else %}#buy{% endif %}" data-states="preorder">Configure</a>
       <a class="btn btn--small" href="#buy" data-states="available">Order</a>
     </span>
   </div>
@@ -26,6 +26,10 @@ layout: layouts/base.liquid
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/{{ category }}/">{{ catLabel }}</a><span>/</span><span>{{ title }}</span></nav>
     <h1 class="stage__title">{{ title }}</h1>
     <p class="stage__summary">{{ summary }}</p>
+    {% if orderKey and status == "preorder" %}<div class="stage__order" data-states="preorder">
+      {% include "partials/offer.liquid", key: orderKey, class: "offer--center" %}
+      <a class="btn" href="{{ configureUrl }}">Configure yours</a>
+    </div>{% endif %}
   </div>
   <div class="wrap">
     {% include "partials/frame.liquid", img: image, ratio: "hero", pos: imagePosition, alt: alt %}

@@ -2,39 +2,64 @@
 layout: layouts/base.liquid
 title: Order ORMA Momentum
 permalink: /wheelsets/orma-momentum/configure/
-description: Choose the rim depth front and rear for your ORMA Momentum wheelset. Paid in full by invoice.
+description: Choose rim depth front and rear and the freehub for your ORMA Momentum wheelset. Invoiced in full.
 hideSignup: true
 eleventyExcludeFromCollections: true
 ---
 {%- assign m = configurator.momentum -%}
-<div class="wrap">
-  <nav class="crumbs" style="padding-top: var(--s-4)" aria-label="Breadcrumb"><a href="/wheelsets/">Wheelsets</a><span>/</span><a href="/wheelsets/orma-momentum/">{{ m.name }}</a><span>/</span><span>Order</span></nav>
-  <header class="page-head">
-    <h1 class="h1">Order {{ m.name }}.</h1>
-    <p class="lead">Binding order, paid in full by invoice. Delivery from March 2027. {{ configurator.vatNote }} Shipping within Switzerland CHF {{ configurator.shipping.price }}.</p>
-  </header>
+<div class="wrap order-page">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/wheelsets/">Wheelsets</a><span>/</span><a href="/wheelsets/orma-momentum/">{{ m.name }}</a><span>/</span><span>Order</span></nav>
 
   <noscript><p class="lead">The order form needs JavaScript. You can also order by email: <a class="linkline" href="mailto:{{ configurator.orderEmail }}">{{ configurator.orderEmail }}</a></p></noscript>
 
-  <form class="config" data-order="momentum" novalidate>
-    <div>
-      <fieldset class="config__step">
-        <div class="config__step-head"><span class="micro config__n">1</span><legend class="h3">Rim depth</legend></div>
-        <p class="small">Front and rear are chosen separately. Same price for every combination.</p>
-        <p class="option-label mt-3">Front</p>
-        <div class="chips">{% for r in m.rims %}<label class="chip"><input type="radio" name="rimFront" value="{{ r }}"><span>{{ r }} mm</span></label>{% endfor %}</div>
-        <p class="option-label mt-3">Rear</p>
-        <div class="chips">{% for r in m.rims %}<label class="chip"><input type="radio" name="rimRear" value="{{ r }}"><span>{{ r }} mm</span></label>{% endfor %}</div>
-      </fieldset>
+  <form class="config" data-order="momentum" data-stage="build" novalidate>
+    <div class="config__main">
+      <header class="order-head">
+        <h1 class="h2" data-stage-title="build">Your {{ m.name }}.</h1>
+        <h1 class="h2" data-stage-title="details" hidden>Your details.</h1>
+        <p class="order-head__offer" data-offer-until="{{ m.earlyBird.until }}">{{ m.earlyBird.label }} until {{ m.earlyBird.until | long_date }}: CHF {{ m.price | minus: m.earlyBird.price }} off.</p>
+      </header>
 
-      {% include "partials/order-details.liquid", stepNo: "2", submitLabel: "Place binding order", termsNote: "I understand that this order is binding." %}
+      <div class="config__build">
+        <details class="cstep" name="cstep" open>
+          <summary><span class="cstep__title">Rim depth</span><span class="cstep__value" data-show="wheels"></span></summary>
+          <div class="cstep__body">
+            <p class="option-label">Front</p>
+            <div class="chips">{% for r in m.rims %}<label class="chip"><input type="radio" name="rimFront" value="{{ r }}"><span>{{ r }} mm</span></label>{% endfor %}</div>
+            <p class="option-label">Rear</p>
+            <div class="chips">{% for r in m.rims %}<label class="chip"><input type="radio" name="rimRear" value="{{ r }}"><span>{{ r }} mm</span></label>{% endfor %}</div>
+          </div>
+        </details>
+
+        <details class="cstep" name="cstep">
+          <summary><span class="cstep__title">Freehub</span><span class="cstep__value" data-show="freehub"></span></summary>
+          <div class="cstep__body">
+            <div class="chips">{% for h in m.freehubs %}<label class="chip"><input type="radio" name="freehub" value="{{ h.id }}"><span>{{ h.label }}</span></label>{% endfor %}</div>
+          </div>
+        </details>
+
+        <div class="config__next">
+          <button class="btn" type="button" data-go="details">Continue</button>
+        </div>
+      </div>
+
+      <div class="config__details" hidden>
+        <button class="back" type="button" data-go="build">Back to your wheels</button>
+        {% include "partials/order-details.liquid", submitLabel: "Place binding order", termsNote: "I understand that this order is binding." %}
+      </div>
     </div>
 
-    {% include "partials/order-summary.liquid", productName: m.name, image: "/assets/img/web/orma-wheels-1000.jpg" %}
+    {% include "partials/order-summary.liquid", productName: m.name, image: "/assets/img/web/orma-wheels-1000.jpg", terms: "Binding order. Delivery from March 2027." %}
   </form>
 
   {% include "partials/order-done.liquid" %}
 </div>
+
+<div class="order-bar" data-order-bar hidden>
+  <div><span class="order-bar__label">Total</span> <strong data-bar-total></strong></div>
+  <button class="btn btn--small" type="button" data-go="details">Continue</button>
+</div>
+
 <script id="order-config" type="application/json">{{ configurator | json }}</script>
 <script type="module" src="/scripts/configure.js"></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>

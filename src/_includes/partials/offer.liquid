@@ -1,0 +1,13 @@
+{%- comment -%} Price with the running offer for an orderable product. key: "vent" or "momentum". The offer hides itself after its date (site.js). {%- endcomment -%}
+{%- if key == "vent" -%}
+  {%- assign o = configurator.vent -%}{%- assign g = o.groupsets | first -%}{%- assign full = g.price -%}{%- assign now = full | minus: o.earlyBird.discount -%}{%- assign from = "From " -%}
+{%- else -%}
+  {%- assign o = configurator.momentum -%}{%- assign full = o.price -%}{%- assign now = o.earlyBird.price -%}{%- assign from = "" -%}
+{%- endif -%}
+<div class="offer{% if class %} {{ class }}{% endif %}" data-offer-until="{{ o.earlyBird.until }}">
+  <p class="offer__price">{{ from }}CHF {{ now | chf }} <s>CHF {{ full | chf }}</s></p>
+  <p class="offer__note">{{ o.earlyBird.label }} until {{ o.earlyBird.until | long_date }}</p>
+</div>
+<div class="offer{% if class %} {{ class }}{% endif %}" data-offer-after="{{ o.earlyBird.until }}" hidden>
+  <p class="offer__price">{{ from }}CHF {{ full | chf }}</p>
+</div>

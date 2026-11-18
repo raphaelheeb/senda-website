@@ -1,6 +1,6 @@
 {%- comment -%} Customer details, terms and submit for an order. Used by every order page. {%- endcomment -%}
-<fieldset class="config__step" id="details">
-  <div class="config__step-head"><span class="micro config__n">{{ stepNo }}</span><legend class="h3">Your details</legend></div>
+<fieldset class="order-details" id="details">
+  <legend class="visually-hidden">Your details</legend>
   <div class="fit-fields order-fields">
     <label>First name<input class="field" name="firstName" autocomplete="given-name" required maxlength="80"></label>
     <label>Last name<input class="field" name="lastName" autocomplete="family-name" required maxlength="80"></label>
@@ -9,7 +9,7 @@
     <label class="order-fields__wide">Street and number<input class="field" name="street" autocomplete="street-address" required maxlength="120"></label>
     <label>Postcode<input class="field" name="zip" inputmode="numeric" autocomplete="postal-code" required pattern="[0-9]{4}" maxlength="4"></label>
     <label>Town<input class="field" name="city" autocomplete="address-level2" required maxlength="80"></label>
-    <p class="order-fields__wide small">We deliver within Switzerland only.</p>
+    <label class="order-fields__wide">Country (we deliver within Switzerland)<input class="field" value="Switzerland" disabled></label>
     <label class="order-fields__wide">Message (optional)<textarea class="field field--area" name="message" rows="3" maxlength="1000" placeholder="For example: I would like a fitting before the size is confirmed."></textarea></label>
   </div>
   <label class="consent mt-3"><input type="checkbox" name="terms" required> <span>I accept the <a href="/terms/" target="_blank">order terms</a> and the <a href="/legal/privacy.html" target="_blank">privacy notice</a>. {{ termsNote }}</span></label>

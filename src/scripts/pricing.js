@@ -69,7 +69,7 @@ export function priceVent(cfg, sel, now = new Date()) {
   const base = groupset.price + (finish.surcharge || 0);
   const early = offerActive(vent.earlyBird.until, now);
   const discount = early ? vent.earlyBird.discount : 0;
-  const shipping = cfg.shipping.price;
+  const shipping = vent.shipping ?? cfg.shipping.price;
   const total = base - discount + shipping;
   const deposit = Math.round(((base - discount) * vent.deposit.percent) / 100);
 
@@ -103,27 +103,34 @@ export function priceVent(cfg, sel, now = new Date()) {
   };
 }
 
-export const MOMENTUM_FIELDS = ["rimFront", "rimRear"];
+export const MOMENTUM_FIELDS = ["rimFront", "rimRear", "freehub"];
 
 /** Validates and prices an ORMA Momentum wheelset (paid in full). */
 export function priceMomentum(cfg, sel, now = new Date()) {
   const m = cfg.momentum;
-  const errors = MOMENTUM_FIELDS.filter((f) => !sel || !m.rims.includes(String(sel[f])));
+  const allowed = { rimFront: m.rims, rimRear: m.rims, freehub: ids(m.freehubs) };
+  const errors = MOMENTUM_FIELDS.filter((f) => !sel || !allowed[f].includes(String(sel[f])));
   if (errors.length) return { ok: false, errors };
   const early = offerActive(m.earlyBird.until, now);
   const discount = early ? m.price - m.earlyBird.price : 0;
-  const shipping = cfg.shipping.price;
+  const shipping = m.shipping ?? cfg.shipping.price;
   const total = m.price - discount + shipping;
+  const hub = find(m.freehubs, sel.freehub);
   const lines = [[`${m.name} ${sel.rimFront}/${sel.rimRear}`, m.price]];
   if (discount) lines.push([m.earlyBird.label, -discount]);
   lines.push([cfg.shipping.label, shipping]);
   return {
     ok: true, errors: [], product: "momentum", lines,
-    summary: [["Rim depth", `${sel.rimFront} mm front / ${sel.rimRear} mm rear`]],
-    code: `${m.code}-${sel.rimFront}/${sel.rimRear}`,
+    summary: [["Rim depth", `${sel.rimFront} mm front / ${sel.rimRear} mm rear`], ["Freehub", hub.label]],
+    code: `${m.code}-${sel.rimFront}/${sel.rimRear}-${sel.freehub}`,
     subtotal: m.price, discount, shipping, total, deposit: total, balance: 0,
     payment: "full", delivery: m.delivery,
   };
+}
+
+/** Defaults for an ORMA Momentum order. */
+export function momentumDefaults(m) {
+  return { rimFront: m.rims[0], rimRear: m.rims[m.rims.length - 1], freehub: ids(m.freehubs)[0] };
 }
 
 export function priceOrder(cfg, product, sel, now) {

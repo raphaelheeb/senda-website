@@ -49,6 +49,11 @@ export default function (eleventyConfig) {
   );
   // 5400 -> "5,400" (Swiss prices on the English site)
   eleventyConfig.addFilter("chf", (n) => Number(n).toLocaleString("en-US"));
+  // "2026-12-31" -> "31 December 2026"
+  eleventyConfig.addFilter("long_date", (iso) =>
+    new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }));
+  eleventyConfig.addFilter("day_month", (iso) =>
+    new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", timeZone: "UTC" }));
   eleventyConfig.addFilter("status_label", (status) => {
     return { announced: "Announced", preorder: "Pre-order", available: "Available" }[status] || status;
   });

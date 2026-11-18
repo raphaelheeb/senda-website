@@ -54,9 +54,12 @@ test("article code carries every choice", () => {
 });
 
 test("ORMA Momentum: paid in full, mixed rims, intro price", () => {
-  const r = priceMomentum(cfg, { rimFront: "45", rimRear: "50" }, during);
-  assert.equal(r.total, 1000);
+  const r = priceMomentum(cfg, { rimFront: "45", rimRear: "50", freehub: "HG" }, during);
+  assert.equal(r.total, 980, "950 intro price + 30 shipping");
+  assert.equal(r.shipping, 30);
   assert.equal(r.deposit, r.total);
-  assert.equal(priceMomentum(cfg, { rimFront: "45", rimRear: "50" }, after).total, 1100);
-  assert.equal(priceMomentum(cfg, { rimFront: "60", rimRear: "50" }).ok, false);
+  assert.equal(r.code, "MOM-45/50-HG");
+  assert.equal(priceMomentum(cfg, { rimFront: "45", rimRear: "50", freehub: "XDR" }, after).total, 1080);
+  assert.equal(priceMomentum(cfg, { rimFront: "45", rimRear: "50", freehub: "N3W" }).ok, false, "Campagnolo not offered");
+  assert.equal(priceMomentum(cfg, { rimFront: "60", rimRear: "50", freehub: "HG" }).ok, false);
 });

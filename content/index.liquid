@@ -18,7 +18,11 @@ description: Swiss road and gravel bikes, made for the way out. ORMA wheels and 
   </picture>
   <div class="wrap opening__copy">
     <h1 class="display">Quietly fast.</h1>
-    <a class="linkline" href="/bikes/">See the bikes</a>
+    <div class="opening__order">
+      <p class="opening__line">SENDA Vent is open for orders.</p>
+      {% include "partials/offer.liquid", key: "vent", class: "offer--light" %}
+      <a class="btn btn--light" href="/bikes/vent/configure/">Configure yours</a>
+    </div>
   </div>
 </section>
 
