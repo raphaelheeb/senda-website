@@ -27,9 +27,19 @@ kits:
     items: ["Top-tier electronic groupset", "ORMA gravel wheelset, in development", "ORMA cockpit", "ORMA saddle, carbon rails"]
 image: /assets/img/web/gravel-forest-2000.jpg
 imagePosition: center 40%
-alt: A rider on a SENDA Gravel bike on a forest track in autumn
+alt: A gravel rider on a forest track in autumn
+sketch: svg/gravel-sketch.svg
+sketchNote: Longer chainstays, a lower bottom bracket and a slacker head angle than SENDA Vent. The rest follows when the frame is final.
+sketchHidden:
+  - ["Reach", "000"]
+  - ["Stack", "000"]
+  - ["Wheelbase", "0000"]
+  - ["Tyre clearance", "00"]
 teaser: For the roads that fade into tracks, and routes that become the point of the ride.
-tileNote: Announced, 2027
+tileNote: In development, 2027
+tileImage: /assets/img/web/gravel-sketch-tile.svg
+tileAlt: Line drawing of the SENDA Gravel frame
+cardImage: /assets/img/web/gravel-sketch-tile.svg
 image2: /assets/img/web/larch-pass-1000.jpg
 ---
 Gravel riding asks for a different balance: tyre volume, a calmer front end and room for long days away from service.

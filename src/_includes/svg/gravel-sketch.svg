@@ -1,0 +1,39 @@
+<svg class="sketch" viewBox="0 0 1850 1042" role="img" aria-labelledby="sketch-title" xmlns="http://www.w3.org/2000/svg">
+<title id="sketch-title">Line drawing of the SENDA Gravel frame: longer chainstays, a lower bottom bracket and a slacker head angle than SENDA Vent</title>
+<g class="sketch__wheels">
+<circle class="w" pathLength="1" cx="396.4" cy="686" r="350"/>
+<circle class="w w--rim" pathLength="1" cx="396.4" cy="686" r="311"/>
+<circle class="w" pathLength="1" cx="1447.7" cy="686" r="350"/>
+<circle class="w w--rim" pathLength="1" cx="1447.7" cy="686" r="311"/>
+</g>
+<g class="sketch__frame">
+<line class="t" pathLength="1" x1="820" y1="760" x2="396.4" y2="686"/>
+<line class="t" pathLength="1" x1="704.2" y1="356.3" x2="396.4" y2="686"/>
+<line class="t" pathLength="1" x1="820" y1="760" x2="682.2" y2="279.4"/>
+<line class="t" pathLength="1" x1="690.5" y1="308.2" x2="1210" y2="204"/>
+<line class="t" pathLength="1" x1="820" y1="760" x2="1261.2" y2="310.8"/>
+<line class="t" pathLength="1" x1="1216" y1="182" x2="1265.2" y2="324.8"/>
+<path class="t" pathLength="1" d="M1265.2,324.8 Q1374.4,505.4 1447.7,686"/>
+<circle class="t" pathLength="1" cx="820" cy="760" r="22"/>
+</g>
+<g class="sketch__ghost">
+<line class="g" pathLength="1" x1="682.2" y1="279.4" x2="617.4" y2="53.5"/>
+<line class="g" pathLength="1" x1="547.4" y1="53.5" x2="697.4" y2="53.5"/>
+<line class="g" pathLength="1" x1="1216" y1="182" x2="1201.3" y2="139.5"/>
+<line class="g" pathLength="1" x1="1201.3" y1="139.5" x2="1300.1" y2="123.8"/>
+<circle class="g" pathLength="1" cx="1300.1" cy="123.8" r="16"/>
+</g>
+<g class="sketch__dims">
+<line class="d d--axis" pathLength="1" x1="336.4" y1="686" x2="1507.7" y2="686"/>
+<line class="d d--axis" pathLength="1" x1="670" y1="760" x2="970" y2="760"/>
+<line class="d" pathLength="1" x1="990" y1="760" x2="990" y2="686"/>
+<line class="d" pathLength="1" x1="978" y1="760" x2="1002" y2="760"/>
+<line class="d" pathLength="1" x1="978" y1="686" x2="1002" y2="686"/>
+<text class="lab" x="1010" y="730.0" text-anchor="start">74 mm</text>
+<text class="lab" x="547.4" y="766.1" text-anchor="end">430 mm</text>
+<path class="d" pathLength="1" d="M1479.5,686.0 A90,90 0 0 0 1418.8,600.9"/>
+<text class="lab" x="1489.5" y="646" text-anchor="start">71°</text>
+<path class="d" pathLength="1" d="M786.9,644.6 A120,120 0 0 0 700.0,760.0"/>
+<text class="lab" x="692" y="630" text-anchor="end">74°</text>
+</g>
+</svg>

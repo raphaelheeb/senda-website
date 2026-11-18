@@ -32,7 +32,17 @@ layout: layouts/base.liquid
     </div>{% endif %}
   </div>
   <div class="wrap">
+    {% if sketch %}
+    <figure class="sketch-stage" data-draw>
+      {% include sketch %}
+      <figcaption>
+        <p class="sketch-note">{{ sketchNote }}</p>
+        {% if sketchHidden %}<dl class="sketch-specs">{% for h in sketchHidden %}<div><dt>{{ h[0] }}</dt><dd aria-label="Not yet published"><span class="blur" aria-hidden="true">{{ h[1] }}</span></dd></div>{% endfor %}</dl>{% endif %}
+      </figcaption>
+    </figure>
+    {% else %}
     {% include "partials/frame.liquid", img: image, ratio: "hero", pos: imagePosition, alt: alt %}
+    {% endif %}
   </div>
   <div class="wrap stage__base">
     {% if dims %}<div class="dims" style="--dims: {{ dims.size }}">

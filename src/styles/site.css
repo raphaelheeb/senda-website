@@ -422,6 +422,16 @@ button, input, select { font: inherit; color: inherit; }
 .howto > summary::-webkit-details-marker { display: none; }
 .howto dl { display: grid; grid-template-columns: 7em 1fr; gap: 8px var(--s-2); margin-top: var(--s-2); font-size: 15px; color: var(--ink-mid); }
 .howto dt { color: var(--ink); }
+.howto__grid { display: grid; grid-template-columns: minmax(160px, 220px) 1fr; gap: var(--s-4); align-items: center; margin-top: var(--s-2); }
+.howto__grid dl { margin-top: 0; }
+.measure { width: 100%; height: auto; }
+.measure__body { fill: #e4e4e0; }
+.measure__floor { stroke: var(--line); stroke-width: 1; }
+.measure__dim line { stroke: var(--ink); stroke-width: 1; }
+.measure__dim .measure__guide { stroke: var(--grey); stroke-dasharray: 2 3; }
+.measure__point { fill: var(--ink); }
+.measure__book { fill: var(--ink); }
+.measure text { font: 400 10px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; fill: var(--ink); }
 .fitcalc__pos { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: var(--s-3); }
 .fitcalc__pos .chip span { background: var(--paper); }
 .fitcalc__posnote { margin-left: 8px; font-size: 15px; color: var(--grey); }
@@ -440,6 +450,8 @@ button, input, select { font: inherit; color: inherit; }
   .fitcalc__fields { grid-template-columns: 1fr 1fr; }
   .fitcalc__result dl { grid-template-columns: 1fr 1fr; }
   .howto dl { grid-template-columns: 1fr; gap: 2px; }
+  .howto__grid { grid-template-columns: 1fr; }
+  .measure { max-width: 240px; margin: 0 auto; }
   .howto dd { margin-bottom: 8px; }
   .fitcalc__posnote { flex-basis: 100%; margin: 4px 0 0; }
 }
@@ -721,3 +733,26 @@ html:has(.subbar) { scroll-padding-top: calc(var(--header-h) + 52px + 16px); }
   .opening__order .btn--light { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 }
 .stage__order .btn { margin-top: var(--s-2); }
+
+/* ---------- Line drawing (gravel teaser) ---------- */
+.sketch-stage { margin: 0; padding: clamp(24px, 4vw, 64px) clamp(16px, 4vw, 64px) clamp(24px, 3vw, 40px); background: var(--tint); }
+.sketch { display: block; width: 100%; height: auto; }
+.sketch .t { fill: none; stroke: var(--ink); stroke-width: 5; stroke-linecap: round; }
+.sketch .w { fill: none; stroke: var(--ink); stroke-width: 2; }
+.sketch .w--rim { stroke: #9a9a9a; stroke-width: 1.5; }
+.sketch .g { fill: none; stroke: #9a9a9a; stroke-width: 2; stroke-dasharray: 0.012 0.01; }
+.sketch .d { fill: none; stroke: var(--grey); stroke-width: 1.5; }
+.sketch .d--axis { stroke-dasharray: 0.01 0.008; }
+.sketch text { font: 400 22px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; fill: var(--ink); }
+.will-draw .sketch .t, .will-draw .sketch .w { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.6s var(--ease); }
+.will-draw .sketch__frame .t { transition-delay: 0.5s; }
+.will-draw .sketch__ghost, .will-draw .sketch__dims { opacity: 0; transition: opacity 0.8s var(--ease) 1.8s; }
+.will-draw.is-drawn .sketch .t, .will-draw.is-drawn .sketch .w { stroke-dashoffset: 0; }
+.will-draw.is-drawn .sketch__ghost, .will-draw.is-drawn .sketch__dims { opacity: 1; }
+.sketch-stage figcaption { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-3) var(--gutter); align-items: end; margin-top: var(--s-4); padding-top: var(--s-3); border-top: 1px solid var(--line); }
+.sketch-note { max-width: 30em; font-size: var(--t-lead); color: var(--ink-mid); }
+.sketch-specs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-2); }
+.sketch-specs dt { font: 400 var(--t-label)/1.5 var(--mono); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--grey); }
+.sketch-specs dd { margin-top: 4px; font-size: var(--t-h3); color: var(--ink); }
+.blur { display: inline-block; filter: blur(7px); user-select: none; }
+@media (max-width: 900px) { .sketch-stage figcaption { grid-template-columns: 1fr; } .sketch-specs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

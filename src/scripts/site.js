@@ -12,6 +12,17 @@
     if (today > el.getAttribute("data-offer-after")) el.hidden = false;
   });
 
+  // Line drawings draw themselves in when they come into view (skipped for reduced motion).
+  var drawings = document.querySelectorAll("[data-draw]");
+  if (drawings.length && "IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("is-drawn"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.25 });
+    drawings.forEach(function (d) { d.classList.add("will-draw"); io.observe(d); });
+  }
+
   // Mobile menu
   var menuBtn = document.querySelector(".menu-btn");
   var drawer = document.getElementById("drawer");

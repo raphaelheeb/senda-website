@@ -42,11 +42,15 @@ eleventyExcludeFromCollections: true
                 </div>
                 <details class="howto">
                   <summary>How to measure</summary>
+                  <div class="howto__grid">
+                  {% include "svg/fit-measure.svg" %}
                   <dl>
+                    <dt>Height</dt><dd>Barefoot, back against a wall.</dd>
                     <dt>Inseam</dt><dd>Stand with your back to a wall, feet 15 cm apart. Pull a book firmly up between your legs, spine against the wall. Measure from the floor to the top of the book.</dd>
                     <dt>Arm length</dt><dd>Arm hanging straight: from the bony point at the top of your shoulder to the centre of your closed fist.</dd>
                     <dt>Shoulders</dt><dd>Between the bony points at the top of both shoulders. Sets the bar width.</dd>
                   </dl>
+                  </div>
                 </details>
                 <div class="fitcalc__pos" role="radiogroup" aria-label="Position">
                   {% for p in v.fit.positions %}<label class="chip"><input type="radio" name="fitPosition" value="{{ p[0] }}"{% if forloop.first %} checked{% endif %}><span>{{ p[1].label }}</span></label>{% endfor %}

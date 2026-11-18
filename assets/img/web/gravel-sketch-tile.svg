@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-60 -464 1970 1970">
+<style>.t{fill:none;stroke:#151515;stroke-width:6;stroke-linecap:round}.w{fill:none;stroke:#151515;stroke-width:2.5}.w--rim{stroke:#9a9a9a;stroke-width:2}.g{fill:none;stroke:#9a9a9a;stroke-width:2.5;stroke-dasharray:.012 .01}</style>
+<rect x="-60" y="-464" width="1970" height="1970" fill="#f4f4f2"/>
+<g class="sketch__wheels">
+<circle class="w" pathLength="1" cx="396.4" cy="686" r="350"/>
+<circle class="w w--rim" pathLength="1" cx="396.4" cy="686" r="311"/>
+<circle class="w" pathLength="1" cx="1447.7" cy="686" r="350"/>
+<circle class="w w--rim" pathLength="1" cx="1447.7" cy="686" r="311"/>
+</g>
+<g class="sketch__frame">
+<line class="t" pathLength="1" x1="820" y1="760" x2="396.4" y2="686"/>
+<line class="t" pathLength="1" x1="704.2" y1="356.3" x2="396.4" y2="686"/>
+<line class="t" pathLength="1" x1="820" y1="760" x2="682.2" y2="279.4"/>
+<line class="t" pathLength="1" x1="690.5" y1="308.2" x2="1210" y2="204"/>
+<line class="t" pathLength="1" x1="820" y1="760" x2="1261.2" y2="310.8"/>
+<line class="t" pathLength="1" x1="1216" y1="182" x2="1265.2" y2="324.8"/>
+<path class="t" pathLength="1" d="M1265.2,324.8 Q1374.4,505.4 1447.7,686"/>
+<circle class="t" pathLength="1" cx="820" cy="760" r="22"/>
+</g>
+<g class="sketch__ghost">
+<line class="g" pathLength="1" x1="682.2" y1="279.4" x2="617.4" y2="53.5"/>
+<line class="g" pathLength="1" x1="547.4" y1="53.5" x2="697.4" y2="53.5"/>
+<line class="g" pathLength="1" x1="1216" y1="182" x2="1201.3" y2="139.5"/>
+<line class="g" pathLength="1" x1="1201.3" y1="139.5" x2="1300.1" y2="123.8"/>
+<circle class="g" pathLength="1" cx="1300.1" cy="123.8" r="16"/>
+</g>
+</svg>
