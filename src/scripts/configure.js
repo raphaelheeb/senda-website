@@ -201,7 +201,7 @@ async function submit(e, form, product, getSel, cfg, lang) {
       (out.fields || []).forEach((f) => form.querySelector(`[name="${f}"]`)?.setAttribute("aria-invalid", "true"));
       throw new Error(out.message || tr("failed"));
     }
-    done(form, out, customer);
+    done(form, out, customer, cfg, lang);
   } catch (err) {
     msg.textContent = `${err.message} ${tr("retry", { email: cfg.orderEmail })}`;
     btn.disabled = false;
@@ -209,20 +209,36 @@ async function submit(e, form, product, getSel, cfg, lang) {
   }
 }
 
-function done(form, out, customer) {
+function done(form, out, customer, cfg, lang) {
   const box = document.querySelector("[data-order-done]");
-  box.querySelector("[data-done-number]").textContent = out.orderNumber;
-  box.querySelector("[data-done-email]").textContent = customer.email;
-  box.querySelector("[data-done-next]").textContent = out.payment === "deposit"
-    ? tr("next_deposit", { deposit: chf(out.deposit) })
-    : tr("next_full", { total: chf(out.total) });
+  const d = T.done || {};
+  const f = (str, vars) => String(str || "").replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");
+  const chf2 = (n) => `${chf(n).replace(" ", "\u00a0")}.00`; // keep "CHF 1’160.00" on one line
+  const set = (sel, text) => { box.querySelector(sel).textContent = text; };
+  const product = out.payment === "deposit" ? cfg.vent : cfg.momentum;
+  const date = new Date(`${product.delivery}T12:00:00Z`).toLocaleDateString(lang === "de" ? "de-CH" : "en-GB", { month: "long", year: "numeric", timeZone: "UTC" });
+  set("[data-done-title]", f(d.title, { first: customer.firstName }));
+  set("[data-done-lead]", out.payment === "deposit" ? d.lead_vent : d.lead_momentum);
+  set("[data-done-now]", d.now);
+  set("[data-done-now-text]", f(d.now_text, { email: customer.email, number: out.orderNumber }));
+  set("[data-done-confirm]", d.confirm);
+  set("[data-done-confirm-text]", out.payment === "deposit" ? f(d.confirm_deposit, { deposit: chf2(out.deposit) }) : f(d.confirm_full, { total: chf2(out.total) }));
+  set("[data-done-until]", d.until);
+  set("[data-done-until-text]", out.payment === "deposit" ? f(d.until_vent, { balance: chf2(out.balance), date }) : f(d.until_momentum, { date }));
+  set("[data-done-your-order]", `${d.your_order} · ${out.orderNumber}`);
   box.querySelector("[data-done-list]").innerHTML = out.summary.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")
-    + `<dt>${esc(tr("total"))}</dt><dd>${chf(out.total)}</dd>`;
+    + (out.lines || []).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${chf(v)}</dd>`).join("")
+    + `<dt class="done-total">${esc(tr("total"))}</dt><dd class="done-total">${chf2(out.total)}</dd>`;
+  box.querySelector("[data-done-contact]").innerHTML = esc(f(d.contact, { email: "\u0000" }))
+    .replace("\u0000", `<a class="linkline" href="mailto:${cfg.orderEmail}">${cfg.orderEmail}</a>`);
+  set("[data-done-sign]", d.sign);
   form.hidden = true;
   document.querySelector("[data-order-bar]").hidden = true;
+  const head = document.querySelector(".order-page .crumbs");
+  if (head) head.hidden = true;
   box.hidden = false;
   box.focus();
-  window.scrollTo({ top: Math.max(0, box.getBoundingClientRect().top + scrollY - 120) });
+  window.scrollTo({ top: Math.max(0, box.getBoundingClientRect().top + scrollY - 140) });
   requestId = crypto.randomUUID();
 }
 

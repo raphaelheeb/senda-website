@@ -43,7 +43,8 @@ const MAIL = {
     refundFull: "Your order is binding under our order terms. If SENDA cannot deliver, or delivers substantially later than planned, you receive your payment back in full.",
     terms: "Order terms",
     termsUrl: "https://sendabikes.com/terms/",
-    close: "If anything is not right, reply to this email.",
+    close: "Questions, wishes or a fitting: just reply to this email. We answer within one working day.",
+    sign: "Raphael and Micha",
   },
   de: {
     subject: "Deine Bestellung {name} {number}",
@@ -62,7 +63,8 @@ const MAIL = {
     refundFull: "Deine Bestellung ist gemäss unseren Bestellbedingungen verbindlich. Kann SENDA nicht liefern oder liefert deutlich später als geplant, erhältst Du Deine Zahlung vollständig zurück.",
     terms: "Bestellbedingungen",
     termsUrl: "https://sendabikes.com/de/terms/",
-    close: "Falls etwas nicht stimmt, antworte einfach auf diese E-Mail.",
+    close: "Fragen, Wünsche oder ein Fitting: antworte einfach auf diese E-Mail. Wir antworten innert eines Arbeitstags.",
+    sign: "Raphael und Micha",
   },
 };
 const fill = (str, vars) => str.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");
@@ -95,6 +97,7 @@ export function customerMailContent(order, cfg) {
     refund: p.payment === "deposit" ? w.refundDeposit : w.refundFull,
     terms: w.termsUrl,
     close: w.close,
+    sign: w.sign,
   };
 }
 
@@ -110,7 +113,7 @@ function renderText(m) {
     ...m.pay, m.delivery, "",
     `${w.address}:`, ...m.address, "",
     m.refund, `${w.terms}: ${m.terms}`, "",
-    m.close, "", "SENDA", "Quietly fast.", "sendabikes.com",
+    m.close, "", m.sign, "SENDA", "sendabikes.com",
   ].join("\n");
 }
 
@@ -133,7 +136,7 @@ ${m.pay.map((t) => `<p>${esc(t)}</p>`).join("")}<p>${esc(m.delivery)}</p>
 <p style="color:#666">${esc(w.address)}<br>${m.address.map(esc).join("<br>")}</p>
 <p>${esc(m.refund)} <a href="${m.terms}" style="color:#151515">${esc(w.terms)}</a></p>
 <p>${esc(m.close)}</p>
-<p style="color:#151515">SENDA<br><span style="color:#666">Quietly fast.</span></p>
+<p style="color:#151515">${esc(m.sign)}<br><span style="font:13px monospace;letter-spacing:.12em;color:#666">SENDA</span></p>
 </div></body></html>`;
 }
 

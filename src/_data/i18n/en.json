@@ -283,7 +283,23 @@
     "news_email": "Enter a valid email address.",
     "news_consent": "Tick the box to agree to receive emails.",
     "news_ok": "You're on the list. We'll write when there is news.",
-    "news_fail": "That didn't go through. Try again, or write to info@sendabikes.com."
+    "news_fail": "That didn't go through. Try again, or write to info@sendabikes.com.",
+    "done": {
+      "title": "Thank you, {first}.",
+      "lead_vent": "You are one of the first to ride a SENDA. That means a lot to us.",
+      "lead_momentum": "You are one of the first to ride on ORMA. That means a lot to us.",
+      "now": "Now",
+      "now_text": "Your order confirmation is on its way to {email}. Order number {number}.",
+      "confirm": "Within two working days",
+      "confirm_deposit": "We confirm your order personally, with the invoice for the deposit of {deposit}.",
+      "confirm_full": "We confirm your order personally, with the invoice of {total}.",
+      "until": "Until delivery",
+      "until_vent": "We keep you posted while your bike is being built. The balance of {balance} is invoiced before delivery, from {date}.",
+      "until_momentum": "We keep you posted. Delivery from {date}.",
+      "your_order": "Your order",
+      "contact": "Questions, wishes or a fitting: write to {email}. We answer within one working day.",
+      "sign": "Raphael and Micha"
+    }
   },
   "notfound": {
     "title": "This road ends here.",

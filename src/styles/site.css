@@ -493,9 +493,6 @@ button, input, select { font: inherit; color: inherit; }
 .summary__spec dt { color: var(--grey); }
 
 .order-bar { display: none; }
-.order-done { max-width: 760px; padding: var(--s-5) 0 var(--section); outline: none; }
-.order-done__list { display: grid; grid-template-columns: auto 1fr; gap: 10px var(--s-3); margin-top: var(--s-4); padding-top: var(--s-3); border-top: 1px solid var(--line); }
-.order-done__list dt { color: var(--grey); }
 
 @media (max-width: 900px) {
   .config { grid-template-columns: 1fr; gap: 0; }
@@ -761,3 +758,20 @@ html:has(.subbar) { scroll-padding-top: calc(var(--header-h) + 52px + 16px); }
 @media (max-width: 900px) { .sketch-stage figcaption { grid-template-columns: 1fr; } .sketch-specs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .page-head .orma-logo { height: 22px; }
 #made .frame { margin-top: var(--s-5); }
+
+/* ---------- Thank-you screen ---------- */
+.order-done { max-width: 760px; padding: var(--s-5) 0 var(--section); outline: none; }
+.done-steps { list-style: none; margin: var(--s-5) 0 0; padding: 0; border-top: 1px solid var(--ink); }
+.done-steps li { display: grid; grid-template-columns: minmax(140px, 220px) 1fr; gap: var(--s-2) var(--s-4); padding: var(--s-3) 0; border-bottom: 1px solid var(--line); }
+.done-steps__when { font: 400 var(--t-label)/1.6 var(--mono); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--ink); padding-top: 3px; }
+.done-steps p { font-size: var(--t-text, 18px); color: var(--ink-mid); }
+.done-order { margin-top: var(--s-4); }
+.order-done__list { display: grid; grid-template-columns: 1fr auto; gap: 10px 0; margin-top: var(--s-3); }
+.order-done__list dd { padding-left: var(--s-3); white-space: nowrap; }
+.order-done__list dt { color: var(--grey); }
+.order-done__list dd { text-align: right; color: var(--ink); }
+.order-done__list .done-total { padding-top: 10px; border-top: 1px solid var(--ink); color: var(--ink); font-weight: 600; }
+.done-contact { margin-top: var(--s-5); }
+.done-sign { margin-top: var(--s-4); font-size: var(--t-lead); color: var(--ink); line-height: 1.4; }
+.done-sign__brand { font: 400 var(--t-label)/1.6 var(--mono); letter-spacing: var(--track-label); color: var(--grey); }
+@media (max-width: 640px) { .done-steps li { grid-template-columns: 1fr; gap: 4px; } }

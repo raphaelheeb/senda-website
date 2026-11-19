@@ -1,8 +1,16 @@
-{%- comment -%} Shown in place of the form once the order is stored. {%- endcomment -%}
+{%- comment -%} Thank-you screen, shown in place of the form once the order is stored. Filled by /scripts/configure.js. {%- endcomment -%}
 <section class="order-done" data-order-done hidden tabindex="-1">
-  <h2 class="h2">{{ t.config.done.title }}</h2>
-  <p class="lead mt-3">{{ t.config.done.number }} <strong data-done-number></strong>. {{ t.config.done.sent }} <span data-done-email></span>.</p>
-  <p class="block__text mt-3" data-done-next></p>
-  <dl class="order-done__list" data-done-list></dl>
-  <p class="small mt-4">{{ t.config.done.questions }} <a class="linkline" href="mailto:{{ configurator.orderEmail }}">{{ configurator.orderEmail }}</a></p>
+  <h2 class="h2" data-done-title></h2>
+  <p class="lead mt-3" data-done-lead></p>
+  <ol class="done-steps">
+    <li><span class="done-steps__when" data-done-now></span><p data-done-now-text></p></li>
+    <li><span class="done-steps__when" data-done-confirm></span><p data-done-confirm-text></p></li>
+    <li><span class="done-steps__when" data-done-until></span><p data-done-until-text></p></li>
+  </ol>
+  <details class="summary__spec done-order">
+    <summary data-done-your-order></summary>
+    <dl class="order-done__list" data-done-list></dl>
+  </details>
+  <p class="block__text done-contact" data-done-contact></p>
+  <p class="done-sign"><span data-done-sign></span><br><span class="done-sign__brand">SENDA</span></p>
 </section>

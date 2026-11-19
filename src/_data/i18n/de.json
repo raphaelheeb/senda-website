@@ -283,7 +283,23 @@
     "news_email": "Bitte gib eine gültige E-Mail-Adresse ein.",
     "news_consent": "Bitte bestätige, dass Du E-Mails erhalten möchtest.",
     "news_ok": "Du bist auf der Liste. Wir melden uns, wenn es Neuigkeiten gibt.",
-    "news_fail": "Das hat nicht geklappt. Versuch es nochmals oder schreib an info@sendabikes.com."
+    "news_fail": "Das hat nicht geklappt. Versuch es nochmals oder schreib an info@sendabikes.com.",
+    "done": {
+      "title": "Danke, {first}.",
+      "lead_vent": "Du gehörst zu den Ersten, die ein SENDA fahren. Das bedeutet uns viel.",
+      "lead_momentum": "Du gehörst zu den Ersten, die auf ORMA fahren. Das bedeutet uns viel.",
+      "now": "Jetzt",
+      "now_text": "Deine Bestellbestätigung ist unterwegs an {email}. Bestellnummer {number}.",
+      "confirm": "Innert zwei Arbeitstagen",
+      "confirm_deposit": "Wir bestätigen Deine Bestellung persönlich, mit der Rechnung für die Anzahlung von {deposit}.",
+      "confirm_full": "Wir bestätigen Deine Bestellung persönlich, mit der Rechnung über {total}.",
+      "until": "Bis zur Lieferung",
+      "until_vent": "Wir halten Dich auf dem Laufenden, während Dein Bike entsteht. Den Restbetrag von {balance} stellen wir vor der Lieferung in Rechnung, ab {date}.",
+      "until_momentum": "Wir halten Dich auf dem Laufenden. Lieferung ab {date}.",
+      "your_order": "Deine Bestellung",
+      "contact": "Fragen, Wünsche oder ein Fitting: schreib uns an {email}. Wir antworten innert eines Arbeitstags.",
+      "sign": "Raphael und Micha"
+    }
   },
   "notfound": {
     "title": "Hier endet die Strasse.",
