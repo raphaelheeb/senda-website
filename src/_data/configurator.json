@@ -125,7 +125,7 @@
       {
         "id": "SLATE",
         "label": "Slate Blue",
-        "surface": "Satin",
+        "surface": "Glossy",
         "hex": "#7e9aab",
         "surcharge": 0
       },
@@ -139,14 +139,14 @@
       {
         "id": "ROSE",
         "label": "Dusky Rose",
-        "surface": "Satin",
+        "surface": "Glossy",
         "hex": "#c4a099",
         "surcharge": 0
       },
       {
         "id": "GRAPH",
         "label": "Graphite",
-        "surface": "Matte",
+        "surface": "Glossy",
         "hex": "#494641",
         "surcharge": 0
       }

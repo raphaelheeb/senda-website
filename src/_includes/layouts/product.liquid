@@ -138,9 +138,9 @@ layout: layouts/base.liquid
         {% endfor %}
       </div>
       <div class="picker__controls" role="radiogroup" aria-label="{{ t.product.finish }}">
-        {% for f in finishes %}{% assign surface = t.surface[f.surface] | default: f.surface %}<button type="button" class="picker__chip" role="radio" aria-checked="{% if forloop.first %}true{% else %}false{% endif %}" data-finish="{{ f.name | slugify }}" data-caption="{{ f.name }}, {{ surface | downcase }}"><i style="background: {{ f.hex }}"></i><span>{{ f.name }}</span></button>{% endfor %}
+        {% for f in finishes %}{% assign surface = t.surface_caption[f.surface] | default: f.surface %}<button type="button" class="picker__chip" role="radio" aria-checked="{% if forloop.first %}true{% else %}false{% endif %}" data-finish="{{ f.name | slugify }}" data-caption="{{ f.name }}, {{ surface }}"><i style="background: {{ f.hex }}"></i><span>{{ f.name }}</span></button>{% endfor %}
       </div>
-      {% assign f0 = finishes | first %}{% assign surface0 = t.surface[f0.surface] | default: f0.surface %}<p class="picker__caption micro" aria-live="polite">{{ f0.name }}, {{ surface0 | downcase }}</p>
+      {% assign f0 = finishes | first %}{% assign surface0 = t.surface_caption[f0.surface] | default: f0.surface %}<p class="picker__caption micro" aria-live="polite">{{ f0.name }}, {{ surface0 }}</p>
     </div>
   </div>
 </section>

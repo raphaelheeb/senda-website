@@ -1,7 +1,7 @@
 [
   {
     "name": "Slate Blue",
-    "surface": "Satin",
+    "surface": "Glossy",
     "hex": "#7e9aab",
     "image": "/assets/img/web/finish-slate-blue-1000.jpg",
     "bikeImage": "/assets/img/web/vent-studio-blue-1000.jpg"
@@ -15,13 +15,13 @@
   },
   {
     "name": "Dusky Rose",
-    "surface": "Satin",
+    "surface": "Glossy",
     "hex": "#c4a099",
     "image": "/assets/img/web/finish-dusky-rose-1000.jpg"
   },
   {
     "name": "Graphite",
-    "surface": "Matte",
+    "surface": "Glossy",
     "hex": "#494641",
     "image": "/assets/img/web/finish-black-1000.jpg"
   }

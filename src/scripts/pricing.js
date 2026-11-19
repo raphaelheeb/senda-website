@@ -58,7 +58,7 @@ export const WORDS = {
     cassette: "Cassette", wheels: "Wheels", wheelsValue: "ORMA Momentum {f} front / {r} rear", bar: "Handlebar width",
     stem: "Stem length", spacers: "Spacers", tyres: "Tyres", rim: "Rim depth", rimValue: "{f} mm front / {r} mm rear",
     freehub: "Freehub", shipping: "Shipping within Switzerland", early: "Early order price", intro: "Introductory price",
-    surface: { Satin: "satin", Pearl: "pearl", Matte: "matte" },
+    surface: { Glossy: "glossy", Satin: "satin", Pearl: "pearl", Matte: "matte" },
     chainringLabels: { "50-34": "50-34 (compact)", "52-36": "52-36 (semi-compact)" },
   },
   de: {
@@ -66,7 +66,7 @@ export const WORDS = {
     cassette: "Kassette", wheels: "Laufräder", wheelsValue: "ORMA Momentum {f} vorne / {r} hinten", bar: "Lenkerbreite",
     stem: "Vorbaulänge", spacers: "Spacer", tyres: "Reifen", rim: "Felgenhöhe", rimValue: "{f} mm vorne / {r} mm hinten",
     freehub: "Freilauf", shipping: "Versand innerhalb der Schweiz", early: "Frühbestellpreis", intro: "Einführungspreis",
-    surface: { Satin: "seidenmatt", Pearl: "Perlmutt", Matte: "matt" },
+    surface: { Glossy: "glänzend", Satin: "seidenmatt", Pearl: "Perlmutt", Matte: "matt" },
     chainringLabels: { "50-34": "50-34 (Kompakt)", "52-36": "52-36 (Semi-Kompakt)" },
   },
 };

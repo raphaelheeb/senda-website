@@ -293,10 +293,17 @@
   "surface": {
     "Satin": "Seidenmatt",
     "Pearl": "Perlmutt",
-    "Matte": "Matt"
+    "Matte": "Matt",
+    "Glossy": "Glänzend"
   },
   "chainrings": {
     "50-34": "50-34 (Kompakt)",
     "52-36": "52-36 (Semi-Kompakt)"
+  },
+  "surface_caption": {
+    "Glossy": "glänzend",
+    "Satin": "seidenmatt",
+    "Pearl": "Perlmutt",
+    "Matte": "matt"
   }
 }
