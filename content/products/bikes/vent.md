@@ -27,14 +27,14 @@ kits:
   - name: Build three
     price: From CHF 8’500 (indicative)
     items: ["Top-tier electronic groupset", "ORMA Momentum 45 wheelset", "ORMA one-piece aero bar", "ORMA saddle, carbon rails"]
-image: /assets/img/web/road-toni-side-2000.jpg
+image: /assets/img/web/vent-master-side-2000.jpg
 imagePosition: center 62%
-alt: The SENDA Vent prototype in Slate Blue in front of a board-marked concrete wall
+alt: SENDA Vent in Slate Blue with ORMA Momentum wheels, in front of a concrete wall
 teaser: Direct, light and composed. Built for the pace of a long climb and the precision of the descent.
 tileNote: Order now, delivery March 2027
-cardImage: /assets/img/web/road-toni-studio-1000.jpg
-tileImage: /assets/img/web/road-toni-lettering-1000.jpg
-tileAlt: SENDA lettering in copper on the Slate Blue down tube
+cardImage: /assets/img/web/vent-studio-blue-1000.jpg
+tileImage: /assets/img/web/vent-studio-blue-1000.jpg
+tileAlt: SENDA Vent in Slate Blue on a grey studio background
 features:
   - title: Painted and assembled in Switzerland.
     text: Every finish is designed by SENDA, then painted and the bike assembled in Switzerland.
@@ -54,8 +54,8 @@ features:
     linkText: See the wheelset
 image2: /assets/img/web/frame-detail-slate-blue-1000.jpg
 image3: /assets/img/web/frame-detail-champagne-1000.jpg
-storyImage: /assets/img/web/road-toni-cockpit-1000.jpg
-storyAlt: Cockpit of the SENDA Vent prototype seen from above
+storyImage: /assets/img/web/finish-slate-blue-1000.jpg
+storyAlt: Head tube and fork of the SENDA Vent in Slate Blue with the copper S
 geometrySource: All values in mm unless stated.
 geometryImage: /assets/img/web/geometry-drawing-2000.jpg
 override:sizes: ["XS", "S", "M", "L", "XL", "XXL"]
@@ -79,15 +79,15 @@ de:
   priceNote: Inkl. MWST
   delivery: ab März 2027
   summary: Ein Carbon-Rennrad in sechs Grössen, mit einteiligem Carbon-Cockpit und ORMA Laufrädern, auf Deine Position eingestellt.
-  alt: Der SENDA Vent Prototyp in Slate Blue vor einer Sichtbetonwand
+  alt: SENDA Vent in Slate Blue mit ORMA Momentum Laufrädern vor einer Sichtbetonwand
   dims:
     - ["< 7 kg", "Zielgewicht, Topausstattung"]
     - ["45 / 50 mm", "Felgenhöhe ORMA Momentum, frei wählbar"]
     - ["4", "Farben, ein Rahmen"]
   storyTitle: Carbon, Abschnitt für Abschnitt abgestimmt.
-  storyAlt: Cockpit des SENDA Vent Prototyps von oben
+  storyAlt: Steuerrohr und Gabel des SENDA Vent in Slate Blue mit dem kupferfarbenen S
   tileNote: Jetzt bestellen, Lieferung März 2027
-  tileAlt: SENDA Schriftzug in Kupfer auf dem Unterrohr in Slate Blue
+  tileAlt: SENDA Vent in Slate Blue vor grauem Studiohintergrund
   geometrySource: Alle Werte in mm, sofern nicht anders angegeben.
   features:
     - title: In der Schweiz lackiert und montiert.

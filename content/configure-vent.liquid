@@ -142,7 +142,7 @@ hideSignup: true
       </div>
     </div>
 
-    {% include "partials/order-summary.liquid", productName: v.name, image: "/assets/img/web/road-toni-studio-1000.jpg", terms: c.summary_vent %}
+    {% include "partials/order-summary.liquid", productName: v.name, image: "/assets/img/web/vent-studio-blue-1000.jpg", terms: c.summary_vent %}
   </form>
 
   {% include "partials/order-done.liquid" %}
@@ -154,6 +154,6 @@ hideSignup: true
 </div>
 
 <script id="order-config" type="application/json">{{ configurator | json }}</script>
-<script id="order-images" type="application/json">{ {% for f in finishes %}{% if f.name == "Slate Blue" %}"{{ f.name }}": "/assets/img/web/road-toni-studio-1000.jpg",{% elsif f.image %}"{{ f.name }}": "{{ f.image }}",{% endif %}{% endfor %} "_": "" }</script>
+<script id="order-images" type="application/json">{ {% for f in finishes %}{% if f.bikeImage %}"{{ f.name }}": "{{ f.bikeImage }}",{% endif %}{% endfor %} "_": "" }</script>
 <script type="module" src="/scripts/configure.js"></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>

@@ -760,3 +760,4 @@ html:has(.subbar) { scroll-padding-top: calc(var(--header-h) + 52px + 16px); }
 .blur { display: inline-block; filter: blur(7px); user-select: none; }
 @media (max-width: 900px) { .sketch-stage figcaption { grid-template-columns: 1fr; } .sketch-specs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .page-head .orma-logo { height: 22px; }
+#made .frame { margin-top: var(--s-5); }
