@@ -6,7 +6,7 @@
   <dl class="summary__lines" data-summary-lines></dl>
   <div class="summary__total"><span>{{ t.config.total }}</span><strong data-summary-total>–</strong></div>
   <p class="summary__pay" data-summary-pay></p>
-  <p class="summary__terms">{{ terms }} {{ t.config.vat }}</p>
+  <p class="summary__terms">{{ terms }} {{ t.config.vat | fill: "rate", configurator.vatRate }}</p>
   <details class="summary__spec">
     <summary>{{ t.config.full_spec }}</summary>
     <dl data-summary-list></dl>

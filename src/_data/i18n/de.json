@@ -189,7 +189,7 @@
     "terms_momentum": "Mir ist klar, dass die Bestellung verbindlich ist.",
     "summary_vent": "Verbindliche Bestellung. Lieferung ab März 2027.",
     "summary_momentum": "Verbindliche Bestellung. Lieferung ab März 2027.",
-    "vat": "Preise inkl. Schweizer MWST.",
+    "vat": "Preise inkl. {rate}% MWST.",
     "total": "Total",
     "full_spec": "Alle Details",
     "fit": {
@@ -238,7 +238,8 @@
       "accept": "Ich akzeptiere die {terms} und die {privacy}.",
       "terms_link": "Bestellbedingungen",
       "privacy_link": "Datenschutzerklärung",
-      "newsletter": "Schickt mir ab und zu Neuigkeiten von SENDA. Abmelden jederzeit."
+      "newsletter": "Schickt mir ab und zu Neuigkeiten von SENDA. Abmelden jederzeit.",
+      "phone_placeholder": "+41 79 123 45 67"
     },
     "done": {
       "title": "Danke. Deine Bestellung ist eingegangen.",

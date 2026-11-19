@@ -6,7 +6,7 @@
     <label>{{ dd.first }}<input class="field" name="firstName" autocomplete="given-name" required maxlength="80"></label>
     <label>{{ dd.last }}<input class="field" name="lastName" autocomplete="family-name" required maxlength="80"></label>
     <label>{{ dd.email }}<input class="field" name="email" type="email" autocomplete="email" required maxlength="160"></label>
-    <label>{{ dd.phone }}<input class="field" name="phone" type="tel" autocomplete="tel" required maxlength="40"></label>
+    <label>{{ dd.phone }}<input class="field" name="phone" type="tel" autocomplete="tel" required maxlength="40" placeholder="{{ dd.phone_placeholder }}"></label>
     <label class="order-fields__wide">{{ dd.street }}<input class="field" name="street" autocomplete="street-address" required maxlength="120"></label>
     <label>{{ dd.zip }}<input class="field" name="zip" inputmode="numeric" autocomplete="postal-code" required pattern="[0-9]{4}" maxlength="4"></label>
     <label>{{ dd.city }}<input class="field" name="city" autocomplete="address-level2" required maxlength="80"></label>

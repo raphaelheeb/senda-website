@@ -189,7 +189,7 @@
     "terms_momentum": "I understand that this order is binding.",
     "summary_vent": "Binding order. Delivery from March 2027.",
     "summary_momentum": "Binding order. Delivery from March 2027.",
-    "vat": "Prices incl. Swiss VAT.",
+    "vat": "Prices incl. {rate}% Swiss VAT.",
     "total": "Total",
     "full_spec": "Full specification",
     "fit": {
@@ -238,7 +238,8 @@
       "accept": "I accept the {terms} and the {privacy}.",
       "terms_link": "order terms",
       "privacy_link": "privacy notice",
-      "newsletter": "Send me occasional news from SENDA. Unsubscribe at any time."
+      "newsletter": "Send me occasional news from SENDA. Unsubscribe at any time.",
+      "phone_placeholder": "+41 79 123 45 67"
     },
     "done": {
       "title": "Thank you. Your order is in.",

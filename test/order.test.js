@@ -172,3 +172,17 @@ test("unknown language falls back to English", async () => {
   const out = await (await post(e, body({ lang: "fr" }))).json();
   assert.equal(out.summary[0][0], "Frame size");
 });
+
+test("confirmation email: VAT rate, total with centimes, divider and bold totals", async () => {
+  const e = env(SECRETS);
+  const out = await (await post(e, body({ lang: "de" }))).json();
+  const o = await e.ORDERS.get(`order:${out.orderNumber}`, "json");
+  const m = customerMailContent(o, cfg);
+  assert.equal(m.totalLabel, "Total inkl. 8.1% MWST");
+  assert.match(m.total, /^CHF \d’\d{3}\.00$/);
+  assert.ok(m.pay[0].includes(".00"));
+  const sent = calls.find((c) => c.host === "api.mailersend.com" && JSON.parse(c.body).to[0].email === customer.email);
+  const html = JSON.parse(sent.body).html;
+  assert.match(html, /border-top:1px solid #151515;[^>]*>Total inkl\. 8\.1% MWST/);
+  assert.match(JSON.parse(sent.body).text, /-{20,}\nTotal inkl\. 8\.1% MWST: CHF/);
+});

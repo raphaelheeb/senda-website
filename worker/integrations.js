@@ -3,6 +3,9 @@
 // caller can retry it later. Secrets come from Cloudflare (env), never the repo.
 import { chf } from "../src/scripts/pricing.js";
 
+/** Amounts to be paid, with centimes: 4950 -> "CHF 4’950.00". */
+export const chf2 = (n) => `${chf(n)}.00`;
+
 const TIMEOUT = 10_000;
 
 async function call(url, init, what) {
@@ -29,7 +32,7 @@ const MAIL = {
     intro: "Thank you for your order. We have received it as follows.",
     number: "Order number",
     code: "Article code",
-    total: "Total incl. VAT",
+    total: "Total incl. {rate}% VAT",
     deposit: "Deposit ({percent}%): {deposit}. Within two working days we confirm your order with the invoice for the deposit.",
     balance: "Balance: {balance}, invoiced before delivery.",
     full: "Amount: {total}. Within two working days we confirm your order with the invoice.",
@@ -48,7 +51,7 @@ const MAIL = {
     intro: "Danke für Deine Bestellung. Wir haben sie wie folgt erhalten.",
     number: "Bestellnummer",
     code: "Artikelcode",
-    total: "Total inkl. MWST",
+    total: "Total inkl. {rate}% MWST",
     deposit: "Anzahlung ({percent} %): {deposit}. Innert zwei Arbeitstagen bestätigen wir Deine Bestellung mit der Rechnung für die Anzahlung.",
     balance: "Restbetrag: {balance}, in Rechnung gestellt vor der Lieferung.",
     full: "Betrag: {total}. Innert zwei Arbeitstagen bestätigen wir Deine Bestellung mit der Rechnung.",
@@ -72,8 +75,8 @@ export function customerMailContent(order, cfg) {
   const c = order.customer;
   const name = order.product === "vent" ? cfg.vent.name : cfg.momentum.name;
   const pay = p.payment === "deposit"
-    ? [fill(w.deposit, { percent: p.depositPercent, deposit: chf(p.deposit) }), fill(w.balance, { balance: chf(p.balance) })]
-    : [fill(w.full, { total: chf(p.total) })];
+    ? [fill(w.deposit, { percent: p.depositPercent, deposit: chf2(p.deposit) }), fill(w.balance, { balance: chf2(p.balance) })]
+    : [fill(w.full, { total: chf2(p.total) })];
   return {
     lang,
     labels: w,
@@ -84,7 +87,8 @@ export function customerMailContent(order, cfg) {
     summary: p.summary,
     code: p.code,
     lines: p.lines.map(([k, v]) => [k, chf(v)]),
-    total: chf(p.total),
+    total: chf2(p.total),
+    totalLabel: fill(w.total, { rate: cfg.vatRate ?? 8.1 }),
     pay,
     delivery: fill(w.delivery, { date: monthYear(p.delivery, lang) }),
     address: [`${c.firstName} ${c.lastName}`, c.street, `${c.zip} ${c.city}`, w.country],
@@ -101,7 +105,8 @@ function renderText(m) {
     `${w.number}: ${m.number}`, "",
     ...m.summary.map(([k, v]) => `${k}: ${v}`), "",
     ...m.lines.map(([k, v]) => `${k}: ${v}`),
-    `${w.total}: ${m.total}`, "",
+    "----------------------------------------",
+    `${m.totalLabel}: ${m.total}`, "",
     ...m.pay, m.delivery, "",
     `${w.address}:`, ...m.address, "",
     m.refund, `${w.terms}: ${m.terms}`, "",
@@ -111,7 +116,11 @@ function renderText(m) {
 
 function renderHtml(m) {
   const w = m.labels;
-  const row = ([k, v], strong) => `<tr><td style="padding:6px 16px 6px 0;color:#666;vertical-align:top">${esc(k)}</td><td style="padding:6px 0;text-align:right;${strong ? "font-weight:600;color:#151515" : ""}">${esc(v)}</td></tr>`;
+  const row = ([k, v], strong, rule) => {
+    const line = rule ? "border-top:1px solid #151515;" : "";
+    const weight = strong ? "font-weight:600;color:#151515;" : "";
+    return `<tr><td style="padding:8px 16px 6px 0;vertical-align:top;${line}${strong ? weight : "color:#666;"}">${esc(k)}</td><td style="padding:8px 0 6px;text-align:right;white-space:nowrap;${line}${weight}">${esc(v)}</td></tr>`;
+  };
   const table = (rows) => `<table role="presentation" style="width:100%;border-collapse:collapse;border-top:1px solid #d2d2d2;margin:16px 0">${rows}</table>`;
   return `<!doctype html><html lang="${m.lang}"><body style="margin:0;background:#fff">
 <div style="max-width:560px;margin:0 auto;padding:32px 20px;font:16px/1.55 -apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#444">
@@ -119,7 +128,7 @@ function renderHtml(m) {
 <p>${esc(m.greeting)},</p><p>${esc(m.intro)}</p>
 <p style="color:#151515">${esc(w.number)} <strong>${esc(m.number)}</strong></p>
 ${table(m.summary.map((r) => row(r)).join(""))}
-${table(m.lines.map((r) => row(r)).join("") + row([w.total, m.total], true))}
+${table(m.lines.map((r, i) => row(r, i === 0)).join("") + row([m.totalLabel, m.total], true, true))}
 ${m.pay.map((t) => `<p>${esc(t)}</p>`).join("")}<p>${esc(m.delivery)}</p>
 <p style="color:#666">${esc(w.address)}<br>${m.address.map(esc).join("<br>")}</p>
 <p>${esc(m.refund)} <a href="${m.terms}" style="color:#151515">${esc(w.terms)}</a></p>
@@ -164,8 +173,8 @@ export function internalMailText(order) {
     `New order ${order.number}, received ${order.receivedAt}`, "",
     `${c.firstName} ${c.lastName}`, c.email, c.phone, c.street, `${c.zip} ${c.city}`, "",
     ...p.summary.map(([k, v]) => `${k}: ${v}`), `Article code: ${p.code}`, "",
-    ...p.lines.map(([k, v]) => `${k}: ${chf(v)}`), `Total: ${chf(p.total)}`,
-    p.payment === "deposit" ? `Deposit to invoice: ${chf(p.deposit)} / balance ${chf(p.balance)}` : `Invoice in full: ${chf(p.total)}`, "",
+    ...p.lines.map(([k, v]) => `${k}: ${chf(v)}`), `Total incl. VAT: ${chf2(p.total)}`,
+    p.payment === "deposit" ? `Deposit to invoice: ${chf2(p.deposit)} / balance ${chf2(p.balance)}` : `Invoice in full: ${chf2(p.total)}`, "",
     `Measurements: ${fitText(order.fit) || "not given"}`,
     `Newsletter: ${c.newsletter ? "yes" : "no"}`,
     `Message: ${c.message || "none"}`, "",

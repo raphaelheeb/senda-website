@@ -1,7 +1,7 @@
 {
   "_comment": "Single source of truth for the SENDA Vent configurator and ORMA Momentum orders. Prices in CHF incl. Swiss VAT. The order endpoint (worker/) recalculates every price from this file; values sent by the browser are never trusted. Dates are inclusive, Europe/Zurich.",
   "currency": "CHF",
-  "vatNote": "Prices incl. Swiss VAT.",
+  "vatNote": "Prices incl. 8.1% Swiss VAT.",
   "shipping": {
     "price": 50,
     "label": "Shipping within Switzerland",
@@ -343,5 +343,6 @@
         "label": "SRAM XDR"
       }
     ]
-  }
+  },
+  "vatRate": 8.1
 }

@@ -193,7 +193,7 @@ layout: layouts/base.liquid
       <div class="tile tile--text"><p class="tile__name">{{ g.label }}</p><p class="tile__note">CHF {{ g.price | chf }}</p></div>
       {% endfor %}
     </div>
-    <p class="block__text mt-4">{{ t.product.builds_text }} {{ t.config.vat }}</p>
+    <p class="block__text mt-4">{{ t.product.builds_text }} {{ t.config.vat | fill: "rate", configurator.vatRate }}</p>
     <a class="linkline block-link" href="{{ configureHref }}">{{ t.buy.configure }}</a>
   </div>
 </section>
