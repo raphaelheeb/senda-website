@@ -132,8 +132,8 @@
     "components": false,
     "clothing": false
   },
-  "turnstileSiteKey": "1x00000000000000000000AA",
-  "_turnstileNote": "Test key (always passes) until the real Turnstile widget for sendabikes.com is created; then replace it here and set TURNSTILE_SECRET in Cloudflare.",
+  "turnstileSiteKey": "0x4AAAAAAGIZt-a6-9-lOvmz",
+  "_turnstileNote": "Public site key of the Turnstile widget \"senda-website\" (sendabikes.com, www, workers.dev). The secret is TURNSTILE_SECRET in Cloudflare, never here.",
   "orderApi": "/api/order",
   "langs": [
     "en",
