@@ -2,7 +2,7 @@
 import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
 import worker from "../worker/index.js";
-import { processOrder, retryPending } from "../worker/order.js";
+import { processOrder, retryPending, validateCustomer } from "../worker/order.js";
 import { sheetRow, SHEET_COLUMNS, customerMailContent, internalMailText } from "../worker/integrations.js";
 import cfg from "../src/_data/configurator.json" with { type: "json" };
 import { ventDefaults } from "../src/scripts/pricing.js";
@@ -185,4 +185,10 @@ test("confirmation email: VAT rate, total with centimes, divider and bold totals
   const html = JSON.parse(sent.body).html;
   assert.match(html, /border-top:1px solid #151515;[^>]*>Total inkl\. 8\.1% MWST/);
   assert.match(JSON.parse(sent.body).text, /-{20,}\nTotal inkl\. 8\.1% MWST: CHF/);
+});
+
+test("a foreign postcode gets the Switzerland-only message", () => {
+  const c = { firstName: "M", lastName: "G", email: "m@example.com", phone: "+44 20 7946 0000", street: "1 High St", zip: "SW1A 1AA", city: "London" };
+  try { validateCustomer(c); assert.fail("should throw"); }
+  catch (e) { assert.match(e.message, /within Switzerland only/); assert.deepEqual(e.fields, ["zip"]); }
 });

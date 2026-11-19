@@ -8,7 +8,7 @@
     <label>{{ dd.email }}<input class="field" name="email" type="email" autocomplete="email" required maxlength="160"></label>
     <label>{{ dd.phone }}<input class="field" name="phone" type="tel" autocomplete="tel" required maxlength="40" placeholder="{{ dd.phone_placeholder }}"></label>
     <label class="order-fields__wide">{{ dd.street }}<input class="field" name="street" autocomplete="street-address" required maxlength="120"></label>
-    <label>{{ dd.zip }}<input class="field" name="zip" inputmode="numeric" autocomplete="postal-code" required pattern="[0-9]{4}" maxlength="4"></label>
+    <label>{{ dd.zip }}<input class="field" name="zip" inputmode="numeric" autocomplete="postal-code" required pattern="[1-9][0-9]{3}" maxlength="10"></label>
     <label>{{ dd.city }}<input class="field" name="city" autocomplete="address-level2" required maxlength="80"></label>
     <label class="order-fields__wide">{{ dd.country }}<input class="field" value="{{ dd.country_value }}" disabled></label>
     <label class="order-fields__wide">{{ dd.message }}<textarea class="field field--area" name="message" rows="3" maxlength="1000" placeholder="{{ dd.message_placeholder }}"></textarea></label>

@@ -26,6 +26,7 @@ const CUSTOMER_FIELDS = {
 const DE = {
   "Please fill in your details.": "Bitte fülle Deine Angaben aus.",
   "Please check the marked fields.": "Bitte prüfe die markierten Felder.",
+  "For now we deliver within Switzerland only. Please enter a Swiss postcode with four digits.": "Wir liefern vorerst nur innerhalb der Schweiz. Bitte gib eine Schweizer PLZ mit vier Ziffern ein.",
   "Orders are briefly unavailable.": "Bestellungen sind kurz nicht möglich.",
   "The spam check did not complete.": "Die Spam-Prüfung wurde nicht abgeschlossen.",
   "The spam check is briefly unavailable.": "Die Spam-Prüfung ist kurz nicht verfügbar.",
@@ -66,6 +67,7 @@ export function validateCustomer(c) {
     out[k] = v;
   }
   if (c.country && c.country !== "CH") bad.push("country");
+  if (bad.includes("zip") && out.zip) throw new OrderError(400, "For now we deliver within Switzerland only. Please enter a Swiss postcode with four digits.", bad);
   if (bad.length) throw new OrderError(400, "Please check the marked fields.", bad);
   out.country = "CH";
   out.newsletter = c.newsletter === true;

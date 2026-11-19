@@ -162,6 +162,15 @@ function init(form) {
   apply();
   render();
   form.addEventListener("submit", (e) => submit(e, form, product, () => sel, cfg, lang));
+  // A non-Swiss postcode gets the delivery note as soon as the field is left.
+  const zip = form.querySelector("[name=zip]");
+  const msg = form.querySelector(".order-msg");
+  zip?.addEventListener("blur", () => {
+    const foreign = zip.value.trim() !== "" && !zip.checkValidity();
+    if (foreign) zip.setAttribute("aria-invalid", "true"); else zip.removeAttribute("aria-invalid");
+    if (foreign) msg.textContent = tr("swiss_only", { email: cfg.orderEmail });
+    else if (msg.textContent === tr("swiss_only", { email: cfg.orderEmail })) msg.textContent = "";
+  });
 }
 
 // One id per filled-in form: a double click or a retry sends the same id,
@@ -182,7 +191,9 @@ async function submit(e, form, product, getSel, cfg, lang) {
   const missing = [...form.querySelectorAll("#details [required]")].filter((el) => el.type !== "checkbox" && !el.checkValidity());
   form.querySelectorAll("[aria-invalid]").forEach((el) => el.removeAttribute("aria-invalid"));
   if (missing.length || !terms) {
-    msg.textContent = missing.length ? tr("fill") : tr("accept_terms");
+    const zip = form.querySelector("[name=zip]");
+    const foreign = missing.includes(zip) && zip.value.trim() !== "";
+    msg.textContent = foreign ? tr("swiss_only", { email: cfg.orderEmail }) : missing.length ? tr("fill") : tr("accept_terms");
     missing.forEach((el) => el.setAttribute("aria-invalid", "true"));
     (missing[0] || form.querySelector("[name=terms]")).focus();
     return;
