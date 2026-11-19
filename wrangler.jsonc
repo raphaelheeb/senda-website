@@ -23,7 +23,9 @@
   "vars": {
     "ORDER_INBOX": "info@sendabikes.com",
     "MAIL_FROM": "info@sendabikes.com",
-    "SHEET_TAB": "Orders"
+    "SHEET_TAB": "Orders",
+    // MailerLite group "Follow the Build" (not secret; the token ML_TOKEN is)
+    "ML_GROUP": "189107312349152629"
   },
   "keep_vars": true,
   "observability": { "enabled": true }
