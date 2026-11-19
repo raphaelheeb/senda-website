@@ -44,7 +44,7 @@ This repo is the brand site; it becomes a Shopify shop later (theme in a separat
 - Sections: headline, then at most one sentence. Space separates sections, not rules or labels.
 - One solid button per screen for the commercial action; all other links are underlined mono links with ↗.
 - Status: ○ announced, ◐ pre-order, ● available.
-- Finishes: Slate Blue (glossy), Champagne Silver (pearl), Dusky Rose (glossy), Graphite (glossy).
+- Finishes: Slate Blue (glossy), Champagne Silver (pearl), Dusky Rose (glossy), Black (glossy).
 - Micha (co-founder) owns colours, fonts, image ratios, spacing and paragraph styles. Change tokens only on his input.
 
 ## Launch scope
