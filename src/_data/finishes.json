@@ -4,7 +4,7 @@
     "surface": "Glossy",
     "hex": "#7e9aab",
     "image": "/assets/img/web/finish-slate-blue-1000.jpg",
-    "bikeImage": "/assets/img/web/vent-studio-blue-1000.jpg"
+    "bikeImage": "/assets/img/web/vent-studio-set-blue-1000.jpg"
   },
   {
     "name": "Champagne Silver",
@@ -17,12 +17,14 @@
     "name": "Dusky Rose",
     "surface": "Glossy",
     "hex": "#c4a099",
-    "image": "/assets/img/web/finish-dusky-rose-1000.jpg"
+    "image": "/assets/img/web/finish-dusky-rose-1000.jpg",
+    "bikeImage": "/assets/img/web/vent-studio-rose-1000.jpg"
   },
   {
     "name": "Black",
     "surface": "Glossy",
     "hex": "#1d1d1f",
-    "image": "/assets/img/web/finish-black-1000.jpg"
+    "image": "/assets/img/web/finish-black-1000.jpg",
+    "bikeImage": "/assets/img/web/vent-studio-black-1000.jpg"
   }
 ]

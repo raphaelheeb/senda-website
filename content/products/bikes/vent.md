@@ -56,6 +56,8 @@ image2: /assets/img/web/frame-detail-slate-blue-1000.jpg
 image3: /assets/img/web/frame-detail-champagne-1000.jpg
 storyImage: /assets/img/web/finish-slate-blue-1000.jpg
 storyAlt: Head tube and fork of the SENDA Vent in Slate Blue with the copper S
+momentImage: /assets/img/web/rider-rose-alps-2000.jpg
+momentAlt: A rider with her SENDA Vent in Dusky Rose at the roadside of an Alpine pass
 geometrySource: All values in mm unless stated.
 geometryImage: /assets/img/web/geometry-drawing-2000.jpg
 override:sizes: ["XS", "S", "M", "L", "XL", "XXL"]
@@ -86,6 +88,7 @@ de:
     - ["4", "Farben, ein Rahmen"]
   storyTitle: Carbon-Lagenaufbau, ausbalanciert zwischen Steifigkeit und Komfort.
   storyAlt: Steuerrohr und Gabel des SENDA Vent in Slate Blue mit dem kupferfarbenen S
+  momentAlt: Eine Fahrerin mit ihrem SENDA Vent in Dusky Rose am Strassenrand eines Alpenpasses
   tileNote: Jetzt bestellen, Lieferung Anfang März 2027
   tileAlt: SENDA Vent in Slate Blue vor grauem Studiohintergrund
   geometrySource: Alle Werte in mm, sofern nicht anders angegeben.

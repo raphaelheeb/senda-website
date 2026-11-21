@@ -144,6 +144,13 @@ layout: layouts/base.liquid
     </div>
   </div>
 </section>
+{% if momentImage %}
+<section class="section moment">
+  <div class="wrap">
+    {% include "partials/frame.liquid", img: momentImage, ratio: "hero", alt: L.momentAlt | default: momentAlt %}
+  </div>
+</section>
+{% endif %}
 
 {% if features_ %}
 <section class="section" id="details">
