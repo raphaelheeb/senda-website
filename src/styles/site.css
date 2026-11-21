@@ -775,3 +775,32 @@ html:has(.subbar) { scroll-padding-top: calc(var(--header-h) + 52px + 16px); }
 .done-sign { margin-top: var(--s-4); font-size: var(--t-lead); color: var(--ink); line-height: 1.4; }
 .done-sign__brand { font: 400 var(--t-label)/1.6 var(--mono); letter-spacing: var(--track-label); color: var(--grey); }
 @media (max-width: 640px) { .done-steps li { grid-template-columns: 1fr; gap: 4px; } }
+
+
+/* ---------- Review 2026-11-21 ---------- */
+/* Newsletter band on a light grey ground, as a quiet end to every page */
+.section--tint { background: var(--tint); margin-top: var(--section); padding-top: var(--section); padding-bottom: var(--section); }
+.section--tint + .site-footer, .section--tint + footer { margin-top: 0; }
+/* Product images without their own background sit on the same grey */
+.frame--contain, .feature .frame--contain { background: var(--tint); }
+.frame--contain img { mix-blend-mode: multiply; }
+/* Key figures as a vertical list: value and label on one line each */
+.dims { grid-template-columns: 1fr; gap: 0; }
+.dim { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: baseline; gap: var(--gutter); padding: 16px 0; border-top: 1px solid var(--line); }
+.dim:last-child { border-bottom: 1px solid var(--line); }
+.dim::before, .dim::after { display: none; }
+.dim__value { font-size: var(--t-h3); white-space: nowrap; }
+.dim__label { margin-top: 0; }
+.section--tight .dims { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(32px, 5vw, 96px); }
+.section--tight .dim:nth-last-child(2):nth-child(odd) { border-bottom: 1px solid var(--line); }
+@media (max-width: 760px) { .section--tight .dims { grid-template-columns: 1fr; } }
+/* ORMA key features on the homepage */
+.keylist { list-style: none; margin: var(--s-3) 0 var(--s-4); padding: 0; border-top: 1px solid var(--line); }
+.keylist li { padding: 10px 0; border-bottom: 1px solid var(--line); font-size: var(--t-body); color: var(--ink-mid, #444); }
+/* Opening: statement top left, order bottom right, so the text stays off the road markings */
+@media (min-width: 761px) {
+  .opening__copy { top: clamp(28px, 4.5vw, 72px); align-items: stretch; }
+  .opening__copy .display { align-self: flex-start; }
+  .opening__order { align-self: flex-end; }
+  .opening::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 40%; z-index: 0; background: linear-gradient(180deg, rgba(10, 10, 10, 0.32), rgba(10, 10, 10, 0)); pointer-events: none; }
+}

@@ -19,7 +19,7 @@ async function subscribe(request, env) {
   const body = await request.json().catch(() => ({}));
   const email = typeof body.email === "string" ? body.email.trim() : "";
   if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email) || email.length > 160) return json({ ok: false, message: "Please check the email address." }, 400);
-  await mailerliteSubscribe(env, email, body.list === "orma" ? "orma" : "senda");
+  await mailerliteSubscribe(env, email, ["orma", "gravel"].includes(body.list) ? body.list : "senda");
   return json({ ok: true });
 }
 

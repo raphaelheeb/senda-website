@@ -14,12 +14,12 @@ test("offer end is inclusive and uses Zurich time", () => {
   assert.equal(offerActive("2026-12-31", after), false);
 });
 
-test("Vent Ultegra early bird: 6300 - 500 + 50 shipping, 20% deposit on the bike", () => {
+test("Vent Ultegra early bird: 6300 - 500 + 50 shipping, 30% deposit on the bike", () => {
   const r = priceVent(cfg, ventDefaults(cfg.vent, "M"), during);
   assert.equal(r.ok, true);
   assert.equal(r.total, 5850);
-  assert.equal(r.deposit, 1160);
-  assert.equal(r.balance, 4690);
+  assert.equal(r.deposit, 1740);
+  assert.equal(r.balance, 4110);
 });
 
 test("Vent prices per groupset, with and without early bird", () => {

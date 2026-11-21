@@ -5,5 +5,5 @@
 <a class="tile" href="{{ p.url }}">
   {% include "partials/frame.liquid", img: thumb, ratio: cr, contain: p.data.imageContain, pos: cpos, alt: pd.alt | default: p.data.alt, label: p.data.imageLabel %}
   <span class="tile__name">{{ p.data.title }}</span>
-  <span class="tile__note">{% case p.data.status %}{% when "announced" %}{{ t.status.announced }}, {{ pd.delivery | default: p.data.delivery }}{% when "preorder" %}{{ t.status.preorder }}, {{ pd.price | default: p.data.price }}{% else %}{{ pd.price | default: p.data.price }}{% endcase %}</span>
+  <span class="tile__note">{% case p.data.status %}{% when "announced" %}{{ pd.tileNote | default: p.data.tileNote }}{% when "preorder" %}{% assign cprice = pd.price | default: p.data.price %}{{ t.card.order_now | fill: "price", cprice }}{% else %}{{ pd.price | default: p.data.price }}{% endcase %}</span>
 </a>

@@ -36,7 +36,7 @@ const MAIL = {
     deposit: "Deposit ({percent}%): {deposit}. Within two working days we confirm your order with the invoice for the deposit.",
     balance: "Balance: {balance}, invoiced before delivery.",
     full: "Amount: {total}. Within two working days we confirm your order with the invoice.",
-    delivery: "Planned delivery: {date}.",
+    delivery: "Planned delivery: early {date}.",
     address: "Delivery address",
     country: "Switzerland",
     refundDeposit: "Your order is binding under our order terms. If SENDA cannot deliver, or delivers substantially later than planned, you receive your deposit back in full.",
@@ -56,7 +56,7 @@ const MAIL = {
     deposit: "Anzahlung ({percent} %): {deposit}. Innert zwei Arbeitstagen bestätigen wir Deine Bestellung mit der Rechnung für die Anzahlung.",
     balance: "Restbetrag: {balance}, in Rechnung gestellt vor der Lieferung.",
     full: "Betrag: {total}. Innert zwei Arbeitstagen bestätigen wir Deine Bestellung mit der Rechnung.",
-    delivery: "Geplante Lieferung: {date}.",
+    delivery: "Geplante Lieferung: Anfang {date}.",
     address: "Lieferadresse",
     country: "Schweiz",
     refundDeposit: "Deine Bestellung ist gemäss unseren Bestellbedingungen verbindlich. Kann SENDA nicht liefern oder liefert deutlich später als geplant, erhältst Du Deine Anzahlung vollständig zurück.",
@@ -258,7 +258,8 @@ export async function appendSheetRow(env, order) {
 // ---------- MailerLite ----------
 
 export async function mailerliteSubscribe(env, email, list) {
-  const group = list === "orma" ? (env.ML_GROUP_ORMA || env.ML_GROUP) : env.ML_GROUP;
+  // Separate groups when configured (ML_GROUP_ORMA, ML_GROUP_GRAVEL); otherwise the main list.
+  const group = { orma: env.ML_GROUP_ORMA, gravel: env.ML_GROUP_GRAVEL }[list] || env.ML_GROUP;
   await call("https://connect.mailerlite.com/api/subscribers", {
     method: "POST",
     headers: { "content-type": "application/json", accept: "application/json", authorization: `Bearer ${env.ML_TOKEN}` },

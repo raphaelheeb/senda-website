@@ -27,7 +27,6 @@
 <body>
   <a class="visually-hidden" href="#main">{{ t.a11y.skip }}</a>
   {% if published == false %}<div class="draft-banner">Preview only: this page is not part of the launch scope</div>{% endif %}
-  {% unless page.url contains "/configure/" %}{% include "partials/offer-strip.liquid" %}{% endunless %}
   {% include "partials/header.liquid" %}
   <main id="main"{% if status %} data-product data-state="{{ status }}"{% endif %}>
     {{ content }}

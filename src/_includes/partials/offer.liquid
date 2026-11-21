@@ -6,7 +6,8 @@
 {%- endif -%}
 <div class="offer{% if class %} {{ class }}{% endif %}" data-offer-until="{{ o.earlyBird.until }}">
   <p class="offer__price">{{ from }}CHF {{ now | chf }} <s>CHF {{ full | chf }}</s></p>
-  <p class="offer__note">{{ label }} {{ t.offer.until }} {{ o.earlyBird.until | long_date: lang }}</p>
+  {%- assign until_ = o.earlyBird.until | long_date: lang -%}
+  <p class="offer__note">{% if key == "vent" %}{{ t.offer.early_note | fill: "discount", o.earlyBird.discount, "date", until_ }}{% else %}{{ label }} {{ t.offer.until }} {{ until_ }}{% endif %}</p>
 </div>
 <div class="offer{% if class %} {{ class }}{% endif %}" data-offer-after="{{ o.earlyBird.until }}" hidden>
   <p class="offer__price">{{ from }}CHF {{ full | chf }}</p>

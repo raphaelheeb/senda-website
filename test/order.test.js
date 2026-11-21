@@ -162,7 +162,7 @@ test("German order: German summary, email and error messages", async () => {
   const m = customerMailContent(o, cfg);
   assert.match(m.subject, /^Deine Bestellung SENDA Vent SV-/);
   assert.match(m.delivery, /März 2027/);
-  assert.ok(m.lines.some(([k]) => k === "Frühbestellpreis"));
+  assert.ok(m.lines.some(([k]) => k === "Frühbestellrabatt"));
   const bad = await post(e, body({ lang: "de", terms: false }));
   assert.equal((await bad.json()).message, "Bitte akzeptiere die Bestellbedingungen.");
 });

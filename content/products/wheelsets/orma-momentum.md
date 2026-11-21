@@ -4,7 +4,7 @@ order: 1
 status: preorder
 price: CHF 1’050
 priceNote: Incl. VAT
-delivery: from March 2027
+delivery: early March 2027
 summary: A lightweight all-round road wheelset in 45 or 50 mm, front and rear chosen separately. Low rotating weight and the confidence to keep going when the road gets less predictable.
 imageContain: true
 alt: ORMA Momentum carbon wheelset, front and rear
@@ -50,7 +50,7 @@ orderKey: momentum
 de:
   price: CHF 1’050
   priceNote: Inkl. MWST
-  delivery: ab März 2027
+  delivery: Anfang März 2027
   summary: Ein leichter Allround-Laufradsatz für die Strasse, 45 oder 50 mm hoch, vorne und hinten frei wählbar. Wenig rotierende Masse und die Ruhe, weiterzufahren, wenn die Strasse unberechenbarer wird.
   alt: ORMA Momentum Carbon-Laufradsatz, vorne und hinten
   dims:

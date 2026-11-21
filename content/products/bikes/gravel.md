@@ -4,13 +4,15 @@ kind: gravel bike
 platform: gravel
 order: 2
 status: announced
+list: gravel
+imageContain: true
 price: From CHF 5’800
 priceNote: Indicative
-delivery: after SENDA Vent, in 2027
+delivery: mid-2027
 summary: Aero tube shapes and the precision of the Vent, with room for wide tyres and a calmer front end.
 dims:
   - ["4", "Finishes, one frame"]
-  - ["2027", "First deliveries"]
+  - ["Mid-2027", "Planned market launch"]
   - ["CH", "Painted and assembled in Switzerland"]
 storyTitle: Longer, lower, calmer.
 storyImage: /assets/img/web/frame-sketch-1000.jpg
@@ -36,25 +38,25 @@ sketchHidden:
   - ["Wheelbase", "0000"]
   - ["Tyre clearance", "00"]
 teaser: For the roads that fade into tracks, and routes that become the point of the ride.
-tileNote: In development, 2027
-tileImage: /assets/img/web/gravel-sketch-tile.svg
-tileAlt: Line drawing of the SENDA Gravel frame
-cardImage: /assets/img/web/gravel-sketch-tile.svg
+tileNote: In development, mid-2027
+tileImage: /assets/img/web/gravel-frame-sketch-1000.jpg
+tileAlt: Pencil sketch of the SENDA Gravel frame
+cardImage: /assets/img/web/gravel-frame-sketch-1000.jpg
 image2: /assets/img/web/larch-pass-1000.jpg
 de:
   price: Ab CHF 5’800
   priceNote: Richtpreis
-  delivery: nach dem SENDA Vent, 2027
+  delivery: Mitte 2027
   summary: Aero-Rohrformen und die Präzision des Vent, mit Platz für breite Reifen und einer ruhigeren Front.
   alt: Ein Gravel-Fahrer auf einem Waldweg im Herbst
   dims:
     - ["4", "Farben, ein Rahmen"]
-    - ["2027", "Erste Auslieferungen"]
+    - ["Mitte 2027", "Geplante Markteinführung"]
     - ["CH", "In der Schweiz lackiert und montiert"]
   storyTitle: Länger, tiefer, ruhiger.
   storyAlt: Bleistiftstudie des SENDA Rahmens
-  tileNote: In Entwicklung, 2027
-  tileAlt: Linienzeichnung des SENDA Gravel Rahmens
+  tileNote: In Entwicklung, Mitte 2027
+  tileAlt: Bleistiftskizze des SENDA Gravel Rahmens
   sketchNote: Längere Kettenstreben, ein tieferes Tretlager und ein flacherer Lenkwinkel als beim SENDA Vent. Der Rest folgt, wenn der Rahmen final ist.
   sketchHidden:
     - ["Reach", "000"]

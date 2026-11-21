@@ -7,16 +7,16 @@ order: 1
 status: preorder
 price: From CHF 5’400
 priceNote: Incl. VAT
-deposit: 20%
-delivery: from March 2027
+deposit: 30%
+delivery: early March 2027
 configureUrl: /bikes/vent/configure/
 orderKey: vent
-summary: A carbon race bike in six sizes, with a one-piece carbon cockpit and ORMA wheels, set up to your position.
+summary: Our all-round race bike with aero-optimized geometry. A 780 g carbon frame (size 54), a fully integrated carbon cockpit, stiff ORMA carbon wheels at 1’207 g and room for 33 mm tyres. Customized to your position.
 dims:
   - ["< 7 kg", "Target weight, top build"]
-  - ["45 / 50 mm", "ORMA Momentum rim depth, your choice"]
+  - ["45/50 mm", "ORMA Momentum rim depth, your choice"]
   - ["4", "Finishes, one frame"]
-storyTitle: Carbon tuned section by section.
+storyTitle: Engineered carbon layup to balance stiffness and compliance.
 kits:
   - name: Build one
     price: From CHF 5’800 (indicative)
@@ -31,7 +31,7 @@ image: /assets/img/web/vent-master-side-2000.jpg
 imagePosition: center 62%
 alt: SENDA Vent in Slate Blue with ORMA Momentum wheels, in front of a concrete wall
 teaser: Direct, light and composed. Built for the pace of a long climb and the precision of the descent.
-tileNote: Order now, delivery March 2027
+tileNote: Order now, delivery early March 2027
 cardImage: /assets/img/web/vent-studio-blue-1000.jpg
 tileImage: /assets/img/web/vent-studio-blue-1000.jpg
 tileAlt: SENDA Vent in Slate Blue on a grey studio background
@@ -77,16 +77,16 @@ geometryRows:
 de:
   price: Ab CHF 5’400
   priceNote: Inkl. MWST
-  delivery: ab März 2027
-  summary: Ein Carbon-Rennrad in sechs Grössen, mit einteiligem Carbon-Cockpit und ORMA Laufrädern, auf Deine Position eingestellt.
+  delivery: Anfang März 2027
+  summary: Unser Allround-Rennrad mit aerooptimierter Geometrie. Ein 780 g leichter Carbonrahmen (Grösse 54), ein voll integriertes Carbon-Cockpit, steife ORMA Carbon-Laufräder mit 1’207 g und Platz für 33 mm Reifen. Auf Deine Position abgestimmt.
   alt: SENDA Vent in Slate Blue mit ORMA Momentum Laufrädern vor einer Sichtbetonwand
   dims:
     - ["< 7 kg", "Zielgewicht, Topausstattung"]
-    - ["45 / 50 mm", "Felgenhöhe ORMA Momentum, frei wählbar"]
+    - ["45/50 mm", "Felgenhöhe ORMA Momentum, frei wählbar"]
     - ["4", "Farben, ein Rahmen"]
-  storyTitle: Carbon, Abschnitt für Abschnitt abgestimmt.
+  storyTitle: Carbon-Lagenaufbau, ausbalanciert zwischen Steifigkeit und Komfort.
   storyAlt: Steuerrohr und Gabel des SENDA Vent in Slate Blue mit dem kupferfarbenen S
-  tileNote: Jetzt bestellen, Lieferung März 2027
+  tileNote: Jetzt bestellen, Lieferung Anfang März 2027
   tileAlt: SENDA Vent in Slate Blue vor grauem Studiohintergrund
   geometrySource: Alle Werte in mm, sofern nicht anders angegeben.
   features:
@@ -108,9 +108,5 @@ de:
       linkText: Zum Laufradsatz
   body: |
     Unterschiedliche Lagenaufbauten und Fasertypen in jedem Abschnitt: steif rund um Tretlager und Steuerrohr, wo die Kraft hineingeht, nachgiebig, wo Du sitzt, und leicht im Ganzen.
-
-    Jeder Prototyp fährt auf Schweizer Strassen, bevor wir ihn freigeben.
 ---
 Different layups and fibre types in each section: stiff around the bottom bracket and head tube where power goes in, compliant where you sit, light overall.
-
-Every prototype is ridden on Swiss roads before we sign it off.

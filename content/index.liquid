@@ -6,39 +6,49 @@ title: SENDA
 en:
   description: Swiss road and gravel bikes, made for the way out. ORMA wheels and components by SENDA.
   hero_alt: Two cyclists on a lakeside road in the Engadin in autumn
-  open: SENDA Vent is open for orders.
-  vent_text: Race geometry, a one-piece carbon cockpit and ORMA wheels, set up to your position.
+  vent_text: Our all-round race bike with aero-optimized geometry. A 780 g carbon frame (size 54), a fully integrated carbon cockpit, stiff ORMA carbon wheels at 1’207 g and room for 33 mm tyres. Customized to your position.
   vent_link: Discover SENDA Vent
   range: Road now. Gravel next.
   orma_title: 1’207 grams.
-  orma_text: ORMA Momentum, both wheels in 45 mm. Choose 45 or 50 mm front and rear; standard on every SENDA.
+  orma_text: ORMA Momentum, both wheels in 45 mm. Standard on every SENDA.
+  orma_keys:
+    - Aero-optimized carbon rims, 45 or 50 mm deep
+    - 24.8 mm internal width
+    - Hooked, tubeless-ready
+    - 20 / 20 carbon spokes, 3.8 mm
+    - 1’207 g in 45/45, incl. rim tape
   orma_link: See ORMA Momentum
   orma_alt: ORMA Momentum carbon wheelset
   clothing_title: Made for long days.
   clothing_link: See the clothing
   founders_alt: Two cyclists riding into a wide Alpine valley
-  founders_title: A materials scientist and an architect.
-  founders_text: We choose and audit the carbon, design every finish, and have each bike painted and assembled in Switzerland.
-  founders_link: How a SENDA is made
+  founders_title: When materials science meets architecture and design.
+  founders_text: We are passionate cyclists who love bikes made from high-performance materials, with a clean and calm design.
+  founders_link: How SENDA evolved
   journal: Journal
   journal_link: All posts
 de:
   description: Rennräder und Gravelbikes aus der Schweiz, gemacht für den Weg hinaus. ORMA Laufräder und Komponenten by SENDA.
   hero_alt: Zwei Velofahrende auf einer Seestrasse im Engadin im Herbst
-  open: Das SENDA Vent kann ab sofort bestellt werden.
-  vent_text: Renngeometrie, ein einteiliges Carbon-Cockpit und ORMA Laufräder, auf Deine Position eingestellt.
+  vent_text: Unser Allround-Rennrad mit aerooptimierter Geometrie. Ein 780 g leichter Carbonrahmen (Grösse 54), ein voll integriertes Carbon-Cockpit, steife ORMA Carbon-Laufräder mit 1’207 g und Platz für 33 mm Reifen. Auf Deine Position abgestimmt.
   vent_link: SENDA Vent entdecken
   range: Jetzt Strasse. Bald Gravel.
   orma_title: 1’207 Gramm.
-  orma_text: ORMA Momentum, beide Laufräder in 45 mm. Wähle 45 oder 50 mm vorne und hinten; Standard an jedem SENDA.
+  orma_text: ORMA Momentum, beide Laufräder in 45 mm. Standard an jedem SENDA.
+  orma_keys:
+    - Aerooptimierte Carbonfelgen, 45 oder 50 mm hoch
+    - 24.8 mm Innenbreite
+    - Hooked, tubeless-tauglich
+    - 20 / 20 Carbonspeichen, 3.8 mm
+    - 1’207 g in 45/45, inkl. Felgenband
   orma_link: Zu ORMA Momentum
   orma_alt: ORMA Momentum Carbon-Laufradsatz
   clothing_title: Gemacht für lange Tage.
   clothing_link: Zur Bekleidung
   founders_alt: Zwei Velofahrende auf dem Weg in ein weites Alpental
-  founders_title: Ein Materialwissenschaftler und ein Architekt.
-  founders_text: Wir wählen und prüfen das Carbon, gestalten jede Farbe und lassen jedes Bike in der Schweiz lackieren und montieren.
-  founders_link: So entsteht ein SENDA
+  founders_title: Wo Materialwissenschaft auf Architektur und Design trifft.
+  founders_text: Wir sind leidenschaftliche Velofahrer und lieben Bikes aus Hochleistungsmaterialien, mit klarem, ruhigem Design.
+  founders_link: Wie SENDA entstand
   journal: Journal
   journal_link: Alle Beiträge
 ---
@@ -57,16 +67,15 @@ de:
   <div class="wrap opening__copy">
     <h1 class="display">Quietly fast.</h1>
     <div class="opening__order">
-      <p class="opening__line">{{ C.open }}</p>
       {% include "partials/offer.liquid", key: "vent", class: "offer--light" %}
-      <a class="btn btn--light" href="{{ '/bikes/vent/configure/' | lurl: lang }}">{{ t.buy.configure }}</a>
+      <a class="btn btn--light" href="{{ '/bikes/vent/configure/' | lurl: lang }}">{{ t.buy.configure_vent }}</a>
     </div>
   </div>
 </section>
 
 <section class="section moment">
   <div class="wrap moment__copy">
-    <h2 class="h2">SENDA Vent.</h2>
+    <h2 class="h2">SENDA Vent</h2>
     <p class="block__text">{{ C.vent_text }}</p>
     <a class="linkline" href="{{ '/bikes/vent/' | lurl: lang }}">{{ C.vent_link }}</a>
   </div>
@@ -99,6 +108,7 @@ de:
       <p class="orma-mark"><span class="orma-mark__word">{% include "svg/orma-wordmark.svg" %}</span><span class="orma-mark__by">{{ t.product.orma_by }}</span></p>
       <h2 class="h2">{{ C.orma_title }}</h2>
       <p class="block__text">{{ C.orma_text }}</p>
+      <ul class="keylist">{% for k in C.orma_keys %}<li>{{ k }}</li>{% endfor %}</ul>
       <a class="linkline" href="{{ momentum.url }}">{{ C.orma_link }}</a>
     </div>
   </div>
@@ -126,7 +136,7 @@ de:
   <div class="wrap fullbleed__copy">
     <h2 class="h2">{{ C.founders_title }}</h2>
     <p class="block__text fullbleed__line">{{ C.founders_text }}</p>
-    <a class="linkline" href="{{ '/about/' | lurl: lang }}#made">{{ C.founders_link }}</a>
+    <a class="linkline" href="{{ '/about/' | lurl: lang }}">{{ C.founders_link }}</a>
   </div>
 </section>
 

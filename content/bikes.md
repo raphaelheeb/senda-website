@@ -7,10 +7,10 @@ category: bikes
 cols: 2
 cardRatio: square
 en:
-  title: Bikes
-  intro: Road and gravel, nothing else. SENDA Vent from March 2027, SENDA Gravel to follow.
+  title: Our bikes
+  intro: Road. Gravel.
 de:
-  title: Bikes
+  title: Unsere Bikes
   description: Rennrad und Gravelbike von SENDA.
-  intro: Strasse und Gravel, sonst nichts. SENDA Vent ab März 2027, das SENDA Gravel folgt.
+  intro: Strasse. Gravel.
 ---

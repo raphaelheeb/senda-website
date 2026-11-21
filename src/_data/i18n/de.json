@@ -51,10 +51,11 @@
     "configure": "Konfigurieren ↗",
     "from": "Ab ",
     "until": "bis",
-    "early": "Frühbestellpreis",
+    "early": "Frühbestellrabatt",
     "intro": "Einführungspreis",
-    "head_vent": "Frühbestellpreis bis {date}: CHF {discount} günstiger, in jeder Ausstattung.",
-    "head_momentum": "Einführungspreis bis {date}: CHF {discount} günstiger."
+    "head_vent": "Frühbestellrabatt bis {date}: CHF {discount} günstiger, in jeder Ausstattung.",
+    "head_momentum": "Einführungspreis bis {date}: CHF {discount} günstiger.",
+    "early_note": "Frühbestellrabatt von CHF {discount} bis {date}"
   },
   "signup": {
     "title": "Fahr mit.",
@@ -75,13 +76,14 @@
   "buy": {
     "expected": "Erwartet",
     "announced_note": "Erwartet {delivery}. Hinterlass Deine E-Mail-Adresse, und wir schreiben Dir zuerst, wenn die Vorbestellung öffnet.",
-    "vent_note": "20 % Anzahlung auf Rechnung. Lieferung {delivery}.",
+    "vent_note": "30 % Anzahlung auf Rechnung. Lieferung {delivery}.",
     "momentum_note": "Volle Rechnung nach Bestellung. Lieferung {delivery}.",
     "delivery_note": "Lieferung {delivery}.",
     "available_note": "An Lager. Versand ab Zürich in 2 bis 3 Arbeitstagen.",
-    "configure": "Jetzt konfigurieren",
+    "configure": "Gestalte Dein SENDA Vent",
     "order": "Bestellen",
-    "promise_draft": "Service-Versprechen: zu bestätigen"
+    "promise_draft": "Service-Versprechen: zu bestätigen",
+    "configure_vent": "Gestalte Dein SENDA Vent"
   },
   "product": {
     "overview": "Übersicht",
@@ -89,10 +91,10 @@
     "details": "Details",
     "specs": "Technische Daten",
     "faq": "FAQ",
-    "configure": "Konfigurieren",
+    "configure": "Gestalten",
     "notify": "Benachrichtige mich",
     "order": "Bestellen",
-    "colours_title": "Vier Farben, ein Rahmen.",
+    "colours_title": "Ein Rahmen. Vier Farben.",
     "frame_in": "SENDA Rahmen in {name}",
     "finish": "Farbe",
     "look_closer": "Im Detail.",
@@ -101,7 +103,7 @@
     "specced_gravel_title": "Mit ORMA, breiter für Gravel",
     "specced_gravel_text": "Ein breiterer ORMA Gravel-Laufradsatz ist in Entwicklung und wird Standard an jedem {title}.",
     "see_wheelset": "Zum Laufradsatz",
-    "builds_title": "Drei Schaltgruppen, ein Rahmen.",
+    "builds_title": "Verfügbare Schaltgruppen.",
     "builds_text": "Grösse, Farbe, Felgenhöhe, Cockpit, Übersetzung und Reifen wählst Du im Konfigurator.",
     "geometry": "Geometrie.",
     "geometry_pending": "Die finalen Werte folgen mit der Vorbestellung.",
@@ -153,7 +155,7 @@
   "config": {
     "title_vent": "SENDA Vent konfigurieren",
     "title_momentum": "ORMA Momentum bestellen",
-    "desc_vent": "Wähle Grösse, Farbe, Schaltgruppe, Laufräder, Cockpit und Reifen für Dein SENDA Vent. Verbindliche Bestellung mit 20 % Anzahlung auf Rechnung.",
+    "desc_vent": "Wähle Grösse, Farbe, Schaltgruppe, Laufräder, Cockpit und Reifen für Dein SENDA Vent. Verbindliche Bestellung mit 30 % Anzahlung auf Rechnung.",
     "desc_momentum": "Wähle Felgenhöhe vorne und hinten und den Freilauf für Deinen ORMA Momentum. Volle Rechnung nach Bestellung.",
     "crumb_configure": "Konfigurieren",
     "crumb_order": "Bestellen",
@@ -187,8 +189,8 @@
     "place_order": "Verbindlich bestellen",
     "terms_vent": "Mir ist klar, dass die Bestellung verbindlich ist und die Anzahlung bei einem Rücktritt nicht zurückerstattet wird.",
     "terms_momentum": "Mir ist klar, dass die Bestellung verbindlich ist.",
-    "summary_vent": "Verbindliche Bestellung. Lieferung ab März 2027.",
-    "summary_momentum": "Verbindliche Bestellung. Lieferung ab März 2027.",
+    "summary_vent": "Verbindliche Bestellung. Lieferung ab Anfang März 2027.",
+    "summary_momentum": "Verbindliche Bestellung. Lieferung ab Anfang März 2027.",
     "vat": "Preise inkl. {rate}% MWST.",
     "total": "Total",
     "full_spec": "Alle Details",
@@ -295,8 +297,8 @@
       "confirm_deposit": "Wir bestätigen Deine Bestellung persönlich, mit der Rechnung für die Anzahlung von {deposit}.",
       "confirm_full": "Wir bestätigen Deine Bestellung persönlich, mit der Rechnung über {total}.",
       "until": "Bis zur Lieferung",
-      "until_vent": "Wir halten Dich auf dem Laufenden, während Dein Bike entsteht. Den Restbetrag von {balance} stellen wir vor der Lieferung in Rechnung, ab {date}.",
-      "until_momentum": "Wir halten Dich auf dem Laufenden. Lieferung ab {date}.",
+      "until_vent": "Wir halten Dich auf dem Laufenden, während Dein Bike entsteht. Den Restbetrag von {balance} stellen wir vor der Lieferung Anfang {date} in Rechnung.",
+      "until_momentum": "Wir halten Dich auf dem Laufenden. Lieferung Anfang {date}.",
       "your_order": "Deine Bestellung",
       "contact": "Fragen, Wünsche oder ein Fitting: schreib uns an {email}. Wir antworten innert eines Arbeitstags.",
       "sign": "Raphael und Micha"
@@ -323,5 +325,8 @@
     "Satin": "seidenmatt",
     "Pearl": "Perlmutt",
     "Matte": "matt"
+  },
+  "card": {
+    "order_now": "Jetzt bestellen. {price}"
   }
 }
