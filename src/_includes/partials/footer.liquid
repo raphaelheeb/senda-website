@@ -7,6 +7,7 @@
       <ul>{% for l in col.links %}{% assign skip = l.hidden %}{% if l.draft and env.production %}{% assign skip = true %}{% endif %}{% unless skip %}<li><a href="{{ l.url | lurl: lang }}">{{ t.nav[l.url] | default: l.label }}</a></li>{% endunless %}{% endfor %}</ul>
       {% endfor %}
     </div>
+    <img class="footer-mark" src="/assets/logo/senda-s-white.png" alt="" width="230" height="400" loading="lazy">
     <div class="footer-base">
       <span>{{ t.footer.copyright }}</span>
       <nav aria-label="{{ t.a11y.legal }}">{% for l in site.legal %}{% unless l.draft and env.production %}<a href="{{ l.url | lurl: lang }}">{{ t.nav[l.url] | default: l.label }}</a>{% endunless %}{% endfor %}</nav>

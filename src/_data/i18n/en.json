@@ -181,7 +181,7 @@
     "bar": "Bar width at the hoods",
     "stem": "Stem length",
     "spacers": "Spacers",
-    "cockpit_note": "All values in mm. At the drops the bar is 20 mm wider.",
+    "cockpit_note": "All values in mm. At the drops the bar is 20 mm wider (flare). The steerer stays uncut, spacers are set at your fitting. Other dimensions: please get in touch.",
     "continue": "Continue",
     "other_parts": "Other parts or a fitting:",
     "back_bike": "Back to your bike",
@@ -233,7 +233,7 @@
       "street": "Street and number",
       "zip": "Postcode (Switzerland)",
       "city": "Town",
-      "country": "Country (we deliver within Switzerland)",
+      "country": "Country (Switzerland for now, other countries to follow)",
       "country_value": "Switzerland",
       "message": "Message (optional)",
       "message_placeholder": "For example: I would like a fitting before the size is confirmed.",
@@ -328,5 +328,9 @@
   },
   "card": {
     "order_now": "Order now. {price}"
+  },
+  "home": {},
+  "tile": {
+    "notify": "Be notified"
   }
 }

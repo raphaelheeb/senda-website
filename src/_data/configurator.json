@@ -33,7 +33,7 @@
         "defaults": {
           "crank": "165",
           "bar": "360",
-          "stem": "80"
+          "stem": "90"
         },
         "seatTube": 430,
         "headAngle": 71,
@@ -96,7 +96,7 @@
         "cm": 58,
         "defaults": {
           "crank": "175",
-          "bar": "420",
+          "bar": "400",
           "stem": "110"
         },
         "seatTube": 545,
@@ -112,7 +112,7 @@
         "cm": 59,
         "defaults": {
           "crank": "175",
-          "bar": "420",
+          "bar": "400",
           "stem": "120"
         },
         "seatTube": 580,
@@ -203,17 +203,14 @@
     "bars": [
       "360",
       "380",
-      "400",
-      "420"
+      "400"
     ],
     "barNote": "Width at the hoods. At the drops add 20 mm.",
     "stems": [
-      "80",
       "90",
       "100",
       "110",
-      "120",
-      "130"
+      "120"
     ],
     "spacers": [
       "0",
@@ -226,16 +223,8 @@
     ],
     "tyres": [
       {
-        "id": "28",
-        "label": "28 mm"
-      },
-      {
         "id": "30",
         "label": "30 mm"
-      },
-      {
-        "id": "32",
-        "label": "32 mm"
       }
     ],
     "tyreModel": "Continental Grand Prix 5000",
@@ -307,10 +296,6 @@
         [
           1750,
           "400"
-        ],
-        [
-          1850,
-          "420"
         ]
       ],
       "_standover": "Standover may exceed the barefoot inseam by the shoe sole (15 mm).",

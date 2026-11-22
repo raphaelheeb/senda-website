@@ -25,6 +25,7 @@ layout: layouts/base.liquid
         {% endfor %}
       {% else %}{% include "partials/card.liquid", p: p, cardRatio: cardRatio %}{% endif %}
     {% endfor %}
+    {% if C.keys %}<div class="block block--keys"><ul class="keylist">{% for k in C.keys %}<li>{{ k }}</li>{% endfor %}</ul></div>{% endif %}
   </div>
   {% else %}
   <section class="coming" style="margin-bottom: var(--section)">

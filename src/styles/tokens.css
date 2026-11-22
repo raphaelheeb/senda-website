@@ -51,7 +51,7 @@
   --ink-mid: #444444;    /* running text */
   --grey: #666666;       /* labels and captions; 5.7:1 on white */
   --line: #d2d2d2;       /* hairlines */
-  --tint: #f4f4f2;       /* image ground before a photo loads */
+  --tint: #f3f3f3;       /* image ground before a photo loads */
 
   /* Bike finishes, for swatches only */
   --finish-slate-blue: #7e9aab;

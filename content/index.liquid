@@ -95,13 +95,14 @@ de:
         {% assign img = b.data.tileImage | default: b.data.image | replace: "-2000", "-1000" %}{% assign tpos = b.data.imagePosition %}{% if b.data.tileImage %}{% assign tpos = "center" %}{% endif %}{% assign talt = b.data.L.tileAlt | default: b.data.tileAlt | default: b.data.L.alt | default: b.data.alt %}{% include "partials/frame.liquid", img: img, ratio: "square", pos: tpos, alt: talt %}
         <span class="tile__name">{{ b.data.title }}</span>
         <span class="tile__note">{{ b.data.L.tileNote | default: b.data.tileNote }}</span>
+        {% if b.data.status == "announced" %}<span class="tile__link linkline">{{ t.tile.notify }}</span>{% endif %}
       </a>
       {% endfor %}
     </div>
   </div>
 </section>
 
-<section class="section">
+<section class="section section--tint section--band">
   <div class="wrap split">
     {% include "partials/frame.liquid", img: "/assets/img/web/orma-wheels-2000.jpg", ratio: "bike", contain: true, alt: C.orma_alt %}
     <div class="block">

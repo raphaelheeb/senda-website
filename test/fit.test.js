@@ -59,6 +59,6 @@ test("implausible or out-of-range measurements are refused", () => {
 
 test("shoulder width picks the nearest bar", () => {
   assert.equal(fitVent(v, { ...rider(178), shoulders: 38 }).bar, "380");
-  assert.equal(fitVent(v, { ...rider(178), shoulders: 43 }).bar, "420");
+  assert.equal(fitVent(v, { ...rider(178), shoulders: 43 }).bar, "400");
   assert.equal(fitVent(v, rider(178)).bar, "400");
 });

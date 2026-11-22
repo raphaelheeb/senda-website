@@ -116,8 +116,7 @@ hideSignup: true
             <div class="chips">{% for b in v.bars %}<label class="chip"><input type="radio" name="bar" value="{{ b }}"><span>{{ b }}</span></label>{% endfor %}</div>
             <p class="option-label">{{ c.stem }}</p>
             <div class="chips">{% for s in v.stems %}<label class="chip"><input type="radio" name="stem" value="{{ s }}"><span>{{ s }}</span></label>{% endfor %}</div>
-            <p class="option-label">{{ c.spacers }}</p>
-            <div class="chips">{% for s in v.spacers %}<label class="chip"><input type="radio" name="spacers" value="{{ s }}"><span>{{ s }}</span></label>{% endfor %}</div>
+            {% comment %} Spacers are set at the first fitting: the steerer stays uncut. {% endcomment %}{% if false %}<div class="chips">{% for s in v.spacers %}<label class="chip"><input type="radio" name="spacers" value="{{ s }}"><span>{{ s }}</span></label>{% endfor %}</div>{% endif %}
             <p class="cstep__hint">{{ c.cockpit_note }}</p>
           </div>
         </details>

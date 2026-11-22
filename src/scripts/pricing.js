@@ -23,7 +23,7 @@ const label = (list, id) => {
 
 export const VENT_FIELDS = [
   "size", "finish", "groupset", "crank", "chainring", "cassette",
-  "rimFront", "rimRear", "bar", "stem", "spacers", "tyre",
+  "rimFront", "rimRear", "bar", "stem", "tyre",
 ];
 
 /** Option lists per field, read from the data file. */
@@ -32,7 +32,7 @@ export function ventOptions(vent) {
     size: ids(vent.sizes), finish: ids(vent.finishes), groupset: ids(vent.groupsets),
     crank: vent.cranks, chainring: ids(vent.chainrings), cassette: ids(vent.cassettes),
     rimFront: vent.rims, rimRear: vent.rims, bar: vent.bars, stem: vent.stems,
-    spacers: vent.spacers, tyre: ids(vent.tyres),
+    tyre: ids(vent.tyres),
   };
 }
 
@@ -45,7 +45,7 @@ export function ventDefaults(vent, sizeId) {
   Object.assign(sel, {
     size: size.id, groupset: vent.defaultGroupset || sel.groupset,
     crank: size.defaults.crank, bar: size.defaults.bar, stem: size.defaults.stem,
-    rimFront: vent.rims[0], rimRear: vent.rims[vent.rims.length - 1], spacers: "15", tyre: "30",
+    rimFront: vent.rims[0], rimRear: vent.rims[vent.rims.length - 1], tyre: ids(vent.tyres)[0],
   });
   for (const f of VENT_FIELDS) if (!opts[f].includes(sel[f])) sel[f] = opts[f][0];
   return sel;
@@ -106,7 +106,6 @@ export function priceVent(cfg, sel, now = new Date(), lang = "en") {
     [w.wheels, w.wheelsValue.replace("{f}", sel.rimFront).replace("{r}", sel.rimRear)],
     [w.bar, `${sel.bar} mm`],
     [w.stem, `${sel.stem} mm`],
-    [w.spacers, `${sel.spacers} mm`],
     [w.tyres, `${vent.tyreModel}, ${label(vent.tyres, sel.tyre)}`],
   ];
   const lines = [[`${vent.name}, ${groupset.label}`, base]];
@@ -115,7 +114,7 @@ export function priceVent(cfg, sel, now = new Date(), lang = "en") {
 
   const code = [
     vent.code, sel.size, sel.finish, sel.groupset, sel.crank, sel.chainring, sel.cassette,
-    `${sel.rimFront}/${sel.rimRear}`, sel.bar, sel.stem, sel.spacers, sel.tyre,
+    `${sel.rimFront}/${sel.rimRear}`, sel.bar, sel.stem, sel.tyre,
   ].join("-");
 
   return {

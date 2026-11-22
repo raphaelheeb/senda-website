@@ -38,7 +38,7 @@ sketchHidden:
   - ["Wheelbase", "0000"]
   - ["Tyre clearance", "00"]
 teaser: For the roads that fade into tracks, and routes that become the point of the ride.
-tileNote: In development, mid-2027
+tileNote: Coming soon, mid-2027
 tileImage: /assets/img/web/gravel-frame-sketch-1000.jpg
 tileAlt: Pencil sketch of the SENDA Gravel frame
 cardImage: /assets/img/web/gravel-frame-sketch-1000.jpg
@@ -55,7 +55,7 @@ de:
     - ["CH", "In der Schweiz lackiert und montiert"]
   storyTitle: Länger, tiefer, ruhiger.
   storyAlt: Bleistiftstudie des SENDA Rahmens
-  tileNote: In Entwicklung, Mitte 2027
+  tileNote: Demnächst, Mitte 2027
   tileAlt: Bleistiftskizze des SENDA Gravel Rahmens
   sketchNote: Längere Kettenstreben, ein tieferes Tretlager und ein flacherer Lenkwinkel als beim SENDA Vent. Der Rest folgt, wenn der Rahmen final ist.
   sketchHidden:

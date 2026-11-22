@@ -50,7 +50,7 @@ test("browser-sent prices cannot change the total", () => {
 
 test("article code carries every choice", () => {
   const r = priceVent(cfg, ventDefaults(cfg.vent, "M"), during);
-  assert.equal(r.code, "VENT-M-SLATE-ULT-172.5-50-34-11-30-45/50-400-100-15-30");
+  assert.equal(r.code, "VENT-M-SLATE-ULT-172.5-50-34-11-30-45/50-400-100-30");
 });
 
 test("ORMA Momentum: paid in full, mixed rims, intro price", () => {

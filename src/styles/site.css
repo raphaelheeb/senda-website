@@ -804,3 +804,17 @@ html:has(.subbar) { scroll-padding-top: calc(var(--header-h) + 52px + 16px); }
   .opening__order { align-self: flex-end; }
   .opening::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 40%; z-index: 0; background: linear-gradient(180deg, rgba(10, 10, 10, 0.32), rgba(10, 10, 10, 0)); pointer-events: none; }
 }
+
+/* ---------- Review MG 2026-11-22 ---------- */
+/* Header uses the full width on wide screens: logo left, order right */
+.site-header .wrap { max-width: none; }
+/* Large images align with the text columns at every width */
+.moment__image { max-width: none; }
+/* A grey band sets a section apart (ORMA on the homepage) */
+.section--band { margin-top: var(--section); padding-bottom: var(--section); }
+.section--band + .section { padding-top: var(--section); }
+.tile__link { display: inline-block; margin-top: 10px; }
+.block--keys { align-self: center; }
+.block--keys .keylist { margin: 0; }
+/* S mark in the footer */
+.footer-mark { display: block; width: 28px; height: auto; margin: var(--s-5, 48px) 0 var(--s-3, 24px); opacity: 0.9; }

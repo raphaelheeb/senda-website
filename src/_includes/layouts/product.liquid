@@ -120,7 +120,7 @@ layout: layouts/base.liquid
       <h2 class="h2">{{ storyTitle_ }}</h2>
       <div class="prose mt-4">{{ body_ }}</div>
     </div>
-    {% include "partials/frame.liquid", img: storyImage, ratio: "bike", alt: storyAlt_ %}
+    {% include "partials/frame.liquid", img: storyImage, ratio: "bike", contain: storyContain, alt: storyAlt_ %}
   </div>
 </section>
 {% endif %}
@@ -279,13 +279,5 @@ layout: layouts/base.liquid
 {% if type == "bike" %}
 {%- assign family = collections.products | in_category: category, lang -%}
 {%- assign wheelsets = collections.products | in_category: "wheelsets", lang -%}
-<section class="section">
-  <div class="wrap">
-    <h2 class="h2 block-title">{{ t.product.more }}</h2>
-    <div class="duo">
-      {% for p in family %}{% if p.url != page.url %}{% include "partials/card.liquid", p: p, cardRatio: "bike" %}{% endif %}{% endfor %}
-      {% for p in wheelsets limit: 1 %}{% include "partials/card.liquid", p: p, cardRatio: "bike" %}{% endfor %}
-    </div>
-  </div>
-</section>
+{% comment %} "More from SENDA" removed in review MG 1; restore from git if wanted. {% endcomment %}
 {% endif %}

@@ -42,9 +42,9 @@ features:
     alt: SENDA lettering in copper on the Slate Blue down tube
   - title: Six sizes, every number published.
     text: Stack, reach and every angle per size, so you can compare before you order.
-    image: /assets/img/web/geometry-drawing-1000.jpg
+    image: /assets/img/web/vent-stack-reach.svg
     contain: true
-    alt: Geometry drawing of the SENDA Vent frame
+    alt: Stack and reach of the SENDA Vent frame
   - title: Specced with ORMA Momentum.
     text: Every SENDA Vent rolls on ORMA wheels, 45 or 50 mm deep, chosen front and rear.
     image: /assets/img/web/orma-wheels-1000.jpg
@@ -54,8 +54,9 @@ features:
     linkText: See the wheelset
 image2: /assets/img/web/frame-detail-slate-blue-1000.jpg
 image3: /assets/img/web/frame-detail-champagne-1000.jpg
-storyImage: /assets/img/web/finish-slate-blue-1000.jpg
-storyAlt: Head tube and fork of the SENDA Vent in Slate Blue with the copper S
+storyImage: /assets/img/web/vent-frame-line.svg
+storyContain: true
+storyAlt: Line drawing of the SENDA Vent frame
 momentImage: /assets/img/web/rider-rose-alps-2000.jpg
 momentAlt: A rider with her SENDA Vent in Dusky Rose at the roadside of an Alpine pass
 geometrySource: All values in mm unless stated.
@@ -87,7 +88,7 @@ de:
     - ["45/50 mm", "Felgenhöhe ORMA Momentum, frei wählbar"]
     - ["4", "Farben, ein Rahmen"]
   storyTitle: Carbon-Lagenaufbau, ausbalanciert zwischen Steifigkeit und Komfort.
-  storyAlt: Steuerrohr und Gabel des SENDA Vent in Slate Blue mit dem kupferfarbenen S
+  storyAlt: Linienzeichnung des SENDA Vent Rahmens
   momentAlt: Eine Fahrerin mit ihrem SENDA Vent in Dusky Rose am Strassenrand eines Alpenpasses
   tileNote: Jetzt bestellen, Lieferung Anfang März 2027
   tileAlt: SENDA Vent in Slate Blue vor grauem Studiohintergrund
@@ -99,9 +100,9 @@ de:
       alt: SENDA Schriftzug in Kupfer auf dem Unterrohr in Slate Blue
     - title: Sechs Grössen, alle Werte veröffentlicht.
       text: Stack, Reach und jeder Winkel pro Grösse, damit Du vor der Bestellung vergleichen kannst.
-      image: /assets/img/web/geometry-drawing-1000.jpg
+      image: /assets/img/web/vent-stack-reach.svg
       contain: true
-      alt: Geometriezeichnung des SENDA Vent Rahmens
+      alt: Stack und Reach des SENDA Vent Rahmens
     - title: Mit ORMA Momentum.
       text: Jedes SENDA Vent rollt auf ORMA Laufrädern, 45 oder 50 mm hoch, vorne und hinten frei wählbar.
       image: /assets/img/web/orma-wheels-1000.jpg

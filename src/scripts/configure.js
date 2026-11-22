@@ -19,7 +19,7 @@ function init(form) {
   const $ = (sel) => document.querySelector(sel);
   const radios = (name) => form.querySelectorAll(`input[type=radio][name="${name}"]`);
   const fields = product === "vent"
-    ? ["size", "finish", "groupset", "crank", "chainring", "cassette", "rimFront", "rimRear", "bar", "stem", "spacers", "tyre"]
+    ? ["size", "finish", "groupset", "crank", "chainring", "cassette", "rimFront", "rimRear", "bar", "stem", "tyre"]
     : ["rimFront", "rimRear", "freehub"];
   const defaults = (size = "M") => (product === "vent" ? ventDefaults(cfg.vent, size) : momentumDefaults(cfg.momentum));
 
@@ -31,7 +31,7 @@ function init(form) {
     groupset: (s) => byId(v.groupsets, s.groupset).label.replace("Shimano ", ""),
     gearing: (s) => `${s.crank} · ${s.chainring} · ${s.cassette}`,
     wheels: (s) => `${s.rimFront} / ${s.rimRear} mm`,
-    cockpit: (s) => `${s.bar} · ${s.stem} · ${s.spacers} mm`,
+    cockpit: (s) => `${s.bar} · ${s.stem} mm`,
     tyre: (s) => `${s.tyre} mm`,
     freehub: (s) => byId(cfg.momentum.freehubs, s.freehub).label,
   };
@@ -118,7 +118,7 @@ function init(form) {
       const z = byId(v.sizes, r.size);
       const w = T.fit_rows || {};
       const rows = [
-        [w.size, `${z.label} · ${z.cm} cm`], [w.stem, `${r.stem} mm`], [w.spacers, `${r.spacers} mm`],
+        [w.size, `${z.label} · ${z.cm} cm`], [w.stem, `${r.stem} mm`],
         [w.bar, `${r.bar} mm`], [w.crank, `${r.crank} mm`], [w.saddle, `${w.about} ${r.saddleHeight} mm`],
       ];
       fitBox.querySelector("[data-fit-list]").innerHTML = rows.map(([k, x]) => `<div><dt>${k}</dt><dd>${x}</dd></div>`).join("");
@@ -133,7 +133,7 @@ function init(form) {
     fitBox.querySelector("[data-fit-apply]").addEventListener("click", () => {
       if (!current) return;
       const { r } = current;
-      sel = { ...sel, size: r.size, crank: r.crank, bar: r.bar, stem: r.stem, spacers: r.spacers };
+      sel = { ...sel, size: r.size, crank: r.crank, bar: r.bar, stem: r.stem };
       fitInput = { ...current.input, applied: true };
       apply();
       render();
