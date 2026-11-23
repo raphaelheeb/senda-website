@@ -797,14 +797,6 @@ html:has(.subbar) { scroll-padding-top: calc(var(--header-h) + 52px + 16px); }
 /* ORMA key features on the homepage */
 .keylist { list-style: none; margin: var(--s-3) 0 var(--s-4); padding: 0; border-top: 1px solid var(--line); }
 .keylist li { padding: 10px 0; border-bottom: 1px solid var(--line); font-size: var(--t-body); color: var(--ink-mid, #444); }
-/* Opening: statement top left, order bottom right, so the text stays off the road markings */
-@media (min-width: 761px) {
-  .opening__copy { top: clamp(28px, 4.5vw, 72px); align-items: stretch; }
-  .opening__copy .display { align-self: flex-start; }
-  .opening__order { align-self: flex-end; }
-  .opening::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 40%; z-index: 0; background: linear-gradient(180deg, rgba(10, 10, 10, 0.32), rgba(10, 10, 10, 0)); pointer-events: none; }
-}
-
 /* ---------- Review MG 2026-11-22 ---------- */
 /* Header uses the full width on wide screens: logo left, order right */
 .site-header .wrap { max-width: none; }
@@ -850,3 +842,52 @@ html:has(.subbar) { scroll-padding-top: calc(var(--header-h) + 52px + 16px); }
 .picker { max-width: none; }
 .block--keys .keylist { margin: var(--s-3) 0 var(--s-4); }
 .dim__value { white-space: nowrap; }
+
+/* ---------- Homepage 2026-11-23 ---------- */
+/* Hero: claim and what SENDA offers bottom left, one action bottom right */
+.opening__claim .opening__line { margin-top: var(--s-2); font-size: var(--t-h3); line-height: 1.2; max-width: 16em; }
+.moment__actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--s-3) var(--s-4); margin-top: var(--s-4); }
+.moment__copy .offer { margin-top: var(--s-4); }
+/* Gravel teaser: full-width band, sketch behind, notify form */
+.gravel-band { position: relative; margin-top: var(--section); background: var(--tint); overflow: hidden; }
+.gravel-band__art { position: absolute; inset: 0 0 0 38%; display: flex; align-items: center; opacity: 0.9; }
+.gravel-band__art svg { width: 100%; height: auto; }
+.gravel-band__copy { position: relative; padding-top: clamp(72px, 9vw, 140px); padding-bottom: clamp(72px, 9vw, 140px); }
+.gravel-band__copy > * { max-width: 30rem; }
+.gravel-band__copy .block__text { margin-top: var(--s-3); }
+.gravel-band__form { margin: var(--s-4) 0 var(--s-3); }
+.gravel-band__form .consent { margin-top: 10px; }
+@media (max-width: 760px) {
+  .gravel-band__art { position: relative; inset: auto; padding: 32px 16px 0; }
+  .gravel-band__copy { padding-top: 24px; }
+  .opening__claim .opening__line { color: var(--ink); }
+}
+
+/* Compact footer: newsletter row, one line of links with the logo on the right, legal line */
+.site-footer { padding: clamp(36px, 4vw, 56px) 0 var(--s-3); }
+.footer-signup { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; padding-bottom: clamp(24px, 3vw, 40px); margin-bottom: clamp(24px, 3vw, 40px); }
+.footer-signup__title { line-height: 1; margin-top: 2px; }
+.footer-signup .signup__form { margin-top: 0; }
+.footer-signup .consent { margin-top: 8px; }
+.footer-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-3) var(--s-5); }
+.footer-links { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 28px; }
+.footer-links a { font: 400 var(--t-label)/1.5 var(--mono); letter-spacing: var(--track-label); text-transform: uppercase; }
+.footer-brand { display: flex; align-items: center; gap: 14px; }
+.footer-brand .footer-mark { width: 16px; margin: 0; }
+.footer-brand .footer-word { width: 110px; height: auto; filter: invert(1); }
+.site-footer .footer-base { margin-top: clamp(24px, 3vw, 40px); }
+@media (max-width: 760px) { .footer-row { flex-direction: column-reverse; align-items: flex-start; } }
+
+/* Colour picker: the same studio view for every finish */
+.picker__stage { aspect-ratio: 2511 / 1398; background: #e9e9e9; }
+.picker__view img { object-fit: cover; }
+/* Geometry: choose a size, read that frame */
+.geo-pick { max-width: 980px; margin: 0 auto; }
+.geo-pick__sizes { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--s-4); }
+.geo-pick__list { border-top: 1px solid var(--line); }
+.geo-pick__row { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.geo-pick__row dt { display: flex; align-items: center; }
+.geo-pick__row dd { font-variant-numeric: tabular-nums; }
+.geo-chip { min-width: 52px; min-height: 40px; padding: 0 14px; border: 1px solid var(--line); background: #fff; font: 400 var(--t-label)/1 var(--mono); letter-spacing: var(--track-label); cursor: pointer; }
+.geo-chip[aria-checked="true"] { border-color: var(--ink); background: var(--ink); color: #fff; }
+@media (max-width: 760px) { .footer-signup { grid-template-columns: 1fr; gap: var(--s-2); } }

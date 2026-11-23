@@ -134,7 +134,7 @@ layout: layouts/base.liquid
       <div class="picker__stage">
         {% for f in finishes %}
         <div class="picker__view{% if forloop.first %} is-active{% endif %}" data-finish="{{ f.name | slugify }}">
-          {% if f.image %}<img src="{{ f.image | replace: '-1000', '-2000' }}" alt="{{ t.product.frame_in | fill: 'name', f.name }}" loading="lazy">{% else %}<div class="picker__flat" style="background: {{ f.hex }}"></div>{% endif %}
+          {% assign fimg = f.bikeImage | default: f.image %}{% if fimg %}<img src="{{ fimg | replace: '-1000', '-2000' }}" alt="{{ t.product.frame_in | fill: 'name', f.name }}" loading="lazy">{% else %}<div class="picker__flat" style="background: {{ f.hex }}"></div>{% endif %}
         </div>
         {% endfor %}
       </div>
@@ -226,7 +226,18 @@ layout: layouts/base.liquid
   <div class="wrap">
     <div class="section-head"><h2 class="h2">{{ t.product.geometry }}</h2><p class="lead">{{ geometrySource_ | default: t.product.geometry_pending }}</p></div>
     {% if geometryImage %}<img class="geometry-drawing" src="{{ geometryImage }}" alt="{{ t.product.geometry }} {{ title }}" loading="lazy">{% endif %}
-    <div class="scroll-x">
+    {% if geometryRows %}
+    <div class="geo-pick" data-geo>
+      <div class="geo-pick__sizes" role="radiogroup" aria-label="{{ t.product.size }}">
+        {% for s in sizes %}<button type="button" class="geo-chip" role="radio" data-size="{{ forloop.index }}" aria-checked="{% if s == 'M' %}true{% else %}false{% endif %}">{{ s }}</button>{% endfor %}
+      </div>
+      <dl class="geo-pick__list">
+        {% for row in geometryRows %}{% assign gi = forloop.index %}<div class="geo-pick__row"><dt>{% if geometryNumbered %}<span class="geo-no">{{ gi }}</span>{% endif %}{{ t.geo[row[0]] | default: row[0] }}</dt>{% for c in row %}{% unless forloop.first %}{% assign si = forloop.index0 | minus: 1 %}<dd data-size="{{ forloop.index0 }}"{% unless sizes[si] == "M" %} hidden{% endunless %}>{{ c }}{% unless c contains "°" %} mm{% endunless %}</dd>{% endunless %}{% endfor %}</div>
+        {% endfor %}
+      </dl>
+    </div>
+    {% endif %}
+    <div class="scroll-x"{% if geometryRows %} hidden{% endif %}>
       <table class="table table--wide">
         <thead><tr><th>{{ t.product.size }}</th>{% for s in sizes %}<th>{{ s }}</th>{% endfor %}</tr></thead>
         <tbody>

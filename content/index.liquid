@@ -25,7 +25,13 @@ en:
   founders_title: Shaped by Swiss roads.
   founders_text: Long climbs, tight hairpins and gravel above the tree line ask a lot of a bike. SENDA brings race performance and calm, considered design together, because on these roads you need both.
   founders_link: About SENDA
-  vent_title: SENDA Vent, built around you.
+  vent_title: SENDA Vent
+  usp: Road and gravel bikes, built around you.
+  hero_cta: SENDA Vent – configure your bike
+  gravel_title: SENDA Gravel
+  gravel_text: We are finalizing our race gravel bike, with aero tube shapes and tyre clearance up to 55 mm. Coming mid-2027.
+  gravel_cta: Notify me
+  gravel_link: See the first sketch
   journal: Journal
   journal_link: All posts
 de:
@@ -50,16 +56,21 @@ de:
   founders_title: Geprägt von Schweizer Strassen.
   founders_text: Lange Anstiege, enge Kehren und Schotter über der Baumgrenze verlangen viel von einem Bike. SENDA verbindet Rennleistung mit ruhigem, durchdachtem Design, denn auf diesen Strassen braucht es beides.
   founders_link: Über SENDA
-  vent_title: SENDA Vent, für Dich gebaut.
+  vent_title: SENDA Vent
+  usp: Rennräder und Gravelbikes, für Dich gebaut.
+  hero_cta: SENDA Vent – konfiguriere Dein Bike
+  gravel_title: SENDA Gravel
+  gravel_text: Wir finalisieren unser Race-Gravelbike, mit Aero-Rohrformen und Platz für Reifen bis 55 mm. Ab Mitte 2027.
+  gravel_cta: Benachrichtige mich
+  gravel_link: Zur ersten Skizze
   journal: Journal
   journal_link: Alle Beiträge
 ---
-{%- comment -%} One idea per section: a headline, at most one sentence, one link. {%- endcomment -%}
+
 {%- assign bikes = collections.products | in_category: "bikes", lang -%}
 {%- assign wheels = collections.products | in_category: "wheelsets", lang -%}
-{%- assign clothes = collections.products | in_category: "clothing", lang -%}
-{%- assign jersey = clothes | first -%}
 {%- assign momentum = wheels | first -%}
+{%- for b in bikes %}{% if b.data.status == "announced" %}{% assign gravel = b %}{% endif %}{% endfor -%}
 
 <section class="opening" aria-label="SENDA">
   <picture>
@@ -67,20 +78,13 @@ de:
     <img src="/assets/img/web/lake-road-2000.jpg" srcset="/assets/img/web/lake-road-1000.jpg 1000w, /assets/img/web/lake-road-2000.jpg 2000w" sizes="100vw" width="2730" height="1536" alt="{{ C.hero_alt }}" fetchpriority="high">
   </picture>
   <div class="wrap opening__copy">
-    <h1 class="display">Quietly fast.</h1>
-    <div class="opening__order">
-      {% include "partials/offer.liquid", key: "vent", class: "offer--light" %}
-      <a class="btn btn--light" href="{{ '/bikes/vent/configure/' | lurl: lang }}">{{ t.buy.configure_vent }}</a>
+    <div class="opening__claim">
+      <h1 class="display">Quietly fast.</h1>
+      <p class="opening__line">{{ C.usp }}</p>
     </div>
-  </div>
-</section>
-
-<section class="fullbleed" style="--pos: center 60%">
-  <img src="/assets/img/web/belvedere-pass-2000.jpg" alt="{{ C.founders_alt }}" loading="lazy">
-  <div class="wrap fullbleed__copy">
-    <h2 class="h2">{{ C.founders_title }}</h2>
-    <p class="block__text fullbleed__line">{{ C.founders_text }}</p>
-    <a class="linkline" href="{{ '/about/' | lurl: lang }}">{{ C.founders_link }}</a>
+    <div class="opening__order">
+      <a class="btn btn--light" href="{{ '/bikes/vent/configure/' | lurl: lang }}">{{ C.hero_cta }}</a>
+    </div>
   </div>
 </section>
 
@@ -88,28 +92,16 @@ de:
   <div class="wrap moment__copy">
     <h2 class="h2">{{ C.vent_title }}</h2>
     <p class="block__text">{{ C.vent_text }}</p>
-    <a class="linkline" href="{{ '/bikes/vent/' | lurl: lang }}">{{ C.vent_link }}</a>
+    {% include "partials/offer.liquid", key: "vent", class: "offer--center" %}
+    <div class="moment__actions">
+      <a class="btn" href="{{ '/bikes/vent/configure/' | lurl: lang }}">{{ t.buy.configure_vent }}</a>
+      <a class="linkline" href="{{ '/bikes/vent/' | lurl: lang }}">{{ C.vent_link }}</a>
+    </div>
   </div>
   <div class="moment__bleed">
     <a class="moment__image" href="{{ '/bikes/vent/' | lurl: lang }}" tabindex="-1" aria-hidden="true">
       <img src="/assets/img/web/vent-arch-champagne-2000.jpg" srcset="/assets/img/web/vent-arch-champagne-1000.jpg 1000w, /assets/img/web/vent-arch-champagne-2000.jpg 1679w" sizes="100vw" width="1679" height="937" alt="" loading="lazy">
     </a>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <h2 class="h2 block-title">{{ C.range }}</h2>
-    <div class="duo">
-      {% for b in bikes %}
-      <a class="tile" href="{{ b.url }}">
-        {% assign img = b.data.tileImage | default: b.data.image | replace: "-2000", "-1000" %}{% assign tpos = b.data.imagePosition %}{% if b.data.tileImage %}{% assign tpos = "center" %}{% endif %}{% assign talt = b.data.L.tileAlt | default: b.data.tileAlt | default: b.data.L.alt | default: b.data.alt %}{% include "partials/frame.liquid", img: img, ratio: "square", pos: tpos, alt: talt %}
-        <span class="tile__name">{{ b.data.title }}</span>
-        <span class="tile__note">{{ b.data.L.tileNote | default: b.data.tileNote }}</span>
-        {% if b.data.status == "announced" %}<span class="tile__link linkline">{{ t.tile.notify }}</span>{% endif %}
-      </a>
-      {% endfor %}
-    </div>
   </div>
 </section>
 
@@ -126,38 +118,31 @@ de:
   </div>
 </section>
 
-{% if site.show.clothing %}
-<section class="section">
-  <div class="wrap">
-    <h2 class="h2 block-title">{{ C.clothing_title }}</h2>
-    <div class="trio">
-      {% for c in jersey.data.colours %}
-      <a class="tile" href="{{ jersey.url }}">
-        {% include "partials/frame.liquid", img: c.image, ratio: "bike", contain: true, alt: c.alt %}
-        <span class="tile__name">{{ c.name }}</span>
-      </a>
-      {% endfor %}
-    </div>
-    <a class="linkline block-link" href="{{ '/clothing/' | lurl: lang }}">{{ C.clothing_link }}</a>
+{% if gravel %}
+<section class="gravel-band" aria-labelledby="gravel-title">
+  <div class="gravel-band__art" aria-hidden="true">{% include "svg/gravel-sketch.svg" %}</div>
+  <div class="wrap gravel-band__copy">
+    <h2 class="h2" id="gravel-title">{{ C.gravel_title }}</h2>
+    <p class="block__text">{{ C.gravel_text }}</p>
+    <form class="js-signup gravel-band__form" data-list="gravel" novalidate>
+      <div class="signup__form">
+        <label class="visually-hidden" for="gravel-email">{{ t.signup.email }}</label>
+        <input class="field" id="gravel-email" name="email" type="email" placeholder="{{ t.signup.email }}" autocomplete="email" required>
+        <button type="submit">{{ C.gravel_cta }}</button>
+      </div>
+      <label class="consent"><input type="checkbox" name="consent" required> {{ t.signup.consent }} <a href="/legal/privacy.html">{{ t.signup.privacy }}</a></label>
+      <p class="form-msg" role="status" aria-live="polite"></p>
+    </form>
+    <a class="linkline" href="{{ gravel.url }}">{{ C.gravel_link }}</a>
   </div>
 </section>
 {% endif %}
 
-
-{% if collections.journal.size > 0 and lang != "de" %}
-<section class="section">
-  <div class="wrap">
-    <h2 class="h2 block-title">{{ C.journal }}</h2>
-    <div class="trio">
-      {% for post in collections.journal limit: 3 %}
-      <a class="tile" href="{{ post.url }}">
-        {% include "partials/frame.liquid", img: post.data.image, ratio: "journal", contain: post.data.imageContain, alt: "" %}
-        <span class="tile__name">{{ post.data.title }}</span>
-        <time class="tile__note" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%d.%m.%Y" }}</time>
-      </a>
-      {% endfor %}
-    </div>
-    <a class="linkline block-link" href="/journal/">{{ C.journal_link }}</a>
+<section class="fullbleed" style="--pos: center 60%">
+  <img src="/assets/img/web/belvedere-pass-2000.jpg" alt="{{ C.founders_alt }}" loading="lazy">
+  <div class="wrap fullbleed__copy">
+    <h2 class="h2">{{ C.founders_title }}</h2>
+    <p class="block__text fullbleed__line">{{ C.founders_text }}</p>
+    <a class="linkline" href="{{ '/about/' | lurl: lang }}">{{ C.founders_link }}</a>
   </div>
 </section>
-{% endif %}

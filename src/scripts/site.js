@@ -155,6 +155,16 @@
 // v4: colour selector and product sub-bar
 (function () {
   "use strict";
+  // Geometry: show the measures of the chosen size only
+  document.querySelectorAll("[data-geo]").forEach(function (geo) {
+    geo.querySelectorAll(".geo-chip").forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        geo.querySelectorAll(".geo-chip").forEach(function (c) { c.setAttribute("aria-checked", String(c === chip)); });
+        geo.querySelectorAll("dd[data-size]").forEach(function (d) { d.hidden = d.dataset.size !== chip.dataset.size; });
+      });
+    });
+  });
+
   document.querySelectorAll("[data-picker]").forEach(function (picker) {
     var chips = picker.querySelectorAll(".picker__chip");
     var caption = picker.querySelector(".picker__caption");

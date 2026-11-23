@@ -1,7 +1,7 @@
 """Numbered geometry drawing of the SENDA Vent (size M), for the geometry table.
 
 Usage: python3 tools/vent_geometry.py > assets/img/web/vent-geometry-numbered.svg
-Numbers 1-10 match the rows of the table on the bike page.
+Numbers 1-8 match the rows of the table on the bike page.
 """
 from math import cos, sin, radians, sqrt, atan2, degrees
 
@@ -91,20 +91,11 @@ num(6, (ht_bot[0] - 115, ht_bot[1] + 45))
 arc(bb, 100, 180 - STA, 180)
 out.append(f'<line x1="{P(bb).split(",")[0]}" y1="{P(bb).split(",")[1]}" x2="{P((-150, 0)).split(",")[0]}" y2="{P((-150, 0)).split(",")[1]}" stroke="{LINE}" stroke-width="1.5" stroke-dasharray="4 6"/>')
 num(7, (-150, 55))
-# 8 chainstay (below the stay)
-o8 = (0, -70)
-dim((rear[0] + o8[0], rear[1] + o8[1]), (o8[0], o8[1]))
-num(8, (rear[0] / 2, rear[1] / 2 - 70))
 # 9 wheelbase (below the wheels)
 wy = DROP - R - 70
 dim((rear[0], wy), (front[0], wy))
 for c in (rear, front):
     out.append(f'<line x1="{P(c).split(",")[0]}" y1="{P(c).split(",")[1]}" x2="{P((c[0], wy - 20)).split(",")[0]}" y2="{P((c[0], wy - 20)).split(",")[1]}" stroke="{LINE}" stroke-width="1.5" stroke-dasharray="4 6"/>')
-num(9, ((rear[0] + front[0]) / 2, wy))
-# 10 BB drop (between the axle line and the bottom bracket)
-out.append(f'<line x1="{P(rear).split(",")[0]}" y1="{P(rear).split(",")[1]}" x2="{P((260, DROP)).split(",")[0]}" y2="{P((260, DROP)).split(",")[1]}" stroke="{LINE}" stroke-width="1.5" stroke-dasharray="4 6"/>')
-dim((230, 0), (230, DROP), dash=False)
-out.append(f'<line x1="{P(bb).split(",")[0]}" y1="{P(bb).split(",")[1]}" x2="{P((250, 0)).split(",")[0]}" y2="{P((250, 0)).split(",")[1]}" stroke="{LINE}" stroke-width="1.5" stroke-dasharray="4 6"/>')
-num(10, (285, DROP / 2 - 40))
+num(8, ((rear[0] + front[0]) / 2, wy))
 out.append("</svg>")
 print("\n".join(out))

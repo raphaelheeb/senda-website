@@ -7,12 +7,14 @@
     {
       "label": "Bikes",
       "url": "/bikes/",
-      "category": "bikes"
+      "category": "bikes",
+      "go": "/bikes/vent/configure/"
     },
     {
       "label": "Wheelsets",
       "url": "/wheelsets/",
-      "category": "wheelsets"
+      "category": "wheelsets",
+      "go": "/wheelsets/orma-momentum/configure/"
     },
     {
       "label": "Components",
@@ -42,11 +44,13 @@
       "links": [
         {
           "label": "Bikes",
-          "url": "/bikes/"
+          "url": "/bikes/",
+          "go": "/bikes/vent/configure/"
         },
         {
           "label": "Wheelsets",
-          "url": "/wheelsets/"
+          "url": "/wheelsets/",
+          "go": "/wheelsets/orma-momentum/configure/"
         },
         {
           "label": "Components",

@@ -2,7 +2,7 @@
   <div class="wrap site-header__bar">
     <a class="logo" href="{{ '/' | lurl: lang }}" aria-label="{{ t.a11y.home }}"><img src="/assets/logo/senda-wordmark-v22.png" alt="SENDA" width="1747" height="307"></a>
     <nav class="nav" aria-label="{{ t.a11y.main }}">
-      {% for item in site.nav %}{% assign skip = item.hidden %}{% if item.draft and env.production %}{% assign skip = true %}{% endif %}{% unless skip %}{% assign href = item.url | lurl: lang %}<a class="nav__link" href="{{ href }}"{% if page.url contains href %} aria-current="page"{% endif %}>{{ t.nav[item.url] | default: item.label }}</a>{% endunless %}{% endfor %}
+      {% for item in site.nav %}{% assign skip = item.hidden %}{% if item.draft and env.production %}{% assign skip = true %}{% endif %}{% unless skip %}{% assign href = item.url | lurl: lang %}{% assign go = item.go | default: item.url | lurl: lang %}<a class="nav__link" href="{{ go }}"{% if page.url contains href %} aria-current="page"{% endif %}>{{ t.nav[item.url] | default: item.label }}</a>{% endunless %}{% endfor %}
     </nav>
     <div class="header-tools">
       {% assign other = page.url | alt_url: lang, collections.all %}
@@ -16,7 +16,7 @@
 </header>
 
 <div class="drawer" id="drawer" data-open="false">
-  {% for item in site.nav %}{% assign skip = item.hidden %}{% if item.draft and env.production %}{% assign skip = true %}{% endif %}{% unless skip %}<a class="drawer__main" href="{{ item.url | lurl: lang }}">{{ t.nav[item.url] | default: item.label }}</a>{% endunless %}{% endfor %}
+  {% for item in site.nav %}{% assign skip = item.hidden %}{% if item.draft and env.production %}{% assign skip = true %}{% endif %}{% unless skip %}{% assign go = item.go | default: item.url %}<a class="drawer__main" href="{{ go | lurl: lang }}">{{ t.nav[item.url] | default: item.label }}</a>{% endunless %}{% endfor %}
   <div class="drawer__secondary">
     <a href="{{ other }}" lang="{{ t.other.code }}">{{ t.other.name }}</a>
     <a href="{{ '/bikes/vent/configure/' | lurl: lang }}">{{ t.header.order_now }}</a>

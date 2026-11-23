@@ -44,9 +44,8 @@ ride:
     - ["Direct when you push", "A stiff carbon layup and a one-piece carbon cockpit put your power on the road."]
 image2: /assets/img/web/frame-detail-slate-blue-1000.jpg
 image3: /assets/img/web/frame-detail-champagne-1000.jpg
-storyImage: /assets/img/web/vent-frame-line.svg
-storyContain: true
-storyAlt: Line drawing of the SENDA Vent frame
+storyImage: /assets/img/web/vent-front-blue-1000.jpg
+storyAlt: SENDA Vent in Slate Blue from the front, against a concrete wall
 momentImage: /assets/img/web/rider-rose-alps-2000.jpg
 momentAlt: A rider with her SENDA Vent in Dusky Rose at the roadside of an Alpine pass
 geometrySource: All values in mm unless stated.
@@ -69,9 +68,7 @@ geometryRows:
   - ["Head tube", "108.5", "117.5", "130", "145", "167", "191"]
   - ["Head tube angle", "71°", "71.5°", "72°", "72.8°", "73°", "73°"]
   - ["Seat tube angle", "75°", "74.5°", "74°", "73.5°", "73°", "73°"]
-  - ["Chainstay", "410", "410", "410", "410", "410", "410"]
   - ["Wheelbase", "971", "976", "983", "993", "1005", "1020"]
-  - ["BB drop", "71", "71", "71", "70", "70", "70"]
 de:
   price: Ab CHF 5’400
   priceNote: Inkl. MWST
@@ -83,7 +80,7 @@ de:
     - ["45/50 mm", "Felgenhöhe ORMA Momentum, frei wählbar"]
     - ["4", "Farben, ein Rahmen"]
   storyTitle: Carbon-Lagenaufbau, ausbalanciert zwischen Steifigkeit und Komfort.
-  storyAlt: Linienzeichnung des SENDA Vent Rahmens
+  storyAlt: SENDA Vent in Slate Blue von vorne, vor einer Betonwand
   momentAlt: Eine Fahrerin mit ihrem SENDA Vent in Dusky Rose am Strassenrand eines Alpenpasses
   tileNote: Jetzt bestellen, Lieferung Anfang März 2027
   tileAlt: SENDA Vent in Slate Blue, Ansicht von links

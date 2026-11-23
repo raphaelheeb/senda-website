@@ -1,13 +1,10 @@
 <footer class="site-footer">
   <div class="wrap">
     {% unless hideSignup %}{% include "partials/signup.liquid" %}{% endunless %}
-    <div class="footer-grid">
-      <a class="footer-brand" href="{{ '/' | lurl: lang }}" aria-label="{{ t.a11y.home }}"><img src="/assets/logo/senda-wordmark-v22.png" alt="SENDA" width="1747" height="307" loading="lazy"></a>
-      {% for col in site.footer %}
-      <ul>{% for l in col.links %}{% assign skip = l.hidden %}{% if l.draft and env.production %}{% assign skip = true %}{% endif %}{% unless skip %}<li><a href="{{ l.url | lurl: lang }}">{{ t.nav[l.url] | default: l.label }}</a></li>{% endunless %}{% endfor %}</ul>
-      {% endfor %}
+    <div class="footer-row">
+      <ul class="footer-links">{% for col in site.footer %}{% for l in col.links %}{% assign skip = l.hidden %}{% if l.draft and env.production %}{% assign skip = true %}{% endif %}{% unless skip %}{% assign go = l.go | default: l.url %}<li><a href="{{ go | lurl: lang }}">{{ t.nav[l.url] | default: l.label }}</a></li>{% endunless %}{% endfor %}{% endfor %}</ul>
+      <a class="footer-brand" href="{{ '/' | lurl: lang }}" aria-label="{{ t.a11y.home }}"><img class="footer-mark" src="/assets/logo/senda-s-white.png" alt="" width="230" height="400" loading="lazy"><img class="footer-word" src="/assets/logo/senda-wordmark-v22.png" alt="SENDA" width="1747" height="307" loading="lazy"></a>
     </div>
-    <img class="footer-mark" src="/assets/logo/senda-s-white.png" alt="" width="230" height="400" loading="lazy">
     <div class="footer-base">
       <span>{{ t.footer.copyright }}</span>
       <nav aria-label="{{ t.a11y.legal }}">{% for l in site.legal %}{% unless l.draft and env.production %}<a href="{{ l.url | lurl: lang }}">{{ t.nav[l.url] | default: l.label }}</a>{% endunless %}{% endfor %}</nav>
