@@ -25,7 +25,7 @@ layout: layouts/base.liquid
         {% endfor %}
       {% else %}{% include "partials/card.liquid", p: p, cardRatio: cardRatio %}{% endif %}
     {% endfor %}
-    {% if C.keys %}<div class="block block--keys"><ul class="keylist">{% for k in C.keys %}<li>{{ k }}</li>{% endfor %}</ul></div>{% endif %}
+    {% if C.keys %}{% assign first_ = items | first %}<div class="block block--keys">{% if C.text_title %}<h2 class="h3">{{ C.text_title }}</h2><p class="block__text mt-3">{{ C.text }}</p>{% endif %}<ul class="keylist">{% for k in C.keys %}<li>{{ k }}</li>{% endfor %}</ul>{% if C.text_link %}<a class="linkline" href="{{ first_.url }}">{{ C.text_link }}</a>{% endif %}</div>{% endif %}
   </div>
   {% else %}
   <section class="coming" style="margin-bottom: var(--section)">

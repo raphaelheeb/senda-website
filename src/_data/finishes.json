@@ -1,5 +1,12 @@
 [
   {
+    "name": "Black",
+    "surface": "Glossy",
+    "hex": "#1d1d1f",
+    "image": "/assets/img/web/finish-black-1000.jpg",
+    "bikeImage": "/assets/img/web/vent-studio-black-1000.jpg"
+  },
+  {
     "name": "Slate Blue",
     "surface": "Glossy",
     "hex": "#7e9aab",
@@ -8,23 +15,16 @@
   },
   {
     "name": "Champagne Silver",
-    "surface": "Pearl",
+    "surface": "Satin",
     "hex": "#c2bfb5",
     "image": "/assets/img/web/finish-champagne-1000.jpg",
     "bikeImage": "/assets/img/web/vent-studio-champagne-1000.jpg"
   },
   {
     "name": "Dusky Rose",
-    "surface": "Glossy",
+    "surface": "Satin",
     "hex": "#c4a099",
     "image": "/assets/img/web/finish-dusky-rose-1000.jpg",
     "bikeImage": "/assets/img/web/vent-studio-rose-1000.jpg"
-  },
-  {
-    "name": "Black",
-    "surface": "Glossy",
-    "hex": "#1d1d1f",
-    "image": "/assets/img/web/finish-black-1000.jpg",
-    "bikeImage": "/assets/img/web/vent-studio-black-1000.jpg"
   }
 ]

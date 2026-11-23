@@ -19,7 +19,7 @@
     },
     "delivery": "2027-03-01",
     "earlyBird": {
-      "discount": 500,
+      "discount": 300,
       "until": "2026-12-31",
       "label": "Early-order discount"
     },
@@ -95,7 +95,7 @@
         "reach": 400,
         "cm": 58,
         "defaults": {
-          "crank": "175",
+          "crank": "172.5",
           "bar": "400",
           "stem": "110"
         },
@@ -111,7 +111,7 @@
         "reach": 408,
         "cm": 59,
         "defaults": {
-          "crank": "175",
+          "crank": "172.5",
           "bar": "400",
           "stem": "120"
         },
@@ -132,14 +132,14 @@
       {
         "id": "CHAMP",
         "label": "Champagne Silver",
-        "surface": "Pearl",
+        "surface": "Satin",
         "hex": "#c2bfb5",
         "surcharge": 0
       },
       {
         "id": "ROSE",
         "label": "Dusky Rose",
-        "surface": "Glossy",
+        "surface": "Satin",
         "hex": "#c4a099",
         "surcharge": 0
       },
@@ -170,11 +170,9 @@
     ],
     "defaultGroupset": "ULT",
     "cranks": [
-      "160",
       "165",
       "170",
-      "172.5",
-      "175"
+      "172.5"
     ],
     "chainrings": [
       {
@@ -265,10 +263,6 @@
       "crankByInseam": [
         [
           0,
-          "160"
-        ],
-        [
-          700,
           "165"
         ],
         [
@@ -278,10 +272,6 @@
         [
           820,
           "172.5"
-        ],
-        [
-          880,
-          "175"
         ]
       ],
       "barByHeight": [
@@ -306,9 +296,9 @@
     "name": "ORMA Momentum",
     "code": "MOM",
     "payment": "full",
-    "price": 1050,
+    "price": 1180,
     "earlyBird": {
-      "price": 950,
+      "price": 1080,
       "until": "2026-12-31",
       "label": "Introductory price"
     },

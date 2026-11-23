@@ -11,6 +11,7 @@ layout: layouts/base.liquid
 {%- assign alt_ = L.alt | default: alt -%}
 {%- assign dims_ = L.dims | default: dims -%}
 {%- assign features_ = L.features | default: features -%}
+{%- assign ride_ = L.ride | default: ride -%}
 {%- assign faq_ = L.faq | default: faq -%}
 {%- assign specs_ = L.specs | default: specs -%}
 {%- assign compat_ = L.compat | default: compat -%}
@@ -30,7 +31,7 @@ layout: layouts/base.liquid
     <span class="subbar__links">
       <a href="#overview">{{ t.product.overview }}</a>
       <a href="#colours">{{ t.product.colours }}</a>
-      {% if features_ %}<a href="#details">{{ t.product.details }}</a>{% endif %}
+      {% if features_ or ride_ %}<a href="#details">{{ t.product.details }}</a>{% endif %}
       {% if specs_ %}<a href="#specs">{{ t.product.specs }}</a>{% endif %}
       {% if faq_ %}<a href="#faq">{{ t.product.faq }}</a>{% endif %}
     </span>
@@ -152,7 +153,20 @@ layout: layouts/base.liquid
 </section>
 {% endif %}
 
-{% if features_ %}
+{% if ride_ %}
+<section class="section" id="details">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="h2">{{ ride_.title }}</h2>
+      <p class="lead">{{ ride_.intro }}</p>
+    </div>
+    <ol class="steps steps--ride">
+      {% for r in ride_.items %}<li class="step"><h3 class="h3">{{ r[0] }}</h3><p>{{ r[1] }}</p></li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+{% elsif features_ %}
 <section class="section" id="details">
   <div class="wrap">
     <h2 class="h2 block-title">{{ L.featuresTitle | default: featuresTitle | default: t.product.look_closer }}</h2>
@@ -217,13 +231,24 @@ layout: layouts/base.liquid
         <thead><tr><th>{{ t.product.size }}</th>{% for s in sizes %}<th>{{ s }}</th>{% endfor %}</tr></thead>
         <tbody>
         {% if geometryRows %}
-          {% for row in geometryRows %}<tr>{% for c in row %}{% if forloop.first %}<th>{{ t.geo[c] | default: c }}</th>{% else %}<td>{{ c }}</td>{% endif %}{% endfor %}</tr>{% endfor %}
+          {% for row in geometryRows %}{% assign gi = forloop.index %}<tr>{% for c in row %}{% if forloop.first %}<th>{% if geometryNumbered %}<span class="geo-no">{{ gi }}</span>{% endif %}{{ t.geo[c] | default: c }}</th>{% else %}<td>{{ c }}</td>{% endif %}{% endfor %}</tr>{% endfor %}
         {% else %}
           {% for row in geometry %}<tr><th>{{ t.geo[row] | default: row }}</th>{% for s in sizes %}<td class="no">–</td>{% endfor %}</tr>{% endfor %}
         {% endif %}
         </tbody>
       </table>
     </div>
+    {% if sizeChart %}
+    <div class="sizechart">
+      <h3 class="h3">{{ t.product.sizechart_title }}</h3>
+      <p class="small">{{ t.product.sizechart_text }}</p>
+      <div class="sizechart__rows" style="--from: 150; --to: 200">
+        {% for r in sizeChart %}<div class="sizechart__row"><span class="sizechart__size">{{ r[0] }}</span><span class="sizechart__track"><span class="sizechart__bar" style="--a: {{ r[1] }}; --b: {{ r[2] }}"><span class="sizechart__label">{{ r[1] }}–{{ r[2] }} cm</span></span></span></div>
+        {% endfor %}
+        <div class="sizechart__row sizechart__row--scale"><span class="sizechart__size"></span><span class="sizechart__track">{% for x in (150..200) %}{% assign m = x | modulo: 10 %}{% if m == 0 %}<span class="sizechart__tick" style="--x: {{ x }}">{{ x }}</span>{% endif %}{% endfor %}</span></div>
+      </div>
+    </div>
+    {% endif %}
   </div>
 </section>
 {% endunless %}

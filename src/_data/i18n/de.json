@@ -58,7 +58,7 @@
     "early_note": "Frühbestellrabatt von CHF {discount} bis {date}"
   },
   "signup": {
-    "title": "Fahr mit.",
+    "title": "Ride along.",
     "email": "E-Mail-Adresse",
     "submit": "Anmelden",
     "consent": "Ein paar E-Mails im Jahr. Abmelden jederzeit.",
@@ -94,7 +94,7 @@
     "configure": "Gestalten",
     "notify": "Benachrichtige mich",
     "order": "Bestellen",
-    "colours_title": "Ein Rahmen. Vier Farben.",
+    "colours_title": "One frame. Four colours.",
     "frame_in": "SENDA Rahmen in {name}",
     "finish": "Farbe",
     "look_closer": "Im Detail.",
@@ -129,7 +129,9 @@
     "write_to_us": "Schreib uns",
     "more": "Mehr von SENDA.",
     "not_published": "Noch nicht veröffentlicht",
-    "orma_by": "by SENDA"
+    "orma_by": "by SENDA",
+    "sizechart_title": "Welche Grösse passt",
+    "sizechart_text": "Körpergrösse als Richtwert. Zwischen zwei Grössen entscheidet der Fit-Rechner im Konfigurator."
   },
   "geo": {
     "Stack": "Stack",
@@ -248,7 +250,8 @@
       "number": "Bestellnummer",
       "sent": "Eine Bestätigung ist unterwegs an",
       "questions": "Fragen zu Deiner Bestellung:"
-    }
+    },
+    "deposit": "Anzahlung {deposit} nach der Bestellung, Restbetrag {balance} vor der Endmontage."
   },
   "js": {
     "deposit": "Anzahlung {deposit} nach der Bestellung, Restbetrag {balance} vor der Lieferung.",
@@ -297,11 +300,11 @@
       "confirm_deposit": "Wir bestätigen Deine Bestellung persönlich, mit der Rechnung für die Anzahlung von {deposit}.",
       "confirm_full": "Wir bestätigen Deine Bestellung persönlich, mit der Rechnung über {total}.",
       "until": "Bis zur Lieferung",
-      "until_vent": "Wir halten Dich auf dem Laufenden, während Dein Bike entsteht. Den Restbetrag von {balance} stellen wir vor der Lieferung Anfang {date} in Rechnung.",
-      "until_momentum": "Wir halten Dich auf dem Laufenden. Lieferung Anfang {date}.",
+      "until_vent": "Wir halten Dich auf dem Laufenden, während Dein Bike entsteht. Den Restbetrag von {balance} stellen wir vor der Endmontage in Rechnung; Dein Bike wird innert zwei Wochen nach Zahlungseingang versandt, ab Anfang {date}.",
+      "until_momentum": "Wir halten Dich auf dem Laufenden. Lieferung ab Anfang {date}.",
       "your_order": "Deine Bestellung",
       "contact": "Fragen, Wünsche oder ein Fitting: schreib uns an {email}. Wir antworten innert eines Arbeitstags.",
-      "sign": "Raphael und Micha"
+      "sign": "Dein SENDA Team"
     }
   },
   "notfound": {

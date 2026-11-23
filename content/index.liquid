@@ -6,49 +6,51 @@ title: SENDA
 en:
   description: Swiss road and gravel bikes, made for the way out. ORMA wheels and components by SENDA.
   hero_alt: Two cyclists on a lakeside road in the Engadin in autumn
-  vent_text: Our all-round race bike with aero-optimized geometry. A 780 g carbon frame (size 54), a fully integrated carbon cockpit, stiff ORMA carbon wheels at 1’207 g and room for 33 mm tyres. Customized to your position.
+  vent_text: Our all-round race bike with aero-optimized geometry. A 780 g carbon frame (size 54), a fully integrated carbon cockpit, stiff ORMA carbon wheels at 1’180 g and room for 33 mm tyres. Customized to your position.
   vent_link: Discover SENDA Vent
   range: Road now. Gravel next.
-  orma_title: 1’207 grams.
+  orma_title: 1’180 grams.
   orma_text: ORMA Momentum, both wheels in 45 mm. Standard on every SENDA.
   orma_keys:
     - Aero-optimized carbon rims, 45 or 50 mm deep
-    - 24.8 mm internal width
+    - 24 mm internal width
     - Hooked, tubeless-ready
     - 20 / 20 carbon spokes, 3.8 mm
-    - 1’207 g in 45/45, incl. rim tape
+    - 1’180 g in 45/45, without rim tape
   orma_link: See ORMA Momentum
   orma_alt: ORMA Momentum carbon wheelset
   clothing_title: Made for long days.
   clothing_link: See the clothing
   founders_alt: Two cyclists on the hairpin below the Hotel Belvedere on the Furka Pass, in fog
-  founders_title: When materials science meets architecture and design.
-  founders_text: We are passionate cyclists who love bikes made from high-performance materials, with a clean and calm design.
-  founders_link: How SENDA evolved
+  founders_title: Shaped by Swiss roads.
+  founders_text: Long climbs, tight hairpins and gravel above the tree line ask a lot of a bike. SENDA brings race performance and calm, considered design together, because on these roads you need both.
+  founders_link: About SENDA
+  vent_title: SENDA Vent, built around you.
   journal: Journal
   journal_link: All posts
 de:
   description: Rennräder und Gravelbikes aus der Schweiz, gemacht für den Weg hinaus. ORMA Laufräder und Komponenten by SENDA.
   hero_alt: Zwei Velofahrende auf einer Seestrasse im Engadin im Herbst
-  vent_text: Unser Allround-Rennrad mit aerooptimierter Geometrie. Ein 780 g leichter Carbonrahmen (Grösse 54), ein voll integriertes Carbon-Cockpit, steife ORMA Carbon-Laufräder mit 1’207 g und Platz für 33 mm Reifen. Auf Deine Position abgestimmt.
+  vent_text: Unser Allround-Rennrad mit aerooptimierter Geometrie. Ein 780 g leichter Carbonrahmen (Grösse 54), ein voll integriertes Carbon-Cockpit, steife ORMA Carbon-Laufräder mit 1’180 g und Platz für 33 mm Reifen. Auf Deine Position abgestimmt.
   vent_link: SENDA Vent entdecken
-  range: Jetzt Strasse. Bald Gravel.
-  orma_title: 1’207 Gramm.
+  range: Road now. Gravel next.
+  orma_title: 1’180 Gramm.
   orma_text: ORMA Momentum, beide Laufräder in 45 mm. Standard an jedem SENDA.
   orma_keys:
     - Aerooptimierte Carbonfelgen, 45 oder 50 mm hoch
-    - 24.8 mm Innenbreite
+    - 24 mm Innenbreite
     - Hooked, tubeless-tauglich
     - 20 / 20 Carbonspeichen, 3.8 mm
-    - 1’207 g in 45/45, inkl. Felgenband
+    - 1’180 g in 45/45, ohne Felgenband
   orma_link: Zu ORMA Momentum
   orma_alt: ORMA Momentum Carbon-Laufradsatz
   clothing_title: Gemacht für lange Tage.
   clothing_link: Zur Bekleidung
   founders_alt: Zwei Velofahrende in der Kehre unter dem Hotel Belvedere am Furkapass, im Nebel
-  founders_title: Wo Materialwissenschaft auf Architektur und Design trifft.
-  founders_text: Wir sind leidenschaftliche Velofahrer und lieben Bikes aus Hochleistungsmaterialien, mit klarem, ruhigem Design.
-  founders_link: Wie SENDA entstand
+  founders_title: Geprägt von Schweizer Strassen.
+  founders_text: Lange Anstiege, enge Kehren und Schotter über der Baumgrenze verlangen viel von einem Bike. SENDA verbindet Rennleistung mit ruhigem, durchdachtem Design, denn auf diesen Strassen braucht es beides.
+  founders_link: Über SENDA
+  vent_title: SENDA Vent, für Dich gebaut.
   journal: Journal
   journal_link: Alle Beiträge
 ---
@@ -73,15 +75,24 @@ de:
   </div>
 </section>
 
+<section class="fullbleed" style="--pos: center 60%">
+  <img src="/assets/img/web/belvedere-pass-2000.jpg" alt="{{ C.founders_alt }}" loading="lazy">
+  <div class="wrap fullbleed__copy">
+    <h2 class="h2">{{ C.founders_title }}</h2>
+    <p class="block__text fullbleed__line">{{ C.founders_text }}</p>
+    <a class="linkline" href="{{ '/about/' | lurl: lang }}">{{ C.founders_link }}</a>
+  </div>
+</section>
+
 <section class="section moment">
   <div class="wrap moment__copy">
-    <h2 class="h2">SENDA Vent</h2>
+    <h2 class="h2">{{ C.vent_title }}</h2>
     <p class="block__text">{{ C.vent_text }}</p>
     <a class="linkline" href="{{ '/bikes/vent/' | lurl: lang }}">{{ C.vent_link }}</a>
   </div>
-  <div class="wrap">
+  <div class="moment__bleed">
     <a class="moment__image" href="{{ '/bikes/vent/' | lurl: lang }}" tabindex="-1" aria-hidden="true">
-      <img src="/assets/img/web/vent-arch-champagne-2000.jpg" srcset="/assets/img/web/vent-arch-champagne-1000.jpg 1000w, /assets/img/web/vent-arch-champagne-2000.jpg 1679w" sizes="(max-width: 1600px) 92vw, 1376px" width="1679" height="937" alt="" loading="lazy">
+      <img src="/assets/img/web/vent-arch-champagne-2000.jpg" srcset="/assets/img/web/vent-arch-champagne-1000.jpg 1000w, /assets/img/web/vent-arch-champagne-2000.jpg 1679w" sizes="100vw" width="1679" height="937" alt="" loading="lazy">
     </a>
   </div>
 </section>
@@ -132,14 +143,6 @@ de:
 </section>
 {% endif %}
 
-<section class="fullbleed" style="--pos: center 60%">
-  <img src="/assets/img/web/belvedere-pass-2000.jpg" alt="{{ C.founders_alt }}" loading="lazy">
-  <div class="wrap fullbleed__copy">
-    <h2 class="h2">{{ C.founders_title }}</h2>
-    <p class="block__text fullbleed__line">{{ C.founders_text }}</p>
-    <a class="linkline" href="{{ '/about/' | lurl: lang }}">{{ C.founders_link }}</a>
-  </div>
-</section>
 
 {% if collections.journal.size > 0 and lang != "de" %}
 <section class="section">

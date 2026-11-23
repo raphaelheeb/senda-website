@@ -1,6 +1,6 @@
-{% unless hideSignup %}{% include "partials/signup.liquid" %}{% endunless %}
 <footer class="site-footer">
   <div class="wrap">
+    {% unless hideSignup %}{% include "partials/signup.liquid" %}{% endunless %}
     <div class="footer-grid">
       <a class="footer-brand" href="{{ '/' | lurl: lang }}" aria-label="{{ t.a11y.home }}"><img src="/assets/logo/senda-wordmark-v22.png" alt="SENDA" width="1747" height="307" loading="lazy"></a>
       {% for col in site.footer %}

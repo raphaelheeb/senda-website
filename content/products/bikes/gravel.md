@@ -9,11 +9,11 @@ imageContain: true
 price: From CHF 5’800
 priceNote: Indicative
 delivery: mid-2027
-summary: Aero tube shapes and the precision of the Vent, with room for wide tyres and a calmer front end.
+summary: We are finalizing the specs of our race gravel bike, with aero tube shapes and tyre clearance up to 55 mm.
 dims:
   - ["4", "Finishes, one frame"]
   - ["Mid-2027", "Planned market launch"]
-  - ["CH", "Painted and assembled in Switzerland"]
+  - ["55 mm", "Tyre clearance"]
 storyTitle: Longer, lower, calmer.
 storyImage: /assets/img/web/frame-sketch-1000.jpg
 storyAlt: Pencil study of the SENDA frame
@@ -47,12 +47,12 @@ de:
   price: Ab CHF 5’800
   priceNote: Richtpreis
   delivery: Mitte 2027
-  summary: Aero-Rohrformen und die Präzision des Vent, mit Platz für breite Reifen und einer ruhigeren Front.
+  summary: Wir finalisieren die Spezifikationen unseres Race-Gravelbikes, mit Aero-Rohrformen und Platz für Reifen bis 55 mm.
   alt: Ein Gravel-Fahrer auf einem Waldweg im Herbst
   dims:
     - ["4", "Farben, ein Rahmen"]
     - ["Mitte 2027", "Geplante Markteinführung"]
-    - ["CH", "In der Schweiz lackiert und montiert"]
+    - ["55 mm", "Reifenfreiheit"]
   storyTitle: Länger, tiefer, ruhiger.
   storyAlt: Bleistiftstudie des SENDA Rahmens
   tileNote: Demnächst, Mitte 2027

@@ -129,7 +129,9 @@
     "write_to_us": "Write to us",
     "more": "More from SENDA.",
     "not_published": "Not yet published",
-    "orma_by": "by SENDA"
+    "orma_by": "by SENDA",
+    "sizechart_title": "Which size fits you",
+    "sizechart_text": "Rider height as a guide. Between two sizes, the fit calculator in the configurator decides."
   },
   "geo": {
     "Stack": "Stack",
@@ -248,7 +250,8 @@
       "number": "Order number",
       "sent": "A confirmation is on its way to",
       "questions": "Questions about your order:"
-    }
+    },
+    "deposit": "Deposit {deposit} after your order, balance {balance} before final assembly."
   },
   "js": {
     "deposit": "Deposit {deposit} after your order, balance {balance} before delivery.",
@@ -297,11 +300,11 @@
       "confirm_deposit": "We confirm your order personally, with the invoice for the deposit of {deposit}.",
       "confirm_full": "We confirm your order personally, with the invoice of {total}.",
       "until": "Until delivery",
-      "until_vent": "We keep you posted while your bike is being built. The balance of {balance} is invoiced before delivery, in early {date}.",
-      "until_momentum": "We keep you posted. Delivery in early {date}.",
+      "until_vent": "We keep you posted while your bike is being built. The balance of {balance} is invoiced before final assembly; your bike ships within two weeks of payment, from the beginning of {date}.",
+      "until_momentum": "We keep you posted. Delivery from the beginning of {date}.",
       "your_order": "Your order",
       "contact": "Questions, wishes or a fitting: write to {email}. We answer within one working day.",
-      "sign": "Raphael and Micha"
+      "sign": "Your SENDA Team"
     }
   },
   "notfound": {

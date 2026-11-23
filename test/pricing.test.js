@@ -14,18 +14,18 @@ test("offer end is inclusive and uses Zurich time", () => {
   assert.equal(offerActive("2026-12-31", after), false);
 });
 
-test("Vent Ultegra early bird: 6300 - 500 + 50 shipping, 30% deposit on the bike", () => {
+test("Vent Ultegra early bird: 6300 - 300 + 50 shipping, 30% deposit on the bike", () => {
   const r = priceVent(cfg, ventDefaults(cfg.vent, "M"), during);
   assert.equal(r.ok, true);
-  assert.equal(r.total, 5850);
-  assert.equal(r.deposit, 1740);
-  assert.equal(r.balance, 4110);
+  assert.equal(r.total, 6050);
+  assert.equal(r.deposit, 1800);
+  assert.equal(r.balance, 4250);
 });
 
 test("Vent prices per groupset, with and without early bird", () => {
   for (const [g, full] of [["105", 5400], ["ULT", 6300], ["DA", 7900]]) {
     const sel = { ...ventDefaults(cfg.vent, "L"), groupset: g };
-    assert.equal(priceVent(cfg, sel, during).total, full - 500 + 50);
+    assert.equal(priceVent(cfg, sel, during).total, full - 300 + 50);
     assert.equal(priceVent(cfg, sel, after).total, full + 50);
   }
 });
@@ -55,11 +55,11 @@ test("article code carries every choice", () => {
 
 test("ORMA Momentum: paid in full, mixed rims, intro price", () => {
   const r = priceMomentum(cfg, { rimFront: "45", rimRear: "50", freehub: "HG" }, during);
-  assert.equal(r.total, 980, "950 intro price + 30 shipping");
+  assert.equal(r.total, 1110, "1080 intro price + 30 shipping");
   assert.equal(r.shipping, 30);
   assert.equal(r.deposit, r.total);
   assert.equal(r.code, "MOM-45/50-HG");
-  assert.equal(priceMomentum(cfg, { rimFront: "45", rimRear: "50", freehub: "XDR" }, after).total, 1080);
+  assert.equal(priceMomentum(cfg, { rimFront: "45", rimRear: "50", freehub: "XDR" }, after).total, 1210);
   assert.equal(priceMomentum(cfg, { rimFront: "45", rimRear: "50", freehub: "N3W" }).ok, false, "Campagnolo not offered");
   assert.equal(priceMomentum(cfg, { rimFront: "60", rimRear: "50", freehub: "HG" }).ok, false);
 });
