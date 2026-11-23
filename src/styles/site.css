@@ -891,3 +891,25 @@ html:has(.subbar) { scroll-padding-top: calc(var(--header-h) + 52px + 16px); }
 .geo-chip { min-width: 52px; min-height: 40px; padding: 0 14px; border: 1px solid var(--line); background: #fff; font: 400 var(--t-label)/1 var(--mono); letter-spacing: var(--track-label); cursor: pointer; }
 .geo-chip[aria-checked="true"] { border-color: var(--ink); background: var(--ink); color: #fff; }
 @media (max-width: 760px) { .footer-signup { grid-template-columns: 1fr; gap: var(--s-2); } }
+
+/* ---------- Homepage 2026-11-23 evening ---------- */
+/* Sections sit edge to edge, white and light grey alternating, no gaps */
+.hs { margin: 0; padding: clamp(64px, 7vw, 112px) 0; background: #fff; }
+.hs--tint { background: var(--tint); }
+.split--home { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: center; }
+.hs__image { display: block; }
+.hs__image img { width: 100%; height: auto; display: block; }
+.hs .block .offer { margin-top: var(--s-4); text-align: left; }
+.hs__btn { margin-top: var(--s-4); }
+.gravel-band.hs { margin-top: 0; padding: 0; background: #fff; }
+.gravel-band__art { inset: 0 0 0 46%; justify-content: center; opacity: 1; }
+.gravel-band__art img { width: auto; height: 100%; max-height: 640px; object-fit: contain; mix-blend-mode: multiply; }
+.fullbleed--home { margin-top: 0; }
+.opening__claim .opening__line { max-width: none; }
+/* Footer logo in white: the S mark is already white, only the wordmark is inverted */
+.site-footer .footer-brand .footer-mark { filter: none; }
+@media (max-width: 760px) {
+  .split--home { grid-template-columns: 1fr; }
+  .gravel-band__art img { height: auto; width: 100%; max-height: none; }
+}
+@media (max-width: 760px) { .gravel-band__art { position: relative; inset: auto; padding: 32px 16px 0; } }

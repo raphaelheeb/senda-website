@@ -6,7 +6,7 @@ title: SENDA
 en:
   description: Swiss road and gravel bikes, made for the way out. ORMA wheels and components by SENDA.
   hero_alt: Two cyclists on a lakeside road in the Engadin in autumn
-  vent_text: Our all-round race bike with aero-optimized geometry. A 780 g carbon frame (size 54), a fully integrated carbon cockpit, stiff ORMA carbon wheels at 1’180 g and room for 33 mm tyres. Customized to your position.
+  vent_text: Our all-round race bike. A 780 g carbon frame, a one-piece carbon cockpit and ORMA wheels, set up to your position.
   vent_link: Discover SENDA Vent
   range: Road now. Gravel next.
   orma_title: 1’180 grams.
@@ -26,7 +26,7 @@ en:
   founders_text: Long climbs, tight hairpins and gravel above the tree line ask a lot of a bike. SENDA brings race performance and calm, considered design together, because on these roads you need both.
   founders_link: About SENDA
   vent_title: SENDA Vent
-  usp: Road and gravel bikes, built around you.
+  usp: Road and Gravel Bikes.<br>Built Around You.
   hero_cta: SENDA Vent – configure your bike
   gravel_title: SENDA Gravel
   gravel_text: We are finalizing our race gravel bike, with aero tube shapes and tyre clearance up to 55 mm. Coming mid-2027.
@@ -37,7 +37,7 @@ en:
 de:
   description: Rennräder und Gravelbikes aus der Schweiz, gemacht für den Weg hinaus. ORMA Laufräder und Komponenten by SENDA.
   hero_alt: Zwei Velofahrende auf einer Seestrasse im Engadin im Herbst
-  vent_text: Unser Allround-Rennrad mit aerooptimierter Geometrie. Ein 780 g leichter Carbonrahmen (Grösse 54), ein voll integriertes Carbon-Cockpit, steife ORMA Carbon-Laufräder mit 1’180 g und Platz für 33 mm Reifen. Auf Deine Position abgestimmt.
+  vent_text: Unser Allround-Rennrad. Ein 780 g leichter Carbonrahmen, ein einteiliges Carbon-Cockpit und ORMA Laufräder, auf Deine Position abgestimmt.
   vent_link: SENDA Vent entdecken
   range: Road now. Gravel next.
   orma_title: 1’180 Gramm.
@@ -57,7 +57,7 @@ de:
   founders_text: Lange Anstiege, enge Kehren und Schotter über der Baumgrenze verlangen viel von einem Bike. SENDA verbindet Rennleistung mit ruhigem, durchdachtem Design, denn auf diesen Strassen braucht es beides.
   founders_link: Über SENDA
   vent_title: SENDA Vent
-  usp: Rennräder und Gravelbikes, für Dich gebaut.
+  usp: Rennräder und Gravelbikes.<br>Für Dich gebaut.
   hero_cta: SENDA Vent – konfiguriere Dein Bike
   gravel_title: SENDA Gravel
   gravel_text: Wir finalisieren unser Race-Gravelbike, mit Aero-Rohrformen und Platz für Reifen bis 55 mm. Ab Mitte 2027.
@@ -88,24 +88,21 @@ de:
   </div>
 </section>
 
-<section class="section moment">
-  <div class="wrap moment__copy">
-    <h2 class="h2">{{ C.vent_title }}</h2>
-    <p class="block__text">{{ C.vent_text }}</p>
-    {% include "partials/offer.liquid", key: "vent", class: "offer--center" %}
-    <div class="moment__actions">
-      <a class="btn" href="{{ '/bikes/vent/configure/' | lurl: lang }}">{{ t.buy.configure_vent }}</a>
-      <a class="linkline" href="{{ '/bikes/vent/' | lurl: lang }}">{{ C.vent_link }}</a>
-    </div>
-  </div>
-  <div class="moment__bleed">
-    <a class="moment__image" href="{{ '/bikes/vent/' | lurl: lang }}" tabindex="-1" aria-hidden="true">
-      <img src="/assets/img/web/vent-arch-champagne-2000.jpg" srcset="/assets/img/web/vent-arch-champagne-1000.jpg 1000w, /assets/img/web/vent-arch-champagne-2000.jpg 1679w" sizes="100vw" width="1679" height="937" alt="" loading="lazy">
+<section class="hs">
+  <div class="wrap split split--home">
+    <a class="hs__image" href="{{ '/bikes/vent/' | lurl: lang }}" tabindex="-1" aria-hidden="true">
+      <img src="/assets/img/web/vent-front-blue-2000.jpg" srcset="/assets/img/web/vent-front-blue-1000.jpg 1000w, /assets/img/web/vent-front-blue-2000.jpg 2000w" sizes="(max-width: 760px) 100vw, 60vw" width="2000" height="1331" alt="" loading="lazy">
     </a>
+    <div class="block">
+      <h2 class="h2">{{ C.vent_title }}</h2>
+      <p class="block__text">{{ C.vent_text }}</p>
+      {% include "partials/offer.liquid", key: "vent" %}
+      <a class="btn hs__btn" href="{{ '/bikes/vent/' | lurl: lang }}">{{ C.vent_link }}</a>
+    </div>
   </div>
 </section>
 
-<section class="section section--tint section--band">
+<section class="hs hs--tint">
   <div class="wrap split">
     {% include "partials/frame.liquid", img: "/assets/img/web/orma-wheels-2000.jpg", ratio: "bike", contain: true, alt: C.orma_alt %}
     <div class="block">
@@ -119,8 +116,8 @@ de:
 </section>
 
 {% if gravel %}
-<section class="gravel-band" aria-labelledby="gravel-title">
-  <div class="gravel-band__art" aria-hidden="true">{% include "svg/gravel-sketch.svg" %}</div>
+<section class="gravel-band hs" aria-labelledby="gravel-title">
+  <div class="gravel-band__art" aria-hidden="true"><img src="/assets/img/web/gravel-frame-sketch-2000.jpg" alt="" loading="lazy" width="2000" height="2000"></div>
   <div class="wrap gravel-band__copy">
     <h2 class="h2" id="gravel-title">{{ C.gravel_title }}</h2>
     <p class="block__text">{{ C.gravel_text }}</p>
@@ -138,7 +135,7 @@ de:
 </section>
 {% endif %}
 
-<section class="fullbleed" style="--pos: center 60%">
+<section class="fullbleed fullbleed--home" style="--pos: center 60%">
   <img src="/assets/img/web/belvedere-pass-2000.jpg" alt="{{ C.founders_alt }}" loading="lazy">
   <div class="wrap fullbleed__copy">
     <h2 class="h2">{{ C.founders_title }}</h2>
