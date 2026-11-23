@@ -926,5 +926,6 @@ html:has(.subbar) { scroll-padding-top: calc(var(--header-h) + 52px + 16px); }
   .footer-links--mid { justify-content: flex-start; }
   .footer-brand { justify-self: start; order: -1; }
 }
-.site-footer #newsletter.footer-signup { padding-bottom: 28px; }
+.site-footer #newsletter.footer-signup { padding-bottom: clamp(40px, 4vw, 56px); }
+.site-footer .footer-signup { margin-bottom: clamp(32px, 3.5vw, 48px); }
 .site-footer .footer-brand .footer-word { filter: none; }
