@@ -11,7 +11,7 @@ deposit: 30%
 delivery: early March 2027
 configureUrl: /bikes/vent/configure/
 orderKey: vent
-summary: Our all-round race bike. A 780 g carbon frame on ORMA carbon wheels, set up to your position.
+summary: Our allround race bike. A 780 g carbon frame on ORMA carbon wheels, set up to your position.
 dims:
   - ["6.75 kg", "From, top build"]
   - ["45/50 mm", "ORMA Momentum rim depth, your choice"]

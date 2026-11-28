@@ -5,7 +5,7 @@ status: preorder
 price: CHF 1’180
 priceNote: Incl. VAT
 delivery: early March 2027
-summary: A light all-round road wheelset in 45 or 50 mm, front and rear chosen separately.
+summary: A light allround road wheelset in 45 or 50 mm, front and rear chosen separately.
 imageContain: true
 alt: ORMA Momentum carbon wheelset, front and rear
 dims:

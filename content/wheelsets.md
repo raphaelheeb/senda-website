@@ -11,7 +11,7 @@ en:
   title: Wheelsets
   intro: Carbon wheels tested alongside our bikes, and made for most disc-brake road bikes.
   text_title: ORMA Momentum
-  text: Our all-round carbon wheelset for disc-brake road bikes. Developed alongside our bikes, hand-built, and light enough for long climbs at 1’180 g.
+  text: Our allround carbon wheelset for disc-brake road bikes. Developed alongside our bikes, hand-built, and light enough for long climbs at 1’180 g.
   text_link: Discover ORMA Momentum
   keys:
     - Hooked carbon rims, tubeless-ready
