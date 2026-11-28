@@ -4,7 +4,9 @@
 {%- else -%}
   {%- assign o = configurator.momentum -%}{%- assign now = o.earlyBird.price -%}{%- assign off = o.price | minus: o.earlyBird.price -%}{%- assign from = "" -%}{%- assign note = t.offer.intro_note -%}
 {%- endif -%}
+{%- if bare -%}{{ from }}CHF {{ now | chf }}{%- else -%}
 <div class="offer{% if class %} {{ class }}{% endif %}">
   <p class="offer__price">{{ from }}CHF {{ now | chf }}</p>
   <p class="offer__note">{{ note | fill: "discount", off }}</p>
 </div>
+{%- endif -%}

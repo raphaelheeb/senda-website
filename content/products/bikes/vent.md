@@ -11,7 +11,7 @@ deposit: 30%
 delivery: early March 2027
 configureUrl: /bikes/vent/configure/
 orderKey: vent
-summary: Our all-round race bike with aero-optimized geometry. A 780 g carbon frame (size 54), a fully integrated carbon cockpit, stiff ORMA carbon wheels at 1’180 g and room for 33 mm tyres. Customized to your position.
+summary: Our all-round race bike. A 780 g carbon frame on ORMA carbon wheels, set up to your position.
 dims:
   - ["6.75 kg", "From, top build"]
   - ["45/50 mm", "ORMA Momentum rim depth, your choice"]
@@ -79,7 +79,7 @@ de:
   price: Ab CHF 5’400
   priceNote: Inkl. MWST
   delivery: Anfang März 2027
-  summary: Unser Allround-Rennrad mit aerooptimierter Geometrie. Ein 780 g leichter Carbonrahmen (Grösse 54), ein voll integriertes Carbon-Cockpit, steife ORMA Carbon-Laufräder mit 1’180 g und Platz für 33 mm Reifen. Auf Deine Position abgestimmt.
+  summary: Unser Allround-Rennrad. Ein 780 g leichter Carbonrahmen auf ORMA Carbon-Laufrädern, auf Deine Position abgestimmt.
   alt: SENDA Vent in Slate Blue mit ORMA Momentum Laufrädern vor einer Sichtbetonwand
   dims:
     - ["6.75 kg", "Ab, Topausstattung"]

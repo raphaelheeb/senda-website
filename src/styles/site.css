@@ -1096,3 +1096,12 @@ html:has(.subbar) { scroll-padding-top: calc(var(--header-h) + 52px + 16px); }
 .duo__media--blend:hover img { transform: scale(1.02); }
 .duo .offer--facts { margin-top: var(--s-3); }
 @media (max-width: 760px) { .duo__media--blend img { padding: 4% var(--margin); } }
+/* Calm product top: headline, one sentence, price and delivery, one button */
+.p-top__buy { margin-top: var(--s-5); }
+.buy__status--calm .buy__line { margin: 0; font-size: 20px; line-height: 1.4; color: var(--ink); }
+.buy__status--calm .buy__line span { color: var(--grey); font-size: 16px; }
+.buy__status--calm .buy__note { margin-top: 2px; font-size: 16px; color: var(--grey); }
+.p-top__buy .buy__actions { margin-top: var(--s-4); }
+.stage4 { align-items: start; }
+.stage4 .p-top__buy { margin-top: var(--s-4); }
+.stage:has(+ .sec--grey) { padding-bottom: 0; }

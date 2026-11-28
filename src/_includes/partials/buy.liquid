@@ -2,6 +2,22 @@
 {%- assign delivery_ = L.delivery | default: delivery -%}
 {%- assign price_ = L.price | default: price -%}
 {%- assign priceNote_ = L.priceNote | default: priceNote -%}
+{%- if calm -%}
+{%- comment -%} Calm version for a product top: one price line, one delivery line, one button. The offer details live in the order form. {%- endcomment -%}
+<div class="buy__status buy__status--calm">
+  <div data-states="announced">
+    {% if price_ %}<p class="buy__line">{{ price_ }} <span>{{ t.buy.expected }}</span></p>{% endif %}
+    <p class="buy__note">{{ t.buy.delivery_note | fill: "delivery", delivery_ }}</p>
+  </div>
+  <div data-states="preorder">
+    <p class="buy__line">{% if orderKey %}{% include "partials/offer.liquid", key: orderKey, bare: true %}{% else %}{{ price_ }}{% endif %}</p>
+    <p class="buy__note">{{ t.buy.delivery_note | fill: "delivery", delivery_ }}</p>
+  </div>
+  <div data-states="available">
+    <p class="buy__line">{{ price_ }}</p>
+  </div>
+</div>
+{%- else -%}
 <div class="buy__status">
   <span class="badge js-status-badge badge--{{ status }}">{{ t.status[status] | default: status }}</span>
   <div data-states="announced">
@@ -17,6 +33,7 @@
     <p class="buy__note">{{ L.availableNote | default: availableNote | default: t.buy.available_note }}</p>
   </div>
 </div>
+{%- endif -%}
 
 <form class="buy__actions js-signup" data-list="{{ list | default: 'senda' }}" data-states="announced" novalidate>
   <label class="visually-hidden" for="notify-email">{{ t.signup.email }}</label>
@@ -31,10 +48,3 @@
 <div class="buy__actions" data-states="available">
   <button class="btn" type="button">{{ t.buy.order }}</button>
 </div>
-
-{% unless env.production %}
-{%- assign promise_ = L.promise | default: promise -%}
-<ul class="promise draft" data-draft="{{ t.buy.promise_draft }}">
-  {% for p in promise_ %}<li><strong>{{ p[0] }}</strong> {{ p[1] }}</li>{% endfor %}
-</ul>
-{% endunless %}

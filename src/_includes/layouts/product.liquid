@@ -46,11 +46,13 @@ layout: layouts/base.liquid
 <section class="stage" id="overview">
   <div class="wrap g stage4">
     <div class="tab-a">
-      <nav class="crumbs" aria-label="{{ t.a11y.breadcrumb }}"><a href="{{ '/' | append: category | append: '/' | lurl: lang }}">{{ catLabel }}</a><span>/</span><span>{{ title }}</span></nav>
       <h1 class="h1">{{ title }}</h1>
     </div>
     <div class="tab-b">
       <p class="sec__text">{{ summary_ }}</p>
+      <div class="buy p-top__buy" id="buy" aria-label="{{ t.a11y.purchase }}">
+        {% include "partials/buy.liquid", calm: true %}
+      </div>
     </div>
   </div>
   <div class="{% if sketch %}wrap{% else %}stage4__image{% endif %}">
@@ -66,15 +68,16 @@ layout: layouts/base.liquid
     {% include "partials/frame.liquid", img: image, ratio: "hero", pos: imagePosition, alt: alt_ %}
     {% endif %}
   </div>
-  <div class="wrap stage__base">
-    {% if dims_ %}<div class="dims" style="--dims: {{ dims_.size }}">
-      {% for d in dims_ %}<div class="dim"><span class="dim__value">{{ d[0] }}</span><span class="dim__label">{{ d[1] }}</span></div>{% endfor %}
-    </div>{% endif %}
-    <div class="buy stage__buy" id="buy" aria-label="{{ t.a11y.purchase }}">
-      {% include "partials/buy.liquid" %}
-    </div>
+</section>
+{% if dims_ %}
+<section class="sec sec--grey">
+  <div class="wrap">
+    <dl class="figs">
+      {% for d in dims_ %}<div class="fig"><dt class="fig__label">{{ d[1] }}</dt><dd class="fig__value">{{ d[0] }}</dd></div>{% endfor %}
+    </dl>
   </div>
 </section>
+{% endif %}
 {% else %}
 {%- comment -%} Wheelsets and components, v4: image to the page edge, text on tab B; key figures on grey; then text sections on tab A / tab B. {%- endcomment -%}
 <section class="duo duo--flip p-top" id="overview">
@@ -82,12 +85,10 @@ layout: layouts/base.liquid
     <img src="{{ image | replace: '-1000', '-2000' }}" alt="{{ alt_ }}"{% if imagePosition %} style="object-position: {{ imagePosition }}"{% endif %}>
   </div>
   <div class="duo__text"><div class="duo__inner">
-    <nav class="crumbs" aria-label="{{ t.a11y.breadcrumb }}"><a href="{{ '/' | append: category | append: '/' | lurl: lang }}">{{ catLabel }}</a><span>/</span><span>{{ title }}</span></nav>
-    {% if brand == "ORMA" %}<a href="{{ '/orma/' | lurl: lang }}" class="orma-mark orma-mark--small p-top__mark"><span class="orma-mark__word">{% include "svg/orma-wordmark.svg" %}</span><span class="orma-mark__by">{{ t.product.orma_by }}</span></a>{% endif %}
     <h1 class="h1">{{ title }}</h1>
     <p class="sec__text">{{ summary_ }}</p>
     <div class="buy p-top__buy" id="buy" aria-label="{{ t.a11y.purchase }}">
-      {% include "partials/buy.liquid" %}
+      {% include "partials/buy.liquid", calm: true %}
     </div>
   </div></div>
 </section>
