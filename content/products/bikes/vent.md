@@ -5,7 +5,7 @@ categoryLabel: Road
 platform: road
 order: 1
 status: preorder
-price: From CHF 5’400
+price: From CHF 5’050
 priceNote: Incl. VAT
 deposit: 30%
 delivery: early March 2027
@@ -76,7 +76,7 @@ geometryRows:
   - ["Seat tube angle", "75°", "74.5°", "74°", "73.5°", "73°", "73°"]
   - ["Wheelbase", "971", "976", "983", "993", "1005", "1020"]
 de:
-  price: Ab CHF 5’400
+  price: Ab CHF 5’050
   priceNote: Inkl. MWST
   delivery: Anfang März 2027
   summary: Unser Allround-Rennrad. Ein 780 g leichter Carbonrahmen auf ORMA Carbon-Laufrädern, auf Deine Position abgestimmt.
