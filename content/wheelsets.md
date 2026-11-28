@@ -11,7 +11,7 @@ en:
   intro: Carbon wheels tested alongside our bikes, and made for most disc-brake road bikes.
   text_title: ORMA Momentum
   text: Our all-round carbon wheelset for disc-brake road bikes. Developed alongside our bikes, hand-built, and light enough for long climbs at 1’180 g.
-  text_link: See ORMA Momentum
+  text_link: Discover ORMA Momentum
   keys:
     - Hooked carbon rims, tubeless-ready
     - 45 or 50 mm deep, front and rear chosen separately
@@ -25,7 +25,7 @@ de:
   intro: Carbon-Laufräder, zusammen mit unseren Bikes getestet und gemacht für die meisten Rennräder mit Scheibenbremse.
   text_title: ORMA Momentum
   text: Unser Allround-Carbon-Laufradsatz für Rennräder mit Scheibenbremse. Zusammen mit unseren Bikes entwickelt, von Hand eingespeicht und mit 1’180 g leicht genug für lange Anstiege.
-  text_link: Zu ORMA Momentum
+  text_link: ORMA Momentum entdecken
   keys:
     - Hooked-Carbonfelgen, tubeless-tauglich
     - 45 oder 50 mm hoch, vorne und hinten frei wählbar

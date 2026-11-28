@@ -27,10 +27,9 @@ kits:
   - name: Build three
     price: From CHF 8’500 (indicative)
     items: ["Top-tier electronic groupset", "ORMA gravel wheelset, in development", "ORMA cockpit", "ORMA saddle, carbon rails"]
-image: /assets/img/web/gravel-forest-2000.jpg
-imagePosition: center 40%
-alt: A gravel rider on a forest track in autumn
-sketch: svg/gravel-sketch.svg
+image: /assets/img/web/gravel-frame-sketch-2000.jpg
+imagePosition: center 50%
+alt: Pencil sketch of the SENDA Gravel frame
 sketchNote: Longer chainstays, a lower bottom bracket and a slacker head angle than SENDA Vent. The rest follows when the frame is final.
 sketchHidden:
   - ["Reach", "000"]
@@ -48,7 +47,7 @@ de:
   priceNote: Richtpreis
   delivery: Mitte 2027
   summary: Wir finalisieren die Spezifikationen unseres Race-Gravelbikes, mit Aero-Rohrformen und Platz für Reifen bis 55 mm.
-  alt: Ein Gravel-Fahrer auf einem Waldweg im Herbst
+  alt: Bleistiftskizze des SENDA Gravel Rahmens
   dims:
     - ["4", "Farben, ein Rahmen"]
     - ["Mitte 2027", "Geplante Markteinführung"]

@@ -201,4 +201,26 @@
     }, { rootMargin: "-45% 0px -50% 0px" });
     targets.forEach(function (t) { if (t) io.observe(t); });
   }
+
+  // Header: tucks away while reading down, returns on the way up (desktop and mobile)
+  (function () {
+    var header = document.querySelector(".site-header");
+    if (!header) return;
+    var last = window.scrollY;
+    window.addEventListener("scroll", function () {
+      var y = window.scrollY;
+      if (document.body.classList.contains("drawer-open")) return;
+      header.classList.toggle("is-tucked", y > 160 && y > last);
+      last = y;
+    }, { passive: true });
+  })();
+
+  // Detail strip: arrows move one image
+  document.querySelectorAll("[data-strip]").forEach(function (track) {
+    var wrap = track.closest(".strip");
+    var step = function (dir) { var img = track.querySelector("img"); track.scrollBy({ left: dir * (img ? img.clientWidth + 4 : 400), behavior: "smooth" }); };
+    var prev = wrap.querySelector("[data-strip-prev]"), next = wrap.querySelector("[data-strip-next]");
+    if (prev) prev.addEventListener("click", function () { step(-1); });
+    if (next) next.addEventListener("click", function () { step(1); });
+  });
 })();

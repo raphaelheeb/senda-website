@@ -18,7 +18,9 @@
     "breadcrumb": "Pfad",
     "purchase": "Kaufen",
     "legal": "Rechtliches",
-    "summary": "Zusammenfassung"
+    "summary": "Zusammenfassung",
+    "prev": "Zurück",
+    "next": "Weiter"
   },
   "nav": {
     "/bikes/": "Bikes",
@@ -103,7 +105,7 @@
     "specced_gravel_text": "Ein breiterer ORMA Gravel-Laufradsatz ist in Entwicklung und wird Standard an jedem {title}.",
     "see_wheelset": "Zum Laufradsatz",
     "builds_title": "Verfügbare Schaltgruppen.",
-    "builds_text": "Grösse, Farbe, Felgenhöhe, Cockpit, Übersetzung und Reifen wählst Du im Konfigurator.",
+    "builds_text": "Einführungspreise, Versand innerhalb der Schweiz inbegriffen. Grösse, Farbe, Felgenhöhe, Cockpit, Übersetzung und Spacer wählst Du im Konfigurator.",
     "geometry": "Geometrie.",
     "geometry_pending": "Die finalen Werte folgen mit der Vorbestellung.",
     "size": "Grösse",
@@ -130,7 +132,8 @@
     "not_published": "Noch nicht veröffentlicht",
     "orma_by": "by SENDA",
     "sizechart_title": "Welche Grösse passt",
-    "sizechart_text": "Körpergrösse als Richtwert. Zwischen zwei Grössen entscheidet der Fit-Rechner im Konfigurator."
+    "sizechart_text": "Körpergrösse als Richtwert. Zwischen zwei Grössen entscheidet der Fit-Rechner im Konfigurator.",
+    "with_pm": "Leistungsmesser + CHF {price}"
   },
   "geo": {
     "Stack": "Stack",
@@ -260,7 +263,7 @@
     "power_note": "Erhältlich mit Ultegra Di2 und Dura-Ace Di2."
   },
   "js": {
-    "deposit": "Anzahlung {deposit} nach der Bestellung, Restbetrag {balance} vor der Lieferung.",
+    "deposit": "Anzahlung {deposit} nach der Bestellung, Restbetrag {balance} vor der Endmontage.",
     "full": "Volle Rechnung nach der Bestellung.",
     "shown_in": "Abgebildet in Slate Blue. Deines kommt in {finish}.",
     "fit_race": "Tiefer und gestreckter, für Tempo.",

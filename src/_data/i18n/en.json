@@ -18,7 +18,9 @@
     "breadcrumb": "Breadcrumb",
     "purchase": "Purchase",
     "legal": "Legal",
-    "summary": "Summary"
+    "summary": "Summary",
+    "prev": "Previous",
+    "next": "Next"
   },
   "nav": {
     "/bikes/": "Bikes",
@@ -103,7 +105,7 @@
     "specced_gravel_text": "A wider ORMA gravel wheelset is in development and will be standard on every {title}.",
     "see_wheelset": "See the wheelset",
     "builds_title": "Available groupsets.",
-    "builds_text": "Size, colour, rim depth, cockpit, gearing and tyres are chosen in the configurator.",
+    "builds_text": "Introductory prices, shipping within Switzerland included. Size, colour, rim depth, cockpit, gearing and spacers are chosen in the configurator.",
     "geometry": "Geometry.",
     "geometry_pending": "Final numbers are published when pre-orders open.",
     "size": "Size",
@@ -130,7 +132,8 @@
     "not_published": "Not yet published",
     "orma_by": "by SENDA",
     "sizechart_title": "Which size fits you",
-    "sizechart_text": "Rider height as a guide. Between two sizes, the fit calculator in the configurator decides."
+    "sizechart_text": "Rider height as a guide. Between two sizes, the fit calculator in the configurator decides.",
+    "with_pm": "Power meter + CHF {price}"
   },
   "geo": {
     "Stack": "Stack",
@@ -260,7 +263,7 @@
     "power_note": "Available with Ultegra Di2 and Dura-Ace Di2."
   },
   "js": {
-    "deposit": "Deposit {deposit} after your order, balance {balance} before delivery.",
+    "deposit": "Deposit {deposit} after your order, balance {balance} before final assembly.",
     "full": "Invoiced in full after your order.",
     "shown_in": "Shown in Slate Blue. Yours comes in {finish}.",
     "fit_race": "Lower and longer, for speed.",

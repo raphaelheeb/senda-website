@@ -8,7 +8,7 @@
       "label": "Bikes",
       "url": "/bikes/",
       "category": "bikes",
-      "go": "/bikes/vent/configure/"
+      "go": "/bikes/vent/"
     },
     {
       "label": "Wheelsets",
@@ -45,7 +45,7 @@
         {
           "label": "Bikes",
           "url": "/bikes/",
-          "go": "/bikes/vent/configure/"
+          "go": "/bikes/vent/"
         },
         {
           "label": "Wheelsets",

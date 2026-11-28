@@ -30,7 +30,7 @@ layout: layouts/base.liquid
     <a class="subbar__name" href="#overview">{{ title }}</a>
     <span class="subbar__links">
       <a href="#overview">{{ t.product.overview }}</a>
-      <a href="#colours">{{ t.product.colours }}</a>
+      {% unless status == "announced" %}<a href="#colours">{{ t.product.colours }}</a>{% endunless %}
       {% if features_ or ride_ %}<a href="#details">{{ t.product.details }}</a>{% endif %}
       {% if specs_ %}<a href="#specs">{{ t.product.specs }}</a>{% endif %}
       {% if faq_ %}<a href="#faq">{{ t.product.faq }}</a>{% endif %}
@@ -44,16 +44,16 @@ layout: layouts/base.liquid
 </nav>
 
 <section class="stage" id="overview">
-  <div class="wrap stage__head">
-    <nav class="crumbs" aria-label="{{ t.a11y.breadcrumb }}"><a href="{{ '/' | append: category | append: '/' | lurl: lang }}">{{ catLabel }}</a><span>/</span><span>{{ title }}</span></nav>
-    <h1 class="stage__title">{{ title }}</h1>
-    <p class="stage__summary">{{ summary_ }}</p>
-    {% if orderKey and status == "preorder" %}<div class="stage__order" data-states="preorder">
-      {% include "partials/offer.liquid", key: orderKey, class: "offer--center" %}
-      <a class="btn" href="{{ configureHref }}">{{ t.buy.configure }}</a>
-    </div>{% endif %}
+  <div class="wrap g stage4">
+    <div class="tab-a">
+      <nav class="crumbs" aria-label="{{ t.a11y.breadcrumb }}"><a href="{{ '/' | append: category | append: '/' | lurl: lang }}">{{ catLabel }}</a><span>/</span><span>{{ title }}</span></nav>
+      <h1 class="h1">{{ title }}</h1>
+    </div>
+    <div class="tab-b">
+      <p class="sec__text">{{ summary_ }}</p>
+    </div>
   </div>
-  <div class="wrap">
+  <div class="{% if sketch %}wrap{% else %}stage4__image{% endif %}">
     {% if sketch %}
     <figure class="sketch-stage" data-draw>
       {% include sketch %}
@@ -115,18 +115,16 @@ layout: layouts/base.liquid
 {% endif %}
 
 {% if body_ != blank and storyImage %}
-<section class="section">
-  <div class="wrap split">
-    <div>
-      <h2 class="h2">{{ storyTitle_ }}</h2>
-      <div class="prose mt-4">{{ body_ }}</div>
-    </div>
-    {% include "partials/frame.liquid", img: storyImage, ratio: "bike", contain: storyContain, alt: storyAlt_ %}
-  </div>
+<section class="duo">
+  <div class="duo__text"><div class="duo__inner">
+    <h2 class="h2">{{ storyTitle_ }}</h2>
+    <div class="prose mt-4">{{ body_ }}</div>
+  </div></div>
+  <div class="duo__media"><img src="{{ storyImage | replace: '-1000', '-2000' }}" alt="{{ storyAlt_ }}" loading="lazy"{% if storyPos %} style="object-position: {{ storyPos }}"{% endif %}></div>
 </section>
 {% endif %}
 
-{% if type == "bike" %}
+{% if type == "bike" and status != "announced" %}
 <section class="section" id="colours">
   <div class="wrap">
     <h2 class="h2 block-title">{{ t.product.colours_title }}</h2>
@@ -134,7 +132,7 @@ layout: layouts/base.liquid
       <div class="picker__stage">
         {% for f in finishes %}
         <div class="picker__view{% if forloop.first %} is-active{% endif %}" data-finish="{{ f.name | slugify }}">
-          {% assign fimg = f.bikeImage | default: f.image %}{% if fimg %}<img src="{{ fimg | replace: '-1000', '-2000' }}" alt="{{ t.product.frame_in | fill: 'name', f.name }}" loading="lazy">{% else %}<div class="picker__flat" style="background: {{ f.hex }}"></div>{% endif %}
+          {% assign fimg = f.frameImage | default: f.bikeImage | default: f.image %}{% if fimg %}<img src="{{ fimg | replace: '-1000', '-2000' }}" alt="{{ t.product.frame_in | fill: 'name', f.name }}" loading="lazy">{% else %}<div class="picker__flat" style="background: {{ f.hex }}"></div>{% endif %}
         </div>
         {% endfor %}
       </div>
@@ -144,13 +142,15 @@ layout: layouts/base.liquid
       {% assign f0 = finishes | first %}{% assign surface0 = t.surface_caption[f0.surface] | default: f0.surface %}<p class="picker__caption micro" aria-live="polite">{{ f0.name }}, {{ surface0 }}</p>
     </div>
   </div>
+{% if closeups %}
+  <div class="strip strip--in">
+    <div class="strip__track" data-strip tabindex="0">{% for c in closeups %}<img src="{{ c[0] }}" alt="{{ L.closeupAlts[forloop.index0] | default: c[1] }}" loading="lazy">{% endfor %}</div>
+    <div class="wrap strip__nav"><button type="button" class="strip__btn" data-strip-prev aria-label="{{ t.a11y.prev }}">←</button><button type="button" class="strip__btn" data-strip-next aria-label="{{ t.a11y.next }}">→</button></div>
+  </div>
+{% endif %}
 </section>
 {% if momentImage %}
-<section class="section moment">
-  <div class="wrap">
-    {% include "partials/frame.liquid", img: momentImage, ratio: "hero", alt: L.momentAlt | default: momentAlt %}
-  </div>
-</section>
+<figure class="bleed"><img src="{{ momentImage }}" alt="{{ L.momentAlt | default: momentAlt }}" loading="lazy"></figure>
 {% endif %}
 
 {% if ride_ %}
@@ -188,7 +188,7 @@ layout: layouts/base.liquid
 <section class="section">
   <div class="wrap">
     <div class="specced">
-      {% include "partials/frame.liquid", img: "/assets/img/web/orma-wheels-1000.jpg", ratio: "bike", contain: true, alt: "ORMA Momentum" %}
+      {% include "partials/frame.liquid", img: "/assets/img/web/orma-momentum-pair-1000.jpg", ratio: "bike", contain: true, alt: "ORMA Momentum" %}
       <div>
         <p class="orma-mark orma-mark--small"><span class="orma-mark__word">{% include "svg/orma-wordmark.svg" %}</span><span class="orma-mark__by">{{ t.product.orma_by }}</span></p>
         {% if platform == "gravel" %}
@@ -211,7 +211,7 @@ layout: layouts/base.liquid
     <h2 class="h2 block-title">{{ t.product.builds_title }}</h2>
     <div class="trio">
       {% for g in configurator.vent.groupsets %}
-      <div class="tile tile--text"><p class="tile__name">{{ g.label }}</p><p class="tile__note">CHF {{ g.price | chf }}</p></div>
+      {% assign gp = g.price | minus: configurator.vent.earlyBird.discount %}<div class="tile tile--text"><p class="tile__name">{{ g.label }}</p><p class="tile__note">CHF {{ gp | chf }}{% if g.powermeter %}<br>{{ t.product.with_pm | fill: "price", g.powermeter }}{% endif %}</p></div>
       {% endfor %}
     </div>
     <p class="block__text mt-4">{{ t.product.builds_text }}</p>

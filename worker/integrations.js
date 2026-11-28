@@ -34,9 +34,9 @@ const MAIL = {
     code: "Article code",
     total: "Total incl. {rate}% VAT",
     deposit: "Deposit ({percent}%): {deposit}. Within two working days we confirm your order with the invoice for the deposit.",
-    balance: "Balance: {balance}, invoiced before delivery.",
+    balance: "Balance: {balance}, invoiced before final assembly. Your bike ships within two weeks of payment.",
     full: "Amount: {total}. Within two working days we confirm your order with the invoice.",
-    delivery: "Planned delivery: early {date}.",
+    delivery: "Planned delivery: beginning of {date}.",
     address: "Delivery address",
     country: "Switzerland",
     refundDeposit: "Your order is binding under our order terms. If SENDA cannot deliver, or delivers substantially later than planned, you receive your deposit back in full.",
@@ -44,7 +44,7 @@ const MAIL = {
     terms: "Order terms",
     termsUrl: "https://sendabikes.com/terms/",
     close: "Questions, wishes or a fitting: just reply to this email. We answer within one working day.",
-    sign: "Raphael and Micha",
+    sign: "Your SENDA Team",
   },
   de: {
     subject: "Deine Bestellung {name} {number}",
@@ -54,7 +54,7 @@ const MAIL = {
     code: "Artikelcode",
     total: "Total inkl. {rate}% MWST",
     deposit: "Anzahlung ({percent} %): {deposit}. Innert zwei Arbeitstagen bestätigen wir Deine Bestellung mit der Rechnung für die Anzahlung.",
-    balance: "Restbetrag: {balance}, in Rechnung gestellt vor der Lieferung.",
+    balance: "Restbetrag: {balance}, in Rechnung gestellt vor der Endmontage. Dein Bike wird innert zwei Wochen nach Zahlungseingang versandt.",
     full: "Betrag: {total}. Innert zwei Arbeitstagen bestätigen wir Deine Bestellung mit der Rechnung.",
     delivery: "Geplante Lieferung: Anfang {date}.",
     address: "Lieferadresse",
@@ -64,7 +64,7 @@ const MAIL = {
     terms: "Bestellbedingungen",
     termsUrl: "https://sendabikes.com/de/terms/",
     close: "Fragen, Wünsche oder ein Fitting: antworte einfach auf diese E-Mail. Wir antworten innert eines Arbeitstags.",
-    sign: "Raphael und Micha",
+    sign: "Dein SENDA Team",
   },
 };
 const fill = (str, vars) => str.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");

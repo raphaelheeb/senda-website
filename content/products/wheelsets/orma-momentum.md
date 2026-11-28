@@ -41,7 +41,7 @@ faq:
   - ["Is Momentum tubeless-ready?", "Yes. The hooked rim is tubeless-compatible and ships with tape installed."]
   - ["Can I use it with rim brakes?", "No. Momentum is built for disc brakes and thru-axles only."]
   - ["What warranty applies?", "Two years on materials and workmanship, plus our crash replacement programme. After a crash, write to info@sendabikes.com."]
-image: /assets/img/web/orma-wheels-2000.jpg
+image: /assets/img/web/orma-momentum-pair-2000.jpg
 configureUrl: /wheelsets/orma-momentum/configure/
 orderKey: momentum
 de:

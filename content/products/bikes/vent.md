@@ -45,7 +45,13 @@ ride:
 image2: /assets/img/web/frame-detail-slate-blue-1000.jpg
 image3: /assets/img/web/frame-detail-champagne-1000.jpg
 storyImage: /assets/img/web/vent-front-blue-1000.jpg
+storyPos: 38% center
 storyAlt: SENDA Vent in Slate Blue from the front, against a concrete wall
+closeups:
+  - ["/assets/img/web/detail-slate-headtube-1000.jpg", "Head tube in Slate Blue with the copper S"]
+  - ["/assets/img/web/detail-vent-lettering-1000.jpg", "VENT lettering on the top tube in Slate Blue"]
+  - ["/assets/img/web/detail-rose-frame-1000.jpg", "Frame in Dusky Rose, satin"]
+  - ["/assets/img/web/frame-black-detail-1000.jpg", "Frame detail in Black, glossy"]
 momentImage: /assets/img/web/rider-rose-alps-2000.jpg
 momentAlt: A rider with her SENDA Vent in Dusky Rose at the roadside of an Alpine pass
 geometrySource: All values in mm unless stated.
@@ -53,12 +59,12 @@ geometryImage: /assets/img/web/vent-geometry-numbered.svg
 geometryNumbered: true
 # Rider height per size (cm), overlapping like the size charts of the big brands
 sizeChart:
-  - ["XS", 155, 163]
-  - ["S", 162, 170]
-  - ["M", 169, 177]
-  - ["L", 176, 184]
-  - ["XL", 183, 191]
-  - ["XXL", 190, 198]
+  - ["XS", 154, 164]
+  - ["S", 161, 171]
+  - ["M", 168, 178]
+  - ["L", 175, 185]
+  - ["XL", 182, 192]
+  - ["XXL", 189, 199]
 override:sizes: ["XS", "S", "M", "L", "XL", "XXL"]
 geometryRows:
   - ["Stack", "510", "520", "534", "550", "572", "594"]
@@ -81,6 +87,7 @@ de:
     - ["4", "Farben, ein Rahmen"]
   storyTitle: Carbon-Lagenaufbau, ausbalanciert zwischen Steifigkeit und Komfort.
   storyAlt: SENDA Vent in Slate Blue von vorne, vor einer Betonwand
+  closeupAlts: ["Steuerrohr in Slate Blue mit dem kupferfarbenen S", "VENT-Schriftzug auf dem Oberrohr in Slate Blue", "Rahmen in Dusky Rose, seidenmatt", "Rahmendetail in Black, glänzend"]
   momentAlt: Eine Fahrerin mit ihrem SENDA Vent in Dusky Rose am Strassenrand eines Alpenpasses
   tileNote: Jetzt bestellen, Lieferung Anfang März 2027
   tileAlt: SENDA Vent in Slate Blue, Ansicht von links
