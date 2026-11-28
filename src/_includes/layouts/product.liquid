@@ -254,7 +254,7 @@ layout: layouts/base.liquid
       <h3 class="h3">{{ t.product.sizechart_title }}</h3>
       <p class="small">{{ t.product.sizechart_text }}</p>
       <div class="sizechart__rows" style="--from: 150; --to: 200">
-        {% for r in sizeChart %}<div class="sizechart__row"><span class="sizechart__size">{{ r[0] }}</span><span class="sizechart__track"><span class="sizechart__bar" style="--a: {{ r[1] }}; --b: {{ r[2] }}"><span class="sizechart__label">{{ r[1] }}–{{ r[2] }} cm</span></span></span></div>
+        {% for r in sizeChart %}<div class="sizechart__row"><span class="sizechart__size">{{ r[0] }}<span class="sizechart__range"> {{ r[1] }}–{{ r[2] }}</span></span><span class="sizechart__track"><span class="sizechart__bar" style="--a: {{ r[1] }}; --b: {{ r[2] }}"><span class="sizechart__label">{{ r[1] }}–{{ r[2] }} cm</span></span></span></div>
         {% endfor %}
         <div class="sizechart__row sizechart__row--scale"><span class="sizechart__size"></span><span class="sizechart__track">{% for x in (150..200) %}{% assign m = x | modulo: 10 %}{% if m == 0 %}<span class="sizechart__tick" style="--x: {{ x }}">{{ x }}</span>{% endif %}{% endfor %}</span></div>
       </div>

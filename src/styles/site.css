@@ -1038,3 +1038,9 @@ html:has(.subbar) { scroll-padding-top: calc(var(--header-h) + 52px + 16px); }
 .stage4__image .frame img { width: 100%; height: auto; position: static; display: block; }
 .stage__base { margin-top: var(--s-6); }
 #colours .picker__stage { width: 100vw; margin-left: calc(50% - 50vw); max-width: none; }
+.sizechart__range { display: none; }
+@media (max-width: 760px) {
+  .sizechart__row { grid-template-columns: 96px 1fr; gap: 12px; }
+  .sizechart__range { display: inline; color: var(--grey); letter-spacing: 0; }
+  .sizechart__label { display: none; }
+}
