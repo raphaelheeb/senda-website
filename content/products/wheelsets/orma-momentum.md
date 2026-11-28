@@ -14,8 +14,8 @@ dims:
   - ["24 mm", "Internal rim width"]
   - ["120 kg", "Maximum system weight"]
 storyTitle: Two depths. Your choice.
-storyImage: /assets/img/web/hero-pass-1000.jpg
-storyAlt: Riders on an alpine road
+storyImage: /assets/img/web/road-concrete-orma-1000.jpg
+storyAlt: SENDA Vent on ORMA Momentum wheels in front of a concrete wall
 specsTitle: Development specification
 specsNote: The test wheelset sets the foundation. Final production specifications may still change as testing continues.
 specs:
@@ -56,7 +56,7 @@ de:
     - ["24 mm", "Felgeninnenbreite"]
     - ["120 kg", "Maximales Systemgewicht"]
   storyTitle: Zwei Höhen. Deine Wahl.
-  storyAlt: Fahrer auf einer Alpenstrasse
+  storyAlt: SENDA Vent mit ORMA Momentum Laufrädern vor einer Betonwand
   specsTitle: Entwicklungsspezifikation
   specsNote: Der Testlaufradsatz bildet die Grundlage. Die finalen Serienwerte können sich mit weiteren Tests noch ändern.
   specs:

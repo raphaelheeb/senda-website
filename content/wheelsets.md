@@ -6,6 +6,7 @@ title: Wheelsets
 category: wheelsets
 orma: true
 cols: 2
+standardImage: /assets/img/web/road-courtyard-orma-2000.jpg
 en:
   title: Wheelsets
   intro: Carbon wheels tested alongside our bikes, and made for most disc-brake road bikes.
@@ -19,6 +20,10 @@ en:
     - Star-ratchet hubs
     - Hand-built
     - 1’180 g in 45/45, without rim tape
+  standard_title: Standard on every SENDA.
+  standard_text: Every SENDA Vent rolls on ORMA Momentum. A wider ORMA wheelset for SENDA Gravel is in development.
+  standard_link: Discover SENDA Vent
+  standard_alt: SENDA Vent on ORMA Momentum wheels in a city courtyard
 de:
   title: Laufräder
   description: ORMA Carbon-Laufräder by SENDA.
@@ -33,4 +38,8 @@ de:
     - Zahnscheibenfreilauf (Star Ratchet)
     - Von Hand eingespeicht
     - 1’180 g in 45/45, ohne Felgenband
+  standard_title: Standard an jedem SENDA.
+  standard_text: Jedes SENDA Vent rollt auf ORMA Momentum. Ein breiterer ORMA Laufradsatz für SENDA Gravel ist in Entwicklung.
+  standard_link: SENDA Vent entdecken
+  standard_alt: SENDA Vent mit ORMA Momentum Laufrädern in einem Innenhof
 ---

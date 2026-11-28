@@ -2,6 +2,40 @@
 layout: layouts/base.liquid
 ---
 {%- assign items = collections.products | in_category: category, lang -%}
+{% if C.keys %}
+{%- comment -%} One featured product, v4: intro on tab A / tab B, the product on grey, then where it rides. {%- endcomment -%}
+{%- assign first_ = items | first -%}
+<section class="sec cat-head">
+  <div class="wrap g">
+    <div class="tab-a"><h1 class="h1">{{ C.title | default: title }}</h1></div>
+    <div class="tab-b">
+      {% if orma %}<a href="{{ '/orma/' | lurl: lang }}" class="orma-mark orma-mark--small cat-head__mark"><span class="orma-mark__word">{% include "svg/orma-wordmark.svg" %}</span><span class="orma-mark__by">{{ t.product.orma_by }}</span></a>{% endif %}
+      <p class="sec__text">{{ C.intro | default: intro }}</p>
+      {% if orma %}<a class="linkline" href="{{ '/orma/' | lurl: lang }}">{{ t.category.orma_story }}</a>{% endif %}
+    </div>
+  </div>
+</section>
+<section class="duo duo--grey duo--flip">
+  <a class="duo__media duo__media--contain duo__media--blend" href="{{ first_.url }}"><img src="{{ first_.data.image | replace: '-2000', '-1000' }}" srcset="{{ first_.data.image | replace: '-2000', '-1000' }} 1000w, {{ first_.data.image | replace: '-1000', '-2000' }} 1900w" sizes="(max-width: 760px) 100vw, 44vw" alt="{{ first_.data.de.alt | default: first_.data.alt }}"></a>
+  <div class="duo__text"><div class="duo__inner">
+    <h2 class="h2">{{ C.text_title }}</h2>
+    <p class="sec__text">{{ C.text }}</p>
+    <ul class="facts-list">{% for k in C.keys %}<li>{{ k }}</li>{% endfor %}</ul>
+    {% if first_.data.orderKey %}{% include "partials/offer.liquid", key: first_.data.orderKey, class: "offer--facts" %}{% endif %}
+    <a class="linkline" href="{{ first_.url }}">{{ C.text_link }}</a>
+  </div></div>
+</section>
+{% if C.standard_title %}
+<section class="duo">
+  <div class="duo__text"><div class="duo__inner">
+    <h2 class="h2">{{ C.standard_title }}</h2>
+    <p class="sec__text">{{ C.standard_text }}</p>
+    <a class="linkline" href="{{ '/bikes/vent/' | lurl: lang }}">{{ C.standard_link }}</a>
+  </div></div>
+  <div class="duo__media"><img src="{{ standardImage | replace: '-2000', '-1000' }}" srcset="{{ standardImage | replace: '-2000', '-1000' }} 1000w, {{ standardImage | replace: '-1000', '-2000' }} 2000w" sizes="(max-width: 760px) 100vw, 44vw" alt="{{ C.standard_alt }}" loading="lazy"></div>
+</section>
+{% endif %}
+{% else %}
 <div class="wrap">
   <header class="page-head">
     <h1 class="h1">{{ C.title | default: title }}</h1>
@@ -45,3 +79,4 @@ layout: layouts/base.liquid
   </section>
   {% endif %}
 </div>
+{% endif %}

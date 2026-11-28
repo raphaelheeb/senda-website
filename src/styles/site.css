@@ -1018,7 +1018,7 @@ html:has(.subbar) { scroll-padding-top: calc(var(--header-h) + 52px + 16px); }
 .site-header.is-tucked { transform: translateY(-100%); }
 /* Split sections share the tab stops: tab A = page margin, tab B = centre + half a gutter.
    The image takes 44% and runs to the page edge; the text column starts on a tab stop. */
-.duo { grid-template-columns: 56% 44%; }
+.duo { grid-template-columns: 56% 44%; gap: 0; }
 .duo--flip { grid-template-columns: 44% 56%; }
 .duo__inner { padding: var(--section) var(--s-5) var(--section) max(var(--margin), calc((100vw - var(--max)) / 2)); max-width: none; }
 .duo--flip .duo__inner { padding-left: calc(6vw + var(--gutter) / 2); padding-right: max(var(--margin), calc((100vw - var(--max)) / 2)); }
@@ -1044,3 +1044,55 @@ html:has(.subbar) { scroll-padding-top: calc(var(--header-h) + 52px + 16px); }
   .sizechart__range { display: inline; color: var(--grey); letter-spacing: 0; }
   .sizechart__label { display: none; }
 }
+
+/* ---------- Wheelset and component pages, v4 ---------- */
+.p-top { min-height: clamp(560px, 50vw, 780px); }
+.p-top .duo__media { background: var(--paper); }
+.p-top .duo__media--contain img { padding: 6% 0 6% 4%; }
+.p-top .crumbs { margin-bottom: var(--s-4); }
+.p-top__mark { display: inline-flex; margin-bottom: var(--s-2); }
+.p-top .h1 + .sec__text { margin-top: var(--s-3); max-width: 30em; }
+.p-top__buy { position: static; margin-top: var(--s-4); max-width: 30rem; }
+.p-top__buy .buy__status { margin-top: 0; padding-top: 0; border-top: 0; }
+.p-top__buy .badge { margin-bottom: 4px; }
+.p-top__buy .buy__actions { justify-items: start; margin-top: var(--s-3); }
+/* Key figures: four across, on the grid's quarter lines (1, 4, 7, 10), so figures 1 and 3 sit on tab A and tab B */
+.figs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: var(--s-5); margin: 0; }
+.fig { display: flex; flex-direction: column-reverse; justify-content: flex-end; margin: 0; }
+.fig__value { margin: 0; font-size: clamp(36px, 3.6vw, 56px); font-weight: 300; line-height: 1; letter-spacing: var(--track-head); white-space: nowrap; color: var(--ink); }
+.fig__label { margin-top: var(--s-2); font: 400 var(--t-label)/1.5 var(--mono); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--grey); max-width: 22em; }
+@media (max-width: 760px) { .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); } .fig__value { font-size: 32px; } }
+/* Closing sections: headline on tab A, table or list from tab B to the right margin */
+.tab-b--wide { grid-column: 7 / span 6; }
+@media (max-width: 760px) { .tab-b--wide { grid-column: 1; } }
+.tab-a > .linkline { margin-top: var(--s-4); }
+.table--v4 { font-size: 16px; border-top: 1px solid var(--ink); }
+.table--v4 tbody th { width: 42%; color: var(--grey); }
+.table--v4 td { color: var(--ink); }
+.sec--grey .table--v4 th, .sec--grey .table--v4 td { border-bottom-color: #c9c9c9; }
+.table--compat thead th { border-bottom-color: var(--line); }
+.table--compat { border-top: 1px solid var(--ink); }
+.table--compat tbody th { width: 38%; color: var(--ink); }
+.table--compat td:nth-child(2) { width: 16%; white-space: nowrap; }
+.table--compat td:last-child { color: var(--ink-mid); }
+.faq--v4 { max-width: none; }
+.faq--v4 summary { font-size: 18px; }
+.sec--grey .faq details { border-bottom-color: #c9c9c9; }
+@media (max-width: 760px) {
+  .p-top .duo__media { aspect-ratio: 19 / 13; }
+  .p-top .duo__media--contain img { padding: 4% var(--margin); }
+  .p-top .duo__inner { padding-top: var(--s-3); }
+  .table--compat thead { display: none; }
+  .table--compat tr { display: grid; grid-template-columns: 1fr auto; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .table--compat th, .table--compat td { border: 0; padding: 0; width: auto !important; }
+  .table--compat td:last-child { grid-column: 1 / -1; margin-top: 4px; font-size: 15px; }
+}
+/* Category page with one featured product (Wheelsets) */
+.cat-head { padding-top: var(--s-6); }
+.cat-head .tab-b { padding-top: 14px; }
+.cat-head__mark { display: inline-flex; margin-bottom: var(--s-3); }
+.duo__media--blend { display: block; }
+.duo__media--blend img { mix-blend-mode: multiply; padding: 6% 4% 6% 0; transition: transform 0.6s var(--ease); }
+.duo__media--blend:hover img { transform: scale(1.02); }
+.duo .offer--facts { margin-top: var(--s-3); }
+@media (max-width: 760px) { .duo__media--blend img { padding: 4% var(--margin); } }

@@ -76,42 +76,31 @@ layout: layouts/base.liquid
   </div>
 </section>
 {% else %}
-<div class="wrap">
-  <nav class="crumbs" style="padding-top: var(--s-4)" aria-label="{{ t.a11y.breadcrumb }}"><a href="{{ '/' | append: category | append: '/' | lurl: lang }}">{{ catLabel }}</a><span>/</span><span>{{ title }}</span></nav>
-
-  <div class="product-top">
-    <div class="gallery">
-      {% include "partials/frame.liquid", img: image, ratio: ratio, contain: imageContain, pos: imagePosition, alt: alt_, label: imageLabel %}
-      {% if image2 or image3 %}
-      <div class="gallery__thumbs">
-        {% if image2 %}{% include "partials/frame.liquid", img: image2, ratio: ratio, contain: image2Contain, alt: "" %}{% endif %}
-        {% if image3 %}{% include "partials/frame.liquid", img: image3, ratio: ratio, contain: image3Contain, alt: "" %}{% endif %}
-      </div>
-      {% endif %}
-    </div>
-
-    <aside class="buy" aria-label="{{ t.a11y.purchase }}">
-      <div class="buy__brand">
-        {% if brand == "ORMA" %}<a href="{{ '/orma/' | lurl: lang }}" class="orma-mark orma-mark--small"><span class="orma-mark__word">{% include "svg/orma-wordmark.svg" %}</span><span class="orma-mark__by">{{ t.product.orma_by }}</span></a>{% endif %}
-      </div>
-      <h1 class="buy__title">{{ title }}</h1>
-      <p class="buy__summary">{{ summary_ }}</p>
-
-      {% include "partials/buy.liquid" %}
-    </aside>
+{%- comment -%} Wheelsets and components, v4: image to the page edge, text on tab B; key figures on grey; then text sections on tab A / tab B. {%- endcomment -%}
+<section class="duo duo--flip p-top" id="overview">
+  <div class="duo__media duo__media--contain">
+    <img src="{{ image | replace: '-1000', '-2000' }}" alt="{{ alt_ }}"{% if imagePosition %} style="object-position: {{ imagePosition }}"{% endif %}>
   </div>
-</div>
-
-{% endif %}
-
-{% if dims_ and type != "bike" %}
-<section class="section section--tight">
-  <div class="wrap">
-    <div class="dims" style="--dims: {{ dims_.size }}">
-      {% for d in dims_ %}<div class="dim"><span class="dim__value">{{ d[0] }}</span><span class="dim__label">{{ d[1] }}</span></div>{% endfor %}
+  <div class="duo__text"><div class="duo__inner">
+    <nav class="crumbs" aria-label="{{ t.a11y.breadcrumb }}"><a href="{{ '/' | append: category | append: '/' | lurl: lang }}">{{ catLabel }}</a><span>/</span><span>{{ title }}</span></nav>
+    {% if brand == "ORMA" %}<a href="{{ '/orma/' | lurl: lang }}" class="orma-mark orma-mark--small p-top__mark"><span class="orma-mark__word">{% include "svg/orma-wordmark.svg" %}</span><span class="orma-mark__by">{{ t.product.orma_by }}</span></a>{% endif %}
+    <h1 class="h1">{{ title }}</h1>
+    <p class="sec__text">{{ summary_ }}</p>
+    <div class="buy p-top__buy" id="buy" aria-label="{{ t.a11y.purchase }}">
+      {% include "partials/buy.liquid" %}
     </div>
+  </div></div>
+</section>
+
+{% if dims_ %}
+<section class="sec sec--grey">
+  <div class="wrap">
+    <dl class="figs">
+      {% for d in dims_ %}<div class="fig"><dt class="fig__label">{{ d[1] }}</dt><dd class="fig__value">{{ d[0] }}</dd></div>{% endfor %}
+    </dl>
   </div>
 </section>
+{% endif %}
 {% endif %}
 
 {% if body_ != blank and storyImage %}
@@ -266,47 +255,54 @@ layout: layouts/base.liquid
 
 {% endif %}
 
+{%- comment -%} Closing sections alternate grey and white. {%- endcomment -%}
 {% if specs_ %}
-<section class="section" id="specs">
-  <div class="wrap split split--top">
-    <div>
+<section class="sec sec--grey" id="specs">
+  <div class="wrap g">
+    <div class="tab-a">
       <h2 class="h2">{{ specsTitle_ }}</h2>
-      {% if specsNote_ %}<p class="lead mt-3">{{ specsNote_ }}</p>{% endif %}
+      {% if specsNote_ %}<p class="sec__text">{{ specsNote_ }}</p>{% endif %}
     </div>
-    <table class="table">
-      <tbody>{% for s in specs_ %}<tr><th>{{ s[0] }}</th><td>{{ s[1] }}</td></tr>{% endfor %}</tbody>
-    </table>
+    <div class="tab-b tab-b--wide">
+      <table class="table table--v4">
+        <tbody>{% for s in specs_ %}<tr><th>{{ s[0] }}</th><td>{{ s[1] }}</td></tr>{% endfor %}</tbody>
+      </table>
+    </div>
   </div>
 </section>
 {% endif %}
 
 {% if compat_ %}
-<section class="section" id="compatibility">
-  <div class="wrap">
-    <div class="section-head">
-      <div><h2 class="h2">{{ t.product.compat_title }}</h2></div>
-      <p class="lead">{{ t.product.compat_lead }}</p>
+<section class="sec" id="compatibility">
+  <div class="wrap g">
+    <div class="tab-a">
+      <h2 class="h2">{{ t.product.compat_title }}</h2>
+      <p class="sec__text">{{ t.product.compat_lead }}</p>
+      {% if type == "wheelset" %}<a class="linkline" href="{{ '/bikes/' | lurl: lang }}">{{ t.product.see_bikes }}</a>{% endif %}
     </div>
-    <div class="scroll-x">
-      <table class="table">
+    <div class="tab-b tab-b--wide">
+      <table class="table table--v4 table--compat">
         <thead><tr>{% for h in t.product.compat_head %}<th>{{ h }}</th>{% endfor %}</tr></thead>
         <tbody>{% for c in compat_ %}<tr><th>{{ c[0] }}</th><td class="{{ c[1] }}">{{ t.product.compat_values[c[1]] | default: c[1] }}</td><td>{{ c[2] }}</td></tr>{% endfor %}</tbody>
       </table>
+      {% if type == "wheelset" %}<p class="small mt-3">{{ t.product.wheelset_note }}</p>{% endif %}
     </div>
-    {% if type == "wheelset" %}<p class="small mt-4">{{ t.product.wheelset_note }} <a class="linkline" href="{{ '/bikes/' | lurl: lang }}">{{ t.product.see_bikes }}</a></p>{% endif %}
   </div>
 </section>
 {% endif %}
 
 {% if faq_ %}
-<section class="section" id="faq">
-  <div class="wrap">
-    <div class="section-head">
-      <div><h2 class="h2">{{ t.product.faq_title }}</h2></div>
-      <p class="lead">{{ t.product.faq_lead }} <a class="linkline" href="{{ '/service/' | lurl: lang }}#contact">{{ t.product.write_to_us }}</a></p>
+{%- assign faqTone = " sec--grey" -%}{%- if specs_ -%}{%- unless compat_ -%}{%- assign faqTone = "" -%}{%- endunless -%}{%- endif -%}
+<section class="sec{{ faqTone }}" id="faq">
+  <div class="wrap g">
+    <div class="tab-a">
+      <h2 class="h2">{{ t.product.faq_title }}</h2>
+      <a class="linkline" href="{{ '/service/' | lurl: lang }}#contact">{{ t.product.write_to_us }}</a>
     </div>
-    <div class="faq">
-      {% for q in faq_ %}<details><summary>{{ q[0] }}</summary><p>{{ q[1] }}</p></details>{% endfor %}
+    <div class="tab-b tab-b--wide">
+      <div class="faq faq--v4">
+        {% for q in faq_ %}<details><summary>{{ q[0] }}</summary><p>{{ q[1] }}</p></details>{% endfor %}
+      </div>
     </div>
   </div>
 </section>
