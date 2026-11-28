@@ -11,7 +11,8 @@ export function zurichDate(now = new Date()) {
 
 /** True while an offer runs; `until` is inclusive (Zurich date). */
 export function offerActive(until, now = new Date()) {
-  return Boolean(until) && zurichDate(now) <= until;
+  // No end date: the offer runs until it is taken out of the data file.
+  return !until || zurichDate(now) <= until;
 }
 
 const ids = (list) => list.map((x) => (typeof x === "string" ? x : x.id));
@@ -23,7 +24,7 @@ const label = (list, id) => {
 
 export const VENT_FIELDS = [
   "size", "finish", "groupset", "crank", "chainring", "cassette",
-  "rimFront", "rimRear", "bar", "stem", "tyre",
+  "rimFront", "rimRear", "bar", "stem", "spacers", "tyre", "power",
 ];
 
 /** Option lists per field, read from the data file. */
@@ -32,7 +33,7 @@ export function ventOptions(vent) {
     size: ids(vent.sizes), finish: ids(vent.finishes), groupset: ids(vent.groupsets),
     crank: vent.cranks, chainring: ids(vent.chainrings), cassette: ids(vent.cassettes),
     rimFront: vent.rims, rimRear: vent.rims, bar: vent.bars, stem: vent.stems,
-    tyre: ids(vent.tyres),
+    spacers: vent.spacerChoices || ["all"], tyre: ids(vent.tyres), power: ["no", "yes"],
   };
 }
 
@@ -46,6 +47,7 @@ export function ventDefaults(vent, sizeId) {
     size: size.id, groupset: vent.defaultGroupset || sel.groupset,
     crank: size.defaults.crank, bar: size.defaults.bar, stem: size.defaults.stem,
     rimFront: vent.rims[0], rimRear: vent.rims[vent.rims.length - 1], tyre: ids(vent.tyres)[0],
+    spacers: "all", power: "no",
   });
   for (const f of VENT_FIELDS) if (!opts[f].includes(sel[f])) sel[f] = opts[f][0];
   return sel;
@@ -57,7 +59,9 @@ export const WORDS = {
     size: "Frame size", colour: "Colour", groupset: "Groupset", crank: "Crank length", chainrings: "Chainrings",
     cassette: "Cassette", wheels: "Wheels", wheelsValue: "ORMA Momentum {f} front / {r} rear", bar: "Handlebar width",
     stem: "Stem length", spacers: "Spacers", tyres: "Tyres", rim: "Rim depth", rimValue: "{f} mm front / {r} mm rear",
-    freehub: "Freehub", shipping: "Shipping within Switzerland", early: "Early-order discount", intro: "Introductory price",
+    freehub: "Freehub", shipping: "Shipping within Switzerland", included: "included", early: "Introductory discount", intro: "Introductory price",
+    power: "Power meter", powerYes: "Shimano power meter crank", powerNo: "None",
+    spacerAll: "All spacers fitted (recommended)", spacerFewer: "Fewer spacers on request, at my own risk",
     surface: { Glossy: "glossy", Satin: "satin", Pearl: "pearl", Matte: "matte" },
     chainringLabels: { "50-34": "50-34 (compact)", "52-36": "52-36 (semi-compact)" },
   },
@@ -65,7 +69,9 @@ export const WORDS = {
     size: "Rahmengrösse", colour: "Farbe", groupset: "Schaltgruppe", crank: "Kurbellänge", chainrings: "Kettenblätter",
     cassette: "Kassette", wheels: "Laufräder", wheelsValue: "ORMA Momentum {f} vorne / {r} hinten", bar: "Lenkerbreite",
     stem: "Vorbaulänge", spacers: "Spacer", tyres: "Reifen", rim: "Felgenhöhe", rimValue: "{f} mm vorne / {r} mm hinten",
-    freehub: "Freilauf", shipping: "Versand innerhalb der Schweiz", early: "Frühbestellrabatt", intro: "Einführungspreis",
+    freehub: "Freilauf", shipping: "Versand innerhalb der Schweiz", included: "inbegriffen", early: "Einführungsrabatt", intro: "Einführungspreis",
+    power: "Leistungsmesser", powerYes: "Shimano Kurbel mit Leistungsmesser", powerNo: "Keiner",
+    spacerAll: "Alle Spacer montiert (empfohlen)", spacerFewer: "Weniger Spacer auf Wunsch, auf eigenes Risiko",
     surface: { Glossy: "glänzend", Satin: "seidenmatt", Pearl: "Perlmutt", Matte: "matt" },
     chainringLabels: { "50-34": "50-34 (Kompakt)", "52-36": "52-36 (Semi-Kompakt)" },
   },
@@ -87,11 +93,13 @@ export function priceVent(cfg, sel, now = new Date(), lang = "en") {
   if (errors.length) return { ok: false, errors };
 
   const groupset = find(vent.groupsets, sel.groupset);
+  if (sel.power === "yes" && !groupset.powermeter) return { ok: false, errors: ["power"] };
   const finish = find(vent.finishes, sel.finish);
-  const base = groupset.price + (finish.surcharge || 0);
+  const power = sel.power === "yes" ? groupset.powermeter : 0;
+  const base = groupset.price + power + (finish.surcharge || 0);
   const early = offerActive(vent.earlyBird.until, now);
   const discount = early ? vent.earlyBird.discount : 0;
-  const shipping = vent.shipping ?? cfg.shipping.price;
+  const shipping = cfg.shipping.included ? 0 : (vent.shipping ?? cfg.shipping.price);
   const total = base - discount + shipping;
   const deposit = Math.round(((base - discount) * vent.deposit.percent) / 100);
 
@@ -100,22 +108,24 @@ export function priceVent(cfg, sel, now = new Date(), lang = "en") {
     [w.size, `${size.label} (${size.cm} cm)`],
     [w.colour, `${finish.label}, ${w.surface[finish.surface] || finish.surface.toLowerCase()}`],
     [w.groupset, groupset.label],
+    [w.power, power ? w.powerYes : w.powerNo],
     [w.crank, `${sel.crank} mm`],
     [w.chainrings, w.chainringLabels[sel.chainring] || label(vent.chainrings, sel.chainring)],
     [w.cassette, label(vent.cassettes, sel.cassette)],
     [w.wheels, w.wheelsValue.replace("{f}", sel.rimFront).replace("{r}", sel.rimRear)],
     [w.bar, `${sel.bar} mm`],
     [w.stem, `${sel.stem} mm`],
+    [w.spacers, sel.spacers === "fewer" ? w.spacerFewer : w.spacerAll],
     [w.tyres, `${vent.tyreModel}, ${label(vent.tyres, sel.tyre)}`],
   ];
-  const lines = [[`${vent.name}, ${groupset.label}`, base]];
+  const lines = [[`${vent.name}, ${groupset.label}${power ? ` + ${w.powerYes}` : ""}`, base]];
   if (discount) lines.push([w.early, -discount]);
-  lines.push([w.shipping, shipping]);
+  lines.push([w.shipping, cfg.shipping.included ? w.included : shipping]);
 
   const code = [
     vent.code, sel.size, sel.finish, sel.groupset, sel.crank, sel.chainring, sel.cassette,
     `${sel.rimFront}/${sel.rimRear}`, sel.bar, sel.stem, sel.tyre,
-  ].join("-");
+  ].join("-") + (power ? "-PM" : "") + (sel.spacers === "fewer" ? "-SPX" : "");
 
   return {
     ok: true, errors: [], product: "vent", lines, summary, code,
@@ -135,12 +145,12 @@ export function priceMomentum(cfg, sel, now = new Date(), lang = "en") {
   if (errors.length) return { ok: false, errors };
   const early = offerActive(m.earlyBird.until, now);
   const discount = early ? m.price - m.earlyBird.price : 0;
-  const shipping = m.shipping ?? cfg.shipping.price;
+  const shipping = cfg.shipping.included ? 0 : (m.shipping ?? cfg.shipping.price);
   const total = m.price - discount + shipping;
   const hub = find(m.freehubs, sel.freehub);
   const lines = [[`${m.name} ${sel.rimFront}/${sel.rimRear}`, m.price]];
   if (discount) lines.push([w.intro, -discount]);
-  lines.push([w.shipping, shipping]);
+  lines.push([w.shipping, cfg.shipping.included ? w.included : shipping]);
   return {
     ok: true, errors: [], product: "momentum", lines,
     summary: [[w.rim, w.rimValue.replace("{f}", sel.rimFront).replace("{r}", sel.rimRear)], [w.freehub, hub.label]],

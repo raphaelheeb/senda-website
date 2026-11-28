@@ -3,12 +3,13 @@
   "currency": "CHF",
   "vatNote": "Prices incl. 8.1% Swiss VAT.",
   "shipping": {
-    "price": 50,
+    "price": 0,
     "label": "Shipping within Switzerland",
     "countries": [
       "CH"
     ],
-    "_comment": "Default shipping (SENDA Vent). A product can set its own `shipping` price."
+    "_comment": "Shipping within Switzerland is included in every price (bike CHF 50, wheels CHF 30 absorbed).",
+    "included": true
   },
   "orderEmail": "info@sendabikes.com",
   "vent": {
@@ -19,9 +20,9 @@
     },
     "delivery": "2027-03-01",
     "earlyBird": {
-      "discount": 300,
-      "until": "2026-12-31",
-      "label": "Early-order discount"
+      "discount": 400,
+      "until": null,
+      "label": "Introductory discount"
     },
     "sizes": [
       {
@@ -155,17 +156,19 @@
       {
         "id": "105",
         "label": "Shimano 105 Di2",
-        "price": 5400
+        "price": 5450
       },
       {
         "id": "ULT",
         "label": "Shimano Ultegra Di2",
-        "price": 6300
+        "price": 6350,
+        "powermeter": 500
       },
       {
         "id": "DA",
         "label": "Shimano Dura-Ace Di2",
-        "price": 7900
+        "price": 7950,
+        "powermeter": 500
       }
     ],
     "defaultGroupset": "ULT",
@@ -290,7 +293,11 @@
       ],
       "_standover": "Standover may exceed the barefoot inseam by the shoe sole (15 mm).",
       "sizeStepWeight": 20
-    }
+    },
+    "spacerChoices": [
+      "all",
+      "fewer"
+    ]
   },
   "momentum": {
     "name": "ORMA Momentum",
@@ -299,7 +306,7 @@
     "price": 1180,
     "earlyBird": {
       "price": 1080,
-      "until": "2026-12-31",
+      "until": null,
       "label": "Introductory price"
     },
     "delivery": "2027-03-01",
@@ -307,7 +314,7 @@
       "45",
       "50"
     ],
-    "shipping": 30,
+    "shipping": 0,
     "freehubs": [
       {
         "id": "HG",

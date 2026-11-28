@@ -21,7 +21,7 @@ hideSignup: true
       <header class="order-head">
         <h1 class="h2" data-stage-title="build">{{ c.your | fill: "name", m.name }}</h1>
         <h1 class="h2" data-stage-title="details" hidden>{{ c.your_details }}</h1>
-        <p class="order-head__offer" data-offer-until="{{ m.earlyBird.until }}">{% assign d = m.earlyBird.until | long_date: lang %}{% assign off = m.price | minus: m.earlyBird.price %}{{ t.offer.head_momentum | fill: "date", d, "discount", off }}</p>
+        <p class="order-head__offer">{% assign off = m.price | minus: m.earlyBird.price %}{{ t.offer.head_momentum | fill: "discount", off }}</p>
       </header>
 
       <div class="config__build">

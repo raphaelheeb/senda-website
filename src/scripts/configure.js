@@ -19,7 +19,7 @@ function init(form) {
   const $ = (sel) => document.querySelector(sel);
   const radios = (name) => form.querySelectorAll(`input[type=radio][name="${name}"]`);
   const fields = product === "vent"
-    ? ["size", "finish", "groupset", "crank", "chainring", "cassette", "rimFront", "rimRear", "bar", "stem", "tyre"]
+    ? ["size", "finish", "groupset", "crank", "chainring", "cassette", "rimFront", "rimRear", "bar", "stem", "spacers", "tyre", "power"]
     : ["rimFront", "rimRear", "freehub"];
   const defaults = (size = "M") => (product === "vent" ? ventDefaults(cfg.vent, size) : momentumDefaults(cfg.momentum));
 
@@ -28,10 +28,10 @@ function init(form) {
   const show = {
     size: (s) => { const z = byId(v.sizes, s.size); return `${z.label} · ${z.cm} cm`; },
     finish: (s) => byId(v.finishes, s.finish).label,
-    groupset: (s) => byId(v.groupsets, s.groupset).label.replace("Shimano ", ""),
+    groupset: (s) => byId(v.groupsets, s.groupset).label.replace("Shimano ", "") + (s.power === "yes" ? " · PM" : ""),
     gearing: (s) => `${s.crank} · ${s.chainring} · ${s.cassette}`,
     wheels: (s) => `${s.rimFront} / ${s.rimRear} mm`,
-    cockpit: (s) => `${s.bar} · ${s.stem} mm`,
+    cockpit: (s) => `${s.bar} · ${s.stem} mm${s.spacers === "fewer" ? " · –" : ""}`,
     tyre: (s) => `${s.tyre} mm`,
     freehub: (s) => byId(cfg.momentum.freehubs, s.freehub).label,
   };
@@ -55,13 +55,16 @@ function init(form) {
       if (key === "finish") el.insertAdjacentHTML("afterbegin", `<i style="background:${byId(v.finishes, sel.finish).hex}"></i>`);
     });
     $("[data-summary-list]").innerHTML = r.summary.map(([k, x]) => `<dt>${esc(k)}</dt><dd>${esc(x)}</dd>`).join("");
-    $("[data-summary-lines]").innerHTML = r.lines.map(([k, x]) => `<dt>${esc(k)}</dt><dd>${chf(x)}</dd>`).join("");
+    $("[data-summary-lines]").innerHTML = r.lines.map(([k, x]) => `<dt>${esc(k)}</dt><dd>${typeof x === "number" ? chf(x) : esc(x)}</dd>`).join("");
     $("[data-summary-total]").textContent = chf(r.total);
     $("[data-bar-total]").textContent = chf(r.total);
     $("[data-summary-pay]").textContent = r.payment === "deposit"
       ? tr("deposit", { deposit: chf(r.deposit), balance: chf(r.balance) })
       : tr("full");
     if (product === "vent") {
+      const pm = Boolean(byId(v.groupsets, sel.groupset).powermeter);
+      form.querySelectorAll('input[name="power"][value="yes"]').forEach((r) => { r.disabled = !pm; r.closest(".row").classList.toggle("is-off", !pm); });
+      const sn = form.querySelector("[data-spacer-note]"); if (sn) sn.hidden = sel.spacers !== "fewer";
       const finish = byId(v.finishes, sel.finish);
       const img = images[finish.label];
       const note = $("[data-summary-imgnote]");
@@ -70,7 +73,7 @@ function init(form) {
       note.textContent = img ? "" : tr("shown_in", { finish: finish.label });
       for (const g of v.groupsets) {
         const m = form.querySelector(`[data-groupset-price="${g.id}"]`);
-        if (m) m.innerHTML = r.discount ? `${chf(g.price - r.discount)} <s>${chf(g.price)}</s>` : chf(g.price);
+        if (m) m.innerHTML = chf(g.price - r.discount);
       }
     }
     const url = new URL(location.href);
@@ -88,6 +91,8 @@ function init(form) {
       apply();
     } else {
       sel[t.name] = t.value;
+      // 105 Di2 has no Shimano power meter crank
+      if (t.name === "groupset" && !byId(v.groupsets, t.value).powermeter) { sel.power = "no"; apply(); }
     }
     render();
   });
@@ -238,7 +243,7 @@ function done(form, out, customer, cfg, lang) {
   set("[data-done-until-text]", out.payment === "deposit" ? f(d.until_vent, { balance: chf2(out.balance), date }) : f(d.until_momentum, { date }));
   set("[data-done-your-order]", `${d.your_order} · ${out.orderNumber}`);
   box.querySelector("[data-done-list]").innerHTML = out.summary.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")
-    + (out.lines || []).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${chf(v)}</dd>`).join("")
+    + (out.lines || []).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${typeof v === "number" ? chf(v) : esc(v)}</dd>`).join("")
     + `<dt class="done-total">${esc(tr("total"))}</dt><dd class="done-total">${chf2(out.total)}</dd>`;
   box.querySelector("[data-done-contact]").innerHTML = esc(f(d.contact, { email: "\u0000" }))
     .replace("\u0000", `<a class="linkline" href="mailto:${cfg.orderEmail}">${cfg.orderEmail}</a>`);

@@ -46,16 +46,15 @@
     "copyright": "© SENDA 2026, Zürich"
   },
   "offer": {
-    "strip_long": "Jetzt bestellen: SENDA Vent bis {date} CHF {discount} günstiger",
-    "strip_short": "CHF {discount} günstiger bis {date}",
     "configure": "Konfigurieren ↗",
     "from": "Ab ",
     "until": "bis",
-    "early": "Frühbestellrabatt",
+    "early": "Einführungsrabatt",
     "intro": "Einführungspreis",
-    "head_vent": "Frühbestellrabatt bis {date}: CHF {discount} günstiger, in jeder Ausstattung.",
-    "head_momentum": "Einführungspreis bis {date}: CHF {discount} günstiger.",
-    "early_note": "Frühbestellrabatt von CHF {discount} bis {date}"
+    "head_vent": "Einführungsrabatt: CHF {discount} günstiger, in jeder Ausstattung. Versand innerhalb der Schweiz inbegriffen.",
+    "head_momentum": "Einführungspreis: CHF {discount} unter Listenpreis. Versand innerhalb der Schweiz inbegriffen.",
+    "early_note": "Einführungspreis, CHF {discount} unter Listenpreis. Versand innerhalb der Schweiz inbegriffen.",
+    "intro_note": "Einführungspreis, CHF {discount} unter Listenpreis. Versand innerhalb der Schweiz inbegriffen."
   },
   "signup": {
     "title": "Ride along.",
@@ -183,7 +182,7 @@
     "bar": "Lenkerbreite an den Griffen",
     "stem": "Vorbaulänge",
     "spacers": "Spacer",
-    "cockpit_note": "Alle Werte in mm. Im Unterlenker ist der Lenker 20 mm breiter (Flare). Der Gabelschaft bleibt ungekürzt, die Spacer stellen wir beim Fitting ein. Andere Masse: bitte melde Dich.",
+    "cockpit_note": "Alle Werte in mm. Im Unterlenker ist der Lenker 20 mm breiter (Flare). Wir montieren standardmässig alle Spacer, so kannst Du den Lenker nach ein paar Ausfahrten selbst tiefer setzen. Andere Masse: bitte melde Dich.",
     "continue": "Weiter",
     "other_parts": "Andere Teile oder ein Fitting:",
     "back_bike": "Zurück zu Deinem Bike",
@@ -251,7 +250,14 @@
       "sent": "Eine Bestätigung ist unterwegs an",
       "questions": "Fragen zu Deiner Bestellung:"
     },
-    "deposit": "Anzahlung {deposit} nach der Bestellung, Restbetrag {balance} vor der Endmontage."
+    "deposit": "Anzahlung {deposit} nach der Bestellung, Restbetrag {balance} vor der Endmontage.",
+    "spacers_all": "Alle Spacer montiert (empfohlen)",
+    "spacers_fewer": "Weniger Spacer, auf eigenes Risiko",
+    "spacers_fewer_note": "Nenne uns in der Nachricht unten Deinen Stack oder Deine Spacerhöhe. Ein gekürzter Gabelschaft lässt sich nicht mehr verlängern; ohne genaue Angaben montieren wir alle Spacer.",
+    "power": "Leistungsmesser",
+    "power_no": "Ohne Leistungsmesser",
+    "power_yes": "Shimano Kurbel mit Leistungsmesser",
+    "power_note": "Erhältlich mit Ultegra Di2 und Dura-Ace Di2."
   },
   "js": {
     "deposit": "Anzahlung {deposit} nach der Bestellung, Restbetrag {balance} vor der Lieferung.",

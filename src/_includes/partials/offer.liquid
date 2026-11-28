@@ -1,14 +1,10 @@
-{%- comment -%} Price with the running offer for an orderable product. key: "vent" or "momentum". The offer hides itself after its date (site.js). {%- endcomment -%}
+{%- comment -%} Price of an orderable product with the running introductory offer (no end date). key: "vent" or "momentum". Premium: no struck-through price. {%- endcomment -%}
 {%- if key == "vent" -%}
-  {%- assign o = configurator.vent -%}{%- assign g = o.groupsets | first -%}{%- assign full = g.price -%}{%- assign now = full | minus: o.earlyBird.discount -%}{%- assign from = t.offer.from -%}{%- assign label = t.offer.early -%}
+  {%- assign o = configurator.vent -%}{%- assign g = o.groupsets | first -%}{%- assign now = g.price | minus: o.earlyBird.discount -%}{%- assign off = o.earlyBird.discount -%}{%- assign from = t.offer.from -%}{%- assign note = t.offer.early_note -%}
 {%- else -%}
-  {%- assign o = configurator.momentum -%}{%- assign full = o.price -%}{%- assign now = o.earlyBird.price -%}{%- assign from = "" -%}{%- assign label = t.offer.intro -%}
+  {%- assign o = configurator.momentum -%}{%- assign now = o.earlyBird.price -%}{%- assign off = o.price | minus: o.earlyBird.price -%}{%- assign from = "" -%}{%- assign note = t.offer.intro_note -%}
 {%- endif -%}
-<div class="offer{% if class %} {{ class }}{% endif %}" data-offer-until="{{ o.earlyBird.until }}">
-  <p class="offer__price">{{ from }}CHF {{ now | chf }} <s>CHF {{ full | chf }}</s></p>
-  {%- assign until_ = o.earlyBird.until | long_date: lang -%}
-  <p class="offer__note">{% if key == "vent" %}{{ t.offer.early_note | fill: "discount", o.earlyBird.discount, "date", until_ }}{% else %}{{ label }} {{ t.offer.until }} {{ until_ }}{% endif %}</p>
-</div>
-<div class="offer{% if class %} {{ class }}{% endif %}" data-offer-after="{{ o.earlyBird.until }}" hidden>
-  <p class="offer__price">{{ from }}CHF {{ full | chf }}</p>
+<div class="offer{% if class %} {{ class }}{% endif %}">
+  <p class="offer__price">{{ from }}CHF {{ now | chf }}</p>
+  <p class="offer__note">{{ note | fill: "discount", off }}</p>
 </div>

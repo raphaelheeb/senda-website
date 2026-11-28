@@ -26,7 +26,7 @@ hideSignup: true
       <header class="order-head">
         <h1 class="h2" data-stage-title="build">{{ c.your | fill: "name", v.name }}</h1>
         <h1 class="h2" data-stage-title="details" hidden>{{ c.your_details }}</h1>
-        <p class="order-head__offer" data-offer-until="{{ v.earlyBird.until }}">{% assign d = v.earlyBird.until | long_date: lang %}{{ t.offer.head_vent | fill: "date", d, "discount", v.earlyBird.discount }}</p>
+        <p class="order-head__offer">{{ t.offer.head_vent | fill: "discount", v.earlyBird.discount }}</p>
       </header>
 
       <div class="config__build">
@@ -83,6 +83,12 @@ hideSignup: true
           <summary><span class="cstep__title">{{ c.groupset }}</span><span class="cstep__value" data-show="groupset"></span></summary>
           <div class="cstep__body">
             <div class="rows">{% for g in v.groupsets %}<label class="row"><input type="radio" name="groupset" value="{{ g.id }}"><span class="row__name">{{ g.label }}</span><span class="row__price" data-groupset-price="{{ g.id }}">CHF {{ g.price | chf }}</span></label>{% endfor %}</div>
+            <p class="option-label">{{ c.power }}</p>
+            <div class="rows rows--plain" data-power>
+              <label class="row"><input type="radio" name="power" value="no"><span class="row__name">{{ c.power_no }}</span></label>
+              <label class="row"><input type="radio" name="power" value="yes"><span class="row__name">{{ c.power_yes }}</span><span class="row__price">+ CHF 500</span></label>
+            </div>
+            <p class="cstep__hint" data-power-note>{{ c.power_note }}</p>
           </div>
         </details>
 
@@ -116,7 +122,12 @@ hideSignup: true
             <div class="chips">{% for b in v.bars %}<label class="chip"><input type="radio" name="bar" value="{{ b }}"><span>{{ b }}</span></label>{% endfor %}</div>
             <p class="option-label">{{ c.stem }}</p>
             <div class="chips">{% for s in v.stems %}<label class="chip"><input type="radio" name="stem" value="{{ s }}"><span>{{ s }}</span></label>{% endfor %}</div>
-            {% comment %} Spacers are set at the first fitting: the steerer stays uncut. {% endcomment %}{% if false %}<div class="chips">{% for s in v.spacers %}<label class="chip"><input type="radio" name="spacers" value="{{ s }}"><span>{{ s }}</span></label>{% endfor %}</div>{% endif %}
+            <p class="option-label">{{ c.spacers }}</p>
+            <div class="rows rows--plain">
+              <label class="row"><input type="radio" name="spacers" value="all"><span class="row__name">{{ c.spacers_all }}</span></label>
+              <label class="row"><input type="radio" name="spacers" value="fewer"><span class="row__name">{{ c.spacers_fewer }}</span></label>
+            </div>
+            <p class="cstep__hint" data-spacer-note hidden>{{ c.spacers_fewer_note }}</p>
             <p class="cstep__hint">{{ c.cockpit_note }}</p>
           </div>
         </details>

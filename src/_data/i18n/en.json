@@ -46,16 +46,15 @@
     "copyright": "© SENDA 2026, Zürich"
   },
   "offer": {
-    "strip_long": "Order now: CHF {discount} off SENDA Vent until {date}",
-    "strip_short": "CHF {discount} off until {date}",
     "configure": "Configure ↗",
     "from": "From ",
     "until": "until",
-    "early": "Early-order discount",
+    "early": "Introductory discount",
     "intro": "Introductory price",
-    "head_vent": "Early-order discount until {date}: CHF {discount} off every build.",
-    "head_momentum": "Introductory price until {date}: CHF {discount} off.",
-    "early_note": "Early-order discount of CHF {discount} until {date}"
+    "head_vent": "Introductory discount: CHF {discount} off every build. Shipping within Switzerland included.",
+    "head_momentum": "Introductory price: CHF {discount} below list. Shipping within Switzerland included.",
+    "early_note": "Introductory price, CHF {discount} below list. Shipping within Switzerland included.",
+    "intro_note": "Introductory price, CHF {discount} below list. Shipping within Switzerland included."
   },
   "signup": {
     "title": "Ride along.",
@@ -183,7 +182,7 @@
     "bar": "Bar width at the hoods",
     "stem": "Stem length",
     "spacers": "Spacers",
-    "cockpit_note": "All values in mm. At the drops the bar is 20 mm wider (flare). The steerer stays uncut, spacers are set at your fitting. Other dimensions: please get in touch.",
+    "cockpit_note": "All values in mm. At the drops the bar is 20 mm wider (flare). We fit all spacers as standard, so you can lower the bar yourself after a few rides. Other dimensions: please get in touch.",
     "continue": "Continue",
     "other_parts": "Other parts or a fitting:",
     "back_bike": "Back to your bike",
@@ -251,7 +250,14 @@
       "sent": "A confirmation is on its way to",
       "questions": "Questions about your order:"
     },
-    "deposit": "Deposit {deposit} after your order, balance {balance} before final assembly."
+    "deposit": "Deposit {deposit} after your order, balance {balance} before final assembly.",
+    "spacers_all": "All spacers fitted (recommended)",
+    "spacers_fewer": "Fewer spacers, at my own risk",
+    "spacers_fewer_note": "Tell us your stack or the spacer height you ride in the message below. A cut steerer cannot be lengthened again; without exact numbers we fit all spacers.",
+    "power": "Power meter",
+    "power_no": "Without power meter",
+    "power_yes": "Shimano power meter crank",
+    "power_note": "Available with Ultegra Di2 and Dura-Ace Di2."
   },
   "js": {
     "deposit": "Deposit {deposit} after your order, balance {balance} before delivery.",
